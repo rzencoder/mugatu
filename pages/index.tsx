@@ -1,12 +1,16 @@
 import Head from 'next/head'
 import { Layout } from '../components'
 import { Box, Flex, Heading, Button } from '@chakra-ui/react'
+import { useGender } from '../context/genderContext'
 
-export default function Home(): JSX.Element {
+export default function Home() {
+  const { gender } = useGender()
+  console.log(gender)
+
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Mugatu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>

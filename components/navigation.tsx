@@ -1,10 +1,9 @@
-import { Box, Flex, Image, useColorMode } from '@chakra-ui/react'
-import { invertScale } from 'framer-motion/types/value/use-inverted-scale'
+import { Box, Flex, Image, useColorMode, Link as LinkStyle } from '@chakra-ui/react'
+import Link from 'next/link'
 
-export default function Navigation(): JSX.Element {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function Navigation() {
   const { colorMode, toggleColorMode } = useColorMode()
-  console.log(colorMode)
+
   return (
     <nav>
       <Flex
@@ -13,15 +12,21 @@ export default function Navigation(): JSX.Element {
         alignItems="center"
         p={3}
       >
-        <Box>WOMEN</Box>
-        <Image
-          filter={colorMode === 'dark' ? 'invert()' : 'none'}
-          src="/logo.png/"
-          alt="logo"
-          boxSize="100px"
-          marginLeft="-20px"
-        />
-        <Box>MEN</Box>
+        <Link href="/women">
+          <LinkStyle>WOMEN</LinkStyle>
+        </Link>
+        <Link href="/">
+          <Image
+            filter={colorMode === 'dark' ? 'invert()' : 'none'}
+            src="/logo.png/"
+            alt="logo"
+            boxSize="100px"
+            marginLeft="-20px"
+          />
+        </Link>
+        <Link href="/men">
+          <LinkStyle>MEN</LinkStyle>
+        </Link>
       </Flex>
       <Flex bg="#444" height="40px" padding="5px">
         <Flex margin="0 auto" width="90%" alignItems="center" justifyContent="space-between">
@@ -34,14 +39,16 @@ export default function Navigation(): JSX.Element {
             margin="0 10px"
           />
           <Flex>
-            <Box
-              backgroundImage="url(/icons/account.png)"
-              backgroundSize="contain"
-              width="25px"
-              height="25px"
-              padding="5px"
-              margin="0 10px"
-            />
+            <Link href={'/'}>
+              <Box
+                backgroundImage="url(/icons/account.png)"
+                backgroundSize="contain"
+                width="25px"
+                height="25px"
+                padding="5px"
+                margin="0 10px"
+              />
+            </Link>
             <Box
               backgroundImage="url(/icons/heart.png)"
               backgroundSize="contain"

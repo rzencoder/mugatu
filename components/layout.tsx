@@ -3,7 +3,7 @@ import { Box, Flex } from '@chakra-ui/react'
 
 export default function Layout({ children }): JSX.Element {
   return (
-    <Box bg="black">
+    <Box>
       <Navigation />
       {children}
       <Footer />

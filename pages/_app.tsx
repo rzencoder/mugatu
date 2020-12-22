@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import { AppProps } from 'next/app'
 import { ChakraProvider, extendTheme, CSSReset } from '@chakra-ui/react'
+import { ProvideGender } from '../context/genderContext'
 
 const styles = {
   colors: {
@@ -14,7 +15,7 @@ const styles = {
     global: (props) => ({
       body: {
         color: props.colorMode === 'light' ? '#000' : '#fff',
-        bg: props.colorMode === 'light' ? 'brand.100' : '#ff0',
+        bg: props.colorMode === 'light' ? '#fff' : '#000',
         fontFamily: 'Poppins',
       },
       flex: {},
@@ -26,10 +27,12 @@ const theme = extendTheme(styles)
 
 function MyApp({ Component, pageProps }): AppProps {
   return (
-    <ChakraProvider theme={theme}>
-      <CSSReset />
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <ProvideGender>
+      <ChakraProvider theme={theme}>
+        <CSSReset />
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </ProvideGender>
   )
 }
 
