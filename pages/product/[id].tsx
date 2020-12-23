@@ -6,7 +6,7 @@ import { getAllProductsIds } from '../../utils'
 import { Layout, FullProduct } from '../../components'
 import { ProductData } from '../../types'
 
-export default function Product({ productData }: ProductData): JSX.Element {
+export default function Product({ productData }): JSX.Element {
   return (
     <>
       <Head>
