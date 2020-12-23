@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { AppProps } from 'next/app'
 import { ChakraProvider, extendTheme, CSSReset } from '@chakra-ui/react'
 import { ProvideGender } from '../context/genderContext'
+import { ProvideBag } from '../context/bagContext'
 
 const styles = {
   colors: {
@@ -27,12 +28,14 @@ const theme = extendTheme(styles)
 
 function MyApp({ Component, pageProps }): AppProps {
   return (
-    <ProvideGender>
-      <ChakraProvider theme={theme}>
-        <CSSReset />
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </ProvideGender>
+    <ProvideBag>
+      <ProvideGender>
+        <ChakraProvider theme={theme}>
+          <CSSReset />
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </ProvideGender>
+    </ProvideBag>
   )
 }
 

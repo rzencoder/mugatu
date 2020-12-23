@@ -1,16 +1,20 @@
-import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Image, useColorMode } from '@chakra-ui/react'
+import { useBag } from '../context/bagContext'
 import { ProductData } from '../types'
 
 const FullProduct = ({ productData }: ProductData): JSX.Element => {
   const { name, image, price, rrp, colour, sizes } = productData
+  const { addToBag } = useBag()
+  const { colorMode } = useColorMode()
+
   console.log(productData)
   return (
     <Flex flexDirection="column">
       <Box width={['100%', '400px']} position="relative">
         <Image src={image.url} />
         <Box
-          bg="#fff"
-          color="#000"
+          bg={colorMode === 'dark' ? '#fff' : '#000'}
+          color={colorMode === 'dark' ? '#000' : '#fff'}
           pos="absolute"
           bottom="20px"
           right="0"
@@ -36,7 +40,9 @@ const FullProduct = ({ productData }: ProductData): JSX.Element => {
         <Box>Colour: {colour}</Box>
         <Box>Sizes: {sizes.map((el) => el)}</Box>
         <Flex>
-          <Button bg="#156f15">Add to Bag</Button>
+          <Button bg="#156f15" onClick={addToBag}>
+            Add to Bag
+          </Button>
           <Box
             backgroundImage="url(/icons/heart.png)"
             backgroundSize="contain"

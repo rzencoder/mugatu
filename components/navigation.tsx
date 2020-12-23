@@ -1,9 +1,10 @@
 import { Box, Flex, Image, useColorMode, Link as LinkStyle } from '@chakra-ui/react'
 import Link from 'next/link'
+import { useBag } from '../context/bagContext'
 
 export default function Navigation() {
   const { colorMode, toggleColorMode } = useColorMode()
-
+  const { bag } = useBag()
   return (
     <nav>
       <Flex
@@ -64,7 +65,10 @@ export default function Navigation() {
               height="25px"
               padding="5px"
               margin="0 10px"
-            />
+              color="#f00"
+            >
+              {bag.length}
+            </Box>
             <Box
               backgroundImage="url(/icons/moon.png)"
               backgroundSize="contain"
