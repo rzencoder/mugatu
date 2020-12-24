@@ -1,6 +1,6 @@
 import { useState, useContext, createContext } from 'react'
 
-const genderContext = createContext()
+const genderContext = createContext(null)
 
 export function ProvideGender({ children }) {
   const gender = useProvideGender()

@@ -4,9 +4,9 @@ import { graphQLClient } from '../../graphql/client'
 import { GET_ALL_PRODUCTS_IDS, GET_PRODUCT_BY_SLUG } from '../../graphql/queries'
 import { getAllProductsIds } from '../../utils'
 import { Layout, FullProduct } from '../../components'
-import { ProductData } from '../../types'
+import { ProductData } from '../../types/productData'
 
-export default function Product({ productData }): JSX.Element {
+export default function Product({ productData }: { productData: ProductData }): JSX.Element {
   return (
     <>
       <Head>
@@ -20,7 +20,7 @@ export default function Product({ productData }): JSX.Element {
   )
 }
 
-export async function getStaticPaths(): GetStaticPaths {
+export async function getStaticPaths() {
   const paths = await getAllProductsIds(GET_ALL_PRODUCTS_IDS)
   return {
     paths,
@@ -28,7 +28,7 @@ export async function getStaticPaths(): GetStaticPaths {
   }
 }
 
-export async function getStaticProps({ params }: { id: string }): GetStaticProps {
+export async function getStaticProps({ params }) {
   console.log('getstatic', params)
   const data = await graphQLClient.request(GET_PRODUCT_BY_SLUG, { id: params.id })
   return {

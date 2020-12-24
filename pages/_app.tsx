@@ -26,7 +26,9 @@ const styles = {
 
 const theme = extendTheme(styles)
 
-function MyApp({ Component, pageProps }): AppProps {
+function MyApp(props: AppProps) {
+  const { Component, pageProps } = props
+
   return (
     <ProvideBag>
       <ProvideGender>

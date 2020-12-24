@@ -6,7 +6,7 @@ interface ProductIds {
   }
 }
 
-export default async function getAllProductsIds(query: string): ProductIds[] {
+export default async function getAllProductsIds(query: string) {
   const response = await graphQLClient.request(query)
   return response.productCollection.items.map((product) => {
     return {

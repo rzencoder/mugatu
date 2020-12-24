@@ -1,11 +1,14 @@
-export default interface ProductData {
+export interface Image {
+  url: string
+}
+
+export interface ProductData {
   name: string
-  image: string
   price: number
   rrp: number
   colour: string
   image: {
-    url: string
+    [key: string]: Image
   }
   sizes: [number]
 }

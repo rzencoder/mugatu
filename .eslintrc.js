@@ -31,13 +31,13 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'jsx-a11y/anchor-is-valid': 'off',
         '@typescript-eslint/no-unused-vars': ['error'],
-        '@typescript-eslint/explicit-function-return-type': [
-          'off',
-          {
-            allowExpressions: true,
-            allowConciseArrowFunctionExpressionsStartingWithVoid: true,
-          },
-        ],
+        // '@typescript-eslint/explicit-function-return-type': [
+        //   'off',
+        //   {
+        //     allowExpressions: true,
+        //     allowConciseArrowFunctionExpressionsStartingWithVoid: true,
+        //   },
+        // ],
         'prettier/prettier': ['error', {}, { usePrettierrc: true }],
       },
     },

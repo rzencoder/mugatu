@@ -1,8 +1,8 @@
 import { Box, Button, Flex, Heading, Image, useColorMode } from '@chakra-ui/react'
 import { useBag } from '../context/bagContext'
-import { ProductData } from '../types'
+import { ProductData } from '../types/productData'
 
-const FullProduct = ({ productData }): JSX.Element => {
+const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const { name, image, price, rrp, colour, sizes } = productData
   const { addToBag } = useBag()
   const { colorMode } = useColorMode()
@@ -38,7 +38,7 @@ const FullProduct = ({ productData }): JSX.Element => {
           </Box>
         </Flex>
         <Box>Colour: {colour}</Box>
-        <Box>Sizes: {sizes.map((el) => el)}</Box>
+        <Box>Sizes: {sizes.map((el: number) => el)}</Box>
         <Flex>
           <Button bg="#156f15" onClick={addToBag}>
             Add to Bag
