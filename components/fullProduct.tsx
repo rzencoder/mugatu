@@ -1,6 +1,7 @@
-import { Box, Button, Flex, Heading, Image, useColorMode } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, useColorMode } from '@chakra-ui/react'
 import { useBag } from '../context/bagContext'
 import { ProductData } from '../types/productData'
+import Image from 'next/image'
 
 const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const { name, image, price, rrp, colour, sizes } = productData
@@ -11,7 +12,7 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   return (
     <Flex flexDirection="column">
       <Box width={['100%', '400px']} position="relative">
-        <Image src={image.url} />
+        <Image width={600} height={900} src={image.url} />
         <Box
           bg={colorMode === 'dark' ? '#fff' : '#000'}
           color={colorMode === 'dark' ? '#000' : '#fff'}

@@ -21,7 +21,7 @@ export default function Navigation() {
             filter={colorMode === 'dark' ? 'invert()' : 'none'}
             src="/logo.png/"
             alt="logo"
-            boxSize="100px"
+            boxSize="70px"
             marginLeft="-20px"
           />
         </Link>
