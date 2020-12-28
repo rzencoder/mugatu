@@ -1,3 +1,5 @@
+import { NONAME } from 'dns'
+
 const Button = {
   // The styles all button have in common
   baseStyle: {
@@ -37,9 +39,16 @@ const Button = {
       border: '2px solid',
       borderColor: '#fff',
     },
-    solid: {
-      bg: 'green.500',
-      color: 'white',
+    icon: {
+      backgroundSize: 'contain',
+      width: '25px',
+      height: '25px',
+      padding: '5px',
+      margin: '0 10px',
+      minWidth: 'none',
+      _hover: {
+        backgroundColor: 'none',
+      },
     },
   },
   // The default size and variant values

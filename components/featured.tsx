@@ -16,10 +16,10 @@ export default function Featured({ items, gender }): JSX.Element {
       {items.map((item, index) => {
         return (
           <Flex
-            width={['75%', '40%', '40%', '21%']}
+            width={['42%', '40%', null, '21%']}
             direction="column"
-            margin={['10px', '20px']}
-            key={item.title}
+            margin={['20px 10px', '20px']}
+            key={item.name}
             bg="#eee"
             alignItems="center"
             transform={`rotate(${item.rotate}deg)`}
@@ -27,15 +27,15 @@ export default function Featured({ items, gender }): JSX.Element {
             position="relative"
           >
             <Link href={item.link}>
-              <Box padding="20px" filter="saturate(0.7)">
+              <Box padding={['10px 10px 0', '20px 20px 0']} filter="saturate(0.7)">
                 <Image width={400} height={500} src={item.imageUrl} alt={item.title} />
               </Box>
               <Box
-                color={gender === 'female' ? '#d6234c' : '#222'}
+                color={gender === 'female' ? '#ec2392' : '#222'}
                 fontFamily="Permanent Marker"
-                fontSize={['38px', '34px', '34px', '30px']}
+                fontSize={['28px', '34px', '34px', '30px']}
                 textAlign="center"
-                p="10px 10px 20px"
+                p={['5px', '0 10px 10px']}
               >
                 {item.name}
               </Box>
@@ -43,7 +43,7 @@ export default function Featured({ items, gender }): JSX.Element {
                 <Box
                   display={index % 2 === 0 ? 'none' : 'block'}
                   position="absolute"
-                  bottom={['15%', '28%', '22%', '25%']}
+                  bottom={['75px', null, '50px', '70px']}
                   right={`${index === 1 ? '10' : '50'}%`}
                   transform={`rotate(${index === 1 ? '-10' : '60'}deg)`}
                   backgroundImage="url(/landing/women/lipstick.png)"

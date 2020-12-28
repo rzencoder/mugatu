@@ -56,6 +56,9 @@ export default function Women() {
           >
             Party season is here
           </Jumbotron>
+          <Box color="black" bg="white" p={3} textTransform="uppercase" textAlign="center">
+            get 15% off all new orders{' '}
+          </Box>
           <Featured items={items} gender="female" />
         </Flex>
       </Layout>

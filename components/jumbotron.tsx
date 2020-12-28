@@ -16,7 +16,7 @@ export default function Jumbotron({ bgColor, imageUrl, buttonText, children }): 
         height="inherit"
         width="inherit"
         backgroundColor={bgColor}
-        opacity="0.2"
+        opacity="0.25"
       ></Box>
       <Flex
         position="absolute"

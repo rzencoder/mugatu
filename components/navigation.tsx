@@ -1,4 +1,4 @@
-import { Box, Flex, Image, useColorMode, Link as LinkStyle } from '@chakra-ui/react'
+import { Box, Flex, Image, useColorMode, Button, Link as LinkStyle } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useBag } from '../context/bagContext'
 
@@ -29,53 +29,30 @@ export default function Navigation() {
           <LinkStyle>MEN</LinkStyle>
         </Link>
       </Flex>
-      <Flex bg="#444" height="40px" padding="5px">
+      <Flex bg="#222" height="40px" padding="5px">
         <Flex margin="0 auto" width="90%" alignItems="center" justifyContent="space-between">
-          <Box
-            backgroundImage="url(/icons/search.png)"
-            backgroundSize="contain"
-            width="25px"
-            height="25px"
-            padding="5px"
-            margin="0 10px"
-          />
+          <Button variant="icon" backgroundImage="url(/icons/search.png)" />
           <Flex>
             <Link href={'/'}>
-              <Box
-                backgroundImage="url(/icons/account.png)"
-                backgroundSize="contain"
-                width="25px"
-                height="25px"
-                padding="5px"
-                margin="0 10px"
-              />
+              <Button variant="icon" backgroundImage="url(/icons/account.png)" />
             </Link>
-            <Box
-              backgroundImage="url(/icons/heart.png)"
-              backgroundSize="contain"
-              width="25px"
-              height="25px"
-              padding="5px"
-              margin="0 10px"
-            />
-            <Box
-              backgroundImage="url(/icons/bag.png)"
-              backgroundSize="contain"
-              width="25px"
-              height="25px"
-              padding="5px"
-              margin="0 10px"
-              color="#f00"
-            >
-              {bag.length}
-            </Box>
-            <Box
-              backgroundImage="url(/icons/moon.png)"
-              backgroundSize="contain"
-              width="25px"
-              height="25px"
-              padding="5px"
-              margin="0 10px"
+            <Button variant="icon" backgroundImage="url(/icons/heart.png)" />
+            <Button variant="icon" backgroundImage="url(/icons/bag.png)" position="relative">
+              <Box
+                position="absolute"
+                color="#fff"
+                top="7px"
+                fontSize="12px"
+                left="7.5px"
+                width={bag.length < 10 ? '10px' : '15px'}
+                textAlign="center"
+              >
+                {bag.length}
+              </Box>
+            </Button>
+            <Button
+              variant="icon"
+              backgroundImage={`url(/icons/${colorMode === 'dark' ? 'sun' : 'moon'}.png)`}
               onClick={toggleColorMode}
             />
           </Flex>
