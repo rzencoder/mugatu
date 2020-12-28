@@ -21,6 +21,14 @@ export default class CustomDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+            rel="stylesheet"
+          ></link>
         </Head>
         <body>
           <ColorModeScript initialColorMode="light" />

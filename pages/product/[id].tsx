@@ -29,7 +29,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log('getstatic', params)
   const data = await graphQLClient.request(GET_PRODUCT_BY_SLUG, { id: params.id })
   return {
     props: {

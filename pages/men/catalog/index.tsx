@@ -1,43 +1,18 @@
 import { Box, Flex, Link } from '@chakra-ui/react'
 import Image from 'next/image'
-import { gql } from 'graphql-request'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { Layout } from '../components'
-import { useGender } from '../context/genderContext'
-import { graphQLClient } from '../graphql/client'
+import { Layout } from '../../../components'
+import { useGender } from '../../../context/genderContext'
 
-// export async function getStaticProps() {
-//   const response = await graphQLClient.request(gql`
-//     query GetMens {
-//       productCollection {
-//         items {
-//           name
-//           slug
-//           price
-//           rrp
-//           image {
-//             url(transform: { width: 400 })
-//           }
-//         }
-//       }
-//     }
-//   `)
-//   return {
-//     props: {
-//       products: response.productCollection.items,
-//     },
-//   }
-// }
-
-export default function Men() {
+export default function Catelog() {
   const [products, setProducts] = useState(null)
   const { setGender } = useGender()
 
   useEffect(() => {
     setGender('male')
     async function fetchProducts() {
-      const response = await fetch('api/hello')
+      const response = await fetch(`../api/search?gender=male`)
       const { data } = await response.json()
       console.log(data)
       setProducts(data)
