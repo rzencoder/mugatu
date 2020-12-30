@@ -1,5 +1,6 @@
 import { extendTheme } from '@chakra-ui/react'
-import { Button, Link } from './components'
+import Button from './components/Button'
+import Link from './components/Link'
 
 const styles = {
   colors: {
