@@ -1,12 +1,10 @@
-import { NONAME } from 'dns'
-
 const Button = {
   // The styles all button have in common
   baseStyle: {
     fontWeight: 'bold',
     textTransform: 'uppercase',
     backgroundColor: 'transparent',
-    color: '#fff',
+    color: 'mainWhite',
     borderRadius: '0',
     transition: 'all 0.3s',
     _hover: {

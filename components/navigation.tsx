@@ -1,5 +1,5 @@
-import { Box, Flex, Image, useColorMode, Button, Link as LinkStyle } from '@chakra-ui/react'
-import Link from 'next/link'
+import { Box, Flex, Image, useColorMode, Button, Link } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { useBag } from '../context/bagContext'
 
 export default function Navigation() {
@@ -8,39 +8,41 @@ export default function Navigation() {
   return (
     <nav>
       <Flex
-        bg={colorMode === 'light' ? '#fff' : '#000'}
+        bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'}
         justifyContent="space-around"
         alignItems="center"
         p={3}
       >
-        <Link href="/women">
-          <LinkStyle>WOMEN</LinkStyle>
-        </Link>
-        <Link href="/">
-          <Image
-            filter={colorMode === 'dark' ? 'invert()' : 'none'}
-            src="/logo.png/"
-            alt="logo"
-            boxSize="70px"
-            marginLeft="-20px"
-          />
-        </Link>
-        <Link href="/men">
-          <LinkStyle>MEN</LinkStyle>
-        </Link>
+        <NextLink href="/women" passHref>
+          <Link>WOMEN</Link>
+        </NextLink>
+        <NextLink href="/" passHref>
+          <Link boxSize="70px" marginLeft="-20px">
+            <Image
+              filter={colorMode === 'dark' ? 'invert()' : 'none'}
+              src="/logo.png/"
+              alt="logo"
+            />
+          </Link>
+        </NextLink>
+        <NextLink href="/men" passHref>
+          <Link>MEN</Link>
+        </NextLink>
       </Flex>
-      <Flex bg="#222" height="40px" padding="5px">
+      <Flex bg="#333" height="40px" padding="5px">
         <Flex margin="0 auto" width="90%" alignItems="center" justifyContent="space-between">
           <Button variant="icon" backgroundImage="url(/icons/search.png)" />
           <Flex>
-            <Link href={'/'}>
-              <Button variant="icon" backgroundImage="url(/icons/account.png)" />
-            </Link>
+            <NextLink href={'/'} passHref>
+              <Link>
+                <Button variant="icon" backgroundImage="url(/icons/account.png)" />
+              </Link>
+            </NextLink>
             <Button variant="icon" backgroundImage="url(/icons/heart.png)" />
             <Button variant="icon" backgroundImage="url(/icons/bag.png)" position="relative">
               <Box
                 position="absolute"
-                color="#fff"
+                color="mainWhite"
                 top="7px"
                 fontSize="12px"
                 left="7.5px"

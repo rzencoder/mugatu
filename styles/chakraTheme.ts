@@ -1,19 +1,16 @@
 import { extendTheme } from '@chakra-ui/react'
-import { Button } from './components'
+import { Button, Link } from './components'
 
 const styles = {
   colors: {
-    brand: {
-      100: '#f00',
-      // ...
-      900: '#1a202c',
-    },
+    mainBlack: '#000',
+    mainWhite: '#fff',
   },
   styles: {
     global: (props) => ({
       body: {
-        color: props.colorMode === 'light' ? '#000' : '#fff',
-        bg: props.colorMode === 'light' ? '#fff' : '#000',
+        color: props.colorMode === 'light' ? 'mainBlack' : 'mainWhite',
+        bg: props.colorMode === 'light' ? 'mainWhite' : 'mainBlack',
         fontFamily: 'Poppins',
       },
       flex: {},
@@ -21,6 +18,7 @@ const styles = {
   },
   components: {
     Button,
+    Link,
   },
 }
 

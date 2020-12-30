@@ -1,7 +1,6 @@
-import { Box, Flex, Link } from '@chakra-ui/react'
-import Image from 'next/image'
+import { Box, Flex } from '@chakra-ui/react'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Jumbotron, Layout, Featured } from '../../components'
 import { useGender } from '../../context/genderContext'
 
@@ -53,10 +52,11 @@ export default function Women() {
             imageUrl="/landing/women/women-header.jpg"
             buttonText="Shop Now"
             bgColor="#b0f"
+            gender="women"
           >
             Party season is here
           </Jumbotron>
-          <Box color="black" bg="white" p={3} textTransform="uppercase" textAlign="center">
+          <Box color="mainBlack" bg="mainWhite" p={3} textTransform="uppercase" textAlign="center">
             get 15% off all new orders{' '}
           </Box>
           <Featured items={items} gender="female" />

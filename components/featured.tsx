@@ -1,5 +1,6 @@
-import { Box, Flex, Link } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Featured({ items, gender }): JSX.Element {
   return (
@@ -27,33 +28,35 @@ export default function Featured({ items, gender }): JSX.Element {
             position="relative"
           >
             <Link href={item.link}>
-              <Box padding={['10px 10px 0', '20px 20px 0']} filter="saturate(0.7)">
-                <Image width={400} height={500} src={item.imageUrl} alt={item.title} />
-              </Box>
-              <Box
-                color={gender === 'female' ? '#ec2392' : '#222'}
-                fontFamily="Permanent Marker"
-                fontSize={['28px', '34px', '34px', '30px']}
-                textAlign="center"
-                p={['5px', '0 10px 10px']}
-              >
-                {item.name}
-              </Box>
-              {gender === 'female' && (
+              <div>
+                <Box padding={['10px 10px 0', '20px 20px 0']} filter="saturate(0.7)">
+                  <Image width={400} height={500} src={item.imageUrl} alt={item.title} />
+                </Box>
                 <Box
-                  display={index % 2 === 0 ? 'none' : 'block'}
-                  position="absolute"
-                  bottom={['75px', null, '50px', '70px']}
-                  right={`${index === 1 ? '10' : '50'}%`}
-                  transform={`rotate(${index === 1 ? '-10' : '60'}deg)`}
-                  backgroundImage="url(/landing/women/lipstick.png)"
-                  width="40%"
-                  backgroundSize="contain"
-                  backgroundRepeat="no-repeat"
-                  opacity="0.6"
-                  height={['20%']}
-                ></Box>
-              )}
+                  color={gender === 'female' ? '#ec2392' : '#222'}
+                  fontFamily="Permanent Marker"
+                  fontSize={['28px', '34px', '34px', '30px']}
+                  textAlign="center"
+                  p={['5px', '0 10px 10px']}
+                >
+                  {item.name}
+                </Box>
+                {gender === 'female' && (
+                  <Box
+                    display={index % 2 === 0 ? 'none' : 'block'}
+                    position="absolute"
+                    bottom={['75px', null, '50px', '70px']}
+                    right={`${index === 1 ? '10' : '50'}%`}
+                    transform={`rotate(${index === 1 ? '-10' : '60'}deg)`}
+                    backgroundImage="url(/landing/women/lipstick.png)"
+                    width="40%"
+                    backgroundSize="contain"
+                    backgroundRepeat="no-repeat"
+                    opacity="0.6"
+                    height={['20%']}
+                  ></Box>
+                )}
+              </div>
             </Link>
           </Flex>
         )

@@ -4,7 +4,6 @@ import { graphQLClient } from '../../graphql/client'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { query } = req
-  console.log(query)
   const response = await graphQLClient.request(
     gql`
       query GetMens($gender: String!) {
@@ -23,7 +22,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     `,
     { gender: query.gender }
   )
-  console.log(response)
 
   res.status(200).json({ data: response.productCollection.items })
 }

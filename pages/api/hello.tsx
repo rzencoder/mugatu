@@ -20,7 +20,6 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
       }
     }
   `)
-  console.log(response)
 
   res.status(200).json({ data: response.productCollection.items })
 }

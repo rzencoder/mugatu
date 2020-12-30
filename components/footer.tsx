@@ -1,8 +1,6 @@
-import { Box, Flex, useColorMode } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 
 export default function Footer(): JSX.Element {
-  const { colorMode, toggleColorMode } = useColorMode()
-
   return (
     <footer>
       <Flex justifyContent="space-between" fontSize="12px" padding="5px 30px">

@@ -5,7 +5,6 @@ import { useGender } from '../context/genderContext'
 
 export default function Home() {
   const { gender } = useGender()
-  console.log(gender)
 
   return (
     <div>
@@ -29,7 +28,7 @@ export default function Home() {
             top="0"
             alignItems="center"
             justifyContent="center"
-            color="white"
+            color="mainWhite"
             height="inherit"
             width="100%"
           >
@@ -43,7 +42,13 @@ export default function Home() {
               >
                 So Hot Right Now
               </Heading>
-              <Button bg="transparent" borderRadius="0" border="2px solid white" marginTop="50px">
+              <Button
+                bg="transparent"
+                borderRadius="0"
+                border="2px solid"
+                borderColor="mainWhite"
+                marginTop="50px"
+              >
                 Shop Sale
               </Button>
             </Box>

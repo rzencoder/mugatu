@@ -1,6 +1,7 @@
 import { Box, Flex, Link } from '@chakra-ui/react'
 import Image from 'next/image'
 import Head from 'next/head'
+import NextLink from 'next/link'
 import { useEffect, useState } from 'react'
 import { Layout } from '../../../components'
 import { useGender } from '../../../context/genderContext'
@@ -14,7 +15,6 @@ export default function Catelog() {
     async function fetchProducts() {
       const response = await fetch(`../api/search?gender=male`)
       const { data } = await response.json()
-      console.log(data)
       setProducts(data)
     }
     fetchProducts()
@@ -51,9 +51,9 @@ export default function Catelog() {
                     </Box>
                     <Box color="#f00">£{el.price}</Box>
                   </Flex>
-                  <Link fontSize="sm" href={`/product/${el.slug}`}>
-                    {el.name}
-                  </Link>
+                  <NextLink href={`/product/${el.slug}`} passHref>
+                    <Link fontSize="sm">{el.name}</Link>
+                  </NextLink>
                 </Flex>
               )
             })}

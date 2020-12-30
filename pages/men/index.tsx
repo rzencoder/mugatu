@@ -48,7 +48,12 @@ export default function Men() {
       </Head>
       <Layout>
         <Flex direction="column">
-          <Jumbotron imageUrl="/landing/men/men-header.jpg" buttonText="Shop Now" bgColor="#ead510">
+          <Jumbotron
+            imageUrl="/landing/men/men-header.jpg"
+            buttonText="Shop Now"
+            bgColor="#ead510"
+            gender="men"
+          >
             Party season is here
           </Jumbotron>
           <Featured items={items} gender="male" />

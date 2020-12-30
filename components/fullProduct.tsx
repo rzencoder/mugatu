@@ -8,14 +8,13 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const { addToBag } = useBag()
   const { colorMode } = useColorMode()
 
-  console.log(productData)
   return (
     <Flex flexDirection="column">
       <Box width={['100%', '400px']} position="relative">
         <Image width={600} height={900} src={image.url} />
         <Box
-          bg={colorMode === 'dark' ? '#fff' : '#000'}
-          color={colorMode === 'dark' ? '#000' : '#fff'}
+          bg={colorMode === 'dark' ? 'mainWhite' : 'mainBlack'}
+          color={colorMode === 'dark' ? 'mainBlack' : 'mainWhite'}
           pos="absolute"
           bottom="20px"
           right="0"
