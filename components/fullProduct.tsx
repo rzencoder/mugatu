@@ -1,16 +1,30 @@
-import { Box, Button, Flex, Heading, useColorMode } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, useColorMode, Input } from '@chakra-ui/react'
 import { useBag } from '../context/bagContext'
 import { ProductData } from '../types/productData'
 import Image from 'next/image'
+import { useState } from 'react'
 
 const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
-  const { name, image, price, rrp, colour, sizes } = productData
-  const { addToBag } = useBag()
+  const [selectedSize, setSelectedSize] = useState('')
+  const [quantity, setQuantity] = useState(1)
+  const { name, id, image, price, rrp, colour, sizes, stock } = productData
+  const { bag, addToBag } = useBag()
   const { colorMode } = useColorMode()
+  console.log(bag)
+
+  const handleAddToBag = () => {
+    const product = { name, id, selectedSize, quantity }
+    addToBag(product)
+  }
 
   return (
-    <Flex flexDirection="column">
-      <Box width={['100%', '400px']} position="relative">
+    <Flex
+      flexDirection={['column', null, 'row']}
+      alignItems={['center']}
+      margin={['0px', '20px', '40px']}
+      justifyContent={[null, null, 'center']}
+    >
+      <Box width={['100%', '400px']} position="relative" mr={[null, null, '20px', '80px']}>
         <Image width={600} height={900} src={image.url} />
         <Box
           bg={colorMode === 'dark' ? 'mainWhite' : 'mainBlack'}
@@ -25,32 +39,121 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
           <span role="img" aria-label="">
             🔥
           </span>{' '}
-          Hot Right Now
+          hot right now
         </Box>
       </Box>
 
-      <Flex flexDirection="column" p={[2, 4]}>
-        <Heading as="h2">{name}</Heading>
-        <Flex alignItems="center">
-          <Box textDecoration="line-through">RRP £{rrp}</Box>
-          <Box color="#f00" fontSize={['20px', '26px']}>
+      <Flex
+        flexDirection="column"
+        p={[3, 4]}
+        width={['100%', '85%']}
+        maxWidth={[null, null, '450px']}
+      >
+        <Heading
+          as="h2"
+          textTransform="lowercase"
+          fontWeight="400"
+          minHeight={[null, null, '85px']}
+        >
+          {name}
+        </Heading>
+        <Flex alignItems="center" margin="10px 0 0">
+          <Box color="#d80808" fontSize={['26px', '28px']} mr="5px">
             £{price}
           </Box>
+          <Box textDecoration="line-through" color="#aaa" fontSize="14px" mt="-10px">
+            rrp £{rrp}
+          </Box>
         </Flex>
-        <Box>Colour: {colour}</Box>
-        <Box>Sizes: {sizes.map((el: number) => el)}</Box>
-        <Flex>
-          <Button bg="#156f15" onClick={addToBag}>
-            Add to Bag
+        <Box margin="5px 0 0">
+          <Box as="span" fontWeight="700">
+            colour:
+          </Box>{' '}
+          {colour}
+        </Box>
+        <Flex direction="column">
+          <Box margin="10px 0 5px">
+            <Box as="span" fontWeight="700">
+              size:
+            </Box>{' '}
+            <Box as="span" textTransform="uppercase">
+              {selectedSize}
+            </Box>
+          </Box>
+          <Flex wrap="wrap">
+            {sizes.map((el) => (
+              <Button
+                onClick={() => setSelectedSize(el.toString())}
+                key={`size-${el}`}
+                bg={colorMode === 'light' ? '#ddd' : '#333'}
+                borderColor={
+                  el.toString() === selectedSize
+                    ? colorMode === 'light'
+                      ? 'mainBlack'
+                      : 'mainWhite'
+                    : 'transparent'
+                }
+                padding={0}
+                fontSize={['16px']}
+                margin={1}
+                _hover={{
+                  bg: colorMode === 'light' ? '#ccc' : '#444',
+                }}
+              >
+                {el}
+              </Button>
+            ))}
+          </Flex>
+        </Flex>
+        <Box
+          minHeight="30px"
+          padding="10px 0 0"
+          fontWeight="700"
+          fontSize="20px"
+          color={stock < 5 ? '#d80808' : 'inherit'}
+        >
+          {selectedSize ? (stock < 5 ? 'LOW STOCK' : 'IN STOCK') : null}
+        </Box>
+        <Flex alignItems="flex-end" margin="10px 0">
+          <Flex direction="column" textAlign="center">
+            <Box mb="5px">quantity</Box>
+            <Input
+              name="quantity"
+              value={quantity}
+              onChange={(event) => setQuantity(parseInt((event.target as HTMLInputElement).value))}
+              width="50px"
+              textAlign="center"
+              marginLeft="5px"
+              height="52px"
+              border="2px solid #444"
+              borderRadius="0"
+              fontSize="18px"
+              fontWeight="700"
+            />
+          </Flex>
+          <Button
+            onClick={handleAddToBag}
+            disabled={selectedSize === ''}
+            height="50px"
+            minWidth="calc(100% - 120px)"
+            bg="transparent"
+            borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
+            fontSize={['20px', '24px']}
+            _hover={{
+              bg: colorMode === 'light' ? '#eee' : '#111',
+              borderColor: colorMode === 'light' ? '#222' : '#ddd',
+            }}
+          >
+            {selectedSize ? 'Add to Bag' : 'Select UK Size'}
           </Button>
-          <Box
-            backgroundImage="url(/icons/heart.png)"
-            backgroundSize="contain"
-            width="25px"
-            height="25px"
-            padding="5px"
-            margin="0 10px"
-          />
+          <Flex height="50px" width="50px" padding="9px" margin="0 5px">
+            <Box
+              backgroundImage="url(/icons/heart.png)"
+              filter={colorMode === 'light' ? 'invert()' : 'none'}
+              backgroundSize="contain"
+              width="inherit"
+            />
+          </Flex>
         </Flex>
       </Flex>
     </Flex>

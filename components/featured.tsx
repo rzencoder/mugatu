@@ -1,6 +1,6 @@
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex, Link } from '@chakra-ui/react'
 import Image from 'next/image'
-import Link from 'next/link'
+import NextLink from 'next/link'
 
 export default function Featured({ items, gender }): JSX.Element {
   return (
@@ -27,8 +27,8 @@ export default function Featured({ items, gender }): JSX.Element {
             boxShadow="6px 6px 6px #111"
             position="relative"
           >
-            <Link href={item.link}>
-              <div>
+            <NextLink href={item.link} passHref>
+              <Link>
                 <Box padding={['10px 10px 0', '20px 20px 0']} filter="saturate(0.7)">
                   <Image width={400} height={500} src={item.imageUrl} alt={item.title} />
                 </Box>
@@ -56,8 +56,8 @@ export default function Featured({ items, gender }): JSX.Element {
                     height={['20%']}
                   ></Box>
                 )}
-              </div>
-            </Link>
+              </Link>
+            </NextLink>
           </Flex>
         )
       })}

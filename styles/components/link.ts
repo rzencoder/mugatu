@@ -6,9 +6,8 @@ const Link = {
       textDecoration: 'none',
     },
   },
-  sizes: {},
   variants: {
-    container: {},
+    container: { textDecoration: 'none' },
   },
   defaultProps: {
     variant: 'container',
