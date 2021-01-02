@@ -7,7 +7,7 @@ import { useState } from 'react'
 const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(1)
-  const { name, id, image, price, rrp, colour, sizes, stock } = productData
+  const { name, id, image, price, rrp, colour, sizes, popular } = productData
   const { bag, addToBag } = useBag()
   const { colorMode } = useColorMode()
   console.log(bag)
@@ -15,6 +15,29 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const handleAddToBag = () => {
     const product = { name, id, selectedSize, quantity }
     addToBag(product)
+  }
+
+  const displayStockMessage = () => {
+    if (!selectedSize) return null
+    const { stock } = sizes.filter((el) => el.size === selectedSize)[0]
+    console.log(stock)
+    let stockMessage = ''
+    let color = ''
+    if (stock < 1) {
+      stockMessage = 'OUT OF STOCK'
+      color = '#d80808'
+    } else if (stock < 6) {
+      stockMessage = 'LOW STOCK'
+      color = '#d80808'
+    } else {
+      stockMessage = 'IN STOCK'
+      color = 'inherit'
+    }
+    return (
+      <Box as="span" color={color}>
+        {stockMessage}
+      </Box>
+    )
   }
 
   return (
@@ -26,21 +49,23 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
     >
       <Box width={['100%', '400px']} position="relative" mr={[null, null, '20px', '80px']}>
         <Image width={600} height={900} src={image.url} />
-        <Box
-          bg={colorMode === 'dark' ? 'mainWhite' : 'mainBlack'}
-          color={colorMode === 'dark' ? 'mainBlack' : 'mainWhite'}
-          pos="absolute"
-          bottom="20px"
-          right="0"
-          fontWeight="700"
-          p={2}
-          borderRadius="10px 0 0 10px"
-        >
-          <span role="img" aria-label="">
-            🔥
-          </span>{' '}
-          hot right now
-        </Box>
+        {popular && (
+          <Box
+            bg={colorMode === 'dark' ? 'mainWhite' : 'mainBlack'}
+            color={colorMode === 'dark' ? 'mainBlack' : 'mainWhite'}
+            pos="absolute"
+            bottom="20px"
+            right="0"
+            fontWeight="700"
+            p={2}
+            borderRadius="10px 0 0 10px"
+          >
+            <span role="img" aria-label="">
+              🔥
+            </span>{' '}
+            hot right now
+          </Box>
+        )}
       </Box>
 
       <Flex
@@ -83,11 +108,12 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
           <Flex wrap="wrap">
             {sizes.map((el) => (
               <Button
-                onClick={() => setSelectedSize(el.toString())}
-                key={`size-${el}`}
+                disabled={el.stock === 0}
+                onClick={() => setSelectedSize(el.size.toString())}
+                key={`size-${el.size}`}
                 bg={colorMode === 'light' ? '#ddd' : '#333'}
                 borderColor={
-                  el.toString() === selectedSize
+                  el.size.toString() === selectedSize
                     ? colorMode === 'light'
                       ? 'mainBlack'
                       : 'mainWhite'
@@ -100,19 +126,13 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
                   bg: colorMode === 'light' ? '#ccc' : '#444',
                 }}
               >
-                {el}
+                {el.size}
               </Button>
             ))}
           </Flex>
         </Flex>
-        <Box
-          minHeight="30px"
-          padding="10px 0 0"
-          fontWeight="700"
-          fontSize="20px"
-          color={stock < 5 ? '#d80808' : 'inherit'}
-        >
-          {selectedSize ? (stock < 5 ? 'LOW STOCK' : 'IN STOCK') : null}
+        <Box minHeight="40px" padding="10px 0 0" fontWeight="700" fontSize="20px">
+          {displayStockMessage()}
         </Box>
         <Flex alignItems="flex-end" margin="10px 0">
           <Flex direction="column" textAlign="center">

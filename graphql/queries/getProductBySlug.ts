@@ -11,7 +11,7 @@ const GET_PRODUCT_BY_SLUG = gql`
         colour
         sizes
         slug
-        stock
+        popular
         image {
           url
         }

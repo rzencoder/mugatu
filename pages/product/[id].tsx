@@ -5,12 +5,13 @@ import { GET_ALL_PRODUCTS_IDS, GET_PRODUCT_BY_SLUG } from '../../graphql/queries
 import { getAllProductsIds } from '../../utils'
 import { Layout, FullProduct } from '../../components'
 import { ProductData } from '../../types/productData'
+import capitaliseFirstLetter from '@/utils/helpers/capitaliseFirstLetter'
 
 export default function Product({ productData }: { productData: ProductData }): JSX.Element {
   return (
     <>
       <Head>
-        <title>{productData.name} | Mugatu</title>
+        <title>{capitaliseFirstLetter(productData.name)} | Mugatu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
