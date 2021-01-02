@@ -11,8 +11,6 @@ export default function Sort(): JSX.Element {
   const [options, setOptions] = useState(initialOptions)
 
   const handleOptionToggle = (value) => {
-    console.log(value)
-
     const updatedOptions = options.map((el) => {
       if (el.name === value && !el.open) {
         return { ...el, open: true }
@@ -34,7 +32,7 @@ export default function Sort(): JSX.Element {
             >
               {el.name}
             </Button>
-            <Box display={el.open === true ? 'block' : 'none'} bg="#f00" width="100px">
+            <Box display={el.open === true ? 'block' : 'none'} bg="mainRed" width="100px">
               {el.items.map((item) => (
                 <Box key={item}>{item}</Box>
               ))}

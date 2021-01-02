@@ -7,6 +7,7 @@ const styles = {
   colors: {
     mainBlack: '#000',
     mainWhite: '#fff',
+    mainRed: '#d80808',
   },
   styles: {
     global: (props) => ({

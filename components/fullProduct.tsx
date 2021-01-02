@@ -3,6 +3,7 @@ import { useBag } from '../context/bagContext'
 import { ProductData } from '../types/productData'
 import Image from 'next/image'
 import { useState } from 'react'
+import { ImageInfo } from '.'
 
 const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const [selectedSize, setSelectedSize] = useState('')
@@ -10,7 +11,6 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const { name, id, image, price, rrp, colour, sizes, popular } = productData
   const { bag, addToBag } = useBag()
   const { colorMode } = useColorMode()
-  console.log(bag)
 
   const handleAddToBag = () => {
     const product = { name, id, selectedSize, quantity }
@@ -20,15 +20,14 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const displayStockMessage = () => {
     if (!selectedSize) return null
     const { stock } = sizes.filter((el) => el.size === selectedSize)[0]
-    console.log(stock)
     let stockMessage = ''
     let color = ''
     if (stock < 1) {
       stockMessage = 'OUT OF STOCK'
-      color = '#d80808'
+      color = 'mainRed'
     } else if (stock < 6) {
       stockMessage = 'LOW STOCK'
-      color = '#d80808'
+      color = 'mainRed'
     } else {
       stockMessage = 'IN STOCK'
       color = 'inherit'
@@ -49,23 +48,7 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
     >
       <Box width={['100%', '400px']} position="relative" mr={[null, null, '20px', '80px']}>
         <Image width={600} height={900} src={image.url} />
-        {popular && (
-          <Box
-            bg={colorMode === 'dark' ? 'mainWhite' : 'mainBlack'}
-            color={colorMode === 'dark' ? 'mainBlack' : 'mainWhite'}
-            pos="absolute"
-            bottom="20px"
-            right="0"
-            fontWeight="700"
-            p={2}
-            borderRadius="10px 0 0 10px"
-          >
-            <span role="img" aria-label="">
-              🔥
-            </span>{' '}
-            hot right now
-          </Box>
-        )}
+        {popular && <ImageInfo />}
       </Box>
 
       <Flex
@@ -83,7 +66,7 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
           {name}
         </Heading>
         <Flex alignItems="center" margin="10px 0 0">
-          <Box color="#d80808" fontSize={['26px', '28px']} mr="5px">
+          <Box color="mainRed" fontSize={['26px', '28px']} mr="5px">
             £{price}
           </Box>
           <Box textDecoration="line-through" color="#aaa" fontSize="14px" mt="-10px">
