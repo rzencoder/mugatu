@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { Layout, Products, Sort } from '../../../components'
+import { Filter, Layout, Products, Sort } from '../../../components'
 import { useGender } from '../../../context/genderContext'
 
 export default function Catelog() {
@@ -25,6 +25,7 @@ export default function Catelog() {
       </Head>
       <Layout>
         <Sort />
+        <Filter />
         <Products gender="male" products={products} />
       </Layout>
     </>

@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, useColorMode, Input } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, useColorMode, Input, useToast } from '@chakra-ui/react'
 import { useBag } from '../context/bagContext'
 import { ProductData } from '../types/productData'
 import Image from 'next/image'
@@ -11,10 +11,18 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const { name, id, image, price, rrp, colour, sizes, popular } = productData
   const { bag, addToBag } = useBag()
   const { colorMode } = useColorMode()
+  const toast = useToast()
 
   const handleAddToBag = () => {
     const product = { name, id, selectedSize, quantity }
     addToBag(product)
+    toast({
+      title: 'Item Added!',
+      description: 'Your item has been added to your shopping bag',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    })
   }
 
   const displayStockMessage = () => {
