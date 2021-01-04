@@ -5,22 +5,26 @@ import NextLink from 'next/link'
 export default function Products({ products, gender }) {
   const { colorMode } = useColorMode()
 
+  if (!products) return null
+
   return (
-    <Flex
-      flexWrap="wrap"
-      justifyContent={['center', null, null, 'flex-start']}
-      margin={['20px 10px', '20px', '20px 30px']}
-      maxWidth={['1300px']}
-    >
-      {products &&
-        products.map((el) => {
+    <Flex direction="column">
+      <Box
+        width="150px"
+        margin={['10px auto 0', '-40px auto 15px']}
+        textAlign="center"
+        padding="0 0 10px"
+        fontSize="18px"
+      >{`${products.length} items found`}</Box>
+      <Flex flexWrap="wrap" justifyContent={['center', null, null, 'flex-start']}>
+        {products.map((el) => {
           return (
             <Flex
               key={el.name}
               width={['50%', null, '33%', '25%']}
               minWidth={['140px']}
               maxWidth="450px"
-              p={1}
+              p={['5px', null, null, '5px 15px']}
               flexDirection="column"
               justifyContent="space-between"
             >
@@ -68,6 +72,7 @@ export default function Products({ products, gender }) {
             </Flex>
           )
         })}
+      </Flex>
     </Flex>
   )
 }

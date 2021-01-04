@@ -28,11 +28,18 @@ export default function Catelog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Flex justify="space-between" align="center" bg="#eee" padding=" 5px 30px">
-          <Filter />
-          <Sort />
+        <Flex
+          margin={['20px 10px', '20px', '20px auto']}
+          padding={['2px', null, null, '10px']}
+          maxWidth={['1200px']}
+          direction="column"
+        >
+          <Flex justify="space-between" align="center" padding={['5px', null, null, '0 15px']}>
+            <Filter />
+            <Sort />
+          </Flex>
+          {loading ? <Loader /> : <Products gender="female" products={products} />}
         </Flex>
-        {loading ? <Loader /> : <Products gender="female" products={products} />}
       </Layout>
     </>
   )

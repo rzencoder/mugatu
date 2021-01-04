@@ -1,4 +1,4 @@
-import { Box, Flex, Button } from '@chakra-ui/react'
+import { Box, Flex, Button, useColorMode } from '@chakra-ui/react'
 import { useState } from 'react'
 
 const initialOptions = [
@@ -10,6 +10,7 @@ const initialOptions = [
 export default function Filter(): JSX.Element {
   const [options, setOptions] = useState(initialOptions)
   const [showFilter, setShowFilter] = useState(false)
+  const { colorMode } = useColorMode()
 
   const handleOptionToggle = (value) => {
     const updatedOptions = options.map((el) => {
@@ -26,8 +27,8 @@ export default function Filter(): JSX.Element {
       <Button
         fontWeight="400"
         fontSize="20px"
-        color="mainBlack"
-        border="none"
+        borderWidth="1px"
+        borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
         onClick={() => setShowFilter(!showFilter)}
       >
         Filter

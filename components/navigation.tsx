@@ -14,22 +14,24 @@ export default function Navigation() {
         p={3}
       >
         <NextLink href="/women" passHref>
-          <Link>WOMEN</Link>
+          <Link fontSize={['18px', null, '22px']}>WOMEN</Link>
         </NextLink>
-        <NextLink href="/" passHref>
-          <Link boxSize="70px" marginLeft="-20px">
-            <Image
-              filter={colorMode === 'dark' ? 'invert()' : 'none'}
-              src="/logo.png/"
-              alt="logo"
-            />
-          </Link>
-        </NextLink>
+        <Box boxSize={['70px', null, '90px']} margin="10px" marginLeft={['-10px', '-20px']}>
+          <NextLink href="/" passHref>
+            <Link>
+              <Image
+                filter={colorMode === 'dark' ? 'invert()' : 'none'}
+                src="/logo.png/"
+                alt="logo"
+              />
+            </Link>
+          </NextLink>
+        </Box>
         <NextLink href="/men" passHref>
-          <Link>MEN</Link>
+          <Link fontSize={['18px', null, '22px']}>MEN</Link>
         </NextLink>
       </Flex>
-      <Flex bg="#333" height="40px" padding="5px">
+      <Flex bg="#333" padding={['8px', null, '10px']}>
         <Flex margin="0 auto" width="90%" alignItems="center" justifyContent="space-between">
           <Button variant="icon" backgroundImage="url(/icons/search.png)" />
           <Flex>
@@ -43,9 +45,9 @@ export default function Navigation() {
               <Box
                 position="absolute"
                 color="mainWhite"
-                top="7px"
+                top={['9px', '12px']}
                 fontSize="12px"
-                left="7.5px"
+                left={['8px', '10px']}
                 width={bag.length < 10 ? '10px' : '15px'}
                 textAlign="center"
               >

@@ -39,10 +39,10 @@ const Button = {
     },
     icon: {
       backgroundSize: 'contain',
-      width: '25px',
-      height: '25px',
+      width: ['25px', null, '30px'],
+      height: ['25px', null, '30px'],
       padding: '5px',
-      margin: '0 10px',
+      margin: ['0 10px', null, '0 15px'],
       minWidth: 'none',
       _hover: {
         backgroundColor: 'none',
