@@ -9,13 +9,6 @@ export default function Products({ products, gender }) {
 
   return (
     <Flex direction="column">
-      <Box
-        width="150px"
-        margin={['10px auto 0', '-40px auto 15px']}
-        textAlign="center"
-        padding="0 0 10px"
-        fontSize="18px"
-      >{`${products.length} items found`}</Box>
       <Flex flexWrap="wrap" justifyContent={['center', null, null, 'flex-start']}>
         {products.map((el) => {
           return (

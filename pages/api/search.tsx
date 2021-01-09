@@ -6,7 +6,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { query } = req
   const response = await graphQLClient.request(
     gql`
-      query GetMens($gender: String!) {
+      query GetByGender($gender: String!) {
         productCollection(where: { gender: $gender }) {
           items {
             name

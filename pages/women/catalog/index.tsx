@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react'
+import { Flex, Box } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { Layout, Products, Sort, Loader, Filter } from '../../../components'
@@ -29,12 +29,17 @@ export default function Catelog() {
       </Head>
       <Layout>
         <Flex
-          margin={['20px 10px', '20px', '20px auto']}
+          margin={['10px 10px', '10px 20px', '10px auto']}
           padding={['2px', null, null, '10px']}
           maxWidth={['1200px']}
           direction="column"
         >
-          <Flex justify="space-between" align="center" padding={['5px', null, null, '0 15px']}>
+          {products && products.length && (
+            <Box width="150px" textAlign="center" margin="0 auto -40px">
+              {`${products.length} items found`}
+            </Box>
+          )}
+          <Flex justify="space-between" align="flex-start" padding={['5px', null, null, '0 15px']}>
             <Filter />
             <Sort />
           </Flex>
