@@ -38,8 +38,8 @@ export default function Catelog() {
             <Box
               width="180px"
               textAlign="center"
-              margin={['0 auto', null, '0 auto -50px']}
-              pt={(0, null, '10px')}
+              margin={['0 auto', null, '0 auto -55px']}
+              pt={[0, null, '10px']}
               fontSize={['18px', null, '20px', '22px']}
             >
               {`${products.length} items found`}

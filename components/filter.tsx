@@ -83,15 +83,15 @@ export default function Filter(): JSX.Element {
   }
 
   const buildQuery = (queryData = searchQuery) => {
-    let query = queryData
+    const query = queryData
       .filter((el) => el.query.length !== 0)
       .map((el) => {
         return `${el.name}=${el.query}&`
       })
-    query = query.join('').slice(0, -1)
-    query = `gender=${gender}&${query}`
-    console.log(query)
-    // fetch(`../api/filter?${query}`)
+    let urlQuery = query.join('').slice(0, -1)
+    urlQuery = `gender=${gender}&${urlQuery}`
+    console.log(urlQuery)
+    // fetch(`../api/filter?${urlQuery}`)
     //   .then((res) => res.json())
     //   .then((data) => console.log(data))
   }
