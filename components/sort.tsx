@@ -8,9 +8,10 @@ export default function Sort(): JSX.Element {
       <Menu>
         <MenuButton
           as={Button}
-          fontSize="20px"
+          fontSize={['18px', null, '28px']}
           fontWeight="400"
-          borderWidth="1px"
+          borderWidth="2px"
+          padding={['10px 15px', null, 6]}
           borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
         >
           Sort
@@ -20,9 +21,9 @@ export default function Sort(): JSX.Element {
           textAlign="right"
           borderRadius="none"
         >
-          <MenuItem>Price (Low to High)</MenuItem>
-          <MenuItem>Price (High to Low)</MenuItem>
-          <MenuItem>Alphabetical</MenuItem>
+          <MenuItem>price (low to high)</MenuItem>
+          <MenuItem>price (high to low)</MenuItem>
+          <MenuItem>alphabetical</MenuItem>
         </MenuList>
       </Menu>
     </Flex>

@@ -35,11 +35,17 @@ export default function Catelog() {
           direction="column"
         >
           {products && products.length && (
-            <Box width="150px" textAlign="center" margin="0 auto -40px">
+            <Box
+              width="180px"
+              textAlign="center"
+              margin={['0 auto', null, '0 auto -50px']}
+              pt={(0, null, '10px')}
+              fontSize={['18px', null, '20px', '22px']}
+            >
               {`${products.length} items found`}
             </Box>
           )}
-          <Flex justify="space-between" align="flex-start" padding={['5px', null, null, '0 15px']}>
+          <Flex justify="space-between" align="flex-start" padding={['5px', null, '15px']}>
             <Filter />
             <Sort />
           </Flex>

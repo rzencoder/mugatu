@@ -63,7 +63,7 @@ function Track({ source, target, getTrackProps }) {
   )
 }
 
-const SliderComponent = ({ handlePriceFilter }) => {
+const SliderComponent = ({ handlePriceFilter, device, values }) => {
   const { colorMode } = useColorMode()
 
   const railStyle = {
@@ -81,8 +81,8 @@ const SliderComponent = ({ handlePriceFilter }) => {
       domain={[0, 200]}
       step={5}
       mode={1}
-      values={[0, 200]}
-      onChange={(values) => handlePriceFilter('price', values)}
+      values={[values[0], values[1]]}
+      onChange={(values) => handlePriceFilter('price', values, device)}
     >
       <Rail>{({ getRailProps }) => <div style={railStyle} {...getRailProps()} />}</Rail>
       <Handles>
