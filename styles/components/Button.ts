@@ -48,6 +48,17 @@ const Button = {
         backgroundColor: 'none',
       },
     },
+    transparentBg: (props) => ({
+      fontWeight: '400',
+      p: '0',
+      border: 'none',
+      textTransform: 'lowercase',
+      color: props.colorMode === 'light' ? 'mainBlack' : 'mainWhite',
+      _hover: {
+        bg: 'none',
+        color: props.colorMode === 'light' ? '#888' : '#ddd',
+      },
+    }),
   },
   // The default size and variant values
   defaultProps: {

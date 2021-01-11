@@ -45,9 +45,9 @@ export default function Navigation() {
               <Box
                 position="absolute"
                 color="mainWhite"
-                top={['9px', '12px']}
+                top={['9px', null, '12px']}
                 fontSize="12px"
-                left={['8px', '10px']}
+                left={['8px', null, '10px']}
                 width={bag.length < 10 ? '10px' : '15px'}
                 textAlign="center"
               >

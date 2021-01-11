@@ -1,7 +1,8 @@
 import { Box, Flex } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useEffect } from 'react'
-import { Jumbotron, Layout, Featured } from '../../components'
+import { Jumbotron, Featured } from '../../components'
+import { Layout } from '../../components/layouts'
 import { useGender } from '../../context/genderContext'
 
 const items = [

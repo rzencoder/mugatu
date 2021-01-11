@@ -1,8 +1,8 @@
 import { Flex, Menu, MenuButton, MenuItem, Button, MenuList, useColorMode } from '@chakra-ui/react'
-import { useState } from 'react'
 
 export default function Sort(): JSX.Element {
   const { colorMode } = useColorMode()
+
   return (
     <Flex position="relative">
       <Menu>

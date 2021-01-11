@@ -1,22 +1,7 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
-import { Filter, Layout, Products, Sort } from '../../../components'
-import { useGender } from '../../../context/genderContext'
+import { Layout, Catalog } from '../../../components/layouts'
 
-export default function Catelog() {
-  const [products, setProducts] = useState(null)
-  const { setGender } = useGender()
-
-  useEffect(() => {
-    setGender('male')
-    async function fetchProducts() {
-      const response = await fetch(`../api/search?gender=male`)
-      const { data } = await response.json()
-      setProducts(data)
-    }
-    fetchProducts()
-  }, [])
-
+export default function MenCatelog() {
   return (
     <>
       <Head>
@@ -24,9 +9,7 @@ export default function Catelog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Sort />
-        <Filter />
-        <Products gender="male" products={products} />
+        <Catalog pageGender="male" />
       </Layout>
     </>
   )

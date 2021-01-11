@@ -1,15 +1,12 @@
 import Head from 'next/head'
-import { Layout } from '../components'
+import { Layout } from '../components/layouts'
 import { Box, Flex, Heading, Button } from '@chakra-ui/react'
-import { useGender } from '../context/genderContext'
 
 export default function Home() {
-  const { gender } = useGender()
-
   return (
     <div>
       <Head>
-        <title>Mugatu</title>
+        <title>Latest Women&apos;s and Men&apos;s Fashion | Mugatu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>

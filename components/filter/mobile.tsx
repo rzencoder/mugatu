@@ -1,0 +1,169 @@
+import {
+  Flex,
+  Button,
+  useColorMode,
+  Box,
+  Drawer,
+  DrawerContent,
+  DrawerOverlay,
+  DrawerBody,
+  DrawerHeader,
+  DrawerCloseButton,
+  DrawerFooter,
+} from '@chakra-ui/react'
+import { ArrowBackIcon, CheckIcon } from '@chakra-ui/icons'
+import { useState } from 'react'
+import Slider from './slider'
+import initialQuery from 'data/filterInitialQuery'
+import {
+  checkAnyFilterSelected,
+  displayTickOnSelected,
+  displaySelectedFilterItemsMobile,
+} from '@/utils/filter'
+
+//Display filter component in a mobile friendly menu on smaller screen sizes
+const Mobile = ({
+  isOpen,
+  onClose,
+  options,
+  updateQuery,
+  getFilteredProducts,
+  filterQuery,
+  setFilterQuery,
+}) => {
+  const [showFilterType, setShowFilterType] = useState('')
+  const { colorMode } = useColorMode()
+
+  //Display available options to filter from chosen category
+  const displayFilterType = (filterType) => {
+    const option = options.find((el) => el.name === filterType)
+    return (
+      <>
+        <DrawerHeader
+          borderBottomWidth="10px"
+          borderColor={colorMode === 'light' ? '#aaa' : '#555'}
+          fontSize="24px"
+          display="flex"
+          alignItems="center"
+          p="15px 10px"
+        >
+          <Button variant="transparentBg" p="5px" onClick={() => setShowFilterType('')}>
+            <ArrowBackIcon />
+          </Button>
+          <Box>{filterType}</Box>
+        </DrawerHeader>
+        <DrawerBody>
+          {option.items.map((item) => {
+            if (option.name !== 'price') {
+              return (
+                <Flex
+                  justifyContent="space-between"
+                  alignItems="center"
+                  key={item}
+                  fontSize="18px"
+                  p="0"
+                  m="5px 0"
+                >
+                  <Button
+                    variant="transparentBg"
+                    padding="0 10px 0 0"
+                    fontSize="18px"
+                    onClick={() => updateQuery(option.name, item)}
+                    display="flex"
+                    justifyContent="flex-start"
+                  >
+                    <Box>{item}</Box>
+                  </Button>
+                  <Box>
+                    {displayTickOnSelected(option.name, item, filterQuery) && <CheckIcon />}
+                  </Box>
+                </Flex>
+              )
+            } else {
+              const values = filterQuery.find((query) => query.name === option.name)
+              return (
+                <Box key="price-range" p="20px  30px" minWidth="280px">
+                  <Slider handlePriceFilter={updateQuery} device="mobile" values={values.query} />
+                </Box>
+              )
+            }
+          })}
+        </DrawerBody>
+      </>
+    )
+  }
+
+  return (
+    <>
+      <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay>
+          <DrawerContent bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'}>
+            <DrawerCloseButton variant="transparentBg" mt="10px" />
+            {!showFilterType && (
+              <>
+                <DrawerHeader
+                  borderBottomWidth="10px"
+                  display="flex"
+                  borderColor={colorMode === 'light' ? '#aaa' : '#555'}
+                  fontSize="24px"
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
+                  <Box>filter</Box>
+                  {checkAnyFilterSelected(filterQuery, initialQuery) && (
+                    <Button
+                      variant="transparentBg"
+                      fontSize="16px"
+                      color="#999"
+                      mr="40px"
+                      onClick={() => setFilterQuery(initialQuery)}
+                    >
+                      clear all
+                    </Button>
+                  )}
+                </DrawerHeader>
+
+                <DrawerBody>
+                  <Flex direction="column" alignItems="flex-start">
+                    {options.map((option) => (
+                      <Box key={`filter-select-mobile-${option.name}`}>
+                        <Button
+                          variant="transparentBg"
+                          padding="10px 0"
+                          margin="5px 0"
+                          justifyContent="flex-start"
+                          fontSize="18px"
+                          onClick={() => setShowFilterType(option.name)}
+                        >
+                          {option.name}
+                        </Button>
+
+                        <Box color="#aaa" fontSize="14px">
+                          {displaySelectedFilterItemsMobile(option.name, filterQuery)}
+                        </Box>
+                      </Box>
+                    ))}
+                  </Flex>
+                </DrawerBody>
+              </>
+            )}
+            {showFilterType && <>{displayFilterType(showFilterType)}</>}
+            <DrawerFooter justifyContent="center">
+              <Button
+                borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
+                onClick={() => {
+                  getFilteredProducts(filterQuery)
+                  onClose()
+                }}
+              >
+                Filter Items
+              </Button>
+            </DrawerFooter>
+          </DrawerContent>
+        </DrawerOverlay>
+      </Drawer>
+    </>
+  )
+}
+
+export default Mobile
