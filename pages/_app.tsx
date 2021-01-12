@@ -1,22 +1,22 @@
 import '../styles/globals.css'
 import { AppProps } from 'next/app'
 import { ChakraProvider, CSSReset } from '@chakra-ui/react'
-import { ProvideGender } from '../context/genderContext'
 import { ProvideBag } from '../context/bagContext'
 import { theme } from '../styles/chakraTheme'
+import { ProvideProducts } from '@/context/productsContext'
 
 function MyApp(props: AppProps) {
   const { Component, pageProps } = props
 
   return (
-    <ProvideBag>
-      <ProvideGender>
+    <ProvideProducts>
+      <ProvideBag>
         <ChakraProvider theme={theme}>
           <CSSReset />
           <Component {...pageProps} />
         </ChakraProvider>
-      </ProvideGender>
-    </ProvideBag>
+      </ProvideBag>
+    </ProvideProducts>
   )
 }
 

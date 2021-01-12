@@ -1,9 +1,9 @@
+import { useProducts } from '@/context/productsContext'
 import { Flex } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import { Jumbotron, Featured } from '../../components'
 import { Layout } from '../../components/layouts'
-import { useGender } from '../../context/genderContext'
 
 const items = [
   {
@@ -33,12 +33,10 @@ const items = [
 ]
 
 export default function Men() {
-  const { gender, setGender } = useGender()
+  const { updateGender } = useProducts()
 
   useEffect(() => {
-    if (gender !== 'male') {
-      setGender('male')
-    }
+    updateGender('male')
   }, [])
 
   return (

@@ -47,7 +47,7 @@ export default function Navigation() {
                 color="mainWhite"
                 top={['9px', null, '12px']}
                 fontSize="12px"
-                left={['8px', null, '10px']}
+                left={['7.5px', null, '10px']}
                 width={bag.length < 10 ? '10px' : '15px'}
                 textAlign="center"
               >

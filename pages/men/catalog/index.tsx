@@ -1,7 +1,15 @@
+import { useProducts } from '@/context/productsContext'
 import Head from 'next/head'
+import { useEffect } from 'react'
 import { Layout, Catalog } from '../../../components/layouts'
 
-export default function MenCatelog() {
+export default function MenCatalog() {
+  const { updateGender } = useProducts()
+
+  useEffect(() => {
+    updateGender('male')
+  }, [])
+
   return (
     <>
       <Head>
@@ -9,7 +17,7 @@ export default function MenCatelog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Catalog pageGender="male" />
+        <Catalog />
       </Layout>
     </>
   )

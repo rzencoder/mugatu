@@ -2,7 +2,7 @@ import { Box, Flex, Link, useColorMode } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
-export default function Products({ products, gender }) {
+export default function Products({ products }) {
   const { colorMode } = useColorMode()
 
   if (!products) return null

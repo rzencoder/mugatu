@@ -1,24 +1,9 @@
+import { useProducts } from '@/context/productsContext'
 import { Flex, Box } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
 import { Products, Sort, Loader, Filter } from '..'
-import { useGender } from '../../context/genderContext'
 
-export default function Catalog({ pageGender }) {
-  const [products, setProducts] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const { setGender } = useGender()
-
-  useEffect(() => {
-    setGender(pageGender)
-    async function fetchProducts() {
-      setLoading(true)
-      const response = await fetch(`../api/search?gender=female`)
-      const { data } = await response.json()
-      setProducts(data)
-      setLoading(false)
-    }
-    fetchProducts()
-  }, [])
+export default function Catalog() {
+  const { products, loading } = useProducts()
 
   return (
     <Flex
@@ -27,7 +12,7 @@ export default function Catalog({ pageGender }) {
       maxWidth={['1200px']}
       direction="column"
     >
-      {products && products.length && (
+      {products && (
         <Box
           width="180px"
           textAlign="center"
@@ -42,7 +27,7 @@ export default function Catalog({ pageGender }) {
         <Filter />
         <Sort />
       </Flex>
-      {loading ? <Loader /> : <Products gender={pageGender} products={products} />}
+      {loading ? <Loader /> : <Products products={products} />}
     </Flex>
   )
 }
