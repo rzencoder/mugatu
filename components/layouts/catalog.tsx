@@ -4,7 +4,6 @@ import { Products, Sort, Loader, Filter } from '..'
 
 export default function Catalog() {
   const { products, loading } = useProducts()
-
   return (
     <Flex
       margin={['10px 10px', '10px 20px', '10px auto']}
@@ -12,7 +11,7 @@ export default function Catalog() {
       maxWidth={['1200px']}
       direction="column"
     >
-      {products && (
+      {products && !loading && (
         <Box
           width="180px"
           textAlign="center"
@@ -20,7 +19,7 @@ export default function Catalog() {
           pt={[0, null, '10px']}
           fontSize={['18px', null, '20px', '22px']}
         >
-          {`${products.length} items found`}
+          {`${products.length} item${products.length !== 1 && 's'} found`}
         </Box>
       )}
       <Flex justify="space-between" align="flex-start" padding={['5px', null, '15px']}>

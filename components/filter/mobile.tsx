@@ -9,7 +9,6 @@ import {
   DrawerBody,
   DrawerHeader,
   DrawerCloseButton,
-  DrawerFooter,
 } from '@chakra-ui/react'
 import { ArrowBackIcon, CheckIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
@@ -123,7 +122,7 @@ const Mobile = ({
                   )}
                 </DrawerHeader>
 
-                <DrawerBody>
+                <DrawerBody display="flex" flexDirection="column" justifyContent="space-between">
                   <Flex direction="column" alignItems="flex-start">
                     {options.map((option) => (
                       <Box key={`filter-select-mobile-${option.name}`}>
@@ -144,21 +143,21 @@ const Mobile = ({
                       </Box>
                     ))}
                   </Flex>
+                  <Flex justifyContent="center">
+                    <Button
+                      borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
+                      onClick={() => {
+                        getFilteredProducts(filterQuery)
+                        onClose()
+                      }}
+                    >
+                      Filter Items
+                    </Button>
+                  </Flex>
                 </DrawerBody>
               </>
             )}
             {showFilterType && <>{displayFilterType(showFilterType)}</>}
-            <DrawerFooter justifyContent="center">
-              <Button
-                borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
-                onClick={() => {
-                  getFilteredProducts(filterQuery)
-                  onClose()
-                }}
-              >
-                Filter Items
-              </Button>
-            </DrawerFooter>
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>
