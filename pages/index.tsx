@@ -4,7 +4,7 @@ import { Box, Flex, Heading, Button } from '@chakra-ui/react'
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <title>Latest Women&apos;s and Men&apos;s Fashion | Mugatu</title>
         <link rel="icon" href="/favicon.ico" />
@@ -52,6 +52,6 @@ export default function Home() {
           </Flex>
         </Box>
       </Layout>
-    </div>
+    </>
   )
 }

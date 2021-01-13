@@ -4,6 +4,7 @@ import { ChakraProvider, CSSReset } from '@chakra-ui/react'
 import { ProvideBag } from '../context/bagContext'
 import { theme } from '../styles/chakraTheme'
 import { ProvideProducts } from '@/context/productsContext'
+import { ProvideWishlist } from '@/context/wishlistContext'
 
 function MyApp(props: AppProps) {
   const { Component, pageProps } = props
@@ -11,10 +12,12 @@ function MyApp(props: AppProps) {
   return (
     <ProvideProducts>
       <ProvideBag>
-        <ChakraProvider theme={theme}>
-          <CSSReset />
-          <Component {...pageProps} />
-        </ChakraProvider>
+        <ProvideWishlist>
+          <ChakraProvider theme={theme}>
+            <CSSReset />
+            <Component {...pageProps} />
+          </ChakraProvider>
+        </ProvideWishlist>
       </ProvideBag>
     </ProvideProducts>
   )

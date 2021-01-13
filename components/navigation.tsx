@@ -40,7 +40,11 @@ export default function Navigation() {
                 <Button variant="icon" backgroundImage="url(/icons/account.png)" />
               </Link>
             </NextLink>
-            <Button variant="icon" backgroundImage="url(/icons/heart.png)" />
+            <NextLink href="/wishlist" passHref>
+              <Link>
+                <Button variant="icon" backgroundImage="url(/icons/heart.png)" />
+              </Link>
+            </NextLink>
             <Button variant="icon" backgroundImage="url(/icons/bag.png)" position="relative">
               <Box
                 position="absolute"

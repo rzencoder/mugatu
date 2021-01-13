@@ -9,10 +9,14 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
     query GetMens {
       productCollection {
         items {
+          id
           name
-          slug
-          price
           rrp
+          price
+          colour
+          sizes
+          slug
+          popular
           image {
             url(transform: { width: 400 })
           }

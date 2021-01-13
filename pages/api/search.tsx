@@ -9,10 +9,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       query GetByGender($gender: String!) {
         productCollection(where: { gender: $gender }) {
           items {
+            id
             name
-            slug
-            price
             rrp
+            price
+            colour
+            sizes
+            slug
+            popular
             image {
               url(transform: { width: 400 })
             }

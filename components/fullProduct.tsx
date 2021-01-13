@@ -4,12 +4,14 @@ import { ProductData } from '../types/productData'
 import Image from 'next/image'
 import { useState } from 'react'
 import { ImageInfo } from '.'
+import { useWishlist } from '@/context/wishlistContext'
 
 const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(1)
   const { name, id, image, price, rrp, colour, sizes, popular } = productData
   const { bag, addToBag } = useBag()
+  const { addToWishlist } = useWishlist()
   const { colorMode } = useColorMode()
   const toast = useToast()
 
@@ -163,6 +165,7 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
               filter={colorMode === 'light' ? 'invert()' : 'none'}
               backgroundSize="contain"
               width="inherit"
+              onClick={() => addToWishlist(productData)}
             />
           </Flex>
         </Flex>

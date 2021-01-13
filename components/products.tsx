@@ -1,9 +1,11 @@
+import { useWishlist } from '@/context/wishlistContext'
 import { Box, Flex, Link, useColorMode } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
 export default function Products({ products }) {
   const { colorMode } = useColorMode()
+  const { addToWishlist } = useWishlist()
 
   if (!products) return null
 
@@ -50,11 +52,18 @@ export default function Products({ products }) {
                         </Box>
                       </Flex>
                       <Box
+                        onClick={(e) => {
+                          e.preventDefault()
+                          console.log('added')
+                          addToWishlist(el)
+                        }}
                         height="20px"
                         width="20px"
                         backgroundImage="url(/icons/heart.png)"
                         filter={colorMode === 'light' ? 'invert()' : 'none'}
                         backgroundSize="cover"
+                        position="relative"
+                        zIndex="10"
                       />
                     </Flex>
 

@@ -146,7 +146,7 @@ const Mobile = ({
                   <Flex justifyContent="center">
                     <Button
                       borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
-                      marginBottom="50px"
+                      marginBottom={['100px', '80px', 0]}
                       onClick={() => {
                         getFilteredProducts(filterQuery)
                         onClose()

@@ -15,8 +15,8 @@ const Button = {
   // Two sizes: sm and md
   sizes: {
     sm: {
-      fontSize: '12px',
-      padding: '16px',
+      fontSize: '18px',
+      padding: '20px',
     },
     md: {
       fontSize: '22px',
@@ -55,7 +55,7 @@ const Button = {
       textTransform: 'lowercase',
       color: props.colorMode === 'light' ? 'mainBlack' : 'mainWhite',
       _hover: {
-        bg: 'none',
+        backgroundColor: 'none',
         color: props.colorMode === 'light' ? '#888' : '#ddd',
       },
     }),
