@@ -1,6 +1,6 @@
 import { extendTheme } from '@chakra-ui/react'
 import Button from './components/Button'
-// import Link from './components/Link'
+import Link from './components/Link'
 import Heading from './components/Heading'
 
 const styles = {
@@ -22,6 +22,7 @@ const styles = {
   components: {
     Button,
     Heading,
+    Link,
   },
 }
 
