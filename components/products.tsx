@@ -1,3 +1,4 @@
+import { useProducts } from '@/context/productsContext'
 import { useWishlist } from '@/context/wishlistContext'
 import { Box, Flex, Link, useColorMode, Button, useToast } from '@chakra-ui/react'
 import Image from 'next/image'
@@ -7,6 +8,7 @@ export default function Products({ products }) {
   const { colorMode } = useColorMode()
   const { addToWishlist } = useWishlist()
   const toast = useToast()
+  const { gender } = useProducts()
 
   if (!products) return null
 
@@ -24,7 +26,10 @@ export default function Products({ products }) {
               flexDirection="column"
               justifyContent="space-between"
             >
-              <NextLink href={`/product/${el.slug}`} passHref>
+              <NextLink
+                href={`/${gender === 'female' ? 'women' : 'men'}/catalog/${el.slug}`}
+                passHref
+              >
                 <Link
                   textTransform="lowercase"
                   fontSize={['16px', null, '18px', '20px']}

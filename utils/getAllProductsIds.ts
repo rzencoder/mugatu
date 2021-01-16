@@ -6,8 +6,8 @@ interface ProductIds {
   }
 }
 
-export default async function getAllProductsIds(query: string) {
-  const response = await graphQLClient.request(query)
+export default async function getAllProductsIds(query: string, gender: string) {
+  const response = await graphQLClient.request(query, { gender: gender })
   return response.productCollection.items.map((product) => {
     return {
       params: {
