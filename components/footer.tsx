@@ -7,7 +7,7 @@ export default function Footer(): JSX.Element {
       <Box
         color={colorMode === 'light' ? '#444' : '#ccc'}
         fontSize="14px"
-        display={['none', null, 'flex']}
+        display={['none', null, 'block']}
       >
         <Divider width="90%" margin="5px auto" />
         <Flex padding="5px 10px" width="85%" margin="0 auto" justifyContent="space-between">

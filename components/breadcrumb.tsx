@@ -7,16 +7,17 @@ const Breadcrumb = () => {
 
   const getPaths = () => {
     const pathName = router.asPath.substring(1)
-    console.log(router)
     const paths = pathName.split('/')
     return ['home', ...paths]
   }
 
+  // Only display breadcrumb on longer nested paths
   const paths = getPaths()
   if (paths.length < 3) {
     return null
   }
 
+  // Get the correct link href for each path
   const formatLinkHref = (paths, index) => {
     const path = [...paths]
     path.length = index + 1
@@ -34,7 +35,6 @@ const Breadcrumb = () => {
       display={['none', 'block']}
     >
       {paths.map((path, index) => {
-        console.log(path)
         return (
           <BreadcrumbItem key={path} color={index === paths.length - 1 && '#777'}>
             <Link href={formatLinkHref(paths, index)} passHref>
