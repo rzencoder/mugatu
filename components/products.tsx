@@ -1,14 +1,22 @@
 import { useProducts } from '@/context/productsContext'
 import { useWishlist } from '@/context/wishlistContext'
 import { Box, Flex, Link, useColorMode, Button, useToast } from '@chakra-ui/react'
+import { useRouter } from 'next/dist/client/router'
 import Image from 'next/image'
 import NextLink from 'next/link'
+import { useEffect } from 'react'
 
 export default function Products({ products }) {
   const { colorMode } = useColorMode()
   const { addToWishlist } = useWishlist()
   const toast = useToast()
-  const { gender } = useProducts()
+  const { gender, updateGender } = useProducts()
+  const router = useRouter()
+
+  useEffect(() => {
+    const paths = router.asPath.split('/')
+    paths[1] === 'women' ? updateGender('female') : updateGender('male')
+  }, [gender])
 
   if (!products) return null
 
@@ -42,7 +50,7 @@ export default function Products({ products }) {
                 </Link>
               </NextLink>
               <Flex p={1} direction="column" justifyContent="space-between" height="100%">
-                <Box> {el.name}</Box>
+                <Box textTransform="lowercase"> {el.name}</Box>
                 <Flex
                   flexDirection="row"
                   m="10px 0"

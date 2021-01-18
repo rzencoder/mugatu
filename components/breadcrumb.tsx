@@ -30,7 +30,9 @@ const Breadcrumb = () => {
   return (
     <BreadcrumbContainer
       margin="15px auto 5px"
-      width="90%"
+      padding="0 25px"
+      width="100%"
+      maxWidth="1200px"
       separator=">"
       display={['none', 'block']}
     >

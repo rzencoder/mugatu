@@ -8,6 +8,8 @@ const styles = {
     mainBlack: '#000',
     mainWhite: '#fff',
     mainRed: '#d80808',
+    teal: { 200: '#10aed2' },
+    pink: { 200: '#b52950' },
   },
   styles: {
     global: (props) => ({

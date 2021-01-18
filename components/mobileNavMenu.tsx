@@ -1,3 +1,5 @@
+import { useProducts } from '@/context/productsContext'
+import { ChevronDownIcon } from '@chakra-ui/icons'
 import {
   Box,
   Drawer,
@@ -8,23 +10,196 @@ import {
   DrawerBody,
   DrawerFooter,
   Flex,
+  useColorMode,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
+  Divider,
+  FormControl,
+  FormLabel,
+  Switch,
+  Link,
 } from '@chakra-ui/react'
+import { useState } from 'react'
+import { FooterMobile } from '.'
+import genderData from '../data/movileNavMenuData'
+import NextLink from 'next/link'
+import Image from 'next/image'
 
 const MobileNavMenu = ({ isOpen, onClose }) => {
+  // Gender just for this component - Not using context from productContext
+  const [genderInMenu, setGenderInMenu] = useState('women')
+  const { colorMode, toggleColorMode } = useColorMode()
+
+  const getGenderDataIndex = () => {
+    return genderData.map((el) => el.gender).indexOf(genderInMenu)
+  }
+
   return (
     <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
       <DrawerOverlay>
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>
-            <Flex>
-              <Box>women</Box>
-              <Box>men</Box>
-            </Flex>
+        <DrawerContent
+          bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'}
+          textTransform="lowercase"
+        >
+          <DrawerHeader p="10px 30px">
+            <Menu>
+              <MenuButton
+                fontSize="20px"
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+                variant="transparentBg"
+                textTransform="lowercase"
+              >
+                {genderInMenu}
+              </MenuButton>
+              <MenuList bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'} fontSize="18px">
+                <MenuItem onClick={() => setGenderInMenu('women')}>women</MenuItem>
+                <MenuItem onClick={() => setGenderInMenu('men')}>men</MenuItem>
+              </MenuList>
+            </Menu>
+            <DrawerCloseButton bg="transparent" top="13px" right="40px" />
+            <Divider />
           </DrawerHeader>
 
-          <DrawerBody>
-            <Box>Hello</Box>
+          <DrawerBody p="10px 30px">
+            <Flex fontSize="22px" p="0 0 10px">
+              <Box>hey jane</Box>
+            </Flex>
+            <Flex direction="column">
+              <NextLink href="/bag" passHref>
+                <Link>
+                  <Flex alignItems="center" fontSize="18px" p="8px 0">
+                    <Box
+                      backgroundImage="url(/icons/bag.png)"
+                      backgroundSize="cover"
+                      width="23px"
+                      height="23px"
+                      mr="10px"
+                      filter={colorMode === 'light' ? 'invert()' : 'none'}
+                    />
+                    <Box>Shopping Bag</Box>
+                  </Flex>
+                </Link>
+              </NextLink>
+              <NextLink href="/account" passHref>
+                <Link>
+                  <Flex alignItems="center" fontSize="18px" p="8px 0">
+                    <Box
+                      backgroundImage="url(/icons/account.png)"
+                      backgroundSize="cover"
+                      width="23px"
+                      height="23px"
+                      mr="10px"
+                      filter={colorMode === 'light' ? 'invert()' : 'none'}
+                    />
+                    <Box>Account</Box>
+                  </Flex>
+                </Link>
+              </NextLink>
+              <NextLink href="/account" passHref>
+                <Link>
+                  <Flex alignItems="center" fontSize="18px" p="8px 0">
+                    <Box
+                      backgroundImage="url(/icons/heart.png)"
+                      backgroundSize="cover"
+                      width="23px"
+                      height="23px"
+                      mr="10px"
+                      filter={colorMode === 'light' ? 'invert()' : 'none'}
+                    />
+                    <Box>Wishlist</Box>
+                  </Flex>
+                </Link>
+              </NextLink>
+              <FormControl
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
+                p="5px 0 10px"
+              >
+                <Flex alignItems="center" fontSize="18px">
+                  <Box
+                    backgroundImage="url(/icons/moon.png)"
+                    backgroundSize="cover"
+                    width="23px"
+                    height="23px"
+                    mr="10px"
+                    filter={colorMode === 'light' ? 'invert()' : 'none'}
+                  />
+                  <FormLabel htmlFor="dark-mode" fontSize="18px" margin="0">
+                    Dark Mode
+                  </FormLabel>
+                </Flex>
+                <Switch
+                  display="flex"
+                  id="dark-mode"
+                  onChange={toggleColorMode}
+                  isChecked={colorMode === 'dark'}
+                  colorScheme={genderInMenu === 'men' ? 'teal' : 'pink'}
+                />
+              </FormControl>
+            </Flex>
+            <Flex direction="column">
+              <NextLink href={`/${genderInMenu}/catalog`} passHref>
+                <Link>
+                  <Box position="relative" margin="10px 0">
+                    <Box display="flex">
+                      <Image src={`/menu-feature-${genderInMenu}.jpg`} width={300} height={243} />
+                    </Box>
+                    <Box
+                      position="absolute"
+                      top="0"
+                      background={genderInMenu === 'women' ? '#ff0052' : '#009da5'}
+                      opacity="0.4"
+                      width="100%"
+                      height="100%"
+                    />
+                    <Flex
+                      position="absolute"
+                      top="0"
+                      width="100%"
+                      height="100%"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Flex
+                        direction="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        padding="20px 10px"
+                        mt="20px"
+                        color="mainWhite"
+                      >
+                        <Box fontFamily="Montserrat" textTransform="uppercase" fontSize="26px">
+                          Latest Styles
+                        </Box>
+                        <Button padding="10px 15px" fontSize="18px" mt="20px">
+                          Shop Now
+                        </Button>
+                      </Flex>
+                    </Flex>
+                  </Box>
+                </Link>
+              </NextLink>
+              <Flex direction="column">
+                {genderData[getGenderDataIndex()].products.map((product) => {
+                  return (
+                    <NextLink key={`mob-menu-cat-${product.name}`} href={product.href} passHref>
+                      <Link>
+                        <Box textTransform="lowercase" padding="10px 0" fontSize="22px">
+                          {product.name}
+                        </Box>
+                      </Link>
+                    </NextLink>
+                  )
+                })}
+              </Flex>
+            </Flex>
+            <Divider />
+            <FooterMobile />
           </DrawerBody>
         </DrawerContent>
       </DrawerOverlay>
