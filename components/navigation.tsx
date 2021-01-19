@@ -1,7 +1,17 @@
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
-import { Box, Flex, Image, useColorMode, Button, Link, useDisclosure } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Image,
+  useColorMode,
+  Button,
+  Link,
+  useDisclosure,
+  Popover,
+  PopoverTrigger,
+} from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { MobileNavMenu } from '.'
+import { MobileNavMenu, BagPopOver } from '.'
 import { useBag } from '../context/bagContext'
 
 export default function Navigation() {
@@ -61,19 +71,24 @@ export default function Navigation() {
                   <Button variant="icon" backgroundImage="url(/icons/heart.png)" />
                 </Link>
               </NextLink>
-              <Button variant="icon" backgroundImage="url(/icons/bag.png)" position="relative">
-                <Box
-                  position="absolute"
-                  color="mainWhite"
-                  top={['9px', null, '12px']}
-                  fontSize="12px"
-                  left={['7.5px', null, '10px']}
-                  width={bag.length < 10 ? '10px' : '15px'}
-                  textAlign="center"
-                >
-                  {bag.length}
-                </Box>
-              </Button>
+              <Popover>
+                <PopoverTrigger>
+                  <Button variant="icon" backgroundImage="url(/icons/bag.png)" position="relative">
+                    <Box
+                      position="absolute"
+                      color="mainWhite"
+                      top={['9px', null, '12px']}
+                      fontSize="12px"
+                      left={['7.5px', null, '10px']}
+                      width={bag.length < 10 ? '10px' : '15px'}
+                      textAlign="center"
+                    >
+                      {bag.length}
+                    </Box>
+                  </Button>
+                </PopoverTrigger>
+                <BagPopOver />
+              </Popover>
               <Button
                 display={['none', null, 'block']}
                 variant="icon"

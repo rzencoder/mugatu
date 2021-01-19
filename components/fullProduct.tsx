@@ -1,10 +1,22 @@
-import { Box, Button, Flex, Heading, useColorMode, Input, useToast } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  useColorMode,
+  useToast,
+  Menu,
+  MenuList,
+  MenuButton,
+  MenuItem,
+} from '@chakra-ui/react'
 import { useBag } from '../context/bagContext'
 import { ProductData } from '../types/productData'
 import Image from 'next/image'
 import { useState } from 'react'
 import { ImageInfo } from '.'
 import { useWishlist } from '@/context/wishlistContext'
+import { ChevronDownIcon } from '@chakra-ui/icons'
 
 const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const [selectedSize, setSelectedSize] = useState('')
@@ -16,7 +28,7 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
   const toast = useToast()
 
   const handleAddToBag = () => {
-    const product = { name, id, selectedSize, quantity }
+    const product = { ...productData, selectedSize, quantity }
     addToBag(product)
     toast({
       title: 'Item Added!',
@@ -48,6 +60,11 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
       </Box>
     )
   }
+
+  // const renderQuantityOptions = () => {
+  //   const options = [];
+  //   for(let i = 0; i < )
+  // }
 
   return (
     <Flex
@@ -128,21 +145,32 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
           {displayStockMessage()}
         </Box>
         <Flex alignItems="flex-end" margin="10px 0">
-          <Flex direction="column" textAlign="center">
-            <Box mb="5px">quantity</Box>
-            <Input
-              name="quantity"
-              value={quantity}
-              onChange={(event) => setQuantity(parseInt((event.target as HTMLInputElement).value))}
-              width="50px"
-              textAlign="center"
-              marginLeft="5px"
-              height="52px"
-              border="2px solid #444"
-              borderRadius="0"
-              fontSize="18px"
-              fontWeight="700"
-            />
+          <Flex direction="column" textAlign="center" mr="10px">
+            <Box>quantity</Box>
+            <Menu>
+              <MenuButton
+                fontSize="18px"
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+                variant="transparentBg"
+                textTransform="lowercase"
+              >
+                {quantity}
+              </MenuButton>
+              <MenuList
+                bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'}
+                fontSize="16px"
+                minWidth="0"
+              >
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => {
+                  return (
+                    <MenuItem key={`product-quantity-${el}`} onClick={() => setQuantity(el)}>
+                      {el}
+                    </MenuItem>
+                  )
+                })}
+              </MenuList>
+            </Menu>
           </Flex>
           <Button
             onClick={handleAddToBag}

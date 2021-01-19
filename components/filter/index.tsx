@@ -28,7 +28,7 @@ export default function Filter(): JSX.Element {
   // Fetch filtered products from api
   const getFilteredProducts = (filterQuery) => {
     const queryUrl = buildQueryUrl(filterQuery)
-    const result = getFilteredProduct(`../api/filter?${queryUrl}`)
+    const result = getFilteredProduct(`../api/filter?${queryUrl}&`)
     console.log(result)
     // fetch(`../api/filter?${queryUrl}`)
     //   .then((res) => res.json())

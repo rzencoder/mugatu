@@ -20,7 +20,8 @@ const useProvideBag = () => {
   }
 
   const removeFromBag = (item) => {
-    setBag(item)
+    const updatedBag = bag.filter((el) => el.id !== item.id)
+    setBag(updatedBag)
   }
 
   return {

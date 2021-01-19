@@ -1,4 +1,3 @@
-import { useProducts } from '@/context/productsContext'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import {
   Box,
@@ -8,7 +7,6 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerBody,
-  DrawerFooter,
   Flex,
   useColorMode,
   Menu,
@@ -24,7 +22,7 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { FooterMobile } from '.'
-import genderData from '../data/movileNavMenuData'
+import { genderData, menuOptions } from '../data/mobileNavMenuData'
 import NextLink from 'next/link'
 import Image from 'next/image'
 
@@ -68,80 +66,54 @@ const MobileNavMenu = ({ isOpen, onClose }) => {
             <Flex fontSize="22px" p="0 0 10px">
               <Box>hey jane</Box>
             </Flex>
-            <Flex direction="column">
-              <NextLink href="/bag" passHref>
-                <Link>
-                  <Flex alignItems="center" fontSize="18px" p="8px 0">
-                    <Box
-                      backgroundImage="url(/icons/bag.png)"
-                      backgroundSize="cover"
-                      width="23px"
-                      height="23px"
-                      mr="10px"
-                      filter={colorMode === 'light' ? 'invert()' : 'none'}
-                    />
-                    <Box>Shopping Bag</Box>
-                  </Flex>
-                </Link>
-              </NextLink>
-              <NextLink href="/account" passHref>
-                <Link>
-                  <Flex alignItems="center" fontSize="18px" p="8px 0">
-                    <Box
-                      backgroundImage="url(/icons/account.png)"
-                      backgroundSize="cover"
-                      width="23px"
-                      height="23px"
-                      mr="10px"
-                      filter={colorMode === 'light' ? 'invert()' : 'none'}
-                    />
-                    <Box>Account</Box>
-                  </Flex>
-                </Link>
-              </NextLink>
-              <NextLink href="/account" passHref>
-                <Link>
-                  <Flex alignItems="center" fontSize="18px" p="8px 0">
-                    <Box
-                      backgroundImage="url(/icons/heart.png)"
-                      backgroundSize="cover"
-                      width="23px"
-                      height="23px"
-                      mr="10px"
-                      filter={colorMode === 'light' ? 'invert()' : 'none'}
-                    />
-                    <Box>Wishlist</Box>
-                  </Flex>
-                </Link>
-              </NextLink>
-              <FormControl
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-                p="5px 0 10px"
-              >
-                <Flex alignItems="center" fontSize="18px">
-                  <Box
-                    backgroundImage="url(/icons/moon.png)"
-                    backgroundSize="cover"
-                    width="23px"
-                    height="23px"
-                    mr="10px"
-                    filter={colorMode === 'light' ? 'invert()' : 'none'}
-                  />
-                  <FormLabel htmlFor="dark-mode" fontSize="18px" margin="0">
-                    Dark Mode
-                  </FormLabel>
-                </Flex>
-                <Switch
-                  display="flex"
-                  id="dark-mode"
-                  onChange={toggleColorMode}
-                  isChecked={colorMode === 'dark'}
-                  colorScheme={genderInMenu === 'men' ? 'teal' : 'pink'}
+            {menuOptions.map((option) => {
+              return (
+                <NextLink key={`mob-menu-${option.name}`} href={option.href} passHref>
+                  <Link>
+                    <Flex alignItems="center" fontSize="18px" p="8px 0">
+                      <Box
+                        backgroundImage={`url(/icons/${option.imageSrc}.png)`}
+                        backgroundSize="cover"
+                        width="23px"
+                        height="23px"
+                        mr="10px"
+                        filter={colorMode === 'light' ? 'invert()' : 'none'}
+                      />
+                      <Box>{option.name}</Box>
+                    </Flex>
+                  </Link>
+                </NextLink>
+              )
+            })}
+
+            <FormControl
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              p="5px 0 10px"
+            >
+              <Flex alignItems="center" fontSize="18px">
+                <Box
+                  backgroundImage="url(/icons/moon.png)"
+                  backgroundSize="cover"
+                  width="23px"
+                  height="23px"
+                  mr="10px"
+                  filter={colorMode === 'light' ? 'invert()' : 'none'}
                 />
-              </FormControl>
-            </Flex>
+                <FormLabel htmlFor="dark-mode" fontSize="18px" margin="0">
+                  Dark Mode
+                </FormLabel>
+              </Flex>
+              <Switch
+                display="flex"
+                id="dark-mode"
+                onChange={toggleColorMode}
+                isChecked={colorMode === 'dark'}
+                colorScheme={genderInMenu === 'men' ? 'teal' : 'pink'}
+              />
+            </FormControl>
+
             <Flex direction="column">
               <NextLink href={`/${genderInMenu}/catalog`} passHref>
                 <Link>

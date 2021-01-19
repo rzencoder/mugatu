@@ -1,4 +1,4 @@
-const data = [
+export const genderData = [
   {
     gender: 'women',
     products: [
@@ -19,4 +19,8 @@ const data = [
   },
 ]
 
-export default data
+export const menuOptions = [
+  { name: 'Shopping Bag', href: '/bag', imageSrc: 'bag' },
+  { name: 'Account', href: '/account', imageSrc: 'account' },
+  { name: 'Wishlist', href: '/wishlist', imageSrc: 'heart' },
+]

@@ -17,13 +17,13 @@ const useProvideProducts = () => {
   const [gender, setGender] = useState('female')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [query, setQuery] = useState(`../api/search?`)
+  const [query, setQuery] = useState(`search?`)
 
   useEffect(() => {
     async function fetchProducts() {
       setLoading(true)
       try {
-        const url = `../api/${query}&gender=${gender}`
+        const url = `/api/${query}gender=${gender}`
         const response = await fetch(url)
         const { data } = await response.json()
         setProducts(data)

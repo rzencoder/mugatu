@@ -33,10 +33,10 @@ const Button = {
   },
   // Two variants: outline and solid
   variants: {
-    outline: {
+    outline: (props) => ({
       border: '2px solid',
-      borderColor: '#fff',
-    },
+      borderColor: props.colorMode === 'light' ? 'mainBlack' : 'mainWhite',
+    }),
     icon: {
       backgroundSize: 'contain',
       width: ['25px', null, '30px'],
