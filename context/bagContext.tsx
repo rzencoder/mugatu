@@ -14,8 +14,9 @@ export const useBag = (): any => {
 const useProvideBag = () => {
   const [bag, setBag] = useState([])
 
-  const addToBag = (item: any) => {
-    const newBag = [...bag, item]
+  const addToBag = (item) => {
+    const filteredBag = bag.filter((product) => product.id !== item.id)
+    const newBag = [...filteredBag, item]
     setBag(newBag)
   }
 

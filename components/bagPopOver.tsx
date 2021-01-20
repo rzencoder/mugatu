@@ -15,12 +15,12 @@ import Image from 'next/image'
 const BagPopOver = () => {
   const { colorMode } = useColorMode()
   const { bag, removeFromBag } = useBag()
-  console.log(bag)
 
   const calculateSubTotal = () => {
-    return bag.reduce((acc, cur) => {
-      return cur.price + acc
+    const total = bag.reduce((acc, cur) => {
+      return cur.price * cur.quantity + acc
     }, 0)
+    return total.toFixed(2)
   }
 
   const calculateNumOfItems = () => {

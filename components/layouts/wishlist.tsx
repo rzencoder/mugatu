@@ -1,3 +1,4 @@
+import { useBag } from '@/context/bagContext'
 import { useWishlist } from '@/context/wishlistContext'
 import { DeleteIcon } from '@chakra-ui/icons'
 import { Flex, Box, Heading, Button, Select, useToast } from '@chakra-ui/react'
@@ -8,6 +9,7 @@ export default function Wishlist() {
   const { wishlist, removeFromWishlist } = useWishlist()
   const [selectedProducts, setSelectedProducts] = useState([])
   const toast = useToast()
+  const { addToBag } = useBag()
 
   // Storing the user selected product and size in state
   const handleSizeSelection = (item, size) => {
@@ -33,7 +35,7 @@ export default function Wishlist() {
   const moveToBag = (item) => {
     const chosenItem = selectedProducts.find((product) => product.id === item.id)
     // TO DO - ADD TO BAG
-    console.log(chosenItem)
+    addToBag({ ...chosenItem, quantity: 1 })
     removeSelected(item)
     removeFromWishlist(item)
     toast({

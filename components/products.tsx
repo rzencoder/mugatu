@@ -13,7 +13,6 @@ export default function Products({ products }) {
   const { gender, updateGender } = useProducts()
   const router = useRouter()
 
-  console.log(products)
   useEffect(() => {
     const paths = router.asPath.split('/')
     paths[1] === 'women' ? updateGender('female') : updateGender('male')

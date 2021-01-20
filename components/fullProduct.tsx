@@ -61,10 +61,17 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
     )
   }
 
-  // const renderQuantityOptions = () => {
-  //   const options = [];
-  //   for(let i = 0; i < )
-  // }
+  const getQuantityOptions = () => {
+    if (!selectedSize) return [1]
+    const item = sizes.find((el) => el.size === selectedSize)
+    if (item.stock === 0) return [0]
+    const options = []
+    for (let i = 1; i <= item.stock; i++) {
+      if (i > 10) break
+      options.push(i)
+    }
+    return options
+  }
 
   return (
     <Flex
@@ -162,7 +169,7 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
                 fontSize="16px"
                 minWidth="0"
               >
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => {
+                {getQuantityOptions().map((el) => {
                   return (
                     <MenuItem key={`product-quantity-${el}`} onClick={() => setQuantity(el)}>
                       {el}
@@ -187,14 +194,29 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
           >
             {selectedSize ? 'Add to Bag' : 'Select UK Size'}
           </Button>
-          <Flex height="50px" width="50px" padding="9px" margin="0 5px">
-            <Box
-              backgroundImage="url(/icons/heart.png)"
-              filter={colorMode === 'light' ? 'invert()' : 'none'}
-              backgroundSize="contain"
-              width="inherit"
-              onClick={() => addToWishlist(productData)}
-            />
+          <Flex height="50px" width="50px" padding="9px" margin="0 5px" alignItems="center">
+            <Button
+              variant="transparentBg"
+              onClick={() => {
+                const result = addToWishlist(productData)
+                if (result) {
+                  toast({
+                    title: 'Item added to your wishlist',
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: true,
+                  })
+                }
+              }}
+            >
+              <Box
+                backgroundImage="url(/icons/heart.png)"
+                filter={colorMode === 'light' ? 'invert()' : 'none'}
+                backgroundSize="contain"
+                width="100%"
+                height="100%"
+              />
+            </Button>
           </Flex>
         </Flex>
       </Flex>
