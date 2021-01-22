@@ -9,8 +9,10 @@ import {
   PopoverCloseButton,
   Button,
   useColorMode,
+  Link,
 } from '@chakra-ui/react'
 import Image from 'next/image'
+import NextLink from 'next/link'
 
 const BagPopOver = () => {
   const { colorMode } = useColorMode()
@@ -34,7 +36,7 @@ const BagPopOver = () => {
   }
   return (
     <PopoverContent
-      display={['none', 'block']}
+      display={['none', null, null, 'block']}
       bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'}
     >
       <PopoverCloseButton top="12px" />
@@ -88,7 +90,11 @@ const BagPopOver = () => {
             <Box>subtotal</Box>
             <Box fontWeight="700">£{calculateSubTotal()}</Box>
           </Flex>
-          <Button>View Bag</Button>
+          <NextLink href="/bag" passHref>
+            <Link>
+              <Button width="100%">View Bag</Button>
+            </Link>
+          </NextLink>
         </Flex>
       </PopoverBody>
     </PopoverContent>

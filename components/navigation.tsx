@@ -1,3 +1,4 @@
+import { useWishlist } from '@/context/wishlistContext'
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import {
   Box,
@@ -17,6 +18,7 @@ import { useBag } from '../context/bagContext'
 export default function Navigation() {
   const { colorMode, toggleColorMode } = useColorMode()
   const { bag } = useBag()
+  const { wishlist } = useWishlist()
   // Handle Menu on mobile
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -68,27 +70,48 @@ export default function Navigation() {
               </NextLink>
               <NextLink href="/wishlist" passHref>
                 <Link>
-                  <Button variant="icon" backgroundImage="url(/icons/heart.png)" />
+                  <Box position="relative">
+                    <Button variant="icon" backgroundImage="url(/icons/heart.png)" />
+                    {wishlist.length >= 1 && (
+                      <Box
+                        position="absolute"
+                        top={['-1px', null, '-2px']}
+                        right={['7px', null, '12px']}
+                        width="10px"
+                        height="10px"
+                        borderRadius="50%"
+                        bg="mainRed"
+                      />
+                    )}
+                  </Box>
                 </Link>
               </NextLink>
+
               <Popover>
                 <PopoverTrigger>
                   <Button variant="icon" backgroundImage="url(/icons/bag.png)" position="relative">
-                    <Box
-                      position="absolute"
-                      color="mainWhite"
-                      top={['9px', null, '12px']}
-                      fontSize="12px"
-                      left={['7.5px', null, '10px']}
-                      width={bag.length < 10 ? '10px' : '15px'}
-                      textAlign="center"
-                    >
-                      {bag.length}
-                    </Box>
+                    <NextLink href="/bag" passHref>
+                      <Link>
+                        <Box>
+                          <Box
+                            position="absolute"
+                            color="mainWhite"
+                            top={['9px', null, '12px']}
+                            fontSize="12px"
+                            left={['7.5px', null, '10px']}
+                            width={bag.length < 10 ? '10px' : '15px'}
+                            textAlign="center"
+                          >
+                            {bag.length}
+                          </Box>
+                        </Box>
+                      </Link>
+                    </NextLink>
                   </Button>
                 </PopoverTrigger>
                 <BagPopOver />
               </Popover>
+
               <Button
                 display={['none', null, 'block']}
                 variant="icon"

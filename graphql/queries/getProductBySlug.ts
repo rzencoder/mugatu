@@ -4,7 +4,6 @@ const GET_PRODUCT_BY_SLUG = gql`
   query getProductBySlug($id: String!) {
     productCollection(where: { slug: $id }) {
       items {
-        id
         name
         rrp
         price
@@ -14,6 +13,9 @@ const GET_PRODUCT_BY_SLUG = gql`
         popular
         image {
           url
+        }
+        sys {
+          id
         }
       }
     }

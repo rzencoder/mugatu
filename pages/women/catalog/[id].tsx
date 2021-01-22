@@ -2,7 +2,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { graphQLClient } from '../../../graphql/client'
 import { GET_ALL_PRODUCTS_IDS, GET_PRODUCT_BY_SLUG } from '../../../graphql/queries'
-import { getAllProductsIds } from '../../../utils'
+import { formatResponseData, getAllProductsIds } from '../../../utils'
 import { FullProduct } from '../../../components'
 import { Layout } from '../../../components/layouts'
 import { ProductData } from '../../../types/productData'
@@ -32,9 +32,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const data = await graphQLClient.request(GET_PRODUCT_BY_SLUG, { id: params.id })
+  const formattedData = formatResponseData(data.productCollection.items)
   return {
     props: {
-      productData: data.productCollection.items[0],
+      productData: formattedData[0],
     },
   }
 }

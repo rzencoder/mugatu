@@ -11,7 +11,7 @@ export default function Footer(): JSX.Element {
         fontSize="14px"
         display={['none', null, 'block']}
       >
-        <Divider width="95%" margin="5px auto" />
+        <Divider width="95%" margin="0 auto 5px" />
         <Flex padding="5px 10px" width="92%" margin="0 auto" justifyContent="flex-start">
           {footerLinks.map((item) => {
             return (

@@ -1,3 +1,4 @@
+import { formatResponseData } from '../../utils/'
 import { gql } from 'graphql-request'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { graphQLClient } from '../../graphql/client'
@@ -9,7 +10,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       query GetByGender($gender: String!) {
         productCollection(where: { gender: $gender }) {
           items {
-            id
             name
             rrp
             price
@@ -20,6 +20,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             image {
               url(transform: { width: 400 })
             }
+            sys {
+              id
+            }
           }
         }
       }
@@ -27,5 +30,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     { gender: query.gender }
   )
 
-  res.status(200).json({ data: response.productCollection.items })
+  const data = formatResponseData(response.productCollection.items)
+  res.status(200).json({ data })
 }
