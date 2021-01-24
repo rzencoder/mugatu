@@ -72,7 +72,7 @@ export default function Navigation() {
                 <Link>
                   <Box position="relative">
                     <Button variant="icon" backgroundImage="url(/icons/heart.png)" />
-                    {wishlist.length >= 1 && (
+                    {wishlist && wishlist.length >= 1 && (
                       <Box
                         position="absolute"
                         top={['-1px', null, '-2px']}

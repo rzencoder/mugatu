@@ -6,7 +6,7 @@ export default function Layout({ children }: any): JSX.Element {
     <Box>
       <Navigation />
       <Breadcrumb />
-      {children}
+      <Box minHeight="500px">{children}</Box>
       <Footer />
     </Box>
   )

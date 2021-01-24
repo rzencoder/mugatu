@@ -67,10 +67,8 @@ const Bag = () => {
       return `£${price}`
     }
   }
-  console.log('delivery', delivery.price)
+
   useEffect(() => {
-    console.log('effect')
-    console.log(parseFloat(subtotal) > 50)
     if (parseFloat(subtotal) > 50) {
       if (delivery.name === 'standard delivery' || delivery.name === 'click and collect standard') {
         if (delivery.price !== 0) {
@@ -78,7 +76,6 @@ const Bag = () => {
         }
       }
     } else {
-      console.log('less')
       if (delivery.price === 0) {
         const originalPrice = deliveryOptions.find((option) => option.name === delivery.name)
         setDelivery({ ...delivery, price: originalPrice.price })
@@ -321,9 +318,13 @@ const Bag = () => {
               <Box>£{(parseFloat(subtotal) + delivery.price).toFixed(2)}</Box>
             </Flex>
           </Flex>
-          <Button bg="#0d6d33" border="none" color="mainWhite">
-            Checkout
-          </Button>
+          <NextLink href="/checkout" passHref>
+            <Link>
+              <Button bg="#0d6d33" border="none" color="mainWhite" width="100%">
+                Checkout
+              </Button>
+            </Link>
+          </NextLink>
         </Flex>
       </Flex>
     </Box>
