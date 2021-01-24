@@ -1,7 +1,7 @@
 import { Layout, ErrorLayout } from '@/components/layouts'
 import Head from 'next/head'
 
-export default function FourZeroFour() {
+function Error({ statusCode }) {
   return (
     <>
       <Head>
@@ -9,8 +9,15 @@ export default function FourZeroFour() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <ErrorLayout message="sorry, we can't find the page you're looking for" />
+        <ErrorLayout message="sorry an unexpected error occurred" />
       </Layout>
     </>
   )
 }
+
+Error.getInitialProps = ({ res, err }) => {
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404
+  return { statusCode }
+}
+
+export default Error
