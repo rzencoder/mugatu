@@ -11,6 +11,7 @@ const GET_PRODUCT_BY_SLUG = gql`
         sizes
         slug
         popular
+        gender
         image {
           url
         }

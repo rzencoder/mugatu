@@ -15,7 +15,7 @@ export default function Footer(): JSX.Element {
         <Flex padding="5px 10px" width="92%" margin="0 auto" justifyContent="flex-start">
           {footerLinks.map((item) => {
             return (
-              <Flex key={`footer-${item.title}`} direction="column" minWidth="300px">
+              <Flex key={`footer-${item.title}`} direction="column" minWidth="200px" width="300px">
                 <Heading as="h5" fontSize="20px" p="10px 0">
                   {item.title}
                 </Heading>

@@ -14,7 +14,7 @@ const styles = {
   styles: {
     global: (props) => ({
       body: {
-        color: props.colorMode === 'light' ? 'mainBlack' : 'mainWhite',
+        color: props.colorMode === 'light' ? '#222' : 'mainWhite',
         bg: props.colorMode === 'light' ? 'mainWhite' : 'mainBlack',
         fontFamily: 'Poppins',
       },

@@ -17,6 +17,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             sizes
             slug
             popular
+            gender
             image {
               url(transform: { width: 400 })
             }

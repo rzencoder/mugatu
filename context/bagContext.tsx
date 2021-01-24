@@ -20,6 +20,12 @@ const useProvideBag = () => {
     setBag(newBag)
   }
 
+  const updateBag = (item) => {
+    const filteredBag = bag.filter((product) => product.id !== item.id)
+    const updatedBag = [...filteredBag, item]
+    setBag(updatedBag)
+  }
+
   const removeFromBag = (item) => {
     const updatedBag = bag.filter((el) => el.id !== item.id)
     setBag(updatedBag)
@@ -28,6 +34,7 @@ const useProvideBag = () => {
   return {
     bag,
     addToBag,
+    updateBag,
     removeFromBag,
   } as const
 }

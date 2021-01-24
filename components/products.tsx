@@ -19,7 +19,7 @@ export default function Products({ products }) {
   }, [gender])
 
   if (!products) return null
-  console.log(products)
+
   return (
     <Flex direction="column">
       <Flex flexWrap="wrap" justifyContent={['center', null, null, 'flex-start']}>

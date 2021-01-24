@@ -81,6 +81,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             colour
             sizes
             popular
+            gender
             image {
               url(transform: { width: 400 })
             }
