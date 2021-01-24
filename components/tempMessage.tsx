@@ -1,5 +1,6 @@
 import { Box, Flex, Link, useColorMode } from '@chakra-ui/react'
 import Image from 'next/image'
+import NextLink from 'next/link'
 
 const TempMessage = () => {
   const { colorMode } = useColorMode()
@@ -40,9 +41,15 @@ const TempMessage = () => {
           fontWeight="700"
           fontSize="24px"
         >
-          <Link href="/women">women</Link>
-          <Link href="/">home</Link>
-          <Link href="/men">men</Link>
+          <NextLink href="/women" passHref>
+            <Link>women</Link>
+          </NextLink>
+          <NextLink href="/" passHref>
+            <Link>home</Link>
+          </NextLink>
+          <NextLink href="/men" passHref>
+            <Link>men</Link>
+          </NextLink>
         </Flex>
       </Flex>
     </Flex>
