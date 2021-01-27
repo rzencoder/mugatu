@@ -34,7 +34,7 @@ export default function Home() {
                 textTransform="uppercase"
                 as="h2"
                 size="3xl"
-                fontFamily="comfortaa"
+                fontFamily="Montserrat"
                 textAlign="center"
               >
                 So Hot Right Now

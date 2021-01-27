@@ -5,6 +5,7 @@ import { ProvideBag } from '../context/bagContext'
 import { theme } from '../styles/chakraTheme'
 import { ProvideProducts } from '@/context/productsContext'
 import { ProvideWishlist } from '@/context/wishlistContext'
+import { ProvideSearch } from '@/context/searchContext'
 
 function MyApp(props: AppProps) {
   const { Component, pageProps } = props
@@ -13,10 +14,12 @@ function MyApp(props: AppProps) {
     <ProvideProducts>
       <ProvideBag>
         <ProvideWishlist>
-          <ChakraProvider theme={theme}>
-            <CSSReset />
-            <Component {...pageProps} />
-          </ChakraProvider>
+          <ProvideSearch>
+            <ChakraProvider theme={theme}>
+              <CSSReset />
+              <Component {...pageProps} />
+            </ChakraProvider>
+          </ProvideSearch>
         </ProvideWishlist>
       </ProvideBag>
     </ProvideProducts>

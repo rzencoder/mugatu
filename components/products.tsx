@@ -18,11 +18,11 @@ export default function Products({ products }) {
     paths[1] === 'women' ? updateGender('female') : updateGender('male')
   }, [gender])
 
-  if (!products) return null
+  if (!products || products.length === 0) return null
 
   return (
     <Flex direction="column">
-      <Flex flexWrap="wrap" justifyContent={['center', null, null, 'flex-start']}>
+      <Flex flexWrap="wrap" justifyContent={['center', 'flex-start']}>
         {products.map((el) => {
           return (
             <Flex

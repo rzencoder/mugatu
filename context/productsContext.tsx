@@ -18,20 +18,22 @@ const useProvideProducts = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [query, setQuery] = useState(`search?`)
+  const [productsBySearch, setProductsBySearch] = useState('')
+
+  async function fetchProducts() {
+    setLoading(true)
+    try {
+      const url = `/api/${query}gender=${gender}`
+      const response = await fetch(url)
+      const { data } = await response.json()
+      setProducts(data)
+    } catch (err) {
+      setError(err)
+    }
+    setLoading(false)
+  }
 
   useEffect(() => {
-    async function fetchProducts() {
-      setLoading(true)
-      try {
-        const url = `/api/${query}gender=${gender}`
-        const response = await fetch(url)
-        const { data } = await response.json()
-        setProducts(data)
-      } catch (err) {
-        setError(err)
-      }
-      setLoading(false)
-    }
     fetchProducts()
     console.log('fetching data')
   }, [query, gender])
@@ -51,6 +53,13 @@ const useProvideProducts = () => {
     }
   }
 
+  const updateProductsBySearch = async (searchList) => {
+    const result = await fetchProducts()
+    const searchIds = searchList.map((el) => el.item.name)
+    console.log(products)
+    console.log(searchIds)
+  }
+
   return {
     products,
     loading,
@@ -59,5 +68,6 @@ const useProvideProducts = () => {
     updateGender,
     getFilteredProduct,
     sort,
+    updateProductsBySearch,
   }
 }

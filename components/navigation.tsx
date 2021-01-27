@@ -12,8 +12,10 @@ import {
   PopoverTrigger,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
+import { useState } from 'react'
 import { MobileNavMenu, BagPopOver } from '.'
 import { useBag } from '../context/bagContext'
+import Search from './search'
 
 export default function Navigation() {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -21,6 +23,7 @@ export default function Navigation() {
   const { wishlist } = useWishlist()
   // Handle Menu on mobile
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [showSearch, setShowSearch] = useState(false)
 
   return (
     <nav>
@@ -59,9 +62,17 @@ export default function Navigation() {
             justifyContent={['flex-end', null, 'space-between']}
             width="100%"
           >
-            <Button variant="icon">
-              <SearchIcon w={[6, null, 7]} h={[6, null, 7]} />
-            </Button>
+            <Flex alignItems="center">
+              <Button
+                variant="icon"
+                onClick={() => setShowSearch(!showSearch)}
+                position="relative"
+                zIndex="100"
+              >
+                <SearchIcon w={[6, null, 7]} h={[6, null, 7]} />
+              </Button>
+              <Search showSearch={showSearch} setShowSearch={setShowSearch} />
+            </Flex>
             <Flex>
               <NextLink href={'/'} passHref>
                 <Link>
