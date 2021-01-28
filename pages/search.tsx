@@ -26,7 +26,7 @@ export default function Search() {
           width="100%"
           textAlign="center"
           minHeight="150px"
-          p="20px 0"
+          p="20px 0 5px"
         >
           {searchInput && (
             <>
@@ -34,7 +34,7 @@ export default function Search() {
               <Box fontSize="28px" fontWeight="700">
                 &ldquo;{searchInput}&ldquo;
               </Box>
-              {searchProducts.length > 0 && <Box p="10px 0">{searchProducts.length} items</Box>}
+              {searchProducts.length > 0 && <Box p="10px 0 0">{searchProducts.length} items</Box>}
             </>
           )}
         </Flex>

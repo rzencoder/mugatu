@@ -1,4 +1,5 @@
 import { useSearch } from '@/context/searchContext'
+import { formatSearchResult } from '../../utils/'
 import { SearchIcon } from '@chakra-ui/icons'
 import {
   Box,
@@ -49,9 +50,7 @@ const SearchMobile = ({ showSearch, setShowSearch, handleSearchSubmit }) => {
             <Flex display="column" p="10px 0">
               <Flex display="column" p="10px 0">
                 {searchResults.map((result, index) => {
-                  const re = new RegExp(searchInput, 'i')
-                  const nameExcludingInput = result.item.name.replace(re, ',')
-                  const productNames = nameExcludingInput.split(',')
+                  const productNames = formatSearchResult(searchInput, result)
                   const link = `/${result.item.gender === 'female' ? 'women' : 'men'}/catalog/${
                     result.item.slug
                   }`

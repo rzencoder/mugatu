@@ -1,3 +1,5 @@
 export { default as getAllProductsIds } from './getAllProductsIds'
 export { default as sortProducts } from './sortProducts'
 export { default as formatResponseData } from './formatResponseData'
+export { default as formatSearchDataResponse } from './formatSearchDataResponse'
+export { default as formatSearchResult } from './formatSearchResult'
