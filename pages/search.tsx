@@ -20,14 +20,24 @@ export default function Search() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        {searchInput && (
-          <Flex direction="column" justifyContent="center" width="100%" textAlign="center">
-            <Box fontSize="20px">search results for</Box>
-            <Box fontSize="28px" fontWeight="700">
-              &ldquo;{searchInput}&ldquo;
-            </Box>
-          </Flex>
-        )}
+        <Flex
+          direction="column"
+          justifyContent="center"
+          width="100%"
+          textAlign="center"
+          minHeight="150px"
+          p="20px 0"
+        >
+          {searchInput && (
+            <>
+              <Box fontSize="20px">search results for</Box>
+              <Box fontSize="28px" fontWeight="700">
+                &ldquo;{searchInput}&ldquo;
+              </Box>
+              {searchProducts.length > 0 && <Box p="10px 0">{searchProducts.length} items</Box>}
+            </>
+          )}
+        </Flex>
         <Products products={searchProducts} />
       </Layout>
     </>

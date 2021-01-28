@@ -35,7 +35,7 @@ export default function Products({ products }) {
               justifyContent="space-between"
             >
               <NextLink
-                href={`/${gender === 'female' ? 'women' : 'men'}/catalog/${el.slug}`}
+                href={`/${el.gender === 'female' ? 'women' : 'men'}/catalog/${el.slug}`}
                 passHref
               >
                 <Link
