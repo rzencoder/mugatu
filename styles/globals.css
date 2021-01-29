@@ -8,10 +8,20 @@ body {
   box-sizing: border-box;
 }
 
-a {
-
-}
-
 a:hover {
   text-decoration: none !important;
+}
+
+.slick-prev:before {
+  content: "❮" !important;
+  color: #888 !important;
+  font-weight: 900;
+  font-size: 30px !important;
+}
+
+.slick-next:before {
+  content: "❯" !important;
+  font-weight: 900;
+  color: #888 !important;
+  font-size: 30px !important;
 }

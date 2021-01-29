@@ -2,7 +2,7 @@ import { useProducts } from '@/context/productsContext'
 import { Flex } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useEffect } from 'react'
-import { Jumbotron, Featured } from '../../components'
+import { Jumbotron, Featured, Carousel } from '../../components'
 import { Layout } from '../../components/layouts'
 
 const items = [
@@ -56,6 +56,7 @@ export default function Men() {
             Party season is here
           </Jumbotron>
           <Featured items={items} gender="male" />
+          <Carousel />
         </Flex>
       </Layout>
     </>

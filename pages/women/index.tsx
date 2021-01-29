@@ -2,7 +2,7 @@ import { useProducts } from '@/context/productsContext'
 import { Box, Flex } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useEffect } from 'react'
-import { Jumbotron, Featured } from '../../components'
+import { Jumbotron, Featured, Carousel } from '../../components'
 import { Layout } from '../../components/layouts'
 
 const items = [
@@ -59,6 +59,7 @@ export default function Women() {
             get 15% off all new orders{' '}
           </Box>
           <Featured items={items} gender="female" />
+          <Carousel />
         </Flex>
       </Layout>
     </>
