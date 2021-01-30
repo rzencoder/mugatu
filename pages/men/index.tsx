@@ -1,8 +1,8 @@
 import { useProducts } from '@/context/productsContext'
-import { Flex } from '@chakra-ui/react'
+import { Flex, Box } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useEffect } from 'react'
-import { Jumbotron, Featured, Carousel } from '../../components'
+import { Jumbotron, Featured, Carousel, Banner } from '../../components'
 import { Layout } from '../../components/layouts'
 
 const items = [
@@ -55,7 +55,18 @@ export default function Men() {
           >
             Party season is here
           </Jumbotron>
+          <Box color="mainBlack" bg="mainWhite" p={3} textTransform="uppercase" textAlign="center">
+            get 15% off all new orders{' '}
+          </Box>
           <Featured items={items} gender="male" />
+          <Banner
+            colour="#116bc7"
+            bgColour="#137571"
+            imageSrc="banner-bg-men.jpg"
+            text="dress to impress"
+          >
+            20% off all jackets
+          </Banner>
           <Carousel />
         </Flex>
       </Layout>

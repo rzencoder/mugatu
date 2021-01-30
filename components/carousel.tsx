@@ -29,7 +29,7 @@ const settings = {
       },
     },
     {
-      breakpoint: 480,
+      breakpoint: 360,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -65,7 +65,7 @@ const CarouselComponent = () => {
               >
                 <Link>
                   <Box
-                    padding="0 20px"
+                    padding={['0 10px', '0 20px']}
                     textTransform="lowercase"
                     m={['0 auto', '0']}
                     maxWidth="250px"
