@@ -50,10 +50,10 @@ export default function Men() {
           <Jumbotron
             imageUrl="/landing/men/men-header.jpg"
             buttonText="Shop Now"
-            bgColor="#ead510"
+            bgColor="#137571"
             gender="men"
           >
-            Party season is here
+            Latest styles now in
           </Jumbotron>
           <Box color="mainBlack" bg="mainWhite" p={3} textTransform="uppercase" textAlign="center">
             get 15% off all new orders{' '}
@@ -64,6 +64,7 @@ export default function Men() {
             bgColour="#137571"
             imageSrc="banner-bg-men.jpg"
             text="dress to impress"
+            linkHref="/men/catalog"
           >
             20% off all jackets
           </Banner>

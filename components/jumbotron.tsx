@@ -13,7 +13,7 @@ export default function Jumbotron({
       <Link height="600px" width="100%" position="relative">
         <Box
           bgImage={`url('${imageUrl}')`}
-          bgPosition="top"
+          bgPosition={['32%', 'top']}
           bgRepeat="no-repeat"
           bgSize="cover"
           height="inherit"
@@ -49,9 +49,13 @@ export default function Jumbotron({
             </Heading>
             <Button
               color="mainWhite"
-              fontSize={['md', 'lg', 'xl']}
-              width={['50%', '45%', '40%', '30%']}
+              fontSize={['26px', '32px', '38px']}
+              p={['10px 30px']}
+              width="fit-content"
+              height="fit-content"
               margin="50px auto 0"
+              borderColor="mainWhite"
+              bg="rgba(255,255,255,0.1)"
             >
               {buttonText}
             </Button>

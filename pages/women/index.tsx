@@ -62,8 +62,9 @@ export default function Women() {
           <Banner
             colour="#fb0862"
             bgColour="#c50f53"
-            imageSrc="offer-bg.jpg"
+            imageSrc="banner-bg-women.jpg"
             text="dress to impress"
+            linkHref="/women/catalog"
           >
             20% off all dresses
           </Banner>
