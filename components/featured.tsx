@@ -1,18 +1,33 @@
-import { Box, Flex, Link } from '@chakra-ui/react'
+import { Box, Flex, Link, useColorMode } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
 export default function Featured({ items, gender }): JSX.Element {
+  const { colorMode } = useColorMode()
+
   return (
     <Box width="100%" position="relative">
       <Box
         fontFamily="Permanent Marker"
-        fontSize={['48px', '60px', '70px', '80px']}
+        fontSize={['34px', '40px', '50px', '60px']}
         p="20px 0 0"
         textAlign="center"
+        position="relative"
+        zIndex="10"
         color={gender === 'female' ? '#ec2392' : '#222'}
       >
-        shop by style
+        <Box
+          height="fit-content"
+          bg="mainWhite"
+          width="fit-content"
+          p="0px 30px"
+          margin="0 auto"
+          transform="rotate(
+-2deg
+)"
+        >
+          shop by style
+        </Box>
       </Box>
       <Box
         position="absolute"
@@ -23,7 +38,7 @@ export default function Featured({ items, gender }): JSX.Element {
         backgroundSize="cover"
         opacity="0.15"
       />
-      <Flex wrap="wrap" width="100%" p={['20px 5px', '20px 15px']}>
+      <Flex wrap="wrap" justifyContent="center" width="100%" p={['20px 5px', '20px 15px']}>
         {items.map((item, index) => {
           return (
             <Flex

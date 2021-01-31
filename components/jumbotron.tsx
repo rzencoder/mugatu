@@ -5,6 +5,7 @@ export default function Jumbotron({
   bgColor,
   imageUrl,
   buttonText,
+  buttonColor,
   gender,
   children,
 }): JSX.Element {
@@ -48,14 +49,10 @@ export default function Jumbotron({
               {children}
             </Heading>
             <Button
-              color="mainWhite"
+              variant="jumbo"
+              bg={buttonColor}
               fontSize={['26px', '32px', '38px']}
-              p={['10px 30px']}
-              width="fit-content"
-              height="fit-content"
               margin="50px auto 0"
-              borderColor="mainWhite"
-              bg="rgba(255,255,255,0.1)"
             >
               {buttonText}
             </Button>

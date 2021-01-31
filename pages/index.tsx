@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { Layout } from '../components/layouts'
 import { Box, Flex, Heading, Button } from '@chakra-ui/react'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -26,7 +27,7 @@ export default function Home() {
               width="100%"
               position="absolute"
               top="0"
-              bg="#c000ff"
+              bg="#ff006a"
               opacity="0.2"
             />
             <Flex
@@ -52,12 +53,13 @@ export default function Home() {
                 </Heading>
                 <Button
                   borderRadius="0"
-                  border="2px solid"
-                  borderColor="mainWhite"
+                  border="none"
+                  fontFamily="Montserrat"
                   marginTop="50px"
                   fontSize={['28px', '34px']}
                   p={['15px 40px']}
-                  bg="rgba(255, 255, 255, 0.1)"
+                  bg="#ff006a"
+                  transform="skewX(-3deg)"
                   height="fit-content"
                   width="fit-content"
                 >
@@ -66,7 +68,22 @@ export default function Home() {
               </Box>
             </Flex>
           </Box>
-          <Box height="300px"></Box>
+          <Flex
+            color="#222"
+            bg="mainWhite"
+            p={3}
+            textTransform="lowercase"
+            textAlign="center"
+            justifyContent="center"
+            alignItems="center"
+            fontSize={['20px', '24px', '26px']}
+            fontWeight="700"
+          >
+            <Box minWidth="60px">
+              <Image src="/icons/delivery.png" width="60px" height="60px" />
+            </Box>
+            <Box ml="20px">free delivery when you spend over £40</Box>
+          </Flex>
           <Flex direction={['column', null, 'row']} color="mainWhite">
             <Box
               position="relative"

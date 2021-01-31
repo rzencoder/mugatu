@@ -48,6 +48,21 @@ const Button = {
         backgroundColor: 'none',
       },
     },
+    jumbo: {
+      color: 'mainWhite',
+      border: 'none',
+      backgroundSize: 'contain',
+      width: 'fit-content',
+      height: 'fit-content',
+      padding: '14px 30px',
+      margin: '0',
+      minWidth: 'none',
+      fontFamily: 'Montserrat',
+      transform: 'skewX(-5deg)',
+      _hover: {
+        backgroundColor: 'none',
+      },
+    },
     transparentBg: (props) => ({
       fontWeight: '400',
       p: '0',

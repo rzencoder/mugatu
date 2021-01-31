@@ -1,18 +1,26 @@
 import { Box, Flex, Link, Heading, Divider, useColorMode } from '@chakra-ui/react'
 import footerLinks from 'data/footerLinks'
+import Image from 'next/image'
 
 export default function Footer(): JSX.Element {
   const { colorMode } = useColorMode()
 
   return (
     <footer>
+      <Flex width={['300px', '450px']} margin="30px auto" justifyContent="space-around">
+        <Image src="/facebook.svg" width="36px" height="36px" />
+        <Image src="/instagram.svg" width="36px" height="36px" />
+        <Image src="/twitter.svg" width="36px" height="36px" />
+        <Image src="/pinterest.svg" width="36px" height="36px" />
+        <Image src="/snapchat.svg" width="36px" height="36px" />
+      </Flex>
       <Box
         color={colorMode === 'light' ? '#444' : '#ccc'}
         fontSize="14px"
         display={['none', null, 'block']}
       >
-        <Divider width="95%" margin="0 auto 5px" />
-        <Flex padding="5px 10px" width="92%" margin="0 auto" justifyContent="flex-start">
+        <Divider width="92%" margin="0 auto 5px" />
+        <Flex padding="5px 10px" width="85%" margin="0 auto" justifyContent="flex-start">
           {footerLinks.map((item) => {
             return (
               <Flex key={`footer-${item.title}`} direction="column" minWidth="200px" width="300px">
