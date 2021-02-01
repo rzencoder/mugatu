@@ -25,3 +25,8 @@ a:hover {
   color: #888 !important;
   font-size: 30px !important;
 }
+
+.jumbotron {
+  object-fit: cover;
+  object-position: 37%
+}

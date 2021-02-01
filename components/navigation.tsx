@@ -3,7 +3,6 @@ import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import {
   Box,
   Flex,
-  Image,
   useColorMode,
   Button,
   Link,
@@ -16,6 +15,7 @@ import { useState } from 'react'
 import { MobileNavMenu, BagPopOver } from '.'
 import { useBag } from '../context/bagContext'
 import Search from './search'
+import Image from 'next/image'
 
 export default function Navigation() {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -38,12 +38,8 @@ export default function Navigation() {
         </NextLink>
         <Box boxSize={['70px', null, '90px']} margin="10px" marginLeft={['-10px', '-20px']}>
           <NextLink href="/" passHref>
-            <Link>
-              <Image
-                filter={colorMode === 'dark' ? 'invert()' : 'none'}
-                src="/logo.png/"
-                alt="logo"
-              />
+            <Link filter={colorMode === 'dark' ? 'invert()' : 'none'}>
+              <Image width="90px" height="100px" src="/logo.png" alt="logo" />
             </Link>
           </NextLink>
         </Box>

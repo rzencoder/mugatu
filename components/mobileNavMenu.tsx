@@ -119,7 +119,11 @@ const MobileNavMenu = ({ isOpen, onClose }) => {
                 <Link>
                   <Box position="relative" margin="10px 0">
                     <Box display="flex">
-                      <Image src={`/menu-feature-${genderInMenu}.jpg`} width={300} height={243} />
+                      <Image
+                        src={`/menu/menu-feature-${genderInMenu}.jpg`}
+                        width={300}
+                        height={243}
+                      />
                     </Box>
                     <Box
                       position="absolute"

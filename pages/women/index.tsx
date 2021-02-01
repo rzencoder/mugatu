@@ -49,7 +49,7 @@ export default function Women() {
       <Layout>
         <Flex direction="column">
           <Jumbotron
-            imageUrl="/landing/women/women-header.jpg"
+            imageUrl="/landing/women/women-jumbotron.jpg"
             buttonText="Shop Now"
             bgColor="#b0f"
             gender="women"
@@ -77,7 +77,7 @@ export default function Women() {
           <Banner
             colour="#fb0862"
             bgColour="#c50f53"
-            imageSrc="banner-bg-women.jpg"
+            imageSrc="/landing/women/banner-bg-women.jpg"
             text="dress to impress"
             linkHref="/women/catalog"
           >

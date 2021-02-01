@@ -8,11 +8,11 @@ export default function Footer(): JSX.Element {
   return (
     <footer>
       <Flex width={['300px', '450px']} margin="30px auto" justifyContent="space-around">
-        <Image src="/facebook.svg" width="36px" height="36px" />
-        <Image src="/instagram.svg" width="36px" height="36px" />
-        <Image src="/twitter.svg" width="36px" height="36px" />
-        <Image src="/pinterest.svg" width="36px" height="36px" />
-        <Image src="/snapchat.svg" width="36px" height="36px" />
+        <Image src="/icons/facebook.svg" width="36px" height="36px" />
+        <Image src="/icons/instagram.svg" width="36px" height="36px" />
+        <Image src="/icons/twitter.svg" width="36px" height="36px" />
+        <Image src="/icons/pinterest.svg" width="36px" height="36px" />
+        <Image src="/icons/snapchat.svg" width="36px" height="36px" />
       </Flex>
       <Box
         color={colorMode === 'light' ? '#444' : '#ccc'}

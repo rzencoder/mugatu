@@ -49,7 +49,7 @@ export default function Men() {
       <Layout>
         <Flex direction="column">
           <Jumbotron
-            imageUrl="/landing/men/men-header.jpg"
+            imageUrl="/landing/men/men-jumbotron.jpg"
             buttonText="Shop Now"
             bgColor="#137571"
             gender="men"
@@ -77,7 +77,7 @@ export default function Men() {
           <Banner
             colour="#116bc7"
             bgColour="#137571"
-            imageSrc="banner-bg-men.jpg"
+            imageSrc="/landing/men/banner-bg-men.jpg"
             text="dress to impress"
             linkHref="/men/catalog"
           >

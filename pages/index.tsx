@@ -12,16 +12,10 @@ export default function Home() {
       </Head>
       <Layout>
         <Box>
-          <Box height={['450px', '500px', '550px']} position="relative">
-            <Box
-              backgroundImage="url('/jumbotron.jpg')"
-              backgroundSize="cover"
-              backgroundPosition={['30%', 'center']}
-              height="inherit"
-              width="inherit"
-              alignItems="center"
-              justifyContent="center"
-            />
+          <Box height={['650px']} position="relative">
+            <Box width="100%" height="inherit" objectFit="cover">
+              <Image src="/landing/jumbotron-home-page.jpg" layout="fill" className="jumbotron" />
+            </Box>
             <Box
               height="inherit"
               width="100%"
@@ -39,7 +33,7 @@ export default function Home() {
               height="inherit"
               width="100%"
             >
-              <Box textAlign="center" marginTop="50px">
+              <Box textAlign="center" marginTop="-20px">
                 <Heading
                   textTransform="uppercase"
                   as="h2"
@@ -89,7 +83,7 @@ export default function Home() {
               position="relative"
               width={['100%', null, '50%']}
               height={['450px', '500px', '550px', '600px']}
-              bg="url(shop-women.jpg)"
+              bg="url(/landing/women/shop-women.jpg)"
               backgroundSize="cover"
               backgroundPosition="top center"
             >
@@ -114,7 +108,7 @@ export default function Home() {
               position="relative"
               width={['100%', null, '50%']}
               height={['450px', '500px', '550px', '600px']}
-              bg="url(shop-men.jpg)"
+              bg="url(/landing/men/shop-men.jpg)"
               backgroundSize="cover"
               backgroundPosition="top center"
             >
