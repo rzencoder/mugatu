@@ -70,11 +70,11 @@ export default function Navigation() {
               <Search showSearch={showSearch} setShowSearch={setShowSearch} />
             </Flex>
             <Flex>
-              <NextLink href={'/'} passHref>
+              {/* <NextLink href={'/'} passHref>
                 <Link>
                   <Button variant="icon" backgroundImage="url(/icons/account.png)" />
                 </Link>
-              </NextLink>
+              </NextLink> */}
               <NextLink href="/wishlist" passHref>
                 <Link>
                   <Box position="relative">

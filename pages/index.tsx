@@ -14,7 +14,12 @@ export default function Home() {
         <Box>
           <Box height={['650px']} position="relative">
             <Box width="100%" height="inherit" objectFit="cover">
-              <Image src="/landing/jumbotron-home-page.jpg" layout="fill" className="jumbotron" />
+              <Image
+                role="presentation"
+                src="/landing/jumbotron-home-page.jpg"
+                layout="fill"
+                className="jumbotron"
+              />
             </Box>
             <Box
               height="inherit"
@@ -83,19 +88,20 @@ export default function Home() {
               position="relative"
               width={['100%', null, '50%']}
               height={['450px', '500px', '550px', '600px']}
-              bg="url(/landing/women/shop-women.jpg)"
-              backgroundSize="cover"
-              backgroundPosition="top center"
             >
-              <Box
-                position="absolute"
-                top="0"
-                bg="#ff006a"
-                opacity="0"
-                width="100%"
-                height="100%"
+              <Image
+                src="/landing/women/shop-women.jpg"
+                layout="fill"
+                className="home-page-cat-img"
+                role="presentation"
               />
-              <Flex direction="column" justifyContent="center" alignItems="center" height="100%">
+              <Flex
+                position="relative"
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                height="100%"
+              >
                 <Box fontSize="50px" fontWeight="700">
                   latest women&apos;s
                 </Box>
@@ -108,13 +114,16 @@ export default function Home() {
               position="relative"
               width={['100%', null, '50%']}
               height={['450px', '500px', '550px', '600px']}
-              bg="url(/landing/men/shop-men.jpg)"
-              backgroundSize="cover"
-              backgroundPosition="top center"
             >
+              <Image
+                src="/landing/men/shop-men.jpg"
+                layout="fill"
+                className="home-page-cat-img"
+                role="presentation"
+              />
               <Box position="absolute" top="0" bg="#000" width="100%" height="100%" opacity="0.2" />
               <Flex
-                position="absolute"
+                position="relative"
                 top="0"
                 direction="column"
                 justifyContent="center"

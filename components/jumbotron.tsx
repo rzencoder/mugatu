@@ -1,4 +1,5 @@
 import { Box, Flex, Link, Heading, Button } from '@chakra-ui/react'
+import Image from 'next/image'
 import NextLink from 'next/link'
 
 export default function Jumbotron({
@@ -12,12 +13,11 @@ export default function Jumbotron({
   return (
     <NextLink href={`/${gender}/catalog`} passHref>
       <Link height="600px" width="100%" position="relative">
-        <Box
-          bgImage={`url('${imageUrl}')`}
-          bgPosition={['32%', 'top']}
-          bgRepeat="no-repeat"
-          bgSize="cover"
-          height="inherit"
+        <Image
+          src={imageUrl}
+          layout="fill"
+          className="jumbotron-gender-landing"
+          role="presentation"
         />
         <Box
           position="absolute"

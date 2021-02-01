@@ -30,3 +30,27 @@ a:hover {
   object-fit: cover;
   object-position: 37%
 }
+
+.home-page-cat-img {
+  object-fit: cover;
+  object-position: top center
+}
+
+.svg-darkmode {
+  filter: invert()
+}
+
+.jumbotron-gender-landing {
+  object-fit: cover;
+  object-position: 32%
+}
+
+@media screen and (min-width: 480px) {
+  .jumbotron-gender-landing {
+    object-position: top;
+  }
+}
+
+.banner-bg {
+  object-fit: cover;
+}

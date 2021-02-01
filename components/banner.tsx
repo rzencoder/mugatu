@@ -1,5 +1,6 @@
 import { Box, Flex, Link } from '@chakra-ui/react'
 import NextLink from 'next/link'
+import Image from 'next/image'
 
 const Banner = ({ colour, bgColour, imageSrc, text, children, linkHref }) => {
   return (
@@ -11,7 +12,7 @@ const Banner = ({ colour, bgColour, imageSrc, text, children, linkHref }) => {
       textAlign="center"
       position="relative"
     >
-      <Box height="100%" backgroundImage={`url(${imageSrc})`} backgroundSize="cover"></Box>
+      <Image className="banner-bg" src={imageSrc} layout="fill" role="presentation" />
       <Box top="0" width="100%" height="100%" bg={bgColour} opacity="0.6" position="absolute"></Box>
       <NextLink href={linkHref} passHref>
         <Link>

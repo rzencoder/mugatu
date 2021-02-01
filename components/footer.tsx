@@ -8,11 +8,41 @@ export default function Footer(): JSX.Element {
   return (
     <footer>
       <Flex width={['300px', '450px']} margin="30px auto" justifyContent="space-around">
-        <Image src="/icons/facebook.svg" width="36px" height="36px" />
-        <Image src="/icons/instagram.svg" width="36px" height="36px" />
-        <Image src="/icons/twitter.svg" width="36px" height="36px" />
-        <Image src="/icons/pinterest.svg" width="36px" height="36px" />
-        <Image src="/icons/snapchat.svg" width="36px" height="36px" />
+        <Image
+          className={colorMode === 'dark' ? 'svg-darkmode' : ''}
+          alt="facebook"
+          src="/icons/facebook.svg"
+          width="36px"
+          height="36px"
+        />
+        <Image
+          className={colorMode === 'dark' ? 'svg-darkmode' : ''}
+          src="/icons/instagram.svg"
+          alt="instagram"
+          width="36px"
+          height="36px"
+        />
+        <Image
+          className={colorMode === 'dark' ? 'svg-darkmode' : ''}
+          src="/icons/twitter.svg"
+          alt="twitter"
+          width="36px"
+          height="36px"
+        />
+        <Image
+          className={colorMode === 'dark' ? 'svg-darkmode' : ''}
+          src="/icons/pinterest.svg"
+          alt="pinterest"
+          width="36px"
+          height="36px"
+        />
+        <Image
+          className={colorMode === 'dark' ? 'svg-darkmode' : ''}
+          src="/icons/snapchat.svg"
+          alt="snapchat"
+          width="36px"
+          height="36px"
+        />
       </Flex>
       <Box
         color={colorMode === 'light' ? '#444' : '#ccc'}
@@ -51,7 +81,11 @@ export default function Footer(): JSX.Element {
         <Divider width="95%" margin="5px auto" />
         <Flex justifyContent="space-between" fontSize="12px" padding="5px 30px">
           <Box>&copy; {new Date().getFullYear()}</Box>
-          <Box>Github Repo</Box>
+          <Box>
+            <Link href="https://github.com/rzencoder/mugatu" target="_blank" noreferrer>
+              Github Repo
+            </Link>
+          </Box>
         </Flex>
       </Box>
     </footer>
