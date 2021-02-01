@@ -79,7 +79,7 @@ export default function Home() {
             fontWeight="700"
           >
             <Box minWidth="60px">
-              <Image src="/icons/delivery.png" width="60px" height="60px" />
+              <Image src="/icons/delivery.png" width="60px" height="60px" role="presentation" />
             </Box>
             <Box ml="20px">free delivery when you spend over £40</Box>
           </Flex>

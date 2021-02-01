@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
 import { ColorModeScript } from '@chakra-ui/react'
+import GoogleFonts from 'next-google-fonts'
 
 export default class CustomDocument extends Document {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -10,24 +11,13 @@ export default class CustomDocument extends Document {
 
   render(): JSX.Element {
     return (
-      <Html>
+      <Html lang="en">
+        <>
+          <GoogleFonts href="https://fonts.googleapis.com/css?family=Poppins:wght@400;600;700&display=swap" />
+          <GoogleFonts href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" />
+          <GoogleFonts href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" />
+        </>
         <Head>
-          <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-          <link
-            href="https://fonts.googleapis.com/css?family=Poppins:wght@400;600;700&display=swap"
-            rel="stylesheet"
-            type="text/css"
-          />
-          <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap"
-            rel="stylesheet"
-          />
-          <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
-            rel="stylesheet"
-          ></link>
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"></link>
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"></link>
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"></link>

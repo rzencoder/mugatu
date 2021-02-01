@@ -82,7 +82,7 @@ export default function Footer(): JSX.Element {
         <Flex justifyContent="space-between" fontSize="12px" padding="5px 30px">
           <Box>&copy; {new Date().getFullYear()}</Box>
           <Box>
-            <Link href="https://github.com/rzencoder/mugatu" target="_blank" noreferrer>
+            <Link href="https://github.com/rzencoder/mugatu" target="_blank" rel="noreferrer">
               Github Repo
             </Link>
           </Box>
