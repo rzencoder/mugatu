@@ -35,7 +35,6 @@ const useProvideProducts = () => {
 
   useEffect(() => {
     fetchProducts()
-    console.log('fetching data')
   }, [query, gender])
 
   const getFilteredProduct = (filter) => {

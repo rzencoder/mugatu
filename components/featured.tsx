@@ -29,15 +29,9 @@ export default function Featured({ items, gender }): JSX.Element {
           shop by style
         </Box>
       </Box>
-      <Box
-        position="absolute"
-        top="0"
-        height="100%"
-        width="100%"
-        backgroundImage={`url('/landing/women/women-bg.jpg')`}
-        backgroundSize="cover"
-        opacity="0.15"
-      />
+      <Box position="absolute" top="0" height="100%" width="100%" opacity="0.15">
+        <Image src="/landing/women/women-bg.jpg" layout="fill" className="featured-bg" />
+      </Box>
       <Flex wrap="wrap" justifyContent="center" width="100%" p={['20px 5px', '20px 15px']}>
         {items.map((item, index) => {
           return (
