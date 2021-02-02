@@ -8,6 +8,8 @@ const styles = {
     mainBlack: '#000',
     mainWhite: '#fff',
     mainRed: '#d80808',
+    mainBlackHover: 'rgba(0,0,0, 0.04)',
+    mainWhiteHover: 'rgba(255,255,255, 0.05)',
     teal: { 200: '#10aed2' },
     pink: { 200: '#b52950' },
   },

@@ -78,7 +78,7 @@ const BagPopOver = () => {
                           removeFromBag(item)
                         }}
                       >
-                        <DeleteIcon />
+                        <DeleteIcon _hover={{ color: colorMode === 'light' ? '#555' : '#ccc' }} />
                       </Button>
                     </Flex>
                   </Flex>
@@ -92,7 +92,12 @@ const BagPopOver = () => {
           </Flex>
           <NextLink href="/bag" passHref>
             <Link>
-              <Button width="100%">View Bag</Button>
+              <Button
+                width="100%"
+                _hover={{ bg: colorMode === 'light' ? 'mainBlackHover' : 'mainWhiteHover' }}
+              >
+                View Bag
+              </Button>
             </Link>
           </NextLink>
         </Flex>

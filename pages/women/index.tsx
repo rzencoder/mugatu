@@ -51,6 +51,7 @@ export default function Women() {
           <Jumbotron
             imageUrl="/landing/women/women-jumbotron.jpg"
             buttonText="Shop Now"
+            buttonHoverColor="#cd41d6"
             bgColor="#b0f"
             gender="women"
             buttonColor="#d219de"

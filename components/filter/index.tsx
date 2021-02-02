@@ -53,6 +53,9 @@ export default function Filter(): JSX.Element {
         borderWidth="2px"
         padding={['10px 15px', null, 6]}
         borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
+        _hover={{
+          bg: colorMode === 'light' ? 'mainBlackHover' : 'mainWhiteHover',
+        }}
         onClick={() => handleOpen()}
       >
         {checkAnyFilterSelected(filterQuery, initialQuery) && '●'} Filter

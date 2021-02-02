@@ -8,7 +8,7 @@ const Button = {
     borderRadius: '0',
     transition: 'all 0.3s',
     _hover: {
-      backgroundColor: 'rgba(255,255,255,0.1) !important',
+      backgroundColor: 'rgba(255,255,255,0.2) !important',
       opacity: 1,
     },
   },

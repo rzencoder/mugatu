@@ -153,12 +153,20 @@ const Bag = () => {
                           </Box>
                         </Link>
                       </NextLink>
-                      <DeleteIcon
-                        fontSize="30px"
+                      <Button
+                        variant="icon"
+                        fontSize="22px"
                         padding="5px"
                         margin={['0 3px', '0 10px']}
                         onClick={() => removeFromBag(item)}
-                      />
+                        color={colorMode === 'light' ? '#999' : '#aaa'}
+                      >
+                        <DeleteIcon
+                          _hover={{
+                            color: colorMode === 'light' ? '#777' : '#ccc',
+                          }}
+                        />
+                      </Button>
                     </Flex>
                     <Flex p="5px 0" fontSize={['14px', '15px']} direction="column">
                       <Box p="0">{item.colour}</Box>
@@ -214,6 +222,7 @@ const Bag = () => {
                       width={['150px', '170px']}
                       height={['35px', '45px']}
                       p={['1px', '3px 5px']}
+                      _hover={{ bg: colorMode === 'light' ? 'mainBlackHover' : 'mainWhiteHover' }}
                       onClick={() => {
                         addToWishlist(item)
                         removeFromBag(item)
@@ -320,7 +329,15 @@ const Bag = () => {
           </Flex>
           <NextLink href="/checkout" passHref>
             <Link>
-              <Button bg="#0d6d33" border="none" color="mainWhite" width="100%">
+              <Button
+                bg="#0d6d33"
+                border="none"
+                color="mainWhite"
+                width="100%"
+                _hover={{
+                  bg: '#15ab51',
+                }}
+              >
                 Checkout
               </Button>
             </Link>

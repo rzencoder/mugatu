@@ -94,7 +94,7 @@ export default function Navigation() {
                 </Link>
               </NextLink>
 
-              <Popover>
+              <Popover trigger="hover">
                 <PopoverTrigger>
                   <Button variant="icon" backgroundImage="url(/icons/bag.png)" position="relative">
                     <NextLink href="/bag" passHref>

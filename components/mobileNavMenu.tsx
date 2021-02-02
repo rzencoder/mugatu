@@ -50,6 +50,7 @@ const MobileNavMenu = ({ isOpen, onClose }) => {
                 rightIcon={<ChevronDownIcon />}
                 variant="transparentBg"
                 textTransform="lowercase"
+                _hover={{ color: 'initial' }}
               >
                 {genderInMenu}
               </MenuButton>
@@ -58,14 +59,19 @@ const MobileNavMenu = ({ isOpen, onClose }) => {
                 <MenuItem onClick={() => setGenderInMenu('men')}>men</MenuItem>
               </MenuList>
             </Menu>
-            <DrawerCloseButton bg="transparent" top="13px" right="40px" />
+            <DrawerCloseButton
+              bg="transparent"
+              top="13px"
+              right="40px"
+              _hover={{ bg: 'transparent', color: colorMode === 'light' ? '#666' : '#ccc' }}
+            />
             <Divider />
           </DrawerHeader>
 
           <DrawerBody p="10px 30px">
-            <Flex fontSize="22px" p="0 0 10px">
-              <Box>hey jane</Box>
-            </Flex>
+            {/* <Flex fontSize="22px" p="0 0 10px">
+              <Box>hey user</Box>
+            </Flex> */}
             {menuOptions.map((option) => {
               return (
                 <NextLink key={`mob-menu-${option.name}`} href={option.href} passHref>
@@ -152,7 +158,13 @@ const MobileNavMenu = ({ isOpen, onClose }) => {
                         <Box fontFamily="Montserrat" textTransform="uppercase" fontSize="26px">
                           Latest Styles
                         </Box>
-                        <Button padding="10px 15px" fontSize="18px" mt="20px">
+                        <Button
+                          borderColor="mainWhite"
+                          padding="10px 15px"
+                          fontSize="18px"
+                          mt="20px"
+                          _hover={{ bg: 'transparent' }}
+                        >
                           Shop Now
                         </Button>
                       </Flex>

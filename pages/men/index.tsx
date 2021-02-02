@@ -52,6 +52,7 @@ export default function Men() {
             imageUrl="/landing/men/men-jumbotron.jpg"
             buttonText="Shop Now"
             bgColor="#137571"
+            buttonHoverColor="#5fabf9"
             gender="men"
             buttonColor="#089fe6"
           >

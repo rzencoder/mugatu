@@ -61,6 +61,7 @@ export default function Home() {
                   transform="skewX(-3deg)"
                   height="fit-content"
                   width="fit-content"
+                  _hover={{ bg: '#f91b8b' }}
                 >
                   Shop Sale
                 </Button>

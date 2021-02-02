@@ -19,7 +19,7 @@ const FooterMobile = () => {
       {footerLinks.map((item) => {
         return (
           <AccordionItem key={`footer-mob-${item.title}`} border="none" padding="5px 0">
-            <AccordionButton p="0">
+            <AccordionButton p="0" hover={{ bg: 'transparent' }}>
               <Box flex="1" textAlign="left" textTransform="lowercase">
                 {item.title}
               </Box>

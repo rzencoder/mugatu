@@ -8,6 +8,7 @@ export default function Jumbotron({
   buttonText,
   buttonColor,
   gender,
+  buttonHoverColor,
   children,
 }): JSX.Element {
   return (
@@ -53,6 +54,7 @@ export default function Jumbotron({
               bg={buttonColor}
               fontSize={['26px', '32px', '38px']}
               margin="50px auto 0"
+              _hover={{ bg: buttonHoverColor }}
             >
               {buttonText}
             </Button>
