@@ -14,7 +14,7 @@ export default function Filter(): JSX.Element {
   const { colorMode } = useColorMode()
   // 767px is the third breakpoint with the chakra styling
   const [isLargerThan767] = useMediaQuery('(min-width: 767px)')
-  const { getFilteredProduct } = useProducts()
+  const { getFilteredProduct, gender } = useProducts()
 
   // Update filter object on user select. If desktop user then also fetch the products else on mobile only fetch when the user clicks the button to confirm to view filtered products
   const updateQuery = (filterType, newFilterItem, device = 'mobile') => {
@@ -63,14 +63,18 @@ export default function Filter(): JSX.Element {
       <FilterMobile
         isOpen={isOpen}
         onClose={onClose}
-        options={options}
+        options={options[gender === 'female' ? 0 : 1]}
         updateQuery={updateQuery}
         getFilteredProducts={getFilteredProducts}
         filterQuery={filterQuery}
         setFilterQuery={setFilterQuery}
       />
       {showFilter && (
-        <FilterDesktop options={options} updateQuery={updateQuery} filterQuery={filterQuery} />
+        <FilterDesktop
+          options={options[gender === 'female' ? 0 : 1]}
+          updateQuery={updateQuery}
+          filterQuery={filterQuery}
+        />
       )}
     </Flex>
   )

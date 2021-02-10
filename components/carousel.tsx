@@ -38,12 +38,7 @@ const settings = {
   ],
 }
 
-const CarouselComponent = () => {
-  const { products } = useProducts()
-  let popularProducts = []
-  if (products.length > 0) {
-    popularProducts = products.filter((product) => product.popular)
-  }
+const CarouselComponent = ({ products }) => {
   const { colorMode } = useColorMode()
 
   return (
@@ -54,9 +49,9 @@ const CarouselComponent = () => {
         </span>{' '}
         hot right now
       </Box>
-      {popularProducts.length > 0 && (
+      {products.length > 0 && (
         <Slider {...settings}>
-          {popularProducts.map((product) => {
+          {products.map((product) => {
             return (
               <NextLink
                 key={`carousel-${product.name}`}

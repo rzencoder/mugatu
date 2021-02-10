@@ -5,6 +5,11 @@ import { useEffect } from 'react'
 import { Jumbotron, Featured, Carousel, Banner } from '../../components'
 import { Layout } from '../../components/layouts'
 import Image from 'next/image'
+import { GetStaticProps } from 'next'
+import { graphQLClient } from '../../graphql/client'
+import { GET_PRODUCT_BY_SLUG } from '../../graphql/queries'
+import { formatResponseData } from '../../utils'
+import { gql } from 'graphql-request'
 
 const items = [
   {
@@ -33,7 +38,7 @@ const items = [
   },
 ]
 
-export default function Men() {
+export default function Men({ productData }) {
   const { updateGender } = useProducts()
 
   useEffect(() => {
@@ -84,9 +89,44 @@ export default function Men() {
           >
             20% off all jackets
           </Banner>
-          <Carousel />
+          <Carousel products={productData} />
         </Flex>
       </Layout>
     </>
   )
+}
+
+export async function getStaticProps({ params }) {
+  const response = await graphQLClient.request(
+    gql`
+      query GetByGender($gender: String!) {
+        productCollection(where: { gender: $gender }) {
+          items {
+            name
+            rrp
+            price
+            colour
+            sizes
+            slug
+            popular
+            gender
+            image {
+              url(transform: { width: 400 })
+            }
+            sys {
+              id
+            }
+          }
+        }
+      }
+    `,
+    { gender: 'male' }
+  )
+  const formattedData = formatResponseData(response.productCollection.items)
+  const filteredData = formattedData.filter((item) => item.popular)
+  return {
+    props: {
+      productData: filteredData,
+    },
+  }
 }
