@@ -1,11 +1,12 @@
 import { Flex, Button, useColorMode, useDisclosure, useMediaQuery } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import FilterDesktop from './desktop'
 import FilterMobile from './mobile'
 import initialQuery from 'data/filterInitialQuery'
 import options from 'data/filterOptions'
 import { buildQueryUrl, updateQueryData, checkAnyFilterSelected } from '@/utils/filter'
 import { useProducts } from '@/context/productsContext'
+import { useRouter } from 'next/dist/client/router'
 
 export default function Filter(): JSX.Element {
   const [filterQuery, setFilterQuery] = useState(initialQuery)
@@ -15,6 +16,7 @@ export default function Filter(): JSX.Element {
   // 767px is the third breakpoint with the chakra styling
   const [isLargerThan767] = useMediaQuery('(min-width: 767px)')
   const { getFilteredProduct, gender } = useProducts()
+  const router = useRouter()
 
   // Update filter object on user select. If desktop user then also fetch the products else on mobile only fetch when the user clicks the button to confirm to view filtered products
   const updateQuery = (filterType, newFilterItem, device = 'mobile') => {
@@ -43,6 +45,10 @@ export default function Filter(): JSX.Element {
       onOpen()
     }
   }
+
+  useEffect(() => {
+    // const path = router.asPath.split('?')
+  }, [])
 
   return (
     <Flex direction="column" position="relative">

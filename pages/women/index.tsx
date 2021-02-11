@@ -14,25 +14,25 @@ import { gql } from 'graphql-request'
 const items = [
   {
     name: 'dresses',
-    link: '/women/catalog?category=dress',
+    link: '/women/catalog/dresses',
     imageUrl: '/landing/women/dress.jpg',
     rotate: 4,
   },
   {
     name: 'skirts',
-    link: '/women/catalog?category=skirt',
+    link: '/women/catalog/skirts',
     imageUrl: '/landing/women/skirt.jpg',
     rotate: -3,
   },
   {
     name: 'tops',
-    link: '/women/catalog?category=top',
+    link: '/women/catalog/tops',
     imageUrl: '/landing/women/top.jpg',
     rotate: 2.5,
   },
   {
     name: 'coats & jackets',
-    link: '/women/catalog?category=coat',
+    link: '/women/catalog/coats',
     imageUrl: '/landing/women/coat.jpg',
     rotate: -3.5,
   },

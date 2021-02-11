@@ -18,7 +18,6 @@ const useProvideProducts = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [query, setQuery] = useState(`search?`)
-  const [productsBySearch, setProductsBySearch] = useState('')
 
   async function fetchProducts() {
     setLoading(true)
@@ -68,5 +67,6 @@ const useProvideProducts = () => {
     getFilteredProduct,
     sort,
     updateProductsBySearch,
+    setQuery,
   }
 }

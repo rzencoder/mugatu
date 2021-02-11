@@ -1,9 +1,8 @@
-import { useProducts } from '@/context/productsContext'
 import { Flex, Box } from '@chakra-ui/react'
-import { Products, Sort, Loader, Filter } from '..'
+import { Products, Sort, Filter } from '..'
 
-export default function Catalog() {
-  const { products, loading } = useProducts()
+export default function Catalog({ products }) {
+  console.log('catalog')
   return (
     <Flex
       margin={['10px 10px', '10px 20px', '10px auto']}
@@ -11,7 +10,7 @@ export default function Catalog() {
       maxWidth={['1200px']}
       direction="column"
     >
-      {products && !loading && (
+      {products && (
         <Box
           width="180px"
           textAlign="center"
@@ -26,7 +25,7 @@ export default function Catalog() {
         <Filter />
         <Sort />
       </Flex>
-      {loading ? <Loader /> : <Products products={products} />}
+      <Products products={products} />
     </Flex>
   )
 }

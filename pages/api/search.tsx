@@ -31,6 +31,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     { gender: query.gender }
   )
 
+  console.log('search')
   const data = formatResponseData(response.productCollection.items)
   res.status(200).json({ data })
 }

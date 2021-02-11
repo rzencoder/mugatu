@@ -66,7 +66,6 @@ const filterItems = (query, items) => {
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { query } = req
   if (!checkSearchParams(query)) return res.status(400).json({ error: 'error' })
-  console.log(query)
 
   const response = await graphQLClient.request(
     gql`
@@ -97,6 +96,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const items = formatResponseData(response.productCollection.items)
   const filteredItems = filterItems(query, items)
-
+  console.log('filter')
   res.status(200).json({ data: filteredItems })
 }
