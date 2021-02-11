@@ -22,7 +22,10 @@ export default function Products({ products }) {
 
   return (
     <Flex direction="column">
-      <Flex flexWrap="wrap" justifyContent={['center', 'flex-start']}>
+      <Flex
+        flexWrap="wrap"
+        justifyContent={[products.length === 1 ? 'center' : 'flex-start', 'flex-start']}
+      >
         {products.map((el) => {
           return (
             <Flex

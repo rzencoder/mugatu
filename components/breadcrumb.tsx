@@ -37,10 +37,11 @@ const Breadcrumb = () => {
       display={['none', 'block']}
     >
       {paths.map((path, index) => {
+        const pathLink = path.split('-').join(' ').split('?')
         return (
           <BreadcrumbItem key={path} color={index === paths.length - 1 && '#777'}>
             <Link href={formatLinkHref(paths, index)} passHref>
-              <BreadcrumbLink>{path.split('-').join(' ')}</BreadcrumbLink>
+              <BreadcrumbLink>{pathLink[0]}</BreadcrumbLink>
             </Link>
           </BreadcrumbItem>
         )

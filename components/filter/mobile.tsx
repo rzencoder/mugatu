@@ -87,6 +87,18 @@ const Mobile = ({
               )
             }
           })}
+          <Flex justifyContent="center">
+            <Button
+              borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
+              margin="20px"
+              onClick={() => {
+                getFilteredProducts(filterQuery)
+                onClose()
+              }}
+            >
+              Filter Items
+            </Button>
+          </Flex>
         </DrawerBody>
       </>
     )

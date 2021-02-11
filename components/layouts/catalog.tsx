@@ -18,7 +18,7 @@ export default function Catalog({ products }) {
           pt={[0, null, '10px']}
           fontSize={['18px', null, '20px', '22px']}
         >
-          {`${products.length} item${products.length !== 1 && 's'} found`}
+          {`${products.length} item${products.length !== 1 ? 's' : ''} found`}
         </Box>
       )}
       <Flex justify="space-between" align="flex-start" padding={['5px', null, '15px']}>

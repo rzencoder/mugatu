@@ -30,7 +30,21 @@ export default function Filter(): JSX.Element {
   // Fetch filtered products from api
   const getFilteredProducts = (filterQuery) => {
     const queryUrl = buildQueryUrl(filterQuery)
-    const result = getFilteredProduct(`../api/filter?${queryUrl}&`)
+    const path = router.pathname.split('/')
+    let category = path[path.length - 1] !== 'catalog' ? path[path.length - 1] : ''
+    if (category && category !== 'jeans') {
+      if (category[category.length - 1] === 's') {
+        if (category[category.length - 2] === 'e') {
+          category = category.slice(0, -2)
+        } else {
+          category = category.slice(0, -1)
+        }
+      }
+    }
+    if (category) {
+      category = `product=${category}`
+    }
+    const result = getFilteredProduct(`../api/filter?${category}&${queryUrl}&`)
     console.log(result)
     // fetch(`../api/filter?${queryUrl}`)
     //   .then((res) => res.json())
@@ -46,9 +60,14 @@ export default function Filter(): JSX.Element {
     }
   }
 
-  useEffect(() => {
-    // const path = router.asPath.split('?')
-  }, [])
+  const getOptions = (options, router, gender) => {
+    const optionsForGender = gender === 'female' ? options[0] : options[1]
+    const path = router.pathname.split('/')
+    if (path[path.length - 1] !== 'catalog') {
+      return optionsForGender.filter((el) => el.name !== 'product')
+    }
+    return optionsForGender
+  }
 
   return (
     <Flex direction="column" position="relative">
@@ -69,7 +88,7 @@ export default function Filter(): JSX.Element {
       <FilterMobile
         isOpen={isOpen}
         onClose={onClose}
-        options={options[gender === 'female' ? 0 : 1]}
+        options={getOptions(options, router, gender)}
         updateQuery={updateQuery}
         getFilteredProducts={getFilteredProducts}
         filterQuery={filterQuery}
@@ -77,7 +96,7 @@ export default function Filter(): JSX.Element {
       />
       {showFilter && (
         <FilterDesktop
-          options={options[gender === 'female' ? 0 : 1]}
+          options={getOptions(options, router, gender)}
           updateQuery={updateQuery}
           filterQuery={filterQuery}
         />

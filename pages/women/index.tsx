@@ -31,7 +31,7 @@ const items = [
     rotate: 2.5,
   },
   {
-    name: 'coats & jackets',
+    name: 'coats',
     link: '/women/catalog/coats',
     imageUrl: '/landing/women/coat.jpg',
     rotate: -3.5,
