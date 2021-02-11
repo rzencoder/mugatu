@@ -14,25 +14,25 @@ import { gql } from 'graphql-request'
 const items = [
   {
     name: 'shirts',
-    link: '/men/catalog?category=shirt&gender=male',
+    link: '/men/catalog/shirts',
     imageUrl: '/landing/men/shirt.jpg',
     rotate: 4,
   },
   {
     name: 'jeans',
-    link: '/men/catalog?category=jeans&gender=male',
+    link: '/men/catalog/jeans',
     imageUrl: '/landing/men/jeans.jpg',
     rotate: -3,
   },
   {
     name: 'knitwear',
-    link: '/men/catalog?category=knitwear&gender=male',
+    link: '/men/catalog/knitwear',
     imageUrl: '/landing/men/jumper.jpg',
     rotate: 2.5,
   },
   {
-    name: 'coats & jackets',
-    link: '/men/catalog?category=coat&gender=male',
+    name: 'coats',
+    link: '/men/catalog/coats',
     imageUrl: '/landing/men/jacket.jpg',
     rotate: -3.5,
   },
@@ -85,7 +85,7 @@ export default function Men({ productData }) {
             bgColour="#137571"
             imageSrc="/landing/men/banner-bg-men.jpg"
             text="dress to impress"
-            linkHref="/men/catalog"
+            linkHref="/men/catalog/jackets"
           >
             20% off all jackets
           </Banner>

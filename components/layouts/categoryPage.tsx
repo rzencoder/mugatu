@@ -21,7 +21,12 @@ export default function CategoryPage({ gender, title, query }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Heading as="h2">
+        <Heading
+          as="h2"
+          p={['25px 10px 10px', '15px 10px 10px']}
+          textTransform="lowercase"
+          textAlign="center"
+        >
           {gender}&apos;s {title}
         </Heading>
         {loading ? <Loader /> : <Catalog products={products} />}

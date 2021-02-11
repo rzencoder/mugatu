@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import { Layout } from '../components/layouts'
-import { Box, Flex, Heading, Button } from '@chakra-ui/react'
+import { Box, Flex, Heading, Button, Link } from '@chakra-ui/react'
 import Image from 'next/image'
+import NextLink from 'next/link'
 
 export default function Home() {
   return (
@@ -50,21 +51,25 @@ export default function Home() {
                 >
                   So Hot Right Now
                 </Heading>
-                <Button
-                  borderRadius="0"
-                  border="none"
-                  fontFamily="Montserrat"
-                  marginTop="50px"
-                  fontSize={['28px', '34px']}
-                  p={['15px 40px']}
-                  bg="#ff006a"
-                  transform="skewX(-3deg)"
-                  height="fit-content"
-                  width="fit-content"
-                  _hover={{ bg: '#f91b8b' }}
-                >
-                  Shop Sale
-                </Button>
+                <NextLink href="/women/catalog" passHref>
+                  <Link>
+                    <Button
+                      borderRadius="0"
+                      border="none"
+                      fontFamily="Montserrat"
+                      marginTop="50px"
+                      fontSize={['28px', '34px']}
+                      p={['15px 40px']}
+                      bg="#ff006a"
+                      transform="skewX(-3deg)"
+                      height="fit-content"
+                      width="fit-content"
+                      _hover={{ bg: '#f91b8b' }}
+                    >
+                      Shop Sale
+                    </Button>
+                  </Link>
+                </NextLink>
               </Box>
             </Flex>
           </Box>
@@ -106,9 +111,13 @@ export default function Home() {
                 <Box fontSize="50px" fontWeight="700">
                   latest women&apos;s
                 </Box>
-                <Button mt="20px" borderColor="mainWhite">
-                  Shop Now
-                </Button>
+                <NextLink href="/women/catalog" passHref>
+                  <Link>
+                    <Button mt="20px" borderColor="mainWhite">
+                      Shop Now
+                    </Button>
+                  </Link>
+                </NextLink>
               </Flex>
             </Box>
             <Box
@@ -135,9 +144,13 @@ export default function Home() {
                 <Box fontSize="50px" fontWeight="700">
                   latest men&apos;s
                 </Box>
-                <Button mt="20px" borderColor="mainWhite">
-                  Shop Now
-                </Button>
+                <NextLink href="/men/catalog" passHref>
+                  <Link>
+                    <Button mt="20px" borderColor="mainWhite">
+                      Shop Now
+                    </Button>
+                  </Link>
+                </NextLink>
               </Flex>
             </Box>
           </Flex>

@@ -85,7 +85,7 @@ export default function Women({ productData }) {
             bgColour="#c50f53"
             imageSrc="/landing/women/banner-bg-women.jpg"
             text="dress to impress"
-            linkHref="/women/catalog"
+            linkHref="/women/catalog/dresses"
           >
             20% off all dresses
           </Banner>

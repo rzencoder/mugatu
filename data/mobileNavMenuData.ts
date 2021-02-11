@@ -2,19 +2,19 @@ export const genderData = [
   {
     gender: 'women',
     products: [
-      { name: 'Dresses', href: '/dresses' },
-      { name: 'Tops', href: '/tops' },
-      { name: 'Coats and Jackets', href: '/coats' },
-      { name: 'Knitwear', href: '/knitwear' },
+      { name: 'Dresses', href: '/women/catalog/dresses' },
+      { name: 'Tops', href: '/women/catalog/tops' },
+      { name: 'Coats and Jackets', href: '/women/catalog/coats' },
+      { name: 'Knitwear', href: '/women/catalog/knitwear' },
     ],
   },
   {
     gender: 'men',
     products: [
-      { name: 'Shirts', href: '/shirts' },
-      { name: 'Jeans', href: '/jeans' },
-      { name: 'Coats and Jackets', href: '/coats' },
-      { name: 'Knitwear', href: '/knitwear' },
+      { name: 'Shirts', href: '/men/catalog/shirts' },
+      { name: 'Jeans', href: '/men/catalog/jeans' },
+      { name: 'Coats', href: '/men/catalog/coats' },
+      { name: 'Knitwear', href: '/men/catalog/knitwear' },
     ],
   },
 ]
