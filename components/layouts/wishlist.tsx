@@ -139,10 +139,10 @@ export default function Wishlist() {
         {wishlist && wishlist.length === 0 && (
           <Flex margin="50px auto" direction="column" textAlign="center">
             <Box fontSize="24px" p="15px 0" fontWeight="700">
-              Your wishlist is empty
+              your wishlist is empty
             </Box>
             <Box p="5px 20px">
-              Click the heart icon next to your favourite items to see them here
+              click the heart icon next to your favourite items to see them here
             </Box>
           </Flex>
         )}

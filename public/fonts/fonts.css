@@ -11,6 +11,21 @@
        url('poppins/poppins-v15-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('poppins/poppins-v15-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
 }
+
+/* poppins-500 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  src: url('poppins/poppins-v15-latin-500.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('poppins/poppins-v15-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('poppins/poppins-v15-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('poppins/poppins-v15-latin-500.woff') format('woff'), /* Modern Browsers */
+       url('poppins/poppins-v15-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('poppins/poppins-v15-latin-500.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+
 /* poppins-600 - latin */
 @font-face {
   font-family: 'Poppins';

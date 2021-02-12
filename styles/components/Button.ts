@@ -1,7 +1,7 @@
 const Button = {
   // The styles all button have in common
   baseStyle: {
-    fontWeight: 'bold',
+    fontWeight: '600',
     textTransform: 'uppercase',
     backgroundColor: 'transparent',
     color: 'mainWhite',

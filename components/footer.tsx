@@ -54,7 +54,7 @@ export default function Footer(): JSX.Element {
           {footerLinks.map((item) => {
             return (
               <Flex key={`footer-${item.title}`} direction="column" minWidth="200px" width="300px">
-                <Heading as="h5" fontSize="20px" p="10px 0">
+                <Heading as="h5" fontSize="20px" p="10px 0" fontWeight="600">
                   {item.title}
                 </Heading>
                 {item.links.map((link) => {

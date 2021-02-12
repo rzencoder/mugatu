@@ -89,7 +89,7 @@ const Bag = () => {
         <Box
           textTransform="lowercase"
           fontSize="28px"
-          fontWeight="700"
+          fontWeight="600"
           width="80%"
           textAlign="center"
           padding="0 0 30px"
@@ -123,7 +123,7 @@ const Bag = () => {
             mb="20px"
             bg={colorMode === 'light' ? 'mainWhite' : '#111'}
           >
-            <Box p="0 0 15px" fontWeight="700" fontSize="28px">
+            <Box p="0 0 15px" fontWeight="600" fontSize="28px">
               my bag
             </Box>
             {bag.map((item) => {
@@ -148,7 +148,7 @@ const Bag = () => {
                         passHref
                       >
                         <Link>
-                          <Box fontSize={['16px', '18px']} fontWeight="700">
+                          <Box fontSize={['16px', '18px']} fontWeight="600">
                             {item.name}
                           </Box>
                         </Link>
@@ -250,7 +250,7 @@ const Bag = () => {
             bg={colorMode === 'light' ? 'mainWhite' : '#111'}
             p="20px"
             fontSize="22px"
-            fontWeight="700"
+            fontWeight="600"
           >
             <Box>sub-total</Box>
             <Box>£{subtotal}</Box>
@@ -264,11 +264,11 @@ const Bag = () => {
           p="20px"
           justifyContent="space-between"
         >
-          <Box p="0 0 15px" fontWeight="700" fontSize="28px">
+          <Box p="0 0 15px" fontWeight="600" fontSize="28px">
             summary
           </Box>
           <Flex direction="column" fontSize="16px">
-            <Flex justifyContent="space-between" fontWeight="700">
+            <Flex justifyContent="space-between" fontWeight="600">
               <Box>sub-total</Box>
               <Box>£{subtotal}</Box>
             </Flex>
@@ -279,7 +279,7 @@ const Bag = () => {
                 p="8px 12px"
                 alignItems="center"
                 margin="10px 0"
-                fontWeight="700"
+                fontWeight="600"
               >
                 <InfoIcon fontSize="22px" mr="15px" />
                 <Box>{`spend £${(50 - parseFloat(subtotal)).toFixed(
@@ -288,7 +288,7 @@ const Bag = () => {
               </Flex>
             )}
             <Flex direction="column">
-              <Flex justifyContent="space-between" fontWeight="700">
+              <Flex justifyContent="space-between" fontWeight="600">
                 <Box>delivery</Box>
                 <Box>{displayDeliveryPrice(delivery.price)}</Box>
               </Flex>
@@ -322,7 +322,7 @@ const Bag = () => {
                 </MenuList>
               </Menu>
             </Flex>
-            <Flex justifyContent="space-between" fontSize="22px" fontWeight="700" p="5px 0">
+            <Flex justifyContent="space-between" fontSize="22px" fontWeight="600" p="5px 0">
               <Box>total</Box>
               <Box>£{(parseFloat(subtotal) + delivery.price).toFixed(2)}</Box>
             </Flex>

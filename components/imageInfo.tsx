@@ -9,7 +9,7 @@ const ImageInfo = () => {
       pos="absolute"
       bottom="20px"
       right="0"
-      fontWeight="700"
+      fontWeight="600"
       p={2}
       borderRadius="10px 0 0 10px"
     >

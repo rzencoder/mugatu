@@ -40,12 +40,12 @@ const BagPopOver = () => {
       bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'}
     >
       <PopoverCloseButton top="12px" />
-      <PopoverHeader fontSize="20px" fontWeight="700" textAlign="center">
+      <PopoverHeader fontSize="20px" fontWeight="600" textAlign="center">
         my bag
       </PopoverHeader>
       <PopoverBody>
         <Flex direction="column">
-          <Box fontWeight="700">{`${calculateNumOfItems()} item${
+          <Box fontWeight="600">{`${calculateNumOfItems()} item${
             calculateNumOfItems() > 1 ? 's' : ''
           }`}</Box>
           <Flex direction="column" height="180px" overflowY="scroll">
@@ -69,7 +69,7 @@ const BagPopOver = () => {
                       <Box>qty: {item.quantity}</Box>
                     </Flex>
                     <Flex justifyContent="space-between" alignItems="center">
-                      <Box fontWeight="700" fontSize="16px">
+                      <Box fontWeight="600" fontSize="16px">
                         £{item.price}
                       </Box>
                       <Button
@@ -88,7 +88,7 @@ const BagPopOver = () => {
           </Flex>
           <Flex justifyContent="space-between" alignItems="center" p="12px 0" fontSize="18px">
             <Box>subtotal</Box>
-            <Box fontWeight="700">£{calculateSubTotal()}</Box>
+            <Box fontWeight="600">£{calculateSubTotal()}</Box>
           </Flex>
           <NextLink href="/bag" passHref>
             <Link>

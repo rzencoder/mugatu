@@ -72,7 +72,7 @@ export default function Women({ productData }) {
             justifyContent="center"
             alignItems="center"
             fontSize={['20px', '24px', '26px']}
-            fontWeight="700"
+            fontWeight="500"
           >
             <Box minWidth="60px">
               <Image src="/icons/delivery.png" width="60px" height="60px" role="presentation" />

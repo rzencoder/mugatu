@@ -43,7 +43,7 @@ const CarouselComponent = ({ products }) => {
 
   return (
     <Box width="80%" margin="30px auto">
-      <Box fontSize="30px" textAlign="center" p="20px 5px 30px" fontWeight="700">
+      <Box fontSize="30px" textAlign="center" p="20px 5px 30px" fontWeight="600">
         <span role="img" aria-label="">
           🔥
         </span>{' '}
@@ -69,7 +69,7 @@ const CarouselComponent = ({ products }) => {
                     <Flex direction="column" maxWidth="200px" p="5px 0">
                       <Box>{product.name}</Box>
                       <Flex justifyContent="flex-start" p="5px 0">
-                        <Box color="mainRed" fontSize="19px" fontWeight="700" mr="15px">
+                        <Box color="mainRed" fontSize="19px" fontWeight="500" mr="15px">
                           £{product.price}
                         </Box>
                         <Box

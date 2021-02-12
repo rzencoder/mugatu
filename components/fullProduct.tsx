@@ -108,14 +108,14 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
           </Box>
         </Flex>
         <Box margin="5px 0 0">
-          <Box as="span" fontWeight="700">
+          <Box as="span" fontWeight="600">
             colour:
           </Box>{' '}
           {colour}
         </Box>
         <Flex direction="column">
           <Box margin="10px 0 5px">
-            <Box as="span" fontWeight="700">
+            <Box as="span" fontWeight="600">
               size:
             </Box>{' '}
             <Box as="span" textTransform="uppercase">
@@ -148,7 +148,7 @@ const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
             ))}
           </Flex>
         </Flex>
-        <Box minHeight="40px" padding="10px 0 0" fontWeight="700" fontSize="20px">
+        <Box minHeight="40px" padding="10px 0 0" fontWeight="500" fontSize="20px">
           {displayStockMessage()}
         </Box>
         <Flex alignItems="flex-end" margin="10px 0">

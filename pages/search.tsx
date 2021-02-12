@@ -31,7 +31,7 @@ export default function Search() {
           {searchInput && (
             <>
               <Box fontSize="20px">search results for</Box>
-              <Box fontSize="28px" fontWeight="700">
+              <Box fontSize="28px" fontWeight="600">
                 &ldquo;{searchInput}&ldquo;
               </Box>
               {searchProducts.length > 0 && <Box p="10px 0 0">{searchProducts.length} items</Box>}

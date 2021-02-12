@@ -82,7 +82,7 @@ export default function Home() {
             justifyContent="center"
             alignItems="center"
             fontSize={['20px', '24px', '26px']}
-            fontWeight="700"
+            fontWeight="500"
           >
             <Box minWidth="60px">
               <Image src="/icons/delivery.png" width="60px" height="60px" role="presentation" />
@@ -108,7 +108,7 @@ export default function Home() {
                 alignItems="center"
                 height="100%"
               >
-                <Box fontSize="50px" fontWeight="700">
+                <Box fontSize="50px" fontWeight="500">
                   latest women&apos;s
                 </Box>
                 <NextLink href="/women/catalog" passHref>
@@ -141,7 +141,7 @@ export default function Home() {
                 width="100%"
                 height="100%"
               >
-                <Box fontSize="50px" fontWeight="700">
+                <Box fontSize="50px" fontWeight="500">
                   latest men&apos;s
                 </Box>
                 <NextLink href="/men/catalog" passHref>

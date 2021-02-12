@@ -6,7 +6,6 @@ import { displayTickOnSelected } from '@/utils/filter'
 // Display filter component on larger screens
 const Desktop = ({ options, updateQuery, filterQuery }) => {
   const { colorMode } = useColorMode()
-  console.log(options)
   return (
     <Flex display={['none', null, 'flex']} padding="10px 0">
       {options.map((option) => (
