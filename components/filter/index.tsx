@@ -9,6 +9,7 @@ import {
   updateQueryData,
   checkAnyFilterSelected,
   getFilterOptions,
+  formatCategoryFilterQuery,
 } from '@/utils/filter'
 import { useProducts } from '@/context/productsContext'
 import { useRouter } from 'next/dist/client/router'
