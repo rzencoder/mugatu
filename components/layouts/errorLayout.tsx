@@ -10,7 +10,9 @@ const ErrorLayout = ({ message }) => {
       minHeight="300px"
       margin="100px auto"
     >
-      <Heading as="h2">{message}</Heading>
+      <Heading as="h2" fontWeight="600">
+        {message}
+      </Heading>
       <Flex direction="column" mt="20px">
         <Box m="30px">you can go back or try these links</Box>
         <Flex

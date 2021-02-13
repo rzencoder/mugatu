@@ -26,6 +26,7 @@ export default function CategoryPage({ gender, title, query }) {
           p={['25px 10px 10px', '15px 10px 10px']}
           textTransform="lowercase"
           textAlign="center"
+          fontWeight="600"
         >
           {gender}&apos;s {title}
         </Heading>

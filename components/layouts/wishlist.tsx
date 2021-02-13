@@ -34,7 +34,6 @@ export default function Wishlist() {
   //Move item into shopping bag and remove from wishlist
   const moveToBag = (item) => {
     const chosenItem = selectedProducts.find((product) => product.id === item.id)
-    // TO DO - ADD TO BAG
     addToBag({ ...chosenItem, quantity: 1 })
     removeSelected(item)
     removeFromWishlist(item)
@@ -48,8 +47,8 @@ export default function Wishlist() {
 
   return (
     <Flex direction="column" align="center" p={['20px 5px', '20px']} minHeight="500px">
-      <Heading as="h2" margin="10px 0 20px">
-        {wishlist && wishlist.length !== 0 && 'Wishlist'}
+      <Heading as="h2" margin="10px 0 20px" fontWeight="600">
+        {wishlist && wishlist.length !== 0 && 'wishlist'}
       </Heading>
       <Flex
         height="100%"
@@ -98,7 +97,7 @@ export default function Wishlist() {
                   ml="10px"
                   justify="space-between"
                 >
-                  <Box fontSize="18px" textTransform="lowercase" fontWeight="700">
+                  <Box fontSize="18px" textTransform="lowercase" fontWeight="600">
                     {item.name}
                   </Box>
                   <Flex direction="column">

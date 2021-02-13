@@ -13,27 +13,16 @@ import {
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
+import { calculateNumOfItems, calculateSubTotal } from '../../utils/bag'
 
 const BagPopOver = () => {
   const { colorMode } = useColorMode()
   const { bag, removeFromBag } = useBag()
 
-  const calculateSubTotal = () => {
-    const total = bag.reduce((acc, cur) => {
-      return cur.price * cur.quantity + acc
-    }, 0)
-    return total.toFixed(2)
-  }
-
-  const calculateNumOfItems = () => {
-    return bag.reduce((acc, cur) => {
-      return acc + parseInt(cur.quantity)
-    }, 0)
-  }
-
   if (!bag || bag.length === 0) {
     return null
   }
+
   return (
     <PopoverContent
       display={['none', null, null, 'block']}
@@ -45,8 +34,8 @@ const BagPopOver = () => {
       </PopoverHeader>
       <PopoverBody>
         <Flex direction="column">
-          <Box fontWeight="600">{`${calculateNumOfItems()} item${
-            calculateNumOfItems() > 1 ? 's' : ''
+          <Box fontWeight="600">{`${calculateNumOfItems(bag)} item${
+            calculateNumOfItems(bag) > 1 ? 's' : ''
           }`}</Box>
           <Flex direction="column" height="180px" overflowY="scroll">
             {bag.map((item) => {
@@ -62,7 +51,9 @@ const BagPopOver = () => {
                     justifyContent="space-between"
                     textTransform="lowercase"
                   >
-                    <Box fontSize="15px">{item.name}</Box>
+                    <Box fontWeight="500" fontSize="15px">
+                      {item.name}
+                    </Box>
                     <Flex direction="column" width="80%" fontSize="13px">
                       <Box>{item.colour}</Box>
                       <Box>size: {item.selectedSize}</Box>
@@ -88,7 +79,7 @@ const BagPopOver = () => {
           </Flex>
           <Flex justifyContent="space-between" alignItems="center" p="12px 0" fontSize="18px">
             <Box>subtotal</Box>
-            <Box fontWeight="600">£{calculateSubTotal()}</Box>
+            <Box fontWeight="600">£{calculateSubTotal(bag)}</Box>
           </Flex>
           <NextLink href="/bag" passHref>
             <Link>

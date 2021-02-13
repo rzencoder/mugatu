@@ -2,7 +2,6 @@ import { Flex, Box } from '@chakra-ui/react'
 import { Products, Sort, Filter } from '..'
 
 export default function Catalog({ products }) {
-  console.log('catalog')
   return (
     <Flex
       margin={['10px 10px', '10px 20px', '10px auto']}
