@@ -51,13 +51,6 @@ const useProvideProducts = () => {
     }
   }
 
-  const updateProductsBySearch = async (searchList) => {
-    const result = await fetchProducts()
-    const searchIds = searchList.map((el) => el.item.name)
-    console.log(products)
-    console.log(searchIds)
-  }
-
   return {
     products,
     loading,
@@ -66,7 +59,6 @@ const useProvideProducts = () => {
     updateGender,
     getFilteredProduct,
     sort,
-    updateProductsBySearch,
     setQuery,
   }
 }

@@ -1,8 +1,7 @@
 import { formatResponseData } from '../../utils/'
-import { gql } from 'graphql-request'
-import { QueryDocumentKeys } from 'graphql/language/visitor'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { graphQLClient } from '../../graphql/client'
+import { GET_PRODUCTS_BY_GENDER } from 'graphql/queries'
 
 interface searchParams {
   product?: string
@@ -59,44 +58,14 @@ const filterItems = (query, items) => {
       )
     })
   }
-
   return filteredItems
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { query } = req
-  console.log(query)
   if (!checkSearchParams(query)) return res.status(400).json({ error: 'error' })
-
-  const response = await graphQLClient.request(
-    gql`
-      query GetByGender($gender: String!) {
-        productCollection(where: { gender: $gender }) {
-          items {
-            name
-            slug
-            price
-            rrp
-            category
-            colour
-            sizes
-            popular
-            gender
-            image {
-              url(transform: { width: 400 })
-            }
-            sys {
-              id
-            }
-          }
-        }
-      }
-    `,
-    { gender: query.gender }
-  )
-
+  const response = await graphQLClient.request(GET_PRODUCTS_BY_GENDER, { gender: query.gender })
   const items = formatResponseData(response.productCollection.items)
   const filteredItems = filterItems(query, items)
-  console.log('filter')
   res.status(200).json({ data: filteredItems })
 }

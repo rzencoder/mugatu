@@ -11,18 +11,17 @@ import {
   MenuItem,
 } from '@chakra-ui/react'
 import { useBag } from '../context/bagContext'
-import { ProductData } from '../types/productData'
 import Image from 'next/image'
 import { useState } from 'react'
 import { ImageInfo } from '.'
 import { useWishlist } from '@/context/wishlistContext'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 
-const FullProduct = ({ productData }: { productData: any }): JSX.Element => {
+const FullProduct = ({ productData }) => {
   const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(1)
-  const { name, id, image, price, rrp, colour, sizes, popular } = productData
-  const { bag, addToBag } = useBag()
+  const { name, image, price, rrp, colour, sizes, popular } = productData
+  const { addToBag } = useBag()
   const { addToWishlist } = useWishlist()
   const { colorMode } = useColorMode()
   const toast = useToast()

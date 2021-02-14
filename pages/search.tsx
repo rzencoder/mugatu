@@ -9,7 +9,6 @@ export default function Search() {
   const { searchInput, searchProducts, setLoadSearchProducts } = useSearch()
 
   useEffect(() => {
-    console.log('fetching')
     setLoadSearchProducts(true)
   }, [])
 

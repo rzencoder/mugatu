@@ -1,2 +1,5 @@
 export { default as GET_PRODUCT_BY_SLUG } from './getProductBySlug'
 export { default as GET_ALL_PRODUCTS_IDS } from './getAllProductsIds'
+export { default as GET_PRODUCTS_BY_GENDER } from './getProductsByGender'
+export { default as GET_SEARCH_DATA } from './getSearchData'
+export { default as GET_ALL_PRODUCTS } from './getAllProducts'

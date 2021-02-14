@@ -12,6 +12,7 @@ const formatCategoryFilterQuery = (path) => {
   if (category) {
     category = `product=${category}`
   }
+  return category
 }
 
 export default formatCategoryFilterQuery

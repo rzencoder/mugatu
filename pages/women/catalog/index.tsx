@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { Layout, Catalog } from '../../../components/layouts'
 
 export default function WomenCatalog() {
-  const { products, loading, updateGender, setQuery } = useProducts()
+  const { updateGender, setQuery } = useProducts()
 
   useEffect(() => {
     updateGender('female')
@@ -18,7 +18,9 @@ export default function WomenCatalog() {
         <title>Women&apos;s Fashion | Mugatu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>{loading ? <Loader /> : <Catalog products={products} />}</Layout>
+      <Layout>
+        <Catalog />
+      </Layout>
     </>
   )
 }

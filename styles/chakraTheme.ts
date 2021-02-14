@@ -18,7 +18,8 @@ const styles = {
       body: {
         color: props.colorMode === 'light' ? '#222' : 'mainWhite',
         bg: props.colorMode === 'light' ? 'mainWhite' : 'mainBlack',
-        fontFamily: 'Poppins',
+        fontFamily:
+          '"Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" ',
       },
       flex: {},
     }),

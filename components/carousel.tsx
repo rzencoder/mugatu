@@ -1,42 +1,10 @@
 import { Box, Flex, Link, useColorMode } from '@chakra-ui/react'
 import Image from 'next/image'
-import { useProducts } from '@/context/productsContext'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import NextLink from 'next/link'
-
-const settings = {
-  dots: false,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  initialSlide: 0,
-  responsive: [
-    {
-      breakpoint: 992,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-      },
-    },
-    {
-      breakpoint: 767,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-      },
-    },
-    {
-      breakpoint: 360,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-}
+import settings from '../config/carouselSettings'
 
 const CarouselComponent = ({ products }) => {
   const { colorMode } = useColorMode()

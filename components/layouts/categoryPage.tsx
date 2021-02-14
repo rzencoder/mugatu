@@ -26,11 +26,11 @@ export default function CategoryPage({ gender, title, query }) {
           p={['25px 10px 10px', '15px 10px 10px']}
           textTransform="lowercase"
           textAlign="center"
-          fontWeight="600"
+          fontWeight="500"
         >
           {gender}&apos;s {title}
         </Heading>
-        {loading ? <Loader /> : <Catalog products={products} />}
+        {loading ? <Loader /> : <Catalog />}
       </Layout>
     </>
   )

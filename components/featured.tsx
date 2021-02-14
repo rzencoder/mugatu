@@ -1,10 +1,8 @@
-import { Box, Flex, Link, useColorMode } from '@chakra-ui/react'
+import { Box, Flex, Link } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
 export default function Featured({ items, gender }): JSX.Element {
-  const { colorMode } = useColorMode()
-
   return (
     <Box width="100%" position="relative">
       <Box
