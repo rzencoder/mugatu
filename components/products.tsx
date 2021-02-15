@@ -1,23 +1,13 @@
-import { useProducts } from '@/context/productsContext'
 import { useWishlist } from '@/context/wishlistContext'
 import { Box, Flex, Link, useColorMode, Button, useToast } from '@chakra-ui/react'
-import { useRouter } from 'next/dist/client/router'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import { useEffect } from 'react'
 import { Toast } from '.'
 
 export default function Products({ products }) {
   const { colorMode } = useColorMode()
   const { addToWishlist } = useWishlist()
   const toast = useToast()
-  const { gender, updateGender } = useProducts()
-  const router = useRouter()
-
-  useEffect(() => {
-    const paths = router.asPath.split('/')
-    paths[1] === 'women' ? updateGender('female') : updateGender('male')
-  }, [gender])
 
   if (!products || products.length === 0) return null
 

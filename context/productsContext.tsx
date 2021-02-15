@@ -13,7 +13,7 @@ export const useProducts = () => {
 }
 
 const useProvideProducts = () => {
-  const [products, setProducts] = useState({})
+  const [products, setProducts] = useState([])
   const [gender, setGender] = useState('female')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -37,6 +37,7 @@ const useProvideProducts = () => {
   }, [query, gender])
 
   const getFilteredProduct = (filter) => {
+    console.log('here')
     setQuery(filter)
   }
 

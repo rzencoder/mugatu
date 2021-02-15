@@ -1,23 +1,12 @@
-import { Loader } from '..'
-import { useProducts } from '@/context/productsContext'
 import { Heading } from '@chakra-ui/react'
 import Head from 'next/head'
-import { useEffect } from 'react'
 import { Layout, Catalog } from './'
 
-export default function CategoryPage({ gender, title, query }) {
-  const { loading, getFilteredProduct } = useProducts()
-
-  useEffect(() => {
-    getFilteredProduct(`../api/filter?product=${query}&`)
-  }, [])
-
+export default function CategoryPage({ title, productPage }) {
   return (
     <>
       <Head>
-        <title>
-          {gender}&apos;s {title} | Mugatu
-        </title>
+        <title>{title} | Mugatu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
@@ -28,9 +17,9 @@ export default function CategoryPage({ gender, title, query }) {
           textAlign="center"
           fontWeight="500"
         >
-          {gender}&apos;s {title}
+          {title}
         </Heading>
-        <Catalog />
+        <Catalog productPage={productPage} />
       </Layout>
     </>
   )

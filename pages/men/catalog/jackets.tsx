@@ -1,5 +1,5 @@
 import { CategoryPage } from '../../../components/layouts'
 
-const Jackets = () => <CategoryPage title="jackets" gender="Men" query="jacket" />
+const Jackets = () => <CategoryPage title="Men's Jackets" productPage="jacket" />
 
 export default Jackets
