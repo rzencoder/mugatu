@@ -4,6 +4,7 @@ import { DeleteIcon } from '@chakra-ui/icons'
 import { Flex, Box, Heading, Button, Select, useToast } from '@chakra-ui/react'
 import Image from 'next/image'
 import { useState } from 'react'
+import { Toast } from '..'
 
 export default function Wishlist() {
   const { wishlist, removeFromWishlist } = useWishlist()
@@ -38,10 +39,9 @@ export default function Wishlist() {
     removeSelected(item)
     removeFromWishlist(item)
     toast({
-      title: 'Item moved to your shopping cart.',
-      status: 'success',
       duration: 3000,
-      isClosable: true,
+      // eslint-disable-next-line react/display-name
+      render: () => <Toast title="Item moved to your shopping cart" status="success" />,
     })
   }
 
@@ -74,10 +74,11 @@ export default function Wishlist() {
                       onClick={() => {
                         removeFromWishlist(item)
                         toast({
-                          title: 'Item removed from wishlist',
-                          status: 'success',
                           duration: 3000,
-                          isClosable: true,
+                          // eslint-disable-next-line react/display-name
+                          render: () => (
+                            <Toast title="Item removed from wishlist" status="success" />
+                          ),
                         })
                       }}
                       variant="transparentBg"

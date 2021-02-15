@@ -5,6 +5,7 @@ import { useRouter } from 'next/dist/client/router'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { useEffect } from 'react'
+import { Toast } from '.'
 
 export default function Products({ products }) {
   const { colorMode } = useColorMode()
@@ -81,10 +82,11 @@ export default function Products({ products }) {
                       const result = addToWishlist(el)
                       if (result) {
                         toast({
-                          title: 'Item added to your wishlist',
-                          status: 'success',
                           duration: 3000,
-                          isClosable: true,
+                          // eslint-disable-next-line react/display-name
+                          render: () => (
+                            <Toast title="Item added to your wishlist" status="success" />
+                          ),
                         })
                       }
                     }}

@@ -13,7 +13,7 @@ import {
 import { useBag } from '../context/bagContext'
 import Image from 'next/image'
 import { useState } from 'react'
-import { ImageInfo } from '.'
+import { ImageInfo, Toast } from '.'
 import { useWishlist } from '@/context/wishlistContext'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 
@@ -30,11 +30,15 @@ const FullProduct = ({ productData }) => {
     const product = { ...productData, selectedSize, quantity }
     addToBag(product)
     toast({
-      title: 'Item Added!',
-      description: 'Your item has been added to your shopping bag',
-      status: 'success',
       duration: 3000,
-      isClosable: true,
+      // eslint-disable-next-line react/display-name
+      render: () => (
+        <Toast
+          title="Item Added!"
+          message="Your item has been added to your shopping bag"
+          status="success"
+        />
+      ),
     })
   }
 

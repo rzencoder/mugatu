@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { Layout, Catalog } from './'
 
 export default function CategoryPage({ gender, title, query }) {
-  const { products, loading, getFilteredProduct } = useProducts()
+  const { loading, getFilteredProduct } = useProducts()
 
   useEffect(() => {
     getFilteredProduct(`../api/filter?product=${query}&`)
@@ -30,7 +30,7 @@ export default function CategoryPage({ gender, title, query }) {
         >
           {gender}&apos;s {title}
         </Heading>
-        {loading ? <Loader /> : <Catalog />}
+        <Catalog />
       </Layout>
     </>
   )
