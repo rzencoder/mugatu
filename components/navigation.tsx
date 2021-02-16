@@ -25,6 +25,7 @@ export default function Navigation() {
   // Handle Menu on mobile
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [showSearch, setShowSearch] = useState(false)
+  const [gender, setGender] = useState('women')
 
   return (
     <nav>
@@ -53,7 +54,7 @@ export default function Navigation() {
           <Button variant="icon" display={['inline-flex', null, 'none']} onClick={onOpen}>
             <HamburgerIcon w={8} h={8} />
           </Button>
-          <MobileNavMenu isOpen={isOpen} onClose={onClose} />
+          <MobileNavMenu isOpen={isOpen} onClose={onClose} gender={gender} setGender={setGender} />
           <Flex
             alignItems="center"
             justifyContent={['flex-end', null, 'space-between']}

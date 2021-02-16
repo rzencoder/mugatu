@@ -1,7 +1,5 @@
-import { useProducts } from '@/context/productsContext'
 import { Flex } from '@chakra-ui/react'
 import Head from 'next/head'
-import { useEffect } from 'react'
 import { Jumbotron, Featured, Carousel, Banner, SmallBanner } from '../../components'
 import { Layout } from '../../components/layouts'
 import { graphQLClient } from '../../graphql/client'
@@ -10,12 +8,6 @@ import { featuredItemsMen } from 'data/featuredItems'
 import { GET_PRODUCTS_BY_GENDER } from 'graphql/queries'
 
 export default function Men({ productData }) {
-  const { updateGender } = useProducts()
-
-  useEffect(() => {
-    updateGender('male')
-  }, [])
-
   return (
     <>
       <Head>

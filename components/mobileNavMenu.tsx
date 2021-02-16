@@ -20,19 +20,16 @@ import {
   Switch,
   Link,
 } from '@chakra-ui/react'
-import { useState } from 'react'
 import { FooterMobile } from '.'
 import { genderData, menuOptions } from '../data/mobileNavMenuData'
 import NextLink from 'next/link'
 import Image from 'next/image'
 
-const MobileNavMenu = ({ isOpen, onClose }) => {
-  // Gender just for this component - Not using context from productContext
-  const [genderInMenu, setGenderInMenu] = useState('women')
+const MobileNavMenu = ({ isOpen, onClose, gender, setGender }) => {
   const { colorMode, toggleColorMode } = useColorMode()
 
   const getGenderDataIndex = () => {
-    return genderData.map((el) => el.gender).indexOf(genderInMenu)
+    return genderData.map((el) => el.gender).indexOf(gender)
   }
 
   return (
@@ -52,11 +49,11 @@ const MobileNavMenu = ({ isOpen, onClose }) => {
                 textTransform="lowercase"
                 _hover={{ color: 'initial' }}
               >
-                {genderInMenu}
+                {gender}
               </MenuButton>
               <MenuList bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'} fontSize="18px">
-                <MenuItem onClick={() => setGenderInMenu('women')}>women</MenuItem>
-                <MenuItem onClick={() => setGenderInMenu('men')}>men</MenuItem>
+                <MenuItem onClick={() => setGender('women')}>women</MenuItem>
+                <MenuItem onClick={() => setGender('men')}>men</MenuItem>
               </MenuList>
             </Menu>
             <DrawerCloseButton
@@ -116,25 +113,21 @@ const MobileNavMenu = ({ isOpen, onClose }) => {
                 id="dark-mode"
                 onChange={toggleColorMode}
                 isChecked={colorMode === 'dark'}
-                colorScheme={genderInMenu === 'men' ? 'teal' : 'pink'}
+                colorScheme={gender === 'men' ? 'teal' : 'pink'}
               />
             </FormControl>
 
             <Flex direction="column">
-              <NextLink href={`/${genderInMenu}/catalog`} passHref>
+              <NextLink href={`/${gender}/catalog`} passHref>
                 <Link>
                   <Box position="relative" margin="10px 0">
                     <Box display="flex">
-                      <Image
-                        src={`/menu/menu-feature-${genderInMenu}.jpg`}
-                        width={300}
-                        height={243}
-                      />
+                      <Image src={`/menu/menu-feature-${gender}.jpg`} width={300} height={243} />
                     </Box>
                     <Box
                       position="absolute"
                       top="0"
-                      background={genderInMenu === 'women' ? '#ff0052' : '#009da5'}
+                      background={gender === 'women' ? '#ff0052' : '#009da5'}
                       opacity="0.4"
                       width="100%"
                       height="100%"

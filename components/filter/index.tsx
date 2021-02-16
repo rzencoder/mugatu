@@ -8,7 +8,7 @@ import { updateQueryData, checkAnyFilterSelected, getFilterOptions } from '@/uti
 import { useRouter } from 'next/dist/client/router'
 import { getPageGender } from '../../utils/'
 
-export default function Filter({ filterData, setFilterData }): JSX.Element {
+export default function Filter({ setFilterData }): JSX.Element {
   const [filterQuery, setFilterQuery] = useState(initialQuery)
   const [showFilter, setShowFilter] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -21,18 +21,10 @@ export default function Filter({ filterData, setFilterData }): JSX.Element {
   // Update filter object on user select. If desktop user then also fetch the products else on mobile only fetch when the user clicks the button to confirm to view filtered products
   const updateQuery = (filterType, newFilterItem, device = 'mobile') => {
     const newSearchQuery = updateQueryData(filterType, newFilterItem, filterQuery)
-    console.log(newSearchQuery)
     setFilterQuery(newSearchQuery)
-    getFilteredProducts(newSearchQuery)
-  }
-
-  // Fetch filtered products from api
-  const getFilteredProducts = (filterQuery) => {
-    setFilterData(filterQuery)
-    // const queryUrl = buildQueryUrl(filterQuery)
-    // const path = router.pathname.split('/')
-    // const category = formatCategoryFilterQuery(path)
-    // getFilteredProduct(`../api/filter?${category}&${queryUrl}&`)
+    if (device === 'desktop') {
+      setFilterData(newSearchQuery)
+    }
   }
 
   // Handling whether a hidden menu or on display flex box is displayed on different screen sizes
@@ -65,7 +57,7 @@ export default function Filter({ filterData, setFilterData }): JSX.Element {
         onClose={onClose}
         options={getFilterOptions(options, router, gender)}
         updateQuery={updateQuery}
-        getFilteredProducts={getFilteredProducts}
+        getFilteredProducts={setFilterData}
         filterQuery={filterQuery}
         setFilterQuery={setFilterQuery}
       />
