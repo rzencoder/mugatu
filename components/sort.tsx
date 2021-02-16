@@ -1,10 +1,18 @@
-import { useProducts } from '@/context/productsContext'
-import { Flex, Menu, MenuButton, MenuItem, Button, MenuList, useColorMode } from '@chakra-ui/react'
-import sortTypes from 'data/sortTypes'
+import { CheckIcon } from '@chakra-ui/icons'
+import {
+  Flex,
+  Menu,
+  MenuButton,
+  MenuItem,
+  Button,
+  MenuList,
+  useColorMode,
+  Box,
+} from '@chakra-ui/react'
+import sortTypes from 'data/sortValues'
 
-export default function Sort(): JSX.Element {
+export default function Sort({ sortValue, setSortValue }): JSX.Element {
   const { colorMode } = useColorMode()
-  const { sort } = useProducts()
 
   return (
     <Flex position="relative">
@@ -29,8 +37,15 @@ export default function Sort(): JSX.Element {
         >
           {sortTypes.map((item) => {
             return (
-              <MenuItem key={`sort-${item.value}`} onClick={() => sort(item.value)}>
-                {item.value}
+              <MenuItem
+                key={`sort-${item.value}`}
+                onClick={() => setSortValue(item.value)}
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <Box>{item.name}</Box>
+                {item.value === sortValue ? <CheckIcon /> : ''}
               </MenuItem>
             )
           })}

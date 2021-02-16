@@ -4,41 +4,35 @@ import FilterDesktop from './desktop'
 import FilterMobile from './mobile'
 import initialQuery from 'data/filterInitialQuery'
 import options from 'data/filterOptions'
-import {
-  buildQueryUrl,
-  updateQueryData,
-  checkAnyFilterSelected,
-  getFilterOptions,
-  formatCategoryFilterQuery,
-} from '@/utils/filter'
-import { useProducts } from '@/context/productsContext'
+import { updateQueryData, checkAnyFilterSelected, getFilterOptions } from '@/utils/filter'
 import { useRouter } from 'next/dist/client/router'
+import { getPageGender } from '../../utils/'
 
-export default function Filter(): JSX.Element {
+export default function Filter({ filterData, setFilterData }): JSX.Element {
   const [filterQuery, setFilterQuery] = useState(initialQuery)
   const [showFilter, setShowFilter] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { colorMode } = useColorMode()
-  const { getFilteredProduct, gender } = useProducts()
   const router = useRouter()
+  const gender = getPageGender(router.pathname)
   // 767px is the third breakpoint with the chakra styling
   const [isLargerThan767] = useMediaQuery('(min-width: 767px)')
 
   // Update filter object on user select. If desktop user then also fetch the products else on mobile only fetch when the user clicks the button to confirm to view filtered products
   const updateQuery = (filterType, newFilterItem, device = 'mobile') => {
     const newSearchQuery = updateQueryData(filterType, newFilterItem, filterQuery)
+    console.log(newSearchQuery)
     setFilterQuery(newSearchQuery)
-    if (device === 'desktop') {
-      getFilteredProducts(newSearchQuery)
-    }
+    getFilteredProducts(newSearchQuery)
   }
 
   // Fetch filtered products from api
   const getFilteredProducts = (filterQuery) => {
-    const queryUrl = buildQueryUrl(filterQuery)
-    const path = router.pathname.split('/')
-    const category = formatCategoryFilterQuery(path)
-    getFilteredProduct(`../api/filter?${category}&${queryUrl}&`)
+    setFilterData(filterQuery)
+    // const queryUrl = buildQueryUrl(filterQuery)
+    // const path = router.pathname.split('/')
+    // const category = formatCategoryFilterQuery(path)
+    // getFilteredProduct(`../api/filter?${category}&${queryUrl}&`)
   }
 
   // Handling whether a hidden menu or on display flex box is displayed on different screen sizes

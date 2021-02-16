@@ -67,5 +67,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await graphQLClient.request(GET_PRODUCTS_BY_GENDER, { gender: query.gender })
   const items = formatResponseData(response.productCollection.items)
   const filteredItems = filterItems(query, items)
+  console.log('filter')
   res.status(200).json({ products: filteredItems })
 }

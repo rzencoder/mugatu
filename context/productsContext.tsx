@@ -14,6 +14,7 @@ export const useProducts = () => {
 
 const useProvideProducts = () => {
   const [products, setProducts] = useState([])
+  const [filterData, setFilterData] = useState([])
   const [gender, setGender] = useState('female')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -61,5 +62,7 @@ const useProvideProducts = () => {
     getFilteredProduct,
     sort,
     setQuery,
+    filterData,
+    setFilterData,
   }
 }
