@@ -5,18 +5,17 @@ import { GET_ALL_PRODUCTS_IDS, GET_PRODUCT_BY_SLUG } from '../../../graphql/quer
 import { formatResponseData, getAllProductsIds } from '../../../utils'
 import { FullProduct } from '../../../components'
 import { Layout } from '../../../components/layouts'
-import { ProductData } from '../../../types/productData'
 import capitaliseFirstLetter from '@/utils/helpers/capitaliseFirstLetter'
 
-export default function Product({ productData }: { productData: ProductData }): JSX.Element {
+export default function Product({ item }): JSX.Element {
   return (
     <>
       <Head>
-        <title>{capitaliseFirstLetter(productData.name)} | Mugatu</title>
+        <title>{capitaliseFirstLetter(item.name)} | Mugatu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <FullProduct productData={productData} />
+        <FullProduct item={item} />
       </Layout>
     </>
   )
@@ -35,7 +34,7 @@ export async function getStaticProps({ params }) {
   const formattedData = formatResponseData(data.productCollection.items)
   return {
     props: {
-      productData: formattedData[0],
+      item: formattedData[0],
     },
   }
 }

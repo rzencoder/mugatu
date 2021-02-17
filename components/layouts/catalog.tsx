@@ -7,12 +7,16 @@ import initialQuery from 'data/filterInitialQuery'
 import { buildQueryUrl } from '@/utils/filter'
 import useProducts from 'hooks/useProducts'
 
-export default function Catalog({ productPage }) {
+interface CatalogProps {
+  productPage: string
+}
+
+export default function Catalog({ productPage }: CatalogProps): JSX.Element {
   const [filterData, setFilterData] = useState(initialQuery)
   const [sortValue, setSortValue] = useState('popularity')
   const router = useRouter()
   const gender = getPageGender(router.pathname)
-  const { data, isLoading, isError } = useProducts(buildQueryUrl(productPage, gender, filterData))
+  const { data, isLoading } = useProducts(buildQueryUrl(productPage, gender, filterData))
 
   return (
     <Flex

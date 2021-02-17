@@ -7,7 +7,12 @@ import SearchMobile from './searchMobile'
 import SearchDesktop from './searchDesktop'
 import searchOptions from '../../config/search'
 
-const Search = ({ showSearch, setShowSearch }) => {
+interface SearchProps {
+  showSearch: boolean
+  setShowSearch: (showSearch: boolean) => void
+}
+
+const Search = ({ showSearch, setShowSearch }: SearchProps): JSX.Element => {
   const { searchInput, searchData, setSearchResults, setLoadSearchProducts } = useSearch()
   const fuse = new Fuse(searchData, searchOptions)
   const router = useRouter()
@@ -22,10 +27,11 @@ const Search = ({ showSearch, setShowSearch }) => {
     } else if (searchInput.length === 0) {
       setSearchResults([])
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchInput])
 
   // handle updating matching search products on submitting a search input
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoadSearchProducts(true)
     setShowSearch(false)

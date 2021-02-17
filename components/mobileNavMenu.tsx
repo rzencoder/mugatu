@@ -25,7 +25,14 @@ import { genderData, menuOptions } from '../data/mobileNavMenuData'
 import NextLink from 'next/link'
 import Image from 'next/image'
 
-const MobileNavMenu = ({ isOpen, onClose, gender, setGender }) => {
+interface MobileNavMenuProps {
+  isOpen: boolean
+  onClose: () => void
+  gender: string
+  setGender: (gender: string) => void
+}
+
+const MobileNavMenu = ({ isOpen, onClose, gender, setGender }: MobileNavMenuProps): JSX.Element => {
   const { colorMode, toggleColorMode } = useColorMode()
 
   const getGenderDataIndex = () => {

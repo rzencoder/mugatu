@@ -1,10 +1,15 @@
 import { useWishlist } from '@/context/wishlistContext'
+import { Item } from '@/types/item'
 import { Box, Flex, Link, useColorMode, Button, useToast } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { Toast } from '.'
 
-export default function Products({ products }) {
+interface ProductsProps {
+  products: Item[]
+}
+
+export default function Products({ products }: ProductsProps): JSX.Element {
   const { colorMode } = useColorMode()
   const { addToWishlist } = useWishlist()
   const toast = useToast()

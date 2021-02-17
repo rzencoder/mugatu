@@ -1,19 +1,20 @@
 import { useBag } from '@/context/bagContext'
 import { useWishlist } from '@/context/wishlistContext'
+import { Item } from '@/types/item'
 import { DeleteIcon } from '@chakra-ui/icons'
 import { Flex, Box, Heading, Button, Select, useToast } from '@chakra-ui/react'
 import Image from 'next/image'
 import { useState } from 'react'
 import { Toast } from '..'
 
-export default function Wishlist() {
+export default function Wishlist(): JSX.Element {
   const { wishlist, removeFromWishlist } = useWishlist()
   const [selectedProducts, setSelectedProducts] = useState([])
   const toast = useToast()
   const { addToBag } = useBag()
 
   // Storing the user selected product and size in state
-  const handleSizeSelection = (item, size) => {
+  const handleSizeSelection = (item: Item, size: string) => {
     const filteredSelectedProducts = [...selectedProducts].filter(
       (product) => product.id !== item.id
     )
@@ -21,19 +22,19 @@ export default function Wishlist() {
   }
 
   // Helper checking if user has selected a size to display correct info
-  const checkIfSizeIsChosen = (item) => {
+  const checkIfSizeIsChosen = (item: Item) => {
     const foundProducts = selectedProducts.find((product) => product.id === item.id)
     return foundProducts ? true : false
   }
 
   // Remove item from wishlist
-  const removeSelected = (item) => {
+  const removeSelected = (item: Item) => {
     const filteredSelectedProducts = selectedProducts.filter((product) => product.id === item.id)
     setSelectedProducts(filteredSelectedProducts)
   }
 
   //Move item into shopping bag and remove from wishlist
-  const moveToBag = (item) => {
+  const moveToBag = (item: Item) => {
     const chosenItem = selectedProducts.find((product) => product.id === item.id)
     addToBag({ ...chosenItem, quantity: 1 })
     removeSelected(item)
@@ -59,7 +60,7 @@ export default function Wishlist() {
       >
         {wishlist &&
           wishlist.length > 0 &&
-          wishlist.map((item) => {
+          wishlist.map((item: Item) => {
             return (
               <Flex
                 key={`wishlist-${item.id}`}

@@ -1,7 +1,11 @@
 import { Navigation, Footer, Breadcrumb } from '..'
 import { Box } from '@chakra-ui/react'
 
-export default function Layout({ children }) {
+interface LayoutProps {
+  children: React.ReactNode
+}
+
+export default function Layout({ children }: LayoutProps): JSX.Element {
   return (
     <Box>
       <Navigation />

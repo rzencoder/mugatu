@@ -1,7 +1,11 @@
 import NextLink from 'next/link'
 import { Link, Flex, Heading, Box } from '@chakra-ui/react'
 
-const ErrorLayout = ({ message }) => {
+interface ErrorLayoutProps {
+  message: string
+}
+
+const ErrorLayout = ({ message }: ErrorLayoutProps): JSX.Element => {
   return (
     <Flex
       direction="column"

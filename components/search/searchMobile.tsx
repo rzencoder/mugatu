@@ -16,8 +16,19 @@ import {
   useColorMode,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
+import { SearchResults } from '@/types/searchResults'
 
-const SearchMobile = ({ showSearch, setShowSearch, handleSearchSubmit }) => {
+interface SearchMobileProps {
+  showSearch: boolean
+  setShowSearch: (showSearch: boolean) => void
+  handleSearchSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+}
+
+const SearchMobile = ({
+  showSearch,
+  setShowSearch,
+  handleSearchSubmit,
+}: SearchMobileProps): JSX.Element => {
   const { searchResults, searchInput, setSearchInput } = useSearch()
   const { colorMode } = useColorMode()
 
@@ -49,7 +60,7 @@ const SearchMobile = ({ showSearch, setShowSearch, handleSearchSubmit }) => {
             </form>
             <Flex display="column" p="10px 0">
               <Flex display="column" p="10px 0">
-                {searchResults.map((result, index) => {
+                {searchResults.map((result: SearchResults, index: number) => {
                   const productNames = formatSearchResult(searchInput, result)
                   const link = `/${result.item.gender === 'female' ? 'women' : 'men'}/catalog/${
                     result.item.slug

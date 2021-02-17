@@ -18,7 +18,7 @@ import { useBag } from '../context/bagContext'
 import Search from './search'
 import Image from 'next/image'
 
-export default function Navigation() {
+export default function Navigation(): JSX.Element {
   const { colorMode, toggleColorMode } = useColorMode()
   const { bag } = useBag()
   const { wishlist } = useWishlist()

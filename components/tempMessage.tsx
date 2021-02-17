@@ -2,7 +2,7 @@ import { Box, Flex, Link, useColorMode } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
-const TempMessage = () => {
+const TempMessage = (): JSX.Element => {
   const { colorMode } = useColorMode()
 
   return (

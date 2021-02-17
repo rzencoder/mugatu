@@ -1,7 +1,7 @@
 import { CheckCircleIcon, InfoIcon, WarningIcon } from '@chakra-ui/icons'
 import { Box, Flex } from '@chakra-ui/react'
 
-const getToastColour = (status) => {
+const getToastColour = (status: string) => {
   switch (status) {
     case 'success':
       return '#259a54'
@@ -12,7 +12,7 @@ const getToastColour = (status) => {
   }
 }
 
-const getToastIcon = (status) => {
+const getToastIcon = (status: string) => {
   const props = { w: '6', h: '6' }
   switch (status) {
     case 'success':
@@ -24,7 +24,13 @@ const getToastIcon = (status) => {
   }
 }
 
-const Toast = ({ title, message = '', status }) => {
+interface ToastProps {
+  title: string
+  message?: string
+  status: string
+}
+
+const Toast = ({ title, message = '', status }: ToastProps): JSX.Element => {
   return (
     <Box
       color="mainWhite"

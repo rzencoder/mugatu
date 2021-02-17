@@ -1,7 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react'
 import Image from 'next/image'
 
-const SmallBanner = () => {
+const SmallBanner = (): JSX.Element => {
   return (
     <Flex
       color="#222"

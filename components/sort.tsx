@@ -11,7 +11,12 @@ import {
 } from '@chakra-ui/react'
 import sortTypes from 'data/sortValues'
 
-export default function Sort({ sortValue, setSortValue }): JSX.Element {
+interface SortProps {
+  sortValue: string
+  setSortValue: (sortValue: string) => void
+}
+
+export default function Sort({ sortValue, setSortValue }: SortProps): JSX.Element {
   const { colorMode } = useColorMode()
 
   return (

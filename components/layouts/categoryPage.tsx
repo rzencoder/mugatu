@@ -2,7 +2,12 @@ import { Heading } from '@chakra-ui/react'
 import Head from 'next/head'
 import { Layout, Catalog } from './'
 
-export default function CategoryPage({ title, productPage }) {
+interface CategoryPageProps {
+  title: string
+  productPage: string
+}
+
+export default function CategoryPage({ title, productPage }: CategoryPageProps): JSX.Element {
   return (
     <>
       <Head>

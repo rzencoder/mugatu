@@ -3,8 +3,19 @@ import { formatSearchResult } from '../../utils/'
 import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 import { Box, Flex, Button, Input, Link, useColorMode } from '@chakra-ui/react'
 import NextLink from 'next/link'
+import { SearchResults } from '@/types/searchResults'
 
-const SearchDesktop = ({ showSearch, setShowSearch, handleSearchSubmit }) => {
+interface SearchDesktopProps {
+  showSearch: boolean
+  setShowSearch: (showSearch: boolean) => void
+  handleSearchSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+}
+
+const SearchDesktop = ({
+  showSearch,
+  setShowSearch,
+  handleSearchSubmit,
+}: SearchDesktopProps): JSX.Element => {
   const { searchInput, setSearchInput, searchResults } = useSearch()
   const { colorMode } = useColorMode()
 
@@ -73,7 +84,7 @@ const SearchDesktop = ({ showSearch, setShowSearch, handleSearchSubmit }) => {
           boxShadow={`3px 3px 5px ${colorMode === 'light' ? '#ddd' : '#222'}`}
         >
           <Flex direction="column">
-            {searchResults.map((result, index) => {
+            {searchResults.map((result: SearchResults, index: number) => {
               const productNames = formatSearchResult(searchInput, result)
               const link = `/${result.item.gender === 'female' ? 'women' : 'men'}/catalog/${
                 result.item.slug

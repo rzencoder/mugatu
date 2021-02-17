@@ -209,10 +209,15 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
                 const result = addToWishlist(item)
                 if (result) {
                   toast({
-                    title: 'Item added to your wishlist',
-                    status: 'success',
                     duration: 3000,
-                    isClosable: true,
+                    // eslint-disable-next-line react/display-name
+                    render: () => (
+                      <Toast
+                        title="Item saved!"
+                        message="Your item has been added to your wishlist"
+                        status="success"
+                      />
+                    ),
                   })
                 }
               }}
