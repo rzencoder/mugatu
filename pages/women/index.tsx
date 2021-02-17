@@ -32,11 +32,10 @@ export default function Women({ productData }) {
             colour="#fb0862"
             bgColour="#c50f53"
             imageSrc="/landing/women/banner-bg-women.jpg"
-            text="dress to impress"
+            title="dress to impress"
+            text="20% off all dresses"
             linkHref="/women/catalog/dresses"
-          >
-            20% off all dresses
-          </Banner>
+          />
           <Carousel products={productData} />
         </Flex>
       </Layout>

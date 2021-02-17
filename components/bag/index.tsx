@@ -1,11 +1,12 @@
 import { useBag } from '@/context/bagContext'
+import { BagItem as BagItemProps } from '@/types/bagItem'
 import { calculateSubTotal } from '@/utils/bag'
 import { Flex, Box, useColorMode } from '@chakra-ui/react'
 import BagItem from './bagItem'
 import EmptyBag from './emptyBag'
 import Summary from './summary'
 
-const Bag = () => {
+const Bag = (): JSX.Element => {
   const { bag } = useBag()
   const { colorMode } = useColorMode()
   const subtotal = calculateSubTotal(bag)
@@ -35,7 +36,7 @@ const Bag = () => {
             <Box p="0 0 15px" fontWeight="600" fontSize="28px">
               my bag
             </Box>
-            {bag.map((item) => {
+            {bag.map((item: BagItemProps) => {
               return <BagItem key={`bag-item-${item.id}`} item={item} />
             })}
           </Flex>

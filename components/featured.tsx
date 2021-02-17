@@ -2,7 +2,17 @@ import { Box, Flex, Link } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
-export default function Featured({ items, gender }): JSX.Element {
+interface FeaturedProps {
+  gender: string
+  items: {
+    name: string
+    link: string
+    imageUrl: string
+    rotate: number
+  }[]
+}
+
+export default function Featured({ items, gender }: FeaturedProps): JSX.Element {
   return (
     <Box width="100%" position="relative">
       <Box
@@ -47,7 +57,7 @@ export default function Featured({ items, gender }): JSX.Element {
               <NextLink href={item.link} passHref>
                 <Link>
                   <Box padding={['10px 10px 0', '20px 20px 0']} filter="saturate(0.7)">
-                    <Image width={400} height={500} src={item.imageUrl} alt={item.title} />
+                    <Image width={400} height={500} src={item.imageUrl} alt={item.name} />
                   </Box>
                   <Box
                     color={gender === 'female' ? '#ec2392' : '#222'}

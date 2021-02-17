@@ -15,8 +15,13 @@ import {
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { useBag } from '@/context/bagContext'
+import { BagItem } from '@/types/bagItem'
 
-const BagItem = ({ item }) => {
+interface Props {
+  item: BagItem
+}
+
+const BagItemComponent = ({ item }: Props): JSX.Element => {
   const { addToWishlist } = useWishlist()
   const { updateBag, removeFromBag } = useBag()
   const { colorMode } = useColorMode()
@@ -138,4 +143,4 @@ const BagItem = ({ item }) => {
   )
 }
 
-export default BagItem
+export default BagItemComponent

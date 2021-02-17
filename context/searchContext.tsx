@@ -64,5 +64,7 @@ const useProvideSearch = () => {
     searchProducts,
     setSearchProducts,
     setLoadSearchProducts,
+    loading,
+    error,
   } as const
 }

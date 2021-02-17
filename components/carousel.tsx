@@ -5,8 +5,13 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import NextLink from 'next/link'
 import settings from '../config/carouselSettings'
+import { Item } from '@/types/item'
 
-const CarouselComponent = ({ products }) => {
+interface Products {
+  products: Item[]
+}
+
+const CarouselComponent = ({ products }: Products): JSX.Element => {
   const { colorMode } = useColorMode()
 
   return (

@@ -1,7 +1,7 @@
 import { Box, Flex, Link, Button } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
-const EmptyBag = () => {
+const EmptyBag = (): JSX.Element => {
   return (
     <Flex direction="column" justify="center" alignItems="center" minHeight="450px">
       <Box

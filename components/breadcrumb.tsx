@@ -2,7 +2,7 @@ import { Breadcrumb as BreadcrumbContainer, BreadcrumbItem, BreadcrumbLink } fro
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
 
-const Breadcrumb = () => {
+const Breadcrumb = (): JSX.Element => {
   const router = useRouter()
 
   const getPaths = () => {
@@ -18,7 +18,7 @@ const Breadcrumb = () => {
   }
 
   // Get the correct link href for each path
-  const formatLinkHref = (paths, index) => {
+  const formatLinkHref = (paths: string[], index: number) => {
     const path = [...paths]
     path.length = index + 1
     if (path.length === 1) return '/'
@@ -36,7 +36,7 @@ const Breadcrumb = () => {
       separator=">"
       display={['none', 'block']}
     >
-      {paths.map((path, index) => {
+      {paths.map((path: string, index: number) => {
         const pathLink = path.split('-').join(' ').split('?')
         return (
           <BreadcrumbItem key={path} color={index === paths.length - 1 && '#777'}>

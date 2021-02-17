@@ -1,4 +1,5 @@
 import { useBag } from '@/context/bagContext'
+import { BagItem } from '@/types/bagItem'
 import { DeleteIcon } from '@chakra-ui/icons'
 import {
   Box,
@@ -15,7 +16,7 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { calculateNumOfItems, calculateSubTotal } from '../../utils/bag'
 
-const BagPopOver = () => {
+const BagPopOver = (): JSX.Element => {
   const { colorMode } = useColorMode()
   const { bag, removeFromBag } = useBag()
 
@@ -38,7 +39,7 @@ const BagPopOver = () => {
             calculateNumOfItems(bag) > 1 ? 's' : ''
           }`}</Box>
           <Flex direction="column" height="180px" overflowY="scroll">
-            {bag.map((item) => {
+            {bag.map((item: BagItem) => {
               return (
                 <Flex key={`popover-bag-item-${item.name}`} p="10px 0">
                   <Flex minWidth="100px">

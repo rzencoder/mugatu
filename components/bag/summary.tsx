@@ -15,14 +15,18 @@ import { deliveryOptions } from 'data/deliveryOptions'
 import { useEffect, useState } from 'react'
 import { useBag } from '@/context/bagContext'
 
-const Summary = ({ subtotal }) => {
+interface Props {
+  subtotal: number
+}
+
+const Summary = ({ subtotal }: Props): JSX.Element => {
   const { colorMode } = useColorMode()
   const { bag } = useBag()
   const [delivery, setDelivery] = useState(deliveryOptions[0])
 
   // Update delivery prices based on items subtotal
   useEffect(() => {
-    if (parseFloat(subtotal) > 50) {
+    if (subtotal > 50) {
       if (delivery.name === 'standard delivery' || delivery.name === 'click and collect standard') {
         if (delivery.price !== 0) {
           setDelivery({ ...delivery, price: 0 })
@@ -34,6 +38,7 @@ const Summary = ({ subtotal }) => {
         setDelivery({ ...delivery, price: originalPrice.price })
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bag, delivery])
 
   return (
@@ -63,9 +68,7 @@ const Summary = ({ subtotal }) => {
             fontWeight="600"
           >
             <InfoIcon fontSize="22px" mr="15px" />
-            <Box>{`spend £${(50 - parseFloat(subtotal)).toFixed(
-              2
-            )} more to qualify for free delivery`}</Box>
+            <Box>{`spend £${(50 - subtotal).toFixed(2)} more to qualify for free delivery`}</Box>
           </Flex>
         )}
         <Flex direction="column">
@@ -105,7 +108,7 @@ const Summary = ({ subtotal }) => {
         </Flex>
         <Flex justifyContent="space-between" fontSize="22px" fontWeight="600" p="5px 0">
           <Box>total</Box>
-          <Box>£{(parseFloat(subtotal) + delivery.price).toFixed(2)}</Box>
+          <Box>£{(subtotal + delivery.price).toFixed(2)}</Box>
         </Flex>
       </Flex>
       <NextLink href="/checkout" passHref>

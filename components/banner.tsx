@@ -2,7 +2,23 @@ import { Box, Flex, Link } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import Image from 'next/image'
 
-const Banner = ({ colour, bgColour, imageSrc, text, children, linkHref }) => {
+interface BannerProps {
+  colour: string
+  bgColour: string
+  imageSrc: string
+  title: string
+  text: string
+  linkHref: string
+}
+
+const Banner = ({
+  colour,
+  bgColour,
+  imageSrc,
+  title,
+  text,
+  linkHref,
+}: BannerProps): JSX.Element => {
   return (
     <Box
       height={['160px', '200px', '250px', '300px']}
@@ -33,10 +49,10 @@ const Banner = ({ colour, bgColour, imageSrc, text, children, linkHref }) => {
                 width="fit-content"
                 m="0 auto"
               >
-                {text}
+                {title}
               </Box>
               <Box fontSize={['28px', '40px', '60px', '80px']} m="20px auto 5px">
-                {children}
+                {text}
               </Box>
             </Flex>
           </Flex>
