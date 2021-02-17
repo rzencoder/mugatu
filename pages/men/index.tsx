@@ -23,9 +23,8 @@ export default function Men({ productData }) {
             buttonHoverColor="#5fabf9"
             gender="men"
             buttonColor="#089fe6"
-          >
-            Latest styles now in
-          </Jumbotron>
+            text="Latest styles now in"
+          />
           <SmallBanner />
           <Featured items={featuredItemsMen} gender="male" />
           <Banner

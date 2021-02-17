@@ -1,6 +1,6 @@
 import { Box, useColorMode } from '@chakra-ui/react'
 
-const ImageInfo = () => {
+const ImageInfo = (): JSX.Element => {
   const { colorMode } = useColorMode()
   return (
     <Box

@@ -16,18 +16,23 @@ import { useState } from 'react'
 import { ImageInfo, Toast } from '.'
 import { useWishlist } from '@/context/wishlistContext'
 import { ChevronDownIcon } from '@chakra-ui/icons'
+import { Item } from '@/types/item'
 
-const FullProduct = ({ productData }) => {
+interface FullProductProps {
+  item: Item
+}
+
+const FullProduct = ({ item }: FullProductProps): JSX.Element => {
   const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(1)
-  const { name, image, price, rrp, colour, sizes, popular } = productData
+  const { name, image, price, rrp, colour, sizes, popular } = item
   const { addToBag } = useBag()
   const { addToWishlist } = useWishlist()
   const { colorMode } = useColorMode()
   const toast = useToast()
 
   const handleAddToBag = () => {
-    const product = { ...productData, selectedSize, quantity }
+    const product = { ...item, selectedSize, quantity }
     addToBag(product)
     toast({
       duration: 3000,
@@ -201,7 +206,7 @@ const FullProduct = ({ productData }) => {
             <Button
               variant="transparentBg"
               onClick={() => {
-                const result = addToWishlist(productData)
+                const result = addToWishlist(item)
                 if (result) {
                   toast({
                     title: 'Item added to your wishlist',

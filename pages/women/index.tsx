@@ -23,9 +23,8 @@ export default function Women({ productData }) {
             bgColor="#b0f"
             gender="women"
             buttonColor="#d219de"
-          >
-            Party season is here
-          </Jumbotron>
+            text="Party season is here"
+          />
           <SmallBanner />
           <Featured items={featuredItemsWomen} gender="female" />
           <Banner

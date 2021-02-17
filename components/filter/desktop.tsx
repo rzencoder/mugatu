@@ -2,9 +2,17 @@ import { Flex, useColorMode, Menu, MenuList, MenuItem, MenuButton, Box } from '@
 import { CheckIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import Slider from './slider'
 import { displayTickOnSelected } from '@/utils/filter'
+import { FilterQuery } from '@/types/filterQuery'
+import { FilterOptions } from '@/types/filterOptions'
+
+interface DesktopProps {
+  options: FilterOptions[]
+  updateQuery: (filterType: string, newFilterItem: string | number[], device?: string) => void
+  filterQuery: FilterQuery[]
+}
 
 // Display filter component on larger screens
-const Desktop = ({ options, updateQuery, filterQuery }) => {
+const Desktop = ({ options, updateQuery, filterQuery }: DesktopProps): JSX.Element => {
   const { colorMode } = useColorMode()
   return (
     <Flex display={['none', null, 'flex']} padding="10px 0">
@@ -38,12 +46,13 @@ const Desktop = ({ options, updateQuery, filterQuery }) => {
                 )
               } else {
                 const values = filterQuery.find((query) => query.name === option.name)
+                const formattedValues = [parseInt(values.query[0]), parseInt(values.query[1])]
                 return (
                   <Box key="price-range" p="20px  30px" minWidth="280px">
                     <Slider
                       handlePriceFilter={updateQuery}
                       device="desktop"
-                      values={values.query}
+                      values={formattedValues}
                     />
                   </Box>
                 )

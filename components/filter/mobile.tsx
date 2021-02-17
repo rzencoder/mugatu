@@ -19,6 +19,18 @@ import {
   displayTickOnSelected,
   displaySelectedFilterItemsMobile,
 } from '@/utils/filter'
+import { FilterOptions } from '@/types/filterOptions'
+import { FilterQuery } from '@/types/filterQuery'
+
+interface MobileProps {
+  isOpen: boolean
+  onClose: () => void
+  options: FilterOptions[]
+  updateQuery: (filterType: string, newFilterItem: string | number[], device?: string) => void
+  setFilterData: (filterData: FilterQuery[]) => void
+  filterQuery: FilterQuery[]
+  setFilterQuery: (filterQuery: FilterQuery[]) => void
+}
 
 //Display filter component in a mobile friendly menu on smaller screen sizes
 const Mobile = ({
@@ -26,15 +38,15 @@ const Mobile = ({
   onClose,
   options,
   updateQuery,
-  getFilteredProducts,
+  setFilterData,
   filterQuery,
   setFilterQuery,
-}) => {
+}: MobileProps): JSX.Element => {
   const [showFilterType, setShowFilterType] = useState('')
   const { colorMode } = useColorMode()
 
   //Display available options to filter from chosen category
-  const displayFilterType = (filterType) => {
+  const displayFilterType = (filterType: string) => {
     const option = options.find((el) => el.name === filterType)
     return (
       <>
@@ -80,9 +92,14 @@ const Mobile = ({
               )
             } else {
               const values = filterQuery.find((query) => query.name === option.name)
+              const formattedValues = [parseInt(values.query[0]), parseInt(values.query[1])]
               return (
                 <Box key="price-range" p="20px  30px" minWidth="280px">
-                  <Slider handlePriceFilter={updateQuery} device="mobile" values={values.query} />
+                  <Slider
+                    handlePriceFilter={updateQuery}
+                    device="mobile"
+                    values={formattedValues}
+                  />
                 </Box>
               )
             }
@@ -92,7 +109,7 @@ const Mobile = ({
               borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
               margin="20px"
               onClick={() => {
-                getFilteredProducts(filterQuery)
+                setFilterData(filterQuery)
                 onClose()
               }}
             >
@@ -160,7 +177,7 @@ const Mobile = ({
                       borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
                       marginBottom={['120px', '80px', 0]}
                       onClick={() => {
-                        getFilteredProducts(filterQuery)
+                        setFilterData(filterQuery)
                         onClose()
                       }}
                     >

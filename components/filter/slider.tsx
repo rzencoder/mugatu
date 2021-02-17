@@ -1,13 +1,23 @@
 import { useColorMode } from '@chakra-ui/react'
 import { Slider, Rail, Handles, Tracks } from 'react-compound-slider'
-
 const sliderStyle = {
   position: 'relative',
   width: '100%',
   height: 80,
 }
 
-function Handle({ handle: { id, percent, value }, getHandleProps }) {
+interface HandleItem {
+  id: string
+  percent: number
+  value: number
+}
+
+interface HandleProps {
+  handle: HandleItem
+  getHandleProps: (id: string) => unknown
+}
+
+function Handle({ handle: { id, percent, value }, getHandleProps }: HandleProps) {
   const { colorMode } = useColorMode()
   return (
     <div
@@ -43,7 +53,13 @@ function Handle({ handle: { id, percent, value }, getHandleProps }) {
   )
 }
 
-function Track({ source, target, getTrackProps }) {
+interface TrackProps {
+  source: HandleItem
+  target: HandleItem
+  getTrackProps: () => unknown
+}
+
+function Track({ source, target, getTrackProps }: TrackProps) {
   const { colorMode } = useColorMode()
   return (
     <div
@@ -63,7 +79,13 @@ function Track({ source, target, getTrackProps }) {
   )
 }
 
-const SliderComponent = ({ handlePriceFilter, device, values }) => {
+interface SliderProps {
+  device: string
+  values: number[]
+  handlePriceFilter: (filterType: string, newFilterItem: string | number[], device?: string) => void
+}
+
+const SliderComponent = ({ handlePriceFilter, device, values }: SliderProps): JSX.Element => {
   const { colorMode } = useColorMode()
 
   const railStyle = {
@@ -78,11 +100,14 @@ const SliderComponent = ({ handlePriceFilter, device, values }) => {
   return (
     <Slider
       rootStyle={sliderStyle}
-      domain={[0, 200]}
+      domain={[0, 150]}
       step={5}
       mode={1}
-      values={[values[0], values[1]]}
-      onChange={(values) => handlePriceFilter('price', values, device)}
+      values={values}
+      onChange={(values) => {
+        const formattedValues = [...values]
+        return handlePriceFilter('price', formattedValues, device)
+      }}
     >
       <Rail>{({ getRailProps }) => <div style={railStyle} {...getRailProps()} />}</Rail>
       <Handles>

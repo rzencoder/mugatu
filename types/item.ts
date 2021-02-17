@@ -8,7 +8,10 @@ export interface Item {
   gender: string
   category: string
   popular: boolean
-  sizes: []
+  sizes: {
+    size: string
+    stock: number
+  }[]
   image: {
     url: string
   }

@@ -2,6 +2,16 @@ import { Box, Flex, Link, Heading, Button } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
+interface JumbotronProps {
+  bgColor: string
+  imageUrl: string
+  buttonText: string
+  buttonColor: string
+  buttonHoverColor: string
+  gender: 'men' | 'women'
+  text: string
+}
+
 export default function Jumbotron({
   bgColor,
   imageUrl,
@@ -9,8 +19,8 @@ export default function Jumbotron({
   buttonColor,
   gender,
   buttonHoverColor,
-  children,
-}): JSX.Element {
+  text,
+}: JumbotronProps): JSX.Element {
   return (
     <NextLink href={`/${gender}/catalog`} passHref>
       <Link height="600px" width="100%" position="relative">
@@ -47,7 +57,7 @@ export default function Jumbotron({
               textAlign="center"
               fontSize={['42px', '55px', '65px', '80px']}
             >
-              {children}
+              {text}
             </Heading>
             <Button
               variant="jumbo"

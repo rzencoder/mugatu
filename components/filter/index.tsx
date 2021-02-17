@@ -7,9 +7,14 @@ import options from 'data/filterOptions'
 import { updateQueryData, checkAnyFilterSelected, getFilterOptions } from '@/utils/filter'
 import { useRouter } from 'next/dist/client/router'
 import { getPageGender } from '../../utils/'
+import { FilterQuery } from '@/types/filterQuery'
 
-export default function Filter({ setFilterData }): JSX.Element {
-  const [filterQuery, setFilterQuery] = useState(initialQuery)
+interface FilterProps {
+  setFilterData: (filterQuery: FilterQuery[]) => void
+}
+
+export default function Filter({ setFilterData }: FilterProps): JSX.Element {
+  const [filterQuery, setFilterQuery] = useState<FilterQuery[]>(initialQuery)
   const [showFilter, setShowFilter] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { colorMode } = useColorMode()
@@ -19,7 +24,7 @@ export default function Filter({ setFilterData }): JSX.Element {
   const [isLargerThan767] = useMediaQuery('(min-width: 767px)')
 
   // Update filter object on user select. If desktop user then also fetch the products else on mobile only fetch when the user clicks the button to confirm to view filtered products
-  const updateQuery = (filterType, newFilterItem, device = 'mobile') => {
+  const updateQuery = (filterType: string, newFilterItem: string | number[], device = 'mobile') => {
     const newSearchQuery = updateQueryData(filterType, newFilterItem, filterQuery)
     setFilterQuery(newSearchQuery)
     if (device === 'desktop') {
@@ -57,7 +62,7 @@ export default function Filter({ setFilterData }): JSX.Element {
         onClose={onClose}
         options={getFilterOptions(options, router, gender)}
         updateQuery={updateQuery}
-        getFilteredProducts={setFilterData}
+        setFilterData={setFilterData}
         filterQuery={filterQuery}
         setFilterQuery={setFilterQuery}
       />
