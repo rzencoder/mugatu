@@ -1,6 +1,6 @@
-import { Item } from './item'
+import { SearchData } from './searchData'
 
 export interface SearchResults {
-  item: Item
+  item: SearchData
   refIndex: number
 }

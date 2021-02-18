@@ -6,8 +6,9 @@ import { formatResponseData, getAllProductsIds } from '../../../utils'
 import { FullProduct } from '../../../components'
 import { Layout } from '../../../components/layouts'
 import capitaliseFirstLetter from '@/utils/helpers/capitaliseFirstLetter'
+import { Item } from '@/types/item'
 
-export default function Product({ item }): JSX.Element {
+export default function Product({ item }: { item: Item }): JSX.Element {
   return (
     <>
       <Head>
@@ -21,7 +22,7 @@ export default function Product({ item }): JSX.Element {
   )
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllProductsIds(GET_ALL_PRODUCTS_IDS, 'female')
   return {
     paths,
@@ -29,7 +30,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const data = await graphQLClient.request(GET_PRODUCT_BY_SLUG, { id: params.id })
   const formattedData = formatResponseData(data.productCollection.items)
   return {

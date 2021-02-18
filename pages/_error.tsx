@@ -1,7 +1,8 @@
 import { Layout, ErrorLayout } from '@/components/layouts'
+import { NextPageContext } from 'next'
 import Head from 'next/head'
 
-function Error({ statusCode }) {
+function Error({ statusCode }: { statusCode: string }): JSX.Element {
   return (
     <>
       <Head>
@@ -9,13 +10,13 @@ function Error({ statusCode }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <ErrorLayout message="sorry an unexpected error occurred" />
+        <ErrorLayout message={`sorry an unexpected error occurred ${statusCode}`} />
       </Layout>
     </>
   )
 }
 
-Error.getInitialProps = ({ res, err }) => {
+Error.getInitialProps = ({ res, err }: NextPageContext) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404
   return { statusCode }
 }

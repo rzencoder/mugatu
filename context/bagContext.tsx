@@ -1,33 +1,41 @@
+import { BagItem } from '@/types/bagItem'
 import { useState, useContext, createContext } from 'react'
 
-const bagContext = createContext({})
+interface BagContextInterface {
+  bag: BagItem[]
+  addToBag: (item: BagItem) => void
+  updateBag: (item: BagItem) => void
+  removeFromBag: (item: BagItem) => void
+}
 
-export function ProvideBag({ children }) {
+const bagContext = createContext<BagContextInterface | null>(null)
+
+export function ProvideBag({ children }: { children: React.ReactNode }): JSX.Element {
   const bag = useProvideBag()
   return <bagContext.Provider value={bag}>{children}</bagContext.Provider>
 }
 
-export const useBag = (): any => {
+export const useBag = () => {
   return useContext(bagContext)
 }
 
 const useProvideBag = () => {
   const [bag, setBag] = useState([])
 
-  const addToBag = (item) => {
-    const filteredBag = bag.filter((product) => product.id !== item.id)
+  const addToBag = (item: BagItem) => {
+    const filteredBag = bag.filter((product: BagItem) => product.id !== item.id)
     const newBag = [...filteredBag, item]
     setBag(newBag)
   }
 
-  const updateBag = (item) => {
-    const filteredBag = bag.filter((product) => product.id !== item.id)
+  const updateBag = (item: BagItem) => {
+    const filteredBag = bag.filter((product: BagItem) => product.id !== item.id)
     const updatedBag = [...filteredBag, item]
     setBag(updatedBag)
   }
 
-  const removeFromBag = (item) => {
-    const updatedBag = bag.filter((el) => el.id !== item.id)
+  const removeFromBag = (item: BagItem) => {
+    const updatedBag = bag.filter((el: BagItem) => el.id !== item.id)
     setBag(updatedBag)
   }
 

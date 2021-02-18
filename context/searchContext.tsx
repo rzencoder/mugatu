@@ -1,13 +1,29 @@
+import { Item } from '@/types/item'
+import { SearchData } from '@/types/searchData'
+import { SearchResults } from '@/types/searchResults'
 import { useState, useContext, createContext, useEffect } from 'react'
 
-const searchContext = createContext({})
+interface SearchContextInterface {
+  searchInput: string
+  setSearchInput: (searchInput: string) => void
+  searchData: SearchData[]
+  searchResults: SearchResults[]
+  setSearchResults: (searchResults: SearchResults[]) => void
+  searchProducts: Item[]
+  setSearchProducts: (searchProducts: Item[]) => void
+  setLoadSearchProducts: (loadSearchProducts: boolean) => void
+  loading: boolean
+  error: boolean
+}
 
-export function ProvideSearch({ children }): JSX.Element {
+const searchContext = createContext<SearchContextInterface | null>(null)
+
+export function ProvideSearch({ children }: { children: React.ReactNode }): JSX.Element {
   const search = useProvideSearch()
   return <searchContext.Provider value={search}>{children}</searchContext.Provider>
 }
 
-export const useSearch = (): any => {
+export const useSearch = () => {
   return useContext(searchContext)
 }
 
@@ -53,6 +69,7 @@ const useProvideSearch = () => {
       fetchSearchProducts()
       setLoadSearchProducts(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchInput, loadSearchProducts])
 
   return {

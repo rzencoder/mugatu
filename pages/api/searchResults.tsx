@@ -5,6 +5,7 @@ import Fuse from 'fuse.js'
 import searchOptions from '../../config/search'
 import { GET_ALL_PRODUCTS } from 'graphql/queries'
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await graphQLClient.request(GET_ALL_PRODUCTS)
   const data = formatResponseData(response.productCollection.items)

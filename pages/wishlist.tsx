@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Layout, Wishlist } from '../components/layouts'
 
-export default function WishlistPage() {
+export default function WishlistPage(): JSX.Element {
   return (
     <>
       <Head>

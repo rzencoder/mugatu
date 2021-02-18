@@ -2,7 +2,7 @@ import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/do
 import { ColorModeScript } from '@chakra-ui/react'
 
 export default class CustomDocument extends Document {
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
     return { ...initialProps }

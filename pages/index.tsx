@@ -4,7 +4,7 @@ import { Box, Flex, Heading, Button, Link } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <>
       <Head>

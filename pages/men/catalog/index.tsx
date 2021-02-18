@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Layout, Catalog } from '../../../components/layouts'
 
-export default function MenCatalog() {
+export default function MenCatalog(): JSX.Element {
   return (
     <>
       <Head>

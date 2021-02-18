@@ -1,7 +1,7 @@
 import { Layout, ErrorLayout } from '@/components/layouts'
 import Head from 'next/head'
 
-export default function FourZeroFour() {
+export default function FourZeroFour(): JSX.Element {
   return (
     <>
       <Head>

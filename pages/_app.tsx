@@ -6,7 +6,7 @@ import { theme } from '../styles/chakraTheme'
 import { ProvideWishlist } from '@/context/wishlistContext'
 import { ProvideSearch } from '@/context/searchContext'
 
-function MyApp(props: AppProps) {
+function MyApp(props: AppProps): JSX.Element {
   const { Component, pageProps } = props
 
   return (

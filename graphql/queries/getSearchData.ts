@@ -8,6 +8,7 @@ const GET_SEARCH_DATA = gql`
         colour
         slug
         gender
+        category
       }
     }
   }

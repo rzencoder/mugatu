@@ -5,11 +5,12 @@ import { Layout } from '../components/layouts'
 import { Products } from '../components'
 import { Box, Flex } from '@chakra-ui/react'
 
-export default function Search() {
+export default function Search(): JSX.Element {
   const { searchInput, searchProducts, setLoadSearchProducts } = useSearch()
 
   useEffect(() => {
     setLoadSearchProducts(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

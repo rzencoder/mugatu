@@ -6,8 +6,10 @@ import { graphQLClient } from '../../graphql/client'
 import { GET_PRODUCTS_BY_GENDER } from '../../graphql/queries'
 import { formatResponseData } from '../../utils'
 import { featuredItemsWomen } from 'data/featuredItems'
+import { Item } from '@/types/item'
+import { GetStaticProps } from 'next'
 
-export default function Women({ productData }) {
+export default function Women({ productData }: { productData: Item[] }): JSX.Element {
   return (
     <>
       <Head>
@@ -42,7 +44,7 @@ export default function Women({ productData }) {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await graphQLClient.request(GET_PRODUCTS_BY_GENDER, { gender: 'female' })
   const formattedData = formatResponseData(response.productCollection.items)
   const filteredData = formattedData.filter((item) => item.popular)
