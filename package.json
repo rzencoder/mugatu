@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --coverage --watchAll"
+    "test": "jest --coverage --watchAll",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.2",
@@ -43,6 +44,7 @@
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
     "babel-jest": "^26.6.3",
+    "cypress": "^6.5.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",

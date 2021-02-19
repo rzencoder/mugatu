@@ -4,7 +4,7 @@ module.exports = {
     setupFiles: ["./jest.setup.js"],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx'],
     moduleDirectories: ['node_modules', 'src'],
-    testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
+    testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next|cypress)[/\\\\]'],
     transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
     transform: {
         '^.+\\.(ts|tsx)$': 'babel-jest',
