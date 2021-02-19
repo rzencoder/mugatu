@@ -1,4 +1,4 @@
-const getPageGender = (path) => {
+const getPageGender = (path: string): string => {
   return path.includes('women') ? 'female' : 'male'
 }
 

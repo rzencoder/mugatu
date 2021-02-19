@@ -33,7 +33,8 @@ const Button = {
   },
   // Two variants: outline and solid
   variants: {
-    outline: (props) => ({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    outline: (props: any) => ({
       border: '2px solid',
       borderColor: props.colorMode === 'light' ? 'mainBlack' : 'mainWhite',
     }),
@@ -63,7 +64,8 @@ const Button = {
         backgroundColor: 'none',
       },
     },
-    transparentBg: (props) => ({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    transparentBg: (props: any) => ({
       fontWeight: '400',
       p: '0',
       border: 'none',

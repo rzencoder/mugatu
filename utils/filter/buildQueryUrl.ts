@@ -1,4 +1,6 @@
-const buildQueryUrl = (productPage, gender, filterData) => {
+import { FilterQuery } from '@/types/filterQuery'
+
+const buildQueryUrl = (productPage: string, gender: string, filterData: FilterQuery[]): string => {
   const query = filterData
     .filter((el) => el.query.length !== 0)
     .map((el) => {

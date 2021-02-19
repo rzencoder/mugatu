@@ -26,7 +26,7 @@ interface MobileProps {
   isOpen: boolean
   onClose: () => void
   options: FilterOptions[]
-  updateQuery: (filterType: string, newFilterItem: string | number[], device?: string) => void
+  updateQuery: (filterType: string, newFilterItem: string, device?: string) => void
   setFilterData: (filterData: FilterQuery[]) => void
   filterQuery: FilterQuery[]
   setFilterQuery: (filterQuery: FilterQuery[]) => void

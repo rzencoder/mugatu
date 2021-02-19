@@ -10,7 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await graphQLClient.request(GET_ALL_PRODUCTS)
   const data = formatResponseData(response.productCollection.items)
   const fuse = new Fuse(data, searchOptions)
-  const searchData = fuse.search(String(req.query.search))
+  const searchData = [...fuse.search(String(req.query.search))]
   const formattedData = formatSearchDataResponse(searchData)
   res.status(200).json({ data: formattedData })
 }

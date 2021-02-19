@@ -5,7 +5,8 @@ const Link = {
   },
   variants: {
     container: { textDecoration: 'none' },
-    footer: (props) => ({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    footer: (props: any) => ({
       padding: '2px 0',
       margin: '3px 0',
       _hover: {

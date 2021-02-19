@@ -7,7 +7,7 @@ import { FilterOptions } from '@/types/filterOptions'
 
 interface DesktopProps {
   options: FilterOptions[]
-  updateQuery: (filterType: string, newFilterItem: string | number[], device?: string) => void
+  updateQuery: (filterType: string, newFilterItem: string, device?: string) => void
   filterQuery: FilterQuery[]
 }
 

@@ -14,7 +14,8 @@ const styles = {
     pink: { 200: '#b52950' },
   },
   styles: {
-    global: (props) => ({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    global: (props: any) => ({
       body: {
         color: props.colorMode === 'light' ? '#222' : 'mainWhite',
         bg: props.colorMode === 'light' ? 'mainWhite' : 'mainBlack',

@@ -82,7 +82,7 @@ function Track({ source, target, getTrackProps }: TrackProps) {
 interface SliderProps {
   device: string
   values: number[]
-  handlePriceFilter: (filterType: string, newFilterItem: string | number[], device?: string) => void
+  handlePriceFilter: (filterType: string, newFilterItem: string, device?: string) => void
 }
 
 const SliderComponent = ({ handlePriceFilter, device, values }: SliderProps): JSX.Element => {
@@ -105,7 +105,7 @@ const SliderComponent = ({ handlePriceFilter, device, values }: SliderProps): JS
       mode={1}
       values={values}
       onChange={(values) => {
-        const formattedValues = [...values]
+        const formattedValues = values.map((val) => val.toString()).join(',')
         return handlePriceFilter('price', formattedValues, device)
       }}
     >

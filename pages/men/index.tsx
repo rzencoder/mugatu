@@ -47,7 +47,7 @@ export default function Men({ productData }: { productData: Item[] }): JSX.Eleme
 export const getStaticProps: GetStaticProps = async () => {
   const response = await graphQLClient.request(GET_PRODUCTS_BY_GENDER, { gender: 'male' })
   const formattedData = formatResponseData(response.productCollection.items)
-  const filteredData = formattedData.filter((item) => item.popular)
+  const filteredData = formattedData.filter((item: Item) => item.popular)
   return {
     props: {
       productData: filteredData,

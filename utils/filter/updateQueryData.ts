@@ -1,11 +1,19 @@
-const updateQueryData = (filterType, newFilterItem, filterQuery) => {
+import { FilterQuery } from '@/types/filterQuery'
+
+const updateQueryData = (
+  filterType: string,
+  newFilterItem: string,
+  filterQuery: FilterQuery[]
+): FilterQuery[] => {
+  console.log(newFilterItem)
   const newSearchQuery = filterQuery.map((el) => {
     if (el.name === filterType) {
       if (filterType === 'price') {
-        return { ...el, query: newFilterItem }
+        return { ...el, query: newFilterItem.split(',') }
       } else if (newFilterItem === 'all') {
         return { ...el, query: [] }
-      } else if (el.query.includes(newFilterItem)) {
+      }
+      if (el.query.includes(newFilterItem)) {
         const query = el.query.filter((item) => item !== newFilterItem)
         return { ...el, query }
       } else {
@@ -13,6 +21,7 @@ const updateQueryData = (filterType, newFilterItem, filterQuery) => {
       }
     } else return el
   })
+  console.log(newSearchQuery)
   return newSearchQuery
 }
 

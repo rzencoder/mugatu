@@ -1,8 +1,15 @@
-const formatSearchDataResponse = (data) => {
-  const flattenedSearchData = data.reduce((acc, item) => {
-    return acc.concat(Object.keys(item).map((key) => item[key]))
-  }, [])
-  return flattenedSearchData.filter((el, index) => index % 2 === 0)
+import { Item } from '@/types/item'
+
+interface Props {
+  item: Item
+  refIndex: number
+}
+
+const formatSearchDataResponse = (data: Props[]): Item[] => {
+  return data.map((obj) => {
+    delete obj.refIndex
+    return obj.item
+  })
 }
 
 export default formatSearchDataResponse

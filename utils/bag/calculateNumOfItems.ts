@@ -1,6 +1,13 @@
-const calculateNumOfItems = (bag) => {
+import { Item } from '@/types/item'
+
+export interface BagItem extends Item {
+  selectedSize?: string
+  quantity?: number
+}
+
+const calculateNumOfItems = (bag: BagItem[]): number => {
   return bag.reduce((acc, cur) => {
-    return acc + parseInt(cur.quantity)
+    return acc + cur.quantity
   }, 0)
 }
 

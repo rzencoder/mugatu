@@ -24,7 +24,7 @@ export default function Filter({ setFilterData }: FilterProps): JSX.Element {
   const [isLargerThan767] = useMediaQuery('(min-width: 767px)')
 
   // Update filter object on user select. If desktop user then also fetch the products else on mobile only fetch when the user clicks the button to confirm to view filtered products
-  const updateQuery = (filterType: string, newFilterItem: string | number[], device = 'mobile') => {
+  const updateQuery = (filterType: string, newFilterItem: string, device = 'mobile') => {
     const newSearchQuery = updateQueryData(filterType, newFilterItem, filterQuery)
     setFilterQuery(newSearchQuery)
     if (device === 'desktop') {
@@ -60,7 +60,7 @@ export default function Filter({ setFilterData }: FilterProps): JSX.Element {
       <FilterMobile
         isOpen={isOpen}
         onClose={onClose}
-        options={getFilterOptions(options, router, gender)}
+        options={getFilterOptions(options, router.pathname, gender)}
         updateQuery={updateQuery}
         setFilterData={setFilterData}
         filterQuery={filterQuery}
@@ -68,7 +68,7 @@ export default function Filter({ setFilterData }: FilterProps): JSX.Element {
       />
       {showFilter && (
         <FilterDesktop
-          options={getFilterOptions(options, router, gender)}
+          options={getFilterOptions(options, router.pathname, gender)}
           updateQuery={updateQuery}
           filterQuery={filterQuery}
         />

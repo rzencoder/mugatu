@@ -33,14 +33,19 @@ interface FilterInterface {
   price?: string[]
 }
 
+interface ConvertObjectInterface extends FilterInterface {
+  [key: string]: string[] | undefined
+}
+
 const convertObjPropsToArray = (obj: FilterProps): FilterInterface => {
-  const newObj = {}
-  Object.entries(obj).forEach(([key, val]) => (newObj[key] = val.toString().split(',')))
+  const newObj: ConvertObjectInterface = {}
+  Object.entries(obj).forEach(([key, val]) => {
+    newObj[key] = val.toString().split(',')
+  })
   return newObj
 }
 
 const filterItems = (query: FilterProps, items: Item[]) => {
-  console.log(query)
   const formattedQuery = convertObjPropsToArray(query)
   let filteredItems = [...items]
   if (formattedQuery.product) {

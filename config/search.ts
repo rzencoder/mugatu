@@ -11,7 +11,7 @@ const searchOptions = {
   // useExtendedSearch: false,
   // ignoreLocation: false,
   // ignoreFieldNorm: false,
-  keys: ['name', 'colour', 'gender'],
+  keys: ['name', 'colour', 'gender', 'category'],
 }
 
 export default searchOptions

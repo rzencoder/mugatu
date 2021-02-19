@@ -1,6 +1,12 @@
-const getFilterOptions = (options, router, gender) => {
+import { FilterOptions } from './../../types/filterOptions'
+
+const getFilterOptions = (
+  options: FilterOptions[][],
+  path: string,
+  gender: string
+): FilterOptions[] => {
   const optionsForGender = gender === 'female' ? options[0] : options[1]
-  const path = router.pathname.split('/')
+  path.split('/')
   if (path[path.length - 1] !== 'catalog') {
     return optionsForGender.filter((el) => el.name !== 'product')
   }
