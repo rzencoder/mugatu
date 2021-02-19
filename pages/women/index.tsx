@@ -5,7 +5,7 @@ import { Layout } from '../../components/layouts'
 import { graphQLClient } from '../../graphql/client'
 import { GET_PRODUCTS_BY_GENDER } from '../../graphql/queries'
 import { formatResponseData } from '../../utils'
-import { featuredItemsWomen } from 'data/featuredItems'
+import { featuredItemsWomen } from '../../data/featuredItems'
 import { Item } from '@/types/item'
 import { GetStaticProps } from 'next'
 

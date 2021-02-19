@@ -11,7 +11,7 @@ import {
   useColorMode,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { deliveryOptions } from 'data/deliveryOptions'
+import { deliveryOptions } from '../../data/deliveryOptions'
 import { useEffect, useState } from 'react'
 import { useBag } from '@/context/bagContext'
 

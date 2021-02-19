@@ -4,7 +4,7 @@ import { Jumbotron, Featured, Carousel, Banner, SmallBanner } from '../../compon
 import { Layout } from '../../components/layouts'
 import { graphQLClient } from '../../graphql/client'
 import { formatResponseData } from '../../utils'
-import { featuredItemsMen } from 'data/featuredItems'
+import { featuredItemsMen } from '../../data/featuredItems'
 import { GET_PRODUCTS_BY_GENDER } from 'graphql/queries'
 import { GetStaticProps } from 'next'
 import { Item } from '@/types/item'

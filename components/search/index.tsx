@@ -1,7 +1,7 @@
 import { useSearch } from '@/context/searchContext'
 import { useMediaQuery } from '@chakra-ui/react'
 import Fuse from 'fuse.js'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/dist/client/router'
 import SearchMobile from './searchMobile'
 import SearchDesktop from './searchDesktop'
@@ -18,7 +18,7 @@ const Search = ({ showSearch, setShowSearch }: SearchProps): JSX.Element => {
   const router = useRouter()
   // 767px is the third breakpoint with the chakra styling
   const [isLargerThan767] = useMediaQuery('(min-width: 767px)')
-
+  const [screenDesktop, setScreenDesktop] = useState(false)
   // Handle updating search results on search input change
   useEffect(() => {
     if (searchInput.length > 1) {
@@ -30,6 +30,10 @@ const Search = ({ showSearch, setShowSearch }: SearchProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchInput])
 
+  useEffect(() => {
+    setScreenDesktop(isLargerThan767)
+  }, [isLargerThan767])
+
   // handle updating matching search products on submitting a search input
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -38,7 +42,7 @@ const Search = ({ showSearch, setShowSearch }: SearchProps): JSX.Element => {
     router.push('/search')
   }
 
-  if (isLargerThan767) {
+  if (screenDesktop) {
     return (
       <SearchDesktop
         showSearch={showSearch}

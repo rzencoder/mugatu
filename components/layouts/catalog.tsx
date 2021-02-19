@@ -3,7 +3,7 @@ import { Products, Sort, Filter, Loader } from '..'
 import { useRouter } from 'next/dist/client/router'
 import { getPageGender, sortProducts } from '../../utils/'
 import { useState } from 'react'
-import initialQuery from 'data/filterInitialQuery'
+import initialQuery from '../../data/filterInitialQuery'
 import { buildQueryUrl } from '@/utils/filter'
 import useProducts from 'hooks/useProducts'
 

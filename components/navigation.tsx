@@ -1,4 +1,4 @@
-import { useWishlist } from '@/context/wishlistContext'
+import { useWishlist } from '../context/wishlistContext'
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import {
   Box,

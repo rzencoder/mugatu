@@ -5,7 +5,6 @@ const updateQueryData = (
   newFilterItem: string,
   filterQuery: FilterQuery[]
 ): FilterQuery[] => {
-  console.log(newFilterItem)
   const newSearchQuery = filterQuery.map((el) => {
     if (el.name === filterType) {
       if (filterType === 'price') {
@@ -21,7 +20,6 @@ const updateQueryData = (
       }
     } else return el
   })
-  console.log(newSearchQuery)
   return newSearchQuery
 }
 

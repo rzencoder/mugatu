@@ -9,7 +9,7 @@ import {
   useColorMode,
   Box,
 } from '@chakra-ui/react'
-import sortTypes from 'data/sortValues'
+import sortTypes from '../data/sortValues'
 
 interface SortProps {
   sortValue: string

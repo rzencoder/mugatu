@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EmptyBag /> renders <EmptyBag /> component 1`] = `
+<div
+  class="css-1u27tmr"
+>
+  <div
+    class="css-1mgati5"
+  >
+    Your Shopping Bag Is Empty
+  </div>
+  <a
+    class="chakra-link css-0"
+    href="/"
+  >
+    <button
+      class="chakra-button css-oqfhsh"
+      type="button"
+    >
+      Continue Shopping
+    </button>
+  </a>
+</div>
+`;
