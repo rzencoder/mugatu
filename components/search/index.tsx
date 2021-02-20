@@ -1,7 +1,7 @@
 import { useSearch } from '@/context/searchContext'
 import { useMediaQuery } from '@chakra-ui/react'
 import Fuse from 'fuse.js'
-import { useEffect, useState } from 'react'
+import { MutableRefObject, useEffect, useState } from 'react'
 import { useRouter } from 'next/dist/client/router'
 import SearchMobile from './searchMobile'
 import SearchDesktop from './searchDesktop'
@@ -10,9 +10,10 @@ import searchOptions from '../../config/search'
 interface SearchProps {
   showSearch: boolean
   setShowSearch: (showSearch: boolean) => void
+  inputRef: MutableRefObject<HTMLInputElement>
 }
 
-const Search = ({ showSearch, setShowSearch }: SearchProps): JSX.Element => {
+const Search = ({ showSearch, setShowSearch, inputRef }: SearchProps): JSX.Element => {
   const { searchInput, searchData, setSearchResults, setLoadSearchProducts } = useSearch()
   const fuse = new Fuse(searchData, searchOptions)
   const router = useRouter()
@@ -48,6 +49,7 @@ const Search = ({ showSearch, setShowSearch }: SearchProps): JSX.Element => {
         showSearch={showSearch}
         setShowSearch={setShowSearch}
         handleSearchSubmit={handleSearchSubmit}
+        inputRef={inputRef}
       />
     )
   }

@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { SearchResults } from '@/types/searchResults'
+import { useRef } from 'react'
 
 interface SearchMobileProps {
   showSearch: boolean
@@ -31,9 +32,15 @@ const SearchMobile = ({
 }: SearchMobileProps): JSX.Element => {
   const { searchResults, searchInput, setSearchInput } = useSearch()
   const { colorMode } = useColorMode()
+  const searchFieldRef = useRef()
 
   return (
-    <Drawer isOpen={showSearch} placement="left" onClose={() => setShowSearch(false)}>
+    <Drawer
+      isOpen={showSearch}
+      placement="left"
+      onClose={() => setShowSearch(false)}
+      initialFocusRef={searchFieldRef}
+    >
       <DrawerOverlay>
         <DrawerContent bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'}>
           <DrawerHeader>
@@ -44,7 +51,11 @@ const SearchMobile = ({
           <DrawerBody>
             <form onSubmit={handleSearchSubmit}>
               <Box position="relative">
-                <Input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+                <Input
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  ref={searchFieldRef}
+                />
                 <Button
                   type="submit"
                   variant="icon"

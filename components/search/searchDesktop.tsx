@@ -4,17 +4,20 @@ import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 import { Box, Flex, Button, Input, Link, useColorMode } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { SearchResults } from '@/types/searchResults'
+import { MutableRefObject } from 'react'
 
 interface SearchDesktopProps {
   showSearch: boolean
   setShowSearch: (showSearch: boolean) => void
   handleSearchSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  inputRef: MutableRefObject<HTMLInputElement>
 }
 
 const SearchDesktop = ({
   showSearch,
   setShowSearch,
   handleSearchSubmit,
+  inputRef,
 }: SearchDesktopProps): JSX.Element => {
   const { searchInput, setSearchInput, searchResults } = useSearch()
   const { colorMode } = useColorMode()
@@ -24,6 +27,7 @@ const SearchDesktop = ({
       <Box opacity={showSearch ? '1' : '0'} transition="opacity 0.3s">
         <form onSubmit={handleSearchSubmit}>
           <Input
+            ref={inputRef}
             width={[showSearch ? '400px' : '0']}
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}

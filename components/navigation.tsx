@@ -17,6 +17,7 @@ import BagPopOver from './bag/bagPopOver'
 import { useBag } from '../context/bagContext'
 import Search from './search'
 import Image from 'next/image'
+import { useFocus } from 'hooks/useFocus'
 
 export default function Navigation(): JSX.Element {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -26,6 +27,7 @@ export default function Navigation(): JSX.Element {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [showSearch, setShowSearch] = useState(false)
   const [gender, setGender] = useState('women')
+  const [inputRef, setInputFocus] = useFocus()
 
   return (
     <nav>
@@ -63,13 +65,16 @@ export default function Navigation(): JSX.Element {
             <Flex alignItems="center">
               <Button
                 variant="icon"
-                onClick={() => setShowSearch(!showSearch)}
+                onClick={() => {
+                  setInputFocus()
+                  setShowSearch(!showSearch)
+                }}
                 position="relative"
                 zIndex="100"
               >
                 <SearchIcon w={[6, null, 7]} h={[6, null, 7]} />
               </Button>
-              <Search showSearch={showSearch} setShowSearch={setShowSearch} />
+              <Search showSearch={showSearch} setShowSearch={setShowSearch} inputRef={inputRef} />
             </Flex>
             <Flex>
               {/* <NextLink href={'/'} passHref>

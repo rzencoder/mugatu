@@ -40,7 +40,8 @@ const MobileNavMenu = ({ isOpen, onClose, gender, setGender }: MobileNavMenuProp
   }
 
   return (
-    <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+    // eslint-disable-next-line jsx-a11y/no-autofocus
+    <Drawer isOpen={isOpen} placement="right" onClose={onClose} autoFocus={false}>
       <DrawerOverlay>
         <DrawerContent
           bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'}
