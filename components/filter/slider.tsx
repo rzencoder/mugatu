@@ -31,9 +31,9 @@ function Handle({ handle: { id, percent, value }, getHandleProps }: HandleProps)
         height: 25,
         cursor: 'pointer',
         borderRadius: '50%',
-        backgroundColor: colorMode === 'light' ? '#fff' : '#000',
+        backgroundColor: colorMode === 'light' ? '#fff' : '#333',
         border: '3px solid',
-        borderColor: colorMode === 'light' ? '#000' : '#fff',
+        borderColor: colorMode === 'light' ? '#333' : '#fff',
       }}
       {...getHandleProps(id)}
     >
@@ -68,7 +68,7 @@ function Track({ source, target, getTrackProps }: TrackProps) {
         height: 5,
         zIndex: 1,
         marginTop: 35,
-        backgroundColor: colorMode === 'light' ? '#000' : '#fff',
+        backgroundColor: colorMode === 'light' ? '#333' : '#fff',
         borderRadius: 5,
         cursor: 'pointer',
         left: `${source.percent}%`,
@@ -94,7 +94,7 @@ const SliderComponent = ({ handlePriceFilter, device, values }: SliderProps): JS
     height: 5,
     marginTop: 35,
     borderRadius: 5,
-    backgroundColor: colorMode === 'light' ? '#000' : '#fff',
+    backgroundColor: colorMode === 'light' ? '#333' : '#fff',
   }
 
   return (

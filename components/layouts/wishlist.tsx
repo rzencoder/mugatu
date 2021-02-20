@@ -2,8 +2,9 @@ import { useBag } from '@/context/bagContext'
 import { useWishlist } from '@/context/wishlistContext'
 import { Item } from '@/types/item'
 import { DeleteIcon } from '@chakra-ui/icons'
-import { Flex, Box, Heading, Button, Select, useToast } from '@chakra-ui/react'
+import { Flex, Box, Heading, Button, Select, Link, useToast, useColorMode } from '@chakra-ui/react'
 import Image from 'next/image'
+import NextLink from 'next/link'
 import { useState } from 'react'
 import { Toast } from '..'
 
@@ -11,6 +12,7 @@ export default function Wishlist(): JSX.Element {
   const { wishlist, removeFromWishlist } = useWishlist()
   const [selectedProducts, setSelectedProducts] = useState([])
   const toast = useToast()
+  const { colorMode } = useColorMode()
   const { addToBag } = useBag()
 
   // Storing the user selected product and size in state
@@ -47,16 +49,17 @@ export default function Wishlist(): JSX.Element {
   }
 
   return (
-    <Flex direction="column" align="center" p={['20px 5px', '20px']} minHeight="500px">
-      <Heading as="h2" margin="10px 0 20px" fontWeight="600">
+    <Flex direction="column" align="center" p="20px 0" minHeight="500px">
+      <Heading as="h2" margin={['10px 0 20px', null, '20px 0 40px']} fontWeight="600">
         {wishlist && wishlist.length !== 0 && 'wishlist'}
       </Heading>
       <Flex
         height="100%"
-        width="100%"
         maxWidth="1300px"
         wrap="wrap"
-        justifyContent={['center', null, null, 'flex-start']}
+        margin="0 auto"
+        padding="0 10px"
+        justifyContent="center"
       >
         {wishlist &&
           wishlist.length > 0 &&
@@ -64,12 +67,13 @@ export default function Wishlist(): JSX.Element {
             return (
               <Flex
                 key={`wishlist-${item.id}`}
-                margin={['15px 5px', '15px']}
-                width={['100%', '100%', '45%', '30%']}
+                margin={['15px 5px', '15px 10px']}
+                maxWidth={['310px', '350px', '370px', '380px']}
                 justify="center"
               >
                 <Flex maxWidth="250px" minWidth="160px" position="relative">
                   <Image height={450} width={300} src={item.image.url} />
+
                   <Flex position="absolute" p="0" borderRadius="50%" bottom="1" left="1" bg="#ddd">
                     <Button
                       onClick={() => {
@@ -103,9 +107,16 @@ export default function Wishlist(): JSX.Element {
                   ml="10px"
                   justify="space-between"
                 >
-                  <Box fontSize="18px" textTransform="lowercase" fontWeight="600">
-                    {item.name}
-                  </Box>
+                  <NextLink
+                    href={`/${item.gender === 'female' ? 'women' : 'men'}/catalog/${item.slug}`}
+                    passHref
+                  >
+                    <Link>
+                      <Box fontSize="18px" textTransform="lowercase" fontWeight="600">
+                        {item.name}
+                      </Box>
+                    </Link>
+                  </NextLink>
                   <Flex direction="column">
                     <Box>£{item.price}</Box>
                     <Box textTransform="lowercase">{item.colour}</Box>
@@ -113,11 +124,15 @@ export default function Wishlist(): JSX.Element {
                   <Flex direction="column">
                     <Flex direction="column" margin="5px 0 10px">
                       <Box>choose size</Box>
-                      <Select onChange={(e) => handleSizeSelection(item, e.target.value)}>
+                      <Select
+                        colorScheme="red"
+                        onChange={(e) => handleSizeSelection(item, e.target.value)}
+                      >
                         {item.sizes.map((size) => {
                           return (
                             <option
                               key={`wishlist-size-${size.size}`}
+                              style={{ backgroundColor: colorMode === 'light' ? '#fff' : '#000' }}
                               disabled={size.stock === 0}
                               value={size.size}
                             >
