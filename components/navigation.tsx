@@ -1,4 +1,4 @@
-import { useWishlist } from '../context/wishlistContext'
+import { useWishlist } from '@/context/wishlistContext'
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import {
   Box,
@@ -14,7 +14,7 @@ import NextLink from 'next/link'
 import { useState } from 'react'
 import { MobileNavMenu } from '.'
 import BagPopOver from './bag/bagPopOver'
-import { useBag } from '../context/bagContext'
+import { useBag } from '@/context/bagContext'
 import Search from './search'
 import Image from 'next/image'
 import { useFocus } from 'hooks/useFocus'

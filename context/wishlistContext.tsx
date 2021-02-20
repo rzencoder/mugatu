@@ -1,10 +1,16 @@
 import { Item } from '@/types/item'
 import { useState, useContext, createContext } from 'react'
 
+interface Result {
+  title: string
+  message: string
+  status: string
+}
+
 interface WishlistContextInterface {
   wishlist: Item[]
-  addToWishlist: (item: Item) => boolean
-  removeFromWishlist: (item: Item) => void
+  addToWishlist: (item: Item) => Result
+  removeFromWishlist: (item: Item) => Result
 }
 
 const wishlistContext = createContext<WishlistContextInterface | null>(null)
@@ -24,15 +30,36 @@ const useProvideWishlist = () => {
   const addToWishlist = (item: Item) => {
     if (!wishlist.some((product) => product.id === item.id)) {
       setWishlist([...wishlist, item])
-      return true
+      return {
+        title: 'Item Saved!',
+        message: 'Your item has been saved to your wishlist',
+        status: 'success',
+      }
     } else {
-      return false
+      return {
+        title: 'Error!',
+        message: 'Your item is already saved in your wishlist',
+        status: 'error',
+      }
     }
   }
 
   const removeFromWishlist = (item: Item) => {
     const updatedWishlist = wishlist.filter((product) => product.id !== item.id)
-    setWishlist(updatedWishlist)
+    if (wishlist.length !== updatedWishlist.length) {
+      setWishlist(updatedWishlist)
+      return {
+        title: 'Item Removed!',
+        message: 'Your item has been removed from your wishlist',
+        status: 'success',
+      }
+    } else {
+      return {
+        title: 'Error!',
+        message: 'There was an error removing your item',
+        status: 'error',
+      }
+    }
   }
 
   return {

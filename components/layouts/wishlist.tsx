@@ -36,13 +36,13 @@ export default function Wishlist(): JSX.Element {
   //Move item into shopping bag and remove from wishlist
   const moveToBag = (item: Item) => {
     const chosenItem = selectedProducts.find((product) => product.id === item.id)
-    addToBag({ ...chosenItem, quantity: 1 })
+    const result = addToBag({ ...chosenItem, quantity: 1 })
     removeSelected(item)
     removeFromWishlist(item)
     toast({
       duration: 3000,
       // eslint-disable-next-line react/display-name
-      render: () => <Toast title="Item moved to your shopping cart" status="success" />,
+      render: () => <Toast title={result.title} message={result.message} status={result.status} />,
     })
   }
 
@@ -73,12 +73,16 @@ export default function Wishlist(): JSX.Element {
                   <Flex position="absolute" p="0" borderRadius="50%" bottom="1" left="1" bg="#ddd">
                     <Button
                       onClick={() => {
-                        removeFromWishlist(item)
+                        const result = removeFromWishlist(item)
                         toast({
                           duration: 3000,
                           // eslint-disable-next-line react/display-name
                           render: () => (
-                            <Toast title="Item removed from wishlist" status="success" />
+                            <Toast
+                              title={result.title}
+                              message={result.message}
+                              status={result.status}
+                            />
                           ),
                         })
                       }}

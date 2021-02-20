@@ -5,7 +5,7 @@ import { MutableRefObject, useEffect, useState } from 'react'
 import { useRouter } from 'next/dist/client/router'
 import SearchMobile from './searchMobile'
 import SearchDesktop from './searchDesktop'
-import searchOptions from '../../config/search'
+import searchOptions from '@/config/search'
 
 interface SearchProps {
   showSearch: boolean

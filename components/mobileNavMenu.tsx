@@ -21,7 +21,7 @@ import {
   Link,
 } from '@chakra-ui/react'
 import { FooterMobile } from '.'
-import { genderData, menuOptions } from '../data/mobileNavMenuData'
+import { genderData, menuOptions } from '@/data/mobileNavMenuData'
 import NextLink from 'next/link'
 import Image from 'next/image'
 

@@ -11,11 +11,13 @@ import {
   MenuItem,
   MenuList,
   MenuButton,
+  useToast,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { useBag } from '@/context/bagContext'
 import { BagItem } from '@/types/bagItem'
+import { Toast } from '..'
 
 interface Props {
   item: BagItem
@@ -25,6 +27,21 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
   const { addToWishlist } = useWishlist()
   const { updateBag, removeFromBag } = useBag()
   const { colorMode } = useColorMode()
+  const toast = useToast()
+
+  const handleMoveToWishlist = (item: BagItem) => {
+    removeFromBag(item)
+    const { title, status } = addToWishlist(item)
+    const message =
+      status === 'success'
+        ? 'Item moved to your wishlist'
+        : 'A problem occurred moving your item to your wishlist'
+    toast({
+      duration: 3000,
+      // eslint-disable-next-line react/display-name
+      render: () => <Toast title={title} message={message} status={status} />,
+    })
+  }
 
   return (
     <Flex p="10px 0">
@@ -57,7 +74,16 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
             fontSize="22px"
             padding="5px"
             margin={['0 3px', '0 10px']}
-            onClick={() => removeFromBag(item)}
+            onClick={() => {
+              const result = removeFromBag(item)
+              toast({
+                duration: 3000,
+                // eslint-disable-next-line react/display-name
+                render: () => (
+                  <Toast title={result.title} message={result.message} status={result.status} />
+                ),
+              })
+            }}
             color={colorMode === 'light' ? '#999' : '#aaa'}
           >
             <DeleteIcon
@@ -122,10 +148,7 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
           height={['35px', '45px']}
           p={['1px', '3px 5px']}
           _hover={{ bg: colorMode === 'light' ? 'mainBlackHover' : 'mainWhiteHover' }}
-          onClick={() => {
-            addToWishlist(item)
-            removeFromBag(item)
-          }}
+          onClick={() => handleMoveToWishlist(item)}
         >
           <Box
             backgroundImage="url(/icons/heart.png)"

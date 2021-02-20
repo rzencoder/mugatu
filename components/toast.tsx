@@ -4,7 +4,7 @@ import { Box, Flex } from '@chakra-ui/react'
 const getToastColour = (status: string) => {
   switch (status) {
     case 'success':
-      return '#259a54'
+      return '#208858'
     case 'error':
       return '#c51313'
     default:

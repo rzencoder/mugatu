@@ -10,7 +10,7 @@ import {
   MenuButton,
   MenuItem,
 } from '@chakra-ui/react'
-import { useBag } from '../context/bagContext'
+import { useBag } from '@/context/bagContext'
 import Image from 'next/image'
 import { useState } from 'react'
 import { ImageInfo, Toast } from '.'
@@ -33,17 +33,11 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
 
   const handleAddToBag = () => {
     const product = { ...item, selectedSize, quantity }
-    addToBag(product)
+    const result = addToBag(product)
     toast({
       duration: 3000,
       // eslint-disable-next-line react/display-name
-      render: () => (
-        <Toast
-          title="Item Added!"
-          message="Your item has been added to your shopping bag"
-          status="success"
-        />
-      ),
+      render: () => <Toast title={result.title} message={result.message} status={result.status} />,
     })
   }
 
@@ -207,19 +201,13 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
               variant="transparentBg"
               onClick={() => {
                 const result = addToWishlist(item)
-                if (result) {
-                  toast({
-                    duration: 3000,
-                    // eslint-disable-next-line react/display-name
-                    render: () => (
-                      <Toast
-                        title="Item saved!"
-                        message="Your item has been added to your wishlist"
-                        status="success"
-                      />
-                    ),
-                  })
-                }
+                toast({
+                  duration: 3000,
+                  // eslint-disable-next-line react/display-name
+                  render: () => (
+                    <Toast title={result.title} message={result.message} status={result.status} />
+                  ),
+                })
               }}
             >
               <Box

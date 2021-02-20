@@ -19,6 +19,21 @@
             ],
             "@/context/*": [
                 "context/*"
+            ],
+            "@/data/*": [
+                "data/*"
+            ],
+            "@/hooks/*": [
+                "hooks/*"
+            ],
+            "@/styles/*": [
+                "styles/*"
+            ],
+            "@/graphql/*": [
+                "graphql/*"
+            ],
+            "@/config/*": [
+                "config/*"
             ]
         },
         "target": "es5",

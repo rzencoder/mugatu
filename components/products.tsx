@@ -75,15 +75,17 @@ export default function Products({ products }: ProductsProps): JSX.Element {
                     onClick={(e) => {
                       e.preventDefault()
                       const result = addToWishlist(el)
-                      if (result) {
-                        toast({
-                          duration: 3000,
-                          // eslint-disable-next-line react/display-name
-                          render: () => (
-                            <Toast title="Item added to your wishlist" status="success" />
-                          ),
-                        })
-                      }
+                      toast({
+                        duration: 3000,
+                        // eslint-disable-next-line react/display-name
+                        render: () => (
+                          <Toast
+                            title={result.title}
+                            message={result.message}
+                            status={result.status}
+                          />
+                        ),
+                      })
                     }}
                     height="20px"
                     width="20px"
