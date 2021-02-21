@@ -1,45 +1,26 @@
-import { useSearch } from '@/context/searchContext'
 import Head from 'next/head'
-import { useEffect } from 'react'
 import { Layout } from '../components/layouts'
 import { Products } from '../components'
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex, Heading } from '@chakra-ui/react'
+import { formatResponseData, formatSearchDataResponse } from '../utils/'
+import { graphQLClient } from '../graphql/client'
+import Fuse from 'fuse.js'
+import searchOptions from '../config/search'
+import { GET_ALL_PRODUCTS } from 'graphql/queries'
+import { Item } from '@/types/item'
+import { GetServerSideProps } from 'next'
 
-const SearchPageInput = () => {
-  // const { searchInput, searchData, setSearchResults, setLoadSearchProducts } = useSearch()
-  // const fuse = new Fuse(searchData, searchOptions)
-  // // Handle updating search results on search input change
-  // useEffect(() => {
-  //   if (searchInput.length > 1) {
-  //     const result = fuse.search(searchInput)
-  //     setSearchResults(result)
-  //   } else if (searchInput.length === 0) {
-  //     setSearchResults([])
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [searchInput])
-
-  // // handle updating matching search products on submitting a search input
-  // const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault()
-  //   setLoadSearchProducts(true)
-  // }
-
-  return <Box>Hello</Box>
+interface SearchProps {
+  products: Item[]
+  query: string
 }
 
-export default function Search(): JSX.Element {
-  const { searchInput, searchProducts, setLoadSearchProducts } = useSearch()
-
-  useEffect(() => {
-    setLoadSearchProducts(true)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+export default function Search({ products, query }: SearchProps): JSX.Element {
+  console.log(products)
   return (
     <>
       <Head>
-        <title>Search - {searchInput} | Mugatu</title>
+        <title>Search - {query} | Mugatu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
@@ -51,20 +32,50 @@ export default function Search(): JSX.Element {
           minHeight="150px"
           p="20px 0 5px"
         >
-          {searchProducts ? (
+          {products && query ? (
             <>
               <Box fontSize="20px">search results for</Box>
               <Box fontSize="28px" fontWeight="600">
-                &ldquo;{searchInput}&ldquo;
+                &ldquo;{query}&ldquo;
               </Box>
-              {searchProducts.length > 0 && <Box p="10px 0 0">{searchProducts.length} items</Box>}
+              <Box p="10px 0 0">{`${products.length} item${
+                products.length !== 1 ? 's' : ''
+              } found`}</Box>
             </>
           ) : (
-            <SearchPageInput />
+            <Flex
+              direction="column"
+              textAlign="center"
+              margin="80px auto"
+              max-width="600px"
+              padding="0 20px"
+            >
+              <Heading as="h3" fontWeight="600" m="20px 0">
+                no search term found
+              </Heading>
+              <Box fontSize="18px">use the search bar above to search the catalog</Box>
+            </Flex>
           )}
         </Flex>
-        <Products products={searchProducts} />
+        <Products products={products} />
       </Layout>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  if (!query.search) {
+    return { props: { products: [], query: '' } }
+  }
+  try {
+    const response = await graphQLClient.request(GET_ALL_PRODUCTS)
+    const data = formatResponseData(response.productCollection.items)
+    const fuse = new Fuse(data, searchOptions)
+    const searchData = [...fuse.search(String(query.search))]
+    const formattedData = formatSearchDataResponse(searchData)
+    return { props: { products: formattedData, query: query.search } }
+  } catch (error) {
+    console.log(error)
+    return { props: { products: [], query: '' } }
+  }
 }

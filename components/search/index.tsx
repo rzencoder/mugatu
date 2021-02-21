@@ -14,7 +14,7 @@ interface SearchProps {
 }
 
 const Search = ({ showSearch, setShowSearch, inputRef }: SearchProps): JSX.Element => {
-  const { searchInput, searchData, setSearchResults, setLoadSearchProducts } = useSearch()
+  const { searchInput, searchData, setSearchResults } = useSearch()
   const fuse = new Fuse(searchData, searchOptions)
   const router = useRouter()
   // 767px is the third breakpoint with the chakra styling
@@ -38,9 +38,8 @@ const Search = ({ showSearch, setShowSearch, inputRef }: SearchProps): JSX.Eleme
   // handle updating matching search products on submitting a search input
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setLoadSearchProducts(true)
     setShowSearch(false)
-    router.push('/search')
+    router.push(`/search?search=${searchInput}`)
   }
 
   if (screenDesktop) {
