@@ -13,7 +13,7 @@ import {
 import { ArrowBackIcon, CheckIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
 import Slider from './slider'
-import initialQuery from '../../data/filterInitialQuery'
+import initialQuery from '@/data/filterInitialQuery'
 import {
   checkAnyFilterSelected,
   displayTickOnSelected,

@@ -49,7 +49,10 @@ export default function Products({ products }: ProductsProps): JSX.Element {
                 </Link>
               </NextLink>
               <Flex p={1} direction="column" justifyContent="space-between" height="100%">
-                <Box textTransform="lowercase"> {el.name}</Box>
+                <Box textTransform="lowercase" textAlign="left">
+                  {' '}
+                  {el.name}
+                </Box>
                 <Flex
                   flexDirection="row"
                   m="10px 0"

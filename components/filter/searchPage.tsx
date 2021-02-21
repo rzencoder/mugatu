@@ -2,24 +2,23 @@ import { Flex, Button, useColorMode, useDisclosure, useMediaQuery } from '@chakr
 import { useState } from 'react'
 import FilterDesktop from './desktop'
 import FilterMobile from './mobile'
-import initialQuery from '@/data/filterInitialQuery'
-import options from '@/data/filterOptions'
+import initialQuery from '../../data/filterInitialQuery'
+import options from '../../data/filterOptions'
 import { updateQueryData, checkAnyFilterSelected, getFilterOptions } from '@/utils/filter'
-import { useRouter } from 'next/dist/client/router'
-import { getPageGender } from '../../utils/'
 import { FilterQuery } from '@/types/filterQuery'
 
 interface FilterProps {
   setFilterData: (filterQuery: FilterQuery[]) => void
 }
 
-export default function Filter({ setFilterData }: FilterProps): JSX.Element {
-  const [filterQuery, setFilterQuery] = useState<FilterQuery[]>(initialQuery)
+export default function SearchPageFilter({ setFilterData }: FilterProps): JSX.Element {
+  const [filterQuery, setFilterQuery] = useState<FilterQuery[]>([
+    ...initialQuery,
+    { name: 'gender', query: [] },
+  ])
   const [showFilter, setShowFilter] = useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { colorMode } = useColorMode()
-  const router = useRouter()
-  const gender = getPageGender(router.pathname)
   // 767px is the third breakpoint with the chakra styling
   const [isLargerThan767] = useMediaQuery('(min-width: 767px)')
 
@@ -55,12 +54,14 @@ export default function Filter({ setFilterData }: FilterProps): JSX.Element {
         }}
         onClick={() => handleOpen()}
       >
-        {checkAnyFilterSelected(filterQuery, initialQuery) && '●'} Filter
+        {checkAnyFilterSelected(filterQuery, [...initialQuery, { name: 'gender', query: [] }]) &&
+          '●'}{' '}
+        Filter
       </Button>
       <FilterMobile
         isOpen={isOpen}
         onClose={onClose}
-        options={getFilterOptions(options, router.pathname, gender)}
+        options={getFilterOptions(options, 'all', 'all')}
         updateQuery={updateQuery}
         setFilterData={setFilterData}
         filterQuery={filterQuery}
@@ -68,7 +69,7 @@ export default function Filter({ setFilterData }: FilterProps): JSX.Element {
       />
       {showFilter && (
         <FilterDesktop
-          options={getFilterOptions(options, router.pathname, gender)}
+          options={getFilterOptions(options, 'all', 'all')}
           updateQuery={updateQuery}
           filterQuery={filterQuery}
         />

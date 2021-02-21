@@ -3,6 +3,7 @@ import { FilterQuery } from './../../types/filterQuery'
 const displaySelectedFilterItemsMobile = (option: string, queries: FilterQuery[]): string => {
   const item = [...queries].find((el) => el.name === option)
   let selectedOptions
+
   if (option === 'price') {
     if (item.query[0] === '0' && item.query[1] === '150') {
       return null

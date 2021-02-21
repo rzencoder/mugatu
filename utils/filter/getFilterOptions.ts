@@ -5,7 +5,8 @@ const getFilterOptions = (
   path: string,
   gender: string
 ): FilterOptions[] => {
-  const optionsForGender = gender === 'female' ? options[0] : options[1]
+  const optionsForGender =
+    gender === 'female' ? options[0] : gender === 'male' ? options[1] : options[2]
   const splitPath = path.split('/')
   if (splitPath.length > 3) {
     return optionsForGender.filter((el) => el.name !== 'product')
