@@ -1,7 +1,6 @@
 import { Flex } from '@chakra-ui/react'
-import Head from 'next/head'
 import { Jumbotron, Featured, Carousel, Banner, SmallBanner } from '../../components'
-import { Layout } from '@/components/layouts'
+import { Layout, Meta } from '@/components/layouts'
 import { graphQLClient } from '@/graphql/client'
 import { GET_PRODUCTS_BY_GENDER } from '@/graphql/queries'
 import { formatResponseData } from '../../utils'
@@ -12,10 +11,10 @@ import { GetStaticProps } from 'next'
 export default function Women({ productData }: { productData: Item[] }): JSX.Element {
   return (
     <>
-      <Head>
-        <title>Women&apos;s Fashion | Mugatu</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta
+        title="Women's Fashion | Mugatu"
+        description="Latest designer women's dresses, tops, skirts, jeans, coats"
+      />
       <Layout>
         <Flex direction="column">
           <Jumbotron

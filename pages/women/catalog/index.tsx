@@ -1,13 +1,12 @@
-import Head from 'next/head'
-import { Layout, Catalog } from '@/components/layouts'
+import { Layout, Catalog, Meta } from '@/components/layouts'
 
 export default function WomenCatalog(): JSX.Element {
   return (
     <>
-      <Head>
-        <title>Women&apos;s Fashion | Mugatu</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta
+        title="Women's Fashion | Mugatu"
+        description="Latest designer women's dresses, tops, skirts, jeans, coats"
+      />
       <Layout>
         <Catalog productPage="home" />
       </Layout>

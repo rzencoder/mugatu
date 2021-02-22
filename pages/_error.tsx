@@ -1,14 +1,10 @@
-import { Layout, ErrorLayout } from '@/components/layouts'
+import { Layout, ErrorLayout, Meta } from '@/components/layouts'
 import { NextPageContext } from 'next'
-import Head from 'next/head'
 
 function Error({ statusCode }: { statusCode: string }): JSX.Element {
   return (
     <>
-      <Head>
-        <title>Latest Women&apos;s and Men&apos;s Fashion | Mugatu</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta title="Latest Women's and Men's Fashion | Mugatu" />
       <Layout>
         <ErrorLayout message={`sorry an unexpected error occurred ${statusCode}`} />
       </Layout>

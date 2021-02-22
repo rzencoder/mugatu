@@ -12,7 +12,7 @@ import {
 import footerLinks from '@/data/footerLinks'
 import NextLink from 'next/link'
 
-const FooterMobile = () => {
+const FooterMobile = (): JSX.Element => {
   const { colorMode } = useColorMode()
   return (
     <Accordion allowToggle>

@@ -1,13 +1,9 @@
-import { Layout, ErrorLayout } from '@/components/layouts'
-import Head from 'next/head'
+import { Layout, ErrorLayout, Meta } from '@/components/layouts'
 
 export default function FourZeroFour(): JSX.Element {
   return (
     <>
-      <Head>
-        <title>Latest Women&apos;s and Men&apos;s Fashion | Mugatu</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta title="Latest Women's and Men's Fashion | Mugatu" />
       <Layout>
         <ErrorLayout message="sorry, we can't find the page you're looking for" />
       </Layout>

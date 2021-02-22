@@ -1,6 +1,5 @@
 import { Heading } from '@chakra-ui/react'
-import Head from 'next/head'
-import { Layout, Catalog } from './'
+import { Layout, Catalog, Meta } from './'
 
 interface CategoryPageProps {
   title: string
@@ -10,10 +9,7 @@ interface CategoryPageProps {
 export default function CategoryPage({ title, productPage }: CategoryPageProps): JSX.Element {
   return (
     <>
-      <Head>
-        <title>{title} | Mugatu</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta title={`${title} | Mugatu`} description={title} />
       <Layout>
         <Heading
           as="h2"

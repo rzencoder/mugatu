@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 const Button = {
-  // The styles all button have in common
   baseStyle: {
     fontWeight: '600',
     textTransform: 'uppercase',
@@ -12,7 +12,6 @@ const Button = {
       opacity: 1,
     },
   },
-  // Two sizes: sm and md
   sizes: {
     sm: {
       fontSize: '18px',
@@ -31,7 +30,6 @@ const Button = {
       padding: '32px',
     },
   },
-  // Two variants: outline and solid
   variants: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     outline: (props: any) => ({
@@ -77,7 +75,6 @@ const Button = {
       },
     }),
   },
-  // The default size and variant values
   defaultProps: {
     size: 'md',
     variant: 'outline',

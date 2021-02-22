@@ -12,6 +12,20 @@ a:hover {
   text-decoration: none !important;
 }
 
+.slick-arrow {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.slick-prev {
+  left: -45px !important;
+}
+
+.slick-next {
+  right: -25px !important;
+}
+  
+
 .slick-prev:before {
   content: "❮" !important;
   color: #888 !important;

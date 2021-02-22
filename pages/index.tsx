@@ -1,5 +1,4 @@
-import Head from 'next/head'
-import { Layout } from '@/components/layouts'
+import { Layout, Meta } from '@/components/layouts'
 import { Box, Flex, Heading, Button, Link } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
@@ -7,10 +6,10 @@ import NextLink from 'next/link'
 export default function Home(): JSX.Element {
   return (
     <>
-      <Head>
-        <title>Latest Women&apos;s and Men&apos;s Fashion | Mugatu</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta
+        title="Latest Women's and Men's Fashion | Mugatu"
+        description="Get the latest designer clothes for women and men"
+      />
       <Layout>
         <Box>
           <Box height={['650px']} position="relative">

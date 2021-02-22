@@ -1,7 +1,6 @@
 import { Flex } from '@chakra-ui/react'
-import Head from 'next/head'
 import { Jumbotron, Featured, Carousel, Banner, SmallBanner } from '../../components'
-import { Layout } from '@/components/layouts'
+import { Layout, Meta } from '@/components/layouts'
 import { graphQLClient } from '@/graphql/client'
 import { formatResponseData } from '../../utils'
 import { featuredItemsMen } from '@/data/featuredItems'
@@ -12,10 +11,10 @@ import { Item } from '@/types/item'
 export default function Men({ productData }: { productData: Item[] }): JSX.Element {
   return (
     <>
-      <Head>
-        <title>Men&apos;s Fashion | Mugatu</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta
+        title="Men's Fashion | Mugatu"
+        description="Latest designer men's shirts, jackets, jumpers, jeans, coats"
+      />
       <Layout>
         <Flex direction="column">
           <Jumbotron

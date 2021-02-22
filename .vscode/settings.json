@@ -7,7 +7,18 @@
         "Mugatu",
         "capitalise",
         "chakra",
+        "contentful",
+        "darkmode",
+        "helvetica",
+        "msapplication",
+        "pinterest",
+        "roboto",
+        "segoe",
         "testname",
-        "typeahead"
+        "typeahead",
+        "vercel"
+    ],
+    "cSpell.ignoreWords": [
+        "ctfassets"
     ]
 }

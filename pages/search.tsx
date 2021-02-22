@@ -1,5 +1,4 @@
-import Head from 'next/head'
-import { Layout, SearchPageLayout } from '@/components/layouts'
+import { Layout, SearchPageLayout, Meta } from '@/components/layouts'
 import { formatResponseData, formatSearchDataResponse } from '../utils/'
 import { graphQLClient } from '@/graphql/client'
 import Fuse from 'fuse.js'
@@ -16,10 +15,7 @@ interface SearchProps {
 export default function Search({ products, query }: SearchProps): JSX.Element {
   return (
     <>
-      <Head>
-        <title>Search - {query} | Mugatu</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta title={`Search - ${query} | Mugatu`} />
       <Layout>
         <SearchPageLayout products={products} query={query} />
       </Layout>
