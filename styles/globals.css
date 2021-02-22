@@ -58,3 +58,18 @@ a:hover {
 .featured-bg {
   object-fit: cover;
 }
+
+#skip a {
+  display: block; 
+  position: absolute; 
+  left: -999px; 
+  top: -999px;
+}
+
+#skip a:focus {
+  left: 0; 
+  top: 0; 
+  padding: 6px; 
+  background: #fff; 
+  border:1px solid #990000;
+}

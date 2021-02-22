@@ -1,6 +1,6 @@
 import { GET_SEARCH_DATA } from 'graphql/queries'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { graphQLClient } from '../../graphql/client'
+import { graphQLClient } from '@/graphql/client'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default async (req: NextApiRequest, res: NextApiResponse) => {

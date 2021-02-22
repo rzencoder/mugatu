@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import { calculateNumOfItems, calculateSubTotal } from '../../utils/bag'
+import { calculateNumOfItems, calculateSubTotal } from '@/utils/bag'
 
 const BagPopOver = (): JSX.Element => {
   const { colorMode } = useColorMode()

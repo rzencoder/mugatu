@@ -29,6 +29,7 @@ const SearchDesktop = ({
           <Input
             ref={inputRef}
             width={[showSearch ? '400px' : '0']}
+            aria-label="search input"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             transition="width 0.4s"
@@ -41,6 +42,7 @@ const SearchDesktop = ({
             <>
               <Button
                 variant="icon"
+                aria-label="clear search value"
                 position="absolute"
                 zIndex="10"
                 top="2px"
@@ -57,6 +59,7 @@ const SearchDesktop = ({
               </Button>
               <Button
                 variant="icon"
+                aria-label="submit search"
                 bg="mainBlack"
                 borderRadius="50%"
                 position="absolute"

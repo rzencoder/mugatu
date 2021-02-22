@@ -38,7 +38,12 @@ export default function Featured({ items, gender }: FeaturedProps): JSX.Element 
         </Box>
       </Box>
       <Box position="absolute" top="0" height="100%" width="100%" opacity="0.15">
-        <Image src="/landing/women/women-bg.jpg" layout="fill" className="featured-bg" />
+        <Image
+          src="/landing/women/women-bg.jpg"
+          layout="fill"
+          className="featured-bg"
+          role="presentation"
+        />
       </Box>
       <Flex wrap="wrap" justifyContent="center" width="100%" p={['20px 5px', '20px 15px']}>
         {items.map((item, index) => {

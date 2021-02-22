@@ -1,6 +1,6 @@
 import { formatResponseData } from '../../utils/'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { graphQLClient } from '../../graphql/client'
+import { graphQLClient } from '@/graphql/client'
 import { GET_PRODUCTS_BY_GENDER } from 'graphql/queries'
 import { Item } from '@/types/item'
 

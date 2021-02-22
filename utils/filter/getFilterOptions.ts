@@ -1,4 +1,4 @@
-import { FilterOptions } from './../../types/filterOptions'
+import { FilterOptions } from '@/types/filterOptions'
 
 const getFilterOptions = (
   options: FilterOptions[][],

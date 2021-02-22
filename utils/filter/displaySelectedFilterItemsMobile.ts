@@ -1,4 +1,4 @@
-import { FilterQuery } from './../../types/filterQuery'
+import { FilterQuery } from '@/types/filterQuery'
 
 const displaySelectedFilterItemsMobile = (option: string, queries: FilterQuery[]): string => {
   const item = [...queries].find((el) => el.name === option)

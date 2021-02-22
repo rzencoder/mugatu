@@ -1,5 +1,5 @@
 import { Box, Flex, Link, Heading, Divider, useColorMode } from '@chakra-ui/react'
-import footerLinks from '../data/footerLinks'
+import footerLinks from '@/data/footerLinks'
 import Image from 'next/image'
 
 export default function Footer(): JSX.Element {

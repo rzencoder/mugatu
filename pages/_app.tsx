@@ -1,8 +1,8 @@
-import '../styles/globals.css'
+import '@/styles/globals.css'
 import { AppProps } from 'next/app'
 import { ChakraProvider, CSSReset } from '@chakra-ui/react'
-import { ProvideBag } from '../context/bagContext'
-import { theme } from '../styles/chakraTheme'
+import { ProvideBag } from '@/context/bagContext'
+import { theme } from '@/styles/chakraTheme'
 import { ProvideWishlist } from '@/context/wishlistContext'
 import { ProvideSearch } from '@/context/searchContext'
 

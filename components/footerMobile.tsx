@@ -9,7 +9,7 @@ import {
   Link,
   useColorMode,
 } from '@chakra-ui/react'
-import footerLinks from '../data/footerLinks'
+import footerLinks from '@/data/footerLinks'
 import NextLink from 'next/link'
 
 const FooterMobile = () => {

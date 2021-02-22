@@ -42,7 +42,12 @@ export default function Navigation(): JSX.Element {
         </NextLink>
         <Box boxSize={['70px', null, '90px']} margin="10px" marginLeft={['-10px', '-20px']}>
           <NextLink href="/" passHref>
-            <Link filter={colorMode === 'dark' ? 'invert()' : 'none'}>
+            <Link
+              width="90px"
+              height="100px"
+              aria-label="home page link"
+              filter={colorMode === 'dark' ? 'invert()' : 'none'}
+            >
               <Image width="90px" height="100px" src="/logo.png" alt="logo" />
             </Link>
           </NextLink>
@@ -53,7 +58,12 @@ export default function Navigation(): JSX.Element {
       </Flex>
       <Flex bg="#333" padding={['8px', null, '10px']}>
         <Flex justifyContent={['space-between', null, 'flex-end']} margin="0 auto" width="90%">
-          <Button variant="icon" display={['inline-flex', null, 'none']} onClick={onOpen}>
+          <Button
+            variant="icon"
+            aria-label="menu toggle"
+            display={['inline-flex', null, 'none']}
+            onClick={onOpen}
+          >
             <HamburgerIcon w={8} h={8} />
           </Button>
           <MobileNavMenu isOpen={isOpen} onClose={onClose} gender={gender} setGender={setGender} />
@@ -65,6 +75,7 @@ export default function Navigation(): JSX.Element {
             <Flex alignItems="center">
               <Button
                 variant="icon"
+                aria-label="open search bar"
                 onClick={() => {
                   setInputFocus()
                   setShowSearch(!showSearch)
@@ -83,14 +94,20 @@ export default function Navigation(): JSX.Element {
                 </Link>
               </NextLink> */}
               <NextLink href="/wishlist" passHref>
-                <Link>
+                <Link aria-label="wishlist" margin="0 15px">
                   <Box position="relative">
-                    <Button variant="icon" backgroundImage="url(/icons/heart.png)" />
+                    <Box
+                      width="30px"
+                      height="30px"
+                      p="5px"
+                      backgroundImage="url(/icons/heart.png)"
+                      backgroundSize="cover"
+                    />
                     {wishlist && wishlist.length >= 1 && (
                       <Box
                         position="absolute"
                         top={['-1px', null, '-2px']}
-                        right={['7px', null, '12px']}
+                        right="-3px"
                         width="10px"
                         height="10px"
                         borderRadius="50%"
@@ -129,6 +146,7 @@ export default function Navigation(): JSX.Element {
               <Button
                 display={['none', null, 'block']}
                 variant="icon"
+                aria-label="toggle dark mode"
                 backgroundImage={`url(/icons/${colorMode === 'dark' ? 'sun' : 'moon'}.png)`}
                 onClick={toggleColorMode}
               />

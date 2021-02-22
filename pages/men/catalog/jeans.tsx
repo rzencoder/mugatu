@@ -1,4 +1,4 @@
-import { CategoryPage } from '../../../components/layouts'
+import { CategoryPage } from '@/components/layouts'
 
 const Jeans = (): JSX.Element => <CategoryPage title="Men's Jeans" productPage="jeans" />
 

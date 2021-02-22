@@ -1,10 +1,10 @@
 import { Flex } from '@chakra-ui/react'
 import Head from 'next/head'
 import { Jumbotron, Featured, Carousel, Banner, SmallBanner } from '../../components'
-import { Layout } from '../../components/layouts'
-import { graphQLClient } from '../../graphql/client'
+import { Layout } from '@/components/layouts'
+import { graphQLClient } from '@/graphql/client'
 import { formatResponseData } from '../../utils'
-import { featuredItemsMen } from '../../data/featuredItems'
+import { featuredItemsMen } from '@/data/featuredItems'
 import { GET_PRODUCTS_BY_GENDER } from 'graphql/queries'
 import { GetStaticProps } from 'next'
 import { Item } from '@/types/item'
@@ -24,7 +24,7 @@ export default function Men({ productData }: { productData: Item[] }): JSX.Eleme
             bgColor="#137571"
             buttonHoverColor="#5fabf9"
             gender="men"
-            buttonColor="#089fe6"
+            buttonColor="#0790d0"
             text="Latest styles now in"
           />
           <SmallBanner />

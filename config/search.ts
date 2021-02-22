@@ -9,7 +9,7 @@ const searchOptions = {
   // location: 0,
   // distance: 100,
   // useExtendedSearch: false,
-  // ignoreLocation: false,
+  // ignoreLocation: true,
   // ignoreFieldNorm: false,
   keys: ['name', 'colour', 'gender', 'category'],
 }

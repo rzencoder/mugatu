@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Layout } from '../components/layouts'
+import { Layout } from '@/components/layouts'
 import { Box, Flex, Heading, Button, Link } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
@@ -131,7 +131,7 @@ export default function Home(): JSX.Element {
                 className="home-page-cat-img"
                 role="presentation"
               />
-              <Box position="absolute" top="0" bg="#000" width="100%" height="100%" opacity="0.2" />
+              <Box position="absolute" top="0" bg="#000" width="100%" height="100%" opacity="0.3" />
               <Flex
                 position="relative"
                 top="0"

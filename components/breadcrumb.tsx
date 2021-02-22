@@ -1,9 +1,15 @@
-import { Breadcrumb as BreadcrumbContainer, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react'
+import {
+  Breadcrumb as BreadcrumbContainer,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  useColorMode,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
 
 const Breadcrumb = (): JSX.Element => {
   const router = useRouter()
+  const { colorMode } = useColorMode()
 
   const getPaths = () => {
     const pathName = router.asPath.substring(1)
@@ -27,6 +33,14 @@ const Breadcrumb = (): JSX.Element => {
     return pathResult.join('')
   }
 
+  const getBreadcrumbColor = (index: number, pathLength: number, colorMode: string): string => {
+    if (index === pathLength - 1) {
+      return colorMode === 'light' ? '#666' : '#aaa'
+    } else {
+      return colorMode === 'light' ? '#333' : 'mainWhite'
+    }
+  }
+
   return (
     <BreadcrumbContainer
       margin="15px auto 5px"
@@ -38,8 +52,9 @@ const Breadcrumb = (): JSX.Element => {
     >
       {paths.map((path: string, index: number) => {
         const pathLink = path.split('-').join(' ').split('?')
+        const color = getBreadcrumbColor(index, paths.length, colorMode)
         return (
-          <BreadcrumbItem key={path} color={index === paths.length - 1 && '#777'}>
+          <BreadcrumbItem key={path} color={color}>
             <Link href={formatLinkHref(paths, index)} passHref>
               <BreadcrumbLink>{pathLink[0]}</BreadcrumbLink>
             </Link>

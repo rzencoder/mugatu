@@ -41,6 +41,7 @@ export default function Products({ products }: ProductsProps): JSX.Element {
                   textTransform="lowercase"
                   fontSize={['16px', null, '18px', '20px']}
                   mb="10px"
+                  aria-label={el.name}
                   _hover={{
                     textDecoration: 'none',
                   }}
@@ -60,11 +61,14 @@ export default function Products({ products }: ProductsProps): JSX.Element {
                   justifyContent="space-between"
                 >
                   <Flex alignItems="flex-start">
-                    <Box fontSize={['16px', '18px', '20px']} color="mainRed">
+                    <Box
+                      fontSize={['16px', '18px', '20px']}
+                      color={colorMode === 'light' ? 'mainRed' : 'mainRedDM'}
+                    >
                       £{el.price}
                     </Box>
                     <Box
-                      color="#777"
+                      color={colorMode === 'light' ? '#666' : '#999'}
                       fontSize={['12px', '14px', '16px']}
                       textDecoration="line-through"
                       ml={['5px', null, null, '10px']}
@@ -75,6 +79,7 @@ export default function Products({ products }: ProductsProps): JSX.Element {
                   </Flex>
                   <Button
                     variant="transparentBg"
+                    aria-label="add to wishlist"
                     onClick={(e) => {
                       e.preventDefault()
                       const result = addToWishlist(el)

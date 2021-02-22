@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Layout, Catalog } from '../../../components/layouts'
+import { Layout, Catalog } from '@/components/layouts'
 
 export default function WomenCatalog(): JSX.Element {
   return (
