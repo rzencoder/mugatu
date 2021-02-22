@@ -53,11 +53,13 @@ const SearchMobile = ({
               <Box position="relative">
                 <Input
                   value={searchInput}
+                  aria-label="search input"
                   onChange={(e) => setSearchInput(e.target.value)}
                   ref={searchFieldRef}
                 />
                 <Button
                   type="submit"
+                  aria-label="submit search query"
                   variant="icon"
                   color={colorMode === 'light' ? '#333' : 'mainWhite'}
                   position="absolute"

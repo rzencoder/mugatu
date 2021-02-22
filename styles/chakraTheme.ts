@@ -8,7 +8,7 @@ const styles = {
     mainBlack: '#000',
     mainWhite: '#fff',
     mainRed: '#d80808',
-    mainRedDM: '#e62020',
+    mainRedDM: '#f72f2f',
     mainBlackHover: 'rgba(0,0,0, 0.04)',
     mainWhiteHover: 'rgba(255,255,255, 0.05)',
     teal: { 200: '#10aed2' },

@@ -50,7 +50,7 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
         maxWidth={['120px', '140px']}
         maxHeight={['180px', 'none']}
       >
-        <Image src={item.image.url} width={150} height={225}></Image>
+        <Image src={item.image.url} width={150} height={225} alt={item.name}></Image>
       </Flex>
       <Flex
         direction="column"
@@ -70,6 +70,7 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
             </Link>
           </NextLink>
           <Button
+            aria-label="remove from bag"
             variant="icon"
             fontSize="22px"
             padding="5px"
@@ -129,7 +130,7 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
           </Flex>
         </Flex>
         <Flex p="5px 0">
-          <Box fontSize={['19px', '22px']} color="mainRed">
+          <Box fontSize={['19px', '22px']} color={colorMode === 'light' ? 'mainRed' : 'mainRedDM'}>
             £{item.price}
           </Box>
           <Box

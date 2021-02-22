@@ -43,7 +43,7 @@ const BagPopOver = (): JSX.Element => {
               return (
                 <Flex key={`popover-bag-item-${item.name}`} p="10px 0">
                   <Flex minWidth="100px">
-                    <Image src={item.image.url} width="100" height="150" />
+                    <Image src={item.image.url} width="100" height="150" alt={item.name} />
                   </Flex>
                   <Flex
                     direction="column"

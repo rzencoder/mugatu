@@ -83,7 +83,7 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
       justifyContent={[null, null, 'center']}
     >
       <Box width={['100%', '400px']} position="relative" mr={[null, null, '20px', '80px']}>
-        <Image width={600} height={900} src={image.url} />
+        <Image width={600} height={900} src={image.url} alt={name} />
         {popular && <ImageInfo />}
       </Box>
 
@@ -105,7 +105,12 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
           <Box color="mainRed" fontSize={['26px', '28px']} mr="5px">
             £{price}
           </Box>
-          <Box textDecoration="line-through" color="#aaa" fontSize="14px" mt="-10px">
+          <Box
+            textDecoration="line-through"
+            color={colorMode === 'light' ? '#666' : '#aaa'}
+            fontSize="14px"
+            mt="-10px"
+          >
             rrp £{rrp}
           </Box>
         </Flex>
@@ -196,9 +201,16 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
           >
             {selectedSize ? 'Add to Bag' : 'Select UK Size'}
           </Button>
-          <Flex height="50px" width="50px" padding="9px" margin="0 5px" alignItems="center">
+          <Flex
+            height="50px"
+            width="50px"
+            padding="9px"
+            margin={['0', '0 10px']}
+            alignItems="center"
+          >
             <Button
               variant="transparentBg"
+              aria-label="add to wishlist"
               onClick={() => {
                 const result = addToWishlist(item)
                 toast({

@@ -120,16 +120,22 @@ export default function Navigation(): JSX.Element {
 
               <Popover trigger="hover">
                 <PopoverTrigger>
-                  <Button variant="icon" backgroundImage="url(/icons/bag.png)" position="relative">
+                  <Button
+                    variant="icon"
+                    backgroundImage="url(/icons/bag.png)"
+                    position="relative"
+                    width="30px"
+                    height="30px"
+                  >
                     <NextLink href="/bag" passHref>
                       <Link>
                         <Box>
                           <Box
                             position="absolute"
                             color="mainWhite"
-                            top={['9px', null, '12px']}
+                            top="12px"
                             fontSize="12px"
-                            left={['7.5px', null, '10px']}
+                            left="10px"
                             width={bag.length < 10 ? '10px' : '15px'}
                             textAlign="center"
                           >

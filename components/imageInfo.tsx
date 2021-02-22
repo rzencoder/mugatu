@@ -13,7 +13,7 @@ const ImageInfo = (): JSX.Element => {
       p={2}
       borderRadius="10px 0 0 10px"
     >
-      <span role="img" aria-label="">
+      <span role="img" aria-label="hot">
         🔥
       </span>{' '}
       hot right now

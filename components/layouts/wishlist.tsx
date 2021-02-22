@@ -3,6 +3,7 @@ import { useWishlist } from '@/context/wishlistContext'
 import { Item } from '@/types/item'
 import { DeleteIcon } from '@chakra-ui/icons'
 import { Flex, Box, Heading, Button, Select, Link, useToast, useColorMode } from '@chakra-ui/react'
+import image from 'next/image'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { useState } from 'react'
@@ -72,10 +73,11 @@ export default function Wishlist(): JSX.Element {
                 justify="center"
               >
                 <Flex maxWidth="250px" minWidth="160px" position="relative">
-                  <Image height={450} width={300} src={item.image.url} />
+                  <Image height={450} width={300} src={item.image.url} alt={item.name} />
 
                   <Flex position="absolute" p="0" borderRadius="50%" bottom="1" left="1" bg="#ddd">
                     <Button
+                      aria-label="remove from wishlist"
                       onClick={() => {
                         const result = removeFromWishlist(item)
                         toast({
@@ -125,6 +127,7 @@ export default function Wishlist(): JSX.Element {
                     <Flex direction="column" margin="5px 0 10px">
                       <Box>choose size</Box>
                       <Select
+                        aria-label="select size"
                         colorScheme="red"
                         onChange={(e) => handleSizeSelection(item, e.target.value)}
                       >

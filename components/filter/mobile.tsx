@@ -58,7 +58,12 @@ const Mobile = ({
           alignItems="center"
           p="15px 10px"
         >
-          <Button variant="transparentBg" p="5px" onClick={() => setShowFilterType('')}>
+          <Button
+            variant="transparentBg"
+            aria-label="back to all filter options"
+            p="5px"
+            onClick={() => setShowFilterType('')}
+          >
             <ArrowBackIcon />
           </Button>
           <Box>{filterType}</Box>
