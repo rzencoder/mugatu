@@ -19,6 +19,7 @@ export function ProvideSearch({ children }: { children: React.ReactNode }): JSX.
   return <searchContext.Provider value={search}>{children}</searchContext.Provider>
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useSearch = () => {
   return useContext(searchContext)
 }

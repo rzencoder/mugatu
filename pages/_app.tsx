@@ -5,21 +5,24 @@ import { ProvideBag } from '@/context/bagContext'
 import { theme } from '@/styles/chakraTheme'
 import { ProvideWishlist } from '@/context/wishlistContext'
 import { ProvideSearch } from '@/context/searchContext'
+import { ProvideAuth } from '@/context/authContext'
 
 function MyApp(props: AppProps): JSX.Element {
   const { Component, pageProps } = props
 
   return (
-    <ProvideBag>
-      <ProvideWishlist>
-        <ProvideSearch>
-          <ChakraProvider theme={theme}>
-            <CSSReset />
-            <Component {...pageProps} />
-          </ChakraProvider>
-        </ProvideSearch>
-      </ProvideWishlist>
-    </ProvideBag>
+    <ProvideAuth>
+      <ProvideBag>
+        <ProvideWishlist>
+          <ProvideSearch>
+            <ChakraProvider theme={theme}>
+              <CSSReset />
+              <Component {...pageProps} />
+            </ChakraProvider>
+          </ProvideSearch>
+        </ProvideWishlist>
+      </ProvideBag>
+    </ProvideAuth>
   )
 }
 

@@ -15,7 +15,7 @@ const footerLinks = [
       { name: 'About Us', href: '#' },
       { name: 'Careers', href: '#' },
       { name: 'Media', href: '#' },
-      { name: 'DZ Foundation', href: '#' },
+      { name: 'DZ Foundation', href: 'https://www.youtube.com/watch?v=7ffj8SHrbk0' },
     ],
   },
   {

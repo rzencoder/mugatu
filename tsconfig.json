@@ -34,6 +34,9 @@
             ],
             "@/config/*": [
                 "config/*"
+            ],
+            "@/firebase/*": [
+                "firebase/*"
             ]
         },
         "target": "es5",

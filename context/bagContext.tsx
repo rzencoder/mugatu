@@ -21,6 +21,7 @@ export function ProvideBag({ children }: { children: React.ReactNode }): JSX.Ele
   return <bagContext.Provider value={bag}>{children}</bagContext.Provider>
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useBag = () => {
   return useContext(bagContext)
 }

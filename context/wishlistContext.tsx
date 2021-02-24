@@ -20,6 +20,7 @@ export function ProvideWishlist({ children }: { children: React.ReactNode }): JS
   return <wishlistContext.Provider value={wishlist}>{children}</wishlistContext.Provider>
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useWishlist = () => {
   return useContext(wishlistContext)
 }
