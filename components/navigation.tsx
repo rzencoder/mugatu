@@ -56,8 +56,13 @@ export default function Navigation(): JSX.Element {
           <Link fontSize={['18px', null, '22px']}>MEN</Link>
         </NextLink>
       </Flex>
-      <Flex bg="#333" padding={['8px', null, '10px']}>
-        <Flex justifyContent={['space-between', null, 'flex-end']} margin="0 auto" width="90%">
+      <Flex bg="#333" padding={['10px']}>
+        <Flex
+          justifyContent={['space-between', null, 'flex-end']}
+          alignItems="center"
+          margin="0 auto"
+          width={['100%', '90%']}
+        >
           <Button
             variant="icon"
             aria-label="menu toggle"
@@ -72,7 +77,7 @@ export default function Navigation(): JSX.Element {
             justifyContent={['flex-end', null, 'space-between']}
             width="100%"
           >
-            <Flex alignItems="center">
+            <Flex alignItems="center" margin="0 2px">
               <Button
                 variant="icon"
                 aria-label="open search bar"
@@ -87,12 +92,12 @@ export default function Navigation(): JSX.Element {
               </Button>
               <Search showSearch={showSearch} setShowSearch={setShowSearch} inputRef={inputRef} />
             </Flex>
-            <Flex>
-              {/* <NextLink href={'/'} passHref>
+            <Flex alignItems="center">
+              <NextLink href={'/account'} passHref>
                 <Link>
                   <Button variant="icon" backgroundImage="url(/icons/account.png)" />
                 </Link>
-              </NextLink> */}
+              </NextLink>
               <NextLink href="/wishlist" passHref>
                 <Link aria-label="wishlist" margin="0 15px">
                   <Box position="relative">

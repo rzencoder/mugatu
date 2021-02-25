@@ -3,7 +3,8 @@ import nookies from 'nookies'
 import { firebaseAdmin } from '@/firebase/firebaseAdmin'
 import { firebaseClient } from '@/firebase/firebaseClient'
 import { GetServerSideProps } from 'next'
-import { Box, Button, Flex } from '@chakra-ui/react'
+import { Box, Button } from '@chakra-ui/react'
+import { Layout, Meta } from '@/components/layouts'
 
 interface AccountProps {
   message: string
@@ -24,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
       redirect: {
         permanent: false,
-        destination: '/signin',
+        destination: '/login',
       },
       props: {},
     }
@@ -32,17 +33,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 const Account = ({ message }: AccountProps): JSX.Element => (
-  <Flex>
-    <Box>{message}!</Box>
-    <Button
-      onClick={async () => {
-        await firebaseClient.auth().signOut()
-        window.location.href = '/'
-      }}
-    >
-      Sign out
-    </Button>
-  </Flex>
+  <>
+    <Meta title="Account | Mugatu" />
+    <Layout>
+      <Box>{message}!</Box>
+      <Button
+        onClick={async () => {
+          await firebaseClient.auth().signOut()
+          window.location.href = '/'
+        }}
+      >
+        Sign out
+      </Button>
+    </Layout>
+  </>
 )
 
 export default Account

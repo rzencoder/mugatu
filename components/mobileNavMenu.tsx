@@ -24,6 +24,7 @@ import { FooterMobile } from '.'
 import { genderData, menuOptions } from '@/data/mobileNavMenuData'
 import NextLink from 'next/link'
 import Image from 'next/image'
+import { useAuth } from '@/context/authContext'
 
 interface MobileNavMenuProps {
   isOpen: boolean
@@ -34,6 +35,7 @@ interface MobileNavMenuProps {
 
 const MobileNavMenu = ({ isOpen, onClose, gender, setGender }: MobileNavMenuProps): JSX.Element => {
   const { colorMode, toggleColorMode } = useColorMode()
+  const { user } = useAuth()
 
   const getGenderDataIndex = () => {
     return genderData.map((el) => el.gender).indexOf(gender)
@@ -74,9 +76,11 @@ const MobileNavMenu = ({ isOpen, onClose, gender, setGender }: MobileNavMenuProp
           </DrawerHeader>
 
           <DrawerBody p="10px 30px">
-            {/* <Flex fontSize="22px" p="0 0 10px">
-              <Box>hey user</Box>
-            </Flex> */}
+            {user && user.displayName && (
+              <Flex fontSize="22px" p="0 0 10px">
+                <Box>hey {user.displayName}</Box>
+              </Flex>
+            )}
             {menuOptions.map((option) => {
               return (
                 <NextLink key={`mob-menu-${option.name}`} href={option.href} passHref>
@@ -166,6 +170,7 @@ const MobileNavMenu = ({ isOpen, onClose, gender, setGender }: MobileNavMenuProp
                         </Box>
                         <Button
                           borderColor="mainWhite"
+                          color="mainWhite"
                           padding="10px 15px"
                           fontSize="18px"
                           mt="20px"

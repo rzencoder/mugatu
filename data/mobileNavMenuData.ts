@@ -22,4 +22,5 @@ export const genderData = [
 export const menuOptions = [
   { name: 'Shopping Bag', href: '/bag', imageSrc: 'bag' },
   { name: 'Wishlist', href: '/wishlist', imageSrc: 'heart' },
+  { name: 'Account', href: '/account', imageSrc: 'account' },
 ]
