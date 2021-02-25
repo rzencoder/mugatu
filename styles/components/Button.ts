@@ -32,10 +32,11 @@ const Button = {
   },
   variants: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // standard: (props: any) => ({
-    //   border: '2px solid',
-    //   borderColor: props.colorMode === 'light' ? 'mainBlack' : 'mainWhite',
-    // }),
+    standard: (props: any) => ({
+      border: '2px solid',
+      borderColor: props.colorMode === 'light' ? 'mainBlack' : 'mainWhite',
+      color: props.colorMode === 'light' ? '#222' : 'mainWhite',
+    }),
     icon: {
       backgroundSize: 'contain',
       width: ['25px', null, '30px'],

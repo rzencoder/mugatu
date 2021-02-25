@@ -1,11 +1,11 @@
 import { useSearch } from '@/context/searchContext'
-import { useMediaQuery } from '@chakra-ui/react'
-import Fuse from 'fuse.js'
+import { useMediaQuery, useToast } from '@chakra-ui/react'
 import { MutableRefObject, useEffect, useState } from 'react'
 import { useRouter } from 'next/dist/client/router'
 import SearchMobile from './searchMobile'
 import SearchDesktop from './searchDesktop'
 import searchOptions from '@/config/search'
+import { Toast } from '..'
 
 interface SearchProps {
   showSearch: boolean
@@ -15,16 +15,33 @@ interface SearchProps {
 
 const Search = ({ showSearch, setShowSearch, inputRef }: SearchProps): JSX.Element => {
   const { searchInput, searchData, setSearchResults } = useSearch()
-  const fuse = new Fuse(searchData, searchOptions)
   const router = useRouter()
   // 767px is the third breakpoint with the chakra styling
   const [isLargerThan767] = useMediaQuery('(min-width: 767px)')
   const [screenDesktop, setScreenDesktop] = useState(false)
+  const toast = useToast()
+
   // Handle updating search results on search input change
   useEffect(() => {
     if (searchInput.length > 1) {
-      const result = fuse.search(searchInput)
-      setSearchResults(result)
+      const getSearchResults = async () => {
+        try {
+          const Fuse = (await import('fuse.js')).default
+          const fuse = new Fuse(searchData, searchOptions)
+          const result = fuse.search(searchInput)
+          setSearchResults(result)
+        } catch (error) {
+          console.log(error)
+          toast({
+            duration: 3000,
+            // eslint-disable-next-line react/display-name
+            render: () => (
+              <Toast title="Search Error" message="There was an error searching" status="error" />
+            ),
+          })
+        }
+      }
+      getSearchResults()
     } else if (searchInput.length === 0) {
       setSearchResults([])
     }

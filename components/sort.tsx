@@ -20,7 +20,7 @@ export default function Sort({ sortValue, setSortValue }: SortProps): JSX.Elemen
   const { colorMode } = useColorMode()
 
   return (
-    <Flex position="relative">
+    <Flex id="sort-menu" position="relative">
       <Menu>
         <MenuButton
           as={Button}

@@ -36,7 +36,12 @@ export default function Catalog({ productPage }: CatalogProps): JSX.Element {
           {`${data.products.length} item${data.products.length !== 1 ? 's' : ''} found`}
         </Box>
       )}
-      <Flex justify="space-between" align="flex-start" padding={['5px', null, '15px']}>
+      <Flex
+        justify="space-between"
+        align="flex-start"
+        padding={['5px', null, '15px']}
+        margin="0 0.1px"
+      >
         <Filter setFilterData={setFilterData} />
         <Sort sortValue={sortValue} setSortValue={setSortValue} />
       </Flex>

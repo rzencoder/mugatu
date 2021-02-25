@@ -91,7 +91,7 @@ const Summary = ({ subtotal }: Props): JSX.Element => {
               })`}</Box>
               <ChevronDownIcon />
             </MenuButton>
-            <MenuList>
+            <MenuList bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'}>
               {deliveryOptions.map((option, index) => {
                 const price = option.name === delivery.name ? delivery.price : option.price
                 return (

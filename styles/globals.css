@@ -87,3 +87,8 @@ a:hover {
   background: #fff; 
   border:1px solid #990000;
 }
+
+#sort-menu > div {
+  left: unset !important;
+  right: 0;
+}

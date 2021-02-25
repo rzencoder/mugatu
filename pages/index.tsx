@@ -53,14 +53,11 @@ export default function Home(): JSX.Element {
                 <NextLink href="/women/catalog" passHref>
                   <Link>
                     <Button
-                      borderRadius="0"
-                      border="none"
-                      fontFamily="Montserrat"
+                      variant="jumbo"
                       marginTop="50px"
                       fontSize={['28px', '34px']}
                       p={['15px 40px']}
                       bg="#ff006a"
-                      transform="skewX(-3deg)"
                       height="fit-content"
                       width="fit-content"
                       _hover={{ bg: '#f91b8b' }}
@@ -112,7 +109,7 @@ export default function Home(): JSX.Element {
                 </Box>
                 <NextLink href="/women/catalog" passHref>
                   <Link>
-                    <Button mt="20px" borderColor="mainWhite">
+                    <Button mt="20px" borderColor="mainWhite" color="mainWhite">
                       Shop Now
                     </Button>
                   </Link>
@@ -145,7 +142,7 @@ export default function Home(): JSX.Element {
                 </Box>
                 <NextLink href="/men/catalog" passHref>
                   <Link>
-                    <Button mt="20px" borderColor="mainWhite">
+                    <Button mt="20px" borderColor="mainWhite" color="mainWhite">
                       Shop Now
                     </Button>
                   </Link>
