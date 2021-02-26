@@ -1,5 +1,5 @@
 import { useWishlist } from '@/context/wishlistContext'
-import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
+import { HamburgerIcon, MoonIcon, SearchIcon, SunIcon } from '@chakra-ui/icons'
 import {
   Box,
   Flex,
@@ -158,9 +158,15 @@ export default function Navigation(): JSX.Element {
                 display={['none', null, 'block']}
                 variant="icon"
                 aria-label="toggle dark mode"
-                backgroundImage={`url(/icons/${colorMode === 'dark' ? 'sun' : 'moon'}.png)`}
+                color="#f1f1f1"
+                fontSize="30px"
+                width="40px"
+                height="40px"
+                padding="0"
                 onClick={toggleColorMode}
-              />
+              >
+                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+              </Button>
             </Flex>
           </Flex>
         </Flex>

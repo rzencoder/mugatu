@@ -13,7 +13,6 @@ interface AccountProps {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const cookies = nookies.get(context)
-    console.log(JSON.stringify(cookies, null, 2))
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
     const { uid, email } = token
 

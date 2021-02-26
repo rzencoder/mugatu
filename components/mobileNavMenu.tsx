@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon, MoonIcon } from '@chakra-ui/icons'
 import {
   Box,
   Drawer,
@@ -77,7 +77,7 @@ const MobileNavMenu = ({ isOpen, onClose, gender, setGender }: MobileNavMenuProp
 
           <DrawerBody p="10px 30px">
             {user && user.displayName && (
-              <Flex fontSize="22px" p="0 0 10px">
+              <Flex fontSize="22px" p="0 0 10px" fontWeight="600">
                 <Box>hey {user.displayName}</Box>
               </Flex>
             )}
@@ -108,13 +108,10 @@ const MobileNavMenu = ({ isOpen, onClose, gender, setGender }: MobileNavMenuProp
               p="5px 0 10px"
             >
               <Flex alignItems="center" fontSize="18px">
-                <Box
-                  backgroundImage="url(/icons/moon.png)"
-                  backgroundSize="cover"
-                  width="23px"
-                  height="23px"
+                <MoonIcon
                   mr="10px"
-                  filter={colorMode === 'light' ? 'invert()' : 'none'}
+                  color={colorMode === 'light' ? '#333' : 'mainWhite'}
+                  fontSize="24px"
                 />
                 <FormLabel htmlFor="dark-mode" fontSize="18px" margin="0">
                   Dark Mode

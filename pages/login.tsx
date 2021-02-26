@@ -16,18 +16,27 @@ import {
 import { Layout, Meta } from '@/components/layouts'
 import { useForm } from 'react-hook-form'
 import { Toast } from '../components'
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
+import { useState } from 'react'
+import { useAuth } from '@/context/authContext'
 
-interface SubmitProps {
+interface FormData {
   email: string
   password: string
 }
 
 const Login = (): JSX.Element => {
+  const [passwordShown, setPasswordShown] = useState(false)
   const { register, handleSubmit, errors } = useForm()
   const { colorMode } = useColorMode()
   const toast = useToast()
+  const { user } = useAuth()
 
-  const onSubmit = async ({ email, password }: SubmitProps) => {
+  if (user && user.email) {
+    window.location.href = '/'
+  }
+
+  const onSubmit = async ({ email, password }: FormData) => {
     try {
       await firebaseClient.auth().signInWithEmailAndPassword(email, password)
       window.location.href = '/'
@@ -39,17 +48,12 @@ const Login = (): JSX.Element => {
       })
     }
   }
+
   return (
     <>
       <Meta title="Login | Mugatu" />
-      <Layout>
-        <Flex
-          bg={colorMode === 'light' ? '#f6f6f6' : '#000'}
-          width="100%"
-          minHeight="500px"
-          justifyContent="center"
-          alignItems="center"
-        >
+      <Layout bg={colorMode === 'light' ? '#f6f6f6' : '#000'}>
+        <Flex width="100%" minHeight="500px" justifyContent="center" alignItems="center">
           <Flex
             bg={colorMode === 'light' ? '#fff' : '#111'}
             maxWidth="900px"
@@ -86,14 +90,29 @@ const Login = (): JSX.Element => {
                     </FormControl>
                     <FormControl m="5px 0" isInvalid={errors.password && errors.password.message}>
                       <FormLabel margin="3px 0">password</FormLabel>
-                      <Input
-                        aria-label="Password"
-                        name="password"
-                        type="password"
-                        ref={register({
-                          required: 'please enter your password.',
-                        })}
-                      />
+                      <Box position="relative">
+                        <Input
+                          aria-label="Password"
+                          name="password"
+                          type={passwordShown ? 'text' : 'password'}
+                          ref={register({
+                            required: 'please enter your password.',
+                          })}
+                        />
+                        <Button
+                          variant="icon"
+                          position="absolute"
+                          aria-label="toggle show password"
+                          fontSize="28px"
+                          top={['8px', null, '5px']}
+                          right={['0', null, '-5px']}
+                          zIndex="1000"
+                          color={colorMode === 'light' ? '#ccc' : '#555'}
+                          onClick={() => setPasswordShown(!passwordShown)}
+                        >
+                          {!passwordShown ? <ViewIcon /> : <ViewOffIcon />}
+                        </Button>
+                      </Box>
                       <FormErrorMessage>
                         {errors.password && errors.password.message}
                       </FormErrorMessage>
