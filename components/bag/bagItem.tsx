@@ -17,7 +17,9 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { useBag } from '@/context/bagContext'
 import { BagItem } from '@/types/bagItem'
-import { Toast } from '..'
+import { LoginPopover, Toast } from '..'
+import { useAuth } from '@/context/authContext'
+import { useState } from 'react'
 
 interface Props {
   item: BagItem
@@ -28,19 +30,25 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
   const { updateBag, removeFromBag } = useBag()
   const { colorMode } = useColorMode()
   const toast = useToast()
+  const { user } = useAuth()
+  const [showLoginPopover, setShowLoginPopover] = useState(false)
 
   const handleMoveToWishlist = (item: BagItem) => {
-    removeFromBag(item)
-    const { title, status } = addToWishlist(item)
-    const message =
-      status === 'success'
-        ? 'Item moved to your wishlist'
-        : 'A problem occurred moving your item to your wishlist'
-    toast({
-      duration: 3000,
-      // eslint-disable-next-line react/display-name
-      render: () => <Toast title={title} message={message} status={status} />,
-    })
+    if (user && user.email) {
+      removeFromBag(item)
+      const { title, status } = addToWishlist(item)
+      const message =
+        status === 'success'
+          ? 'Item moved to your wishlist'
+          : 'A problem occurred moving your item to your wishlist'
+      toast({
+        duration: 3000,
+        // eslint-disable-next-line react/display-name
+        render: () => <Toast title={title} message={message} status={status} />,
+      })
+    } else {
+      setShowLoginPopover(!showLoginPopover)
+    }
   }
 
   return (
@@ -142,26 +150,34 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
             £{item.rrp}
           </Box>
         </Flex>
-        <Button
-          fontSize={['14px', '15px']}
-          borderWidth="1px"
-          width={['150px', '170px']}
-          height={['35px', '45px']}
-          p={['1px', '3px 5px']}
-          _hover={{ bg: colorMode === 'light' ? 'mainBlackHover' : 'mainWhiteHover' }}
-          onClick={() => handleMoveToWishlist(item)}
-        >
-          <Box
-            backgroundImage="url(/icons/heart.png)"
-            width={['15px', '20px']}
-            height={['15px', '20px']}
-            backgroundSize="cover"
-            filter={colorMode === 'light' ? 'invert()' : 'none'}
+        <Box position="relative" className="login-popup-container">
+          <LoginPopover
+            showLoginPopover={showLoginPopover}
+            setShowLoginPopover={setShowLoginPopover}
+            placement="bottom"
+            pos={{ top: '45px', left: '100px' }}
           />
-          <Box p="0 0 2px 5px" textTransform="lowercase">
-            Move to Wishlist
-          </Box>
-        </Button>
+          <Button
+            fontSize={['14px', '15px']}
+            borderWidth="1px"
+            width={['150px', '170px']}
+            height={['35px', '45px']}
+            p={['1px', '3px 5px']}
+            _hover={{ bg: colorMode === 'light' ? 'mainBlackHover' : 'mainWhiteHover' }}
+            onClick={() => handleMoveToWishlist(item)}
+          >
+            <Box
+              backgroundImage="url(/icons/heart.png)"
+              width={['15px', '20px']}
+              height={['15px', '20px']}
+              backgroundSize="cover"
+              filter={colorMode === 'light' ? 'invert()' : 'none'}
+            />
+            <Box p="0 0 2px 5px" textTransform="lowercase">
+              Move to Wishlist
+            </Box>
+          </Button>
+        </Box>
       </Flex>
     </Flex>
   )

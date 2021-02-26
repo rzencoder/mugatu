@@ -13,10 +13,11 @@ import {
 import { useBag } from '@/context/bagContext'
 import Image from 'next/image'
 import { useState } from 'react'
-import { ImageInfo, Toast } from '.'
+import { ImageInfo, LoginPopover, Toast } from '.'
 import { useWishlist } from '@/context/wishlistContext'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { Item } from '@/types/item'
+import { useAuth } from '@/context/authContext'
 
 interface FullProductProps {
   item: Item
@@ -25,11 +26,13 @@ interface FullProductProps {
 const FullProduct = ({ item }: FullProductProps): JSX.Element => {
   const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(1)
+  const [showLoginPopover, setShowLoginPopover] = useState(false)
   const { name, image, price, rrp, colour, sizes, popular } = item
   const { addToBag } = useBag()
   const { addToWishlist } = useWishlist()
   const { colorMode } = useColorMode()
   const toast = useToast()
+  const { user } = useAuth()
 
   const handleAddToBag = () => {
     const product = { ...item, selectedSize, quantity }
@@ -39,6 +42,21 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
       // eslint-disable-next-line react/display-name
       render: () => <Toast title={result.title} message={result.message} status={result.status} />,
     })
+  }
+
+  const handleAddToWishlist = () => {
+    if (user && user.email) {
+      const result = addToWishlist(item)
+      toast({
+        duration: 3000,
+        // eslint-disable-next-line react/display-name
+        render: () => (
+          <Toast title={result.title} message={result.message} status={result.status} />
+        ),
+      })
+    } else {
+      setShowLoginPopover(!showLoginPopover)
+    }
   }
 
   const displayStockMessage = () => {
@@ -158,7 +176,7 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
         <Box minHeight="40px" padding="10px 0 0" fontWeight="500" fontSize="20px">
           {displayStockMessage()}
         </Box>
-        <Flex alignItems="flex-end" margin="10px 0">
+        <Flex alignItems="flex-end" margin="10px 0" width="100%" position="relative">
           <Flex direction="column" textAlign="center" mr="10px">
             <Box>quantity</Box>
             <Menu>
@@ -190,7 +208,8 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
             onClick={handleAddToBag}
             disabled={selectedSize === ''}
             height="50px"
-            minWidth="calc(100% - 120px)"
+            minWidth="140px"
+            width="70%"
             bg="transparent"
             borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
             fontSize={['20px', '24px']}
@@ -205,31 +224,29 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
             height="50px"
             width="50px"
             padding="9px"
-            margin={['0', '0 10px']}
+            margin={['0 5px', '0 10px']}
             alignItems="center"
           >
-            <Button
-              variant="transparentBg"
-              aria-label="add to wishlist"
-              onClick={() => {
-                const result = addToWishlist(item)
-                toast({
-                  duration: 3000,
-                  // eslint-disable-next-line react/display-name
-                  render: () => (
-                    <Toast title={result.title} message={result.message} status={result.status} />
-                  ),
-                })
-              }}
-            >
-              <Box
-                backgroundImage="url(/icons/heart.png)"
-                filter={colorMode === 'light' ? 'invert()' : 'none'}
-                backgroundSize="contain"
-                width="100%"
-                height="100%"
+            <Box className="login-popup-container">
+              <LoginPopover
+                showLoginPopover={showLoginPopover}
+                setShowLoginPopover={setShowLoginPopover}
+                pos={{ top: '35px', right: '50px' }}
               />
-            </Button>
+              <Button
+                variant="transparentBg"
+                aria-label="add to wishlist"
+                onClick={handleAddToWishlist}
+              >
+                <Box
+                  backgroundImage="url(/icons/heart.png)"
+                  filter={colorMode === 'light' ? 'invert()' : 'none'}
+                  backgroundSize="contain"
+                  width="100%"
+                  height="100%"
+                ></Box>
+              </Button>
+            </Box>
           </Flex>
         </Flex>
       </Flex>

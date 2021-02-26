@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react'
 import { firebaseClient } from '@/firebase/firebaseClient'
 import { useAuth } from '@/context/authContext'
+import { useRouter } from 'next/dist/client/router'
 
 interface FormData {
   email: string
@@ -34,9 +35,10 @@ const Register = (): JSX.Element => {
   const password = useRef({})
   password.current = watch('password', '')
   const { user } = useAuth()
+  const router = useRouter()
 
   if (user && user.email) {
-    window.location.href = '/'
+    router.push('/')
   }
 
   const onSubmit = async ({ email, name, password, confirmPassword }: FormData) => {

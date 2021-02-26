@@ -19,6 +19,7 @@ import { Toast } from '../components'
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
 import { useAuth } from '@/context/authContext'
+import { useRouter } from 'next/dist/client/router'
 
 interface FormData {
   email: string
@@ -31,9 +32,10 @@ const Login = (): JSX.Element => {
   const { colorMode } = useColorMode()
   const toast = useToast()
   const { user } = useAuth()
+  const router = useRouter()
 
   if (user && user.email) {
-    window.location.href = '/'
+    router.push('/')
   }
 
   const onSubmit = async ({ email, password }: FormData) => {
