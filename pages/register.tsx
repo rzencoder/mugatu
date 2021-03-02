@@ -57,8 +57,11 @@ const Register = (): JSX.Element => {
       await user.updateProfile({
         displayName: name,
       })
-      window.location.href = '/'
+      await user.getIdToken()
+      await fetch('/api/users/create')
+      router.push('/')
     } catch (error) {
+      console.log('error')
       toast({
         duration: 3000,
         // eslint-disable-next-line react/display-name

@@ -61,8 +61,7 @@ const LoginPopover = ({
         </Link>
       </PopoverTrigger>
       <PopoverContent
-        maxWidth={['250px', '350px']}
-        bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'}
+        bg={colorMode === 'light' ? 'mainWhite' : '#070707'}
         padding="10px"
         border="2px solid"
         borderColor={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
@@ -71,7 +70,10 @@ const LoginPopover = ({
         <PopoverHeader fontWeight="600" border="none" fontSize="22px">
           account needed
         </PopoverHeader>
-        <PopoverArrow bg={colorMode === 'light' ? 'mainBlack' : 'mainWhite'} />
+        <PopoverArrow
+          bg={colorMode === 'light' ? 'mainBlack' : 'mainWhite'}
+          display={showLoginPopover ? 'block' : 'none'}
+        />
         <PopoverCloseButton top="5px" right="5px" />
         <PopoverBody fontSize="15px">
           please{' '}

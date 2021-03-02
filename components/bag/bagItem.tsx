@@ -33,10 +33,10 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
   const { user } = useAuth()
   const [showLoginPopover, setShowLoginPopover] = useState(false)
 
-  const handleMoveToWishlist = (item: BagItem) => {
+  const handleMoveToWishlist = async (item: BagItem) => {
     if (user && user.email) {
       removeFromBag(item)
-      const { title, status } = addToWishlist(item)
+      const { title, status } = await addToWishlist(item)
       const message =
         status === 'success'
           ? 'Item moved to your wishlist'
@@ -150,7 +150,7 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
             £{item.rrp}
           </Box>
         </Flex>
-        <Box position="relative" className="login-popup-container">
+        <Box position="relative" className={showLoginPopover && 'login-popup-container'}>
           <LoginPopover
             showLoginPopover={showLoginPopover}
             setShowLoginPopover={setShowLoginPopover}

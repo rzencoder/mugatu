@@ -9,7 +9,8 @@ interface Result {
 
 interface WishlistContextInterface {
   wishlist: Item[]
-  addToWishlist: (item: Item) => Result
+  fetchWishlist: () => Promise<void | Result>
+  addToWishlist: (item: Item) => Promise<Result>
   removeFromWishlist: (item: Item) => Result
 }
 
@@ -28,13 +29,43 @@ export const useWishlist = () => {
 const useProvideWishlist = () => {
   const [wishlist, setWishlist] = useState([])
 
-  const addToWishlist = (item: Item) => {
-    if (!wishlist.some((product) => product.id === item.id)) {
-      setWishlist([...wishlist, item])
+  const fetchWishlist = async () => {
+    try {
+      const response = await fetch('/api/wishlist/')
+      const { wishlist } = await response.json()
+      setWishlist(wishlist)
+    } catch {
       return {
-        title: 'Item Saved!',
-        message: 'Your item has been saved to your wishlist',
-        status: 'success',
+        title: 'Error!',
+        message: 'there was an error retrieving your wishlist',
+        status: 'error',
+      }
+    }
+  }
+
+  const addToWishlist = async (item: Item) => {
+    if (!wishlist.some((product) => product.id === item.id)) {
+      try {
+        const response = await fetch('/api/wishlist/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(item),
+        })
+        const { data } = await response.json()
+        setWishlist([...wishlist, data])
+        return {
+          title: 'Item Saved!',
+          message: 'Your item has been saved to your wishlist',
+          status: 'success',
+        }
+      } catch {
+        return {
+          title: 'Error!',
+          message: 'there was an error retrieving your wishlist',
+          status: 'error',
+        }
       }
     } else {
       return {
@@ -65,6 +96,7 @@ const useProvideWishlist = () => {
 
   return {
     wishlist,
+    fetchWishlist,
     addToWishlist,
     removeFromWishlist,
   } as const

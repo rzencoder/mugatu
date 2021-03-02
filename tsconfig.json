@@ -37,6 +37,9 @@
             ],
             "@/firebase/*": [
                 "firebase/*"
+            ],
+            "@/controllers/*": [
+                "controllers/*"
             ]
         },
         "target": "es5",

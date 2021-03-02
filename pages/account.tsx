@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import nookies from 'nookies'
 import { firebaseAdmin } from '@/firebase/firebaseAdmin'
 import { firebaseClient } from '@/firebase/firebaseClient'
@@ -31,21 +31,26 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-const Account = ({ message }: AccountProps): JSX.Element => (
-  <>
-    <Meta title="Account | Mugatu" />
-    <Layout>
-      <Box>{message}!</Box>
-      <Button
-        onClick={async () => {
-          await firebaseClient.auth().signOut()
-          window.location.href = '/'
-        }}
-      >
-        Sign out
-      </Button>
-    </Layout>
-  </>
-)
+const Account = ({ message }: AccountProps): JSX.Element => {
+  useEffect(() => {
+    fetch('/api/test')
+  }, [])
+  return (
+    <>
+      <Meta title="Account | Mugatu" />
+      <Layout>
+        <Box>{message}!</Box>
+        <Button
+          onClick={async () => {
+            await firebaseClient.auth().signOut()
+            window.location.href = '/'
+          }}
+        >
+          Sign out
+        </Button>
+      </Layout>
+    </>
+  )
+}
 
 export default Account

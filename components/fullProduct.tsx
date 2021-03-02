@@ -44,9 +44,9 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
     })
   }
 
-  const handleAddToWishlist = () => {
+  const handleAddToWishlist = async () => {
     if (user && user.email) {
-      const result = addToWishlist(item)
+      const result = await addToWishlist(item)
       toast({
         duration: 3000,
         // eslint-disable-next-line react/display-name

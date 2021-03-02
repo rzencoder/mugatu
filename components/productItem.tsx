@@ -14,9 +14,9 @@ const ProductItem = ({ product }: { product: Item }): JSX.Element => {
   const [showLoginPopover, setShowLoginPopover] = useState(false)
   const { colorMode } = useColorMode()
 
-  const handleAddToWishlist = () => {
+  const handleAddToWishlist = async () => {
     if (user && user.email) {
-      const result = addToWishlist(product)
+      const result = await addToWishlist(product)
       toast({
         duration: 3000,
         // eslint-disable-next-line react/display-name
@@ -83,7 +83,7 @@ const ProductItem = ({ product }: { product: Item }): JSX.Element => {
               £{product.rrp}
             </Box>
           </Flex>
-          <Box className="login-popup-container">
+          <Box className={showLoginPopover && 'login-popup-container'}>
             <Button
               variant="transparentBg"
               aria-label="add to wishlist"
@@ -95,7 +95,7 @@ const ProductItem = ({ product }: { product: Item }): JSX.Element => {
               filter={colorMode === 'light' ? 'invert()' : 'none'}
               backgroundSize="cover"
               position="relative"
-              zIndex="10"
+              zIndex="1"
             />
             <LoginPopover
               showLoginPopover={showLoginPopover}

@@ -20,6 +20,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
 import { useAuth } from '@/context/authContext'
 import { useRouter } from 'next/dist/client/router'
+import { useWishlist } from '@/context/wishlistContext'
 
 interface FormData {
   email: string
@@ -33,6 +34,7 @@ const Login = (): JSX.Element => {
   const toast = useToast()
   const { user } = useAuth()
   const router = useRouter()
+  const { fetchWishlist } = useWishlist()
 
   if (user && user.email) {
     router.push('/')
@@ -40,8 +42,10 @@ const Login = (): JSX.Element => {
 
   const onSubmit = async ({ email, password }: FormData) => {
     try {
-      await firebaseClient.auth().signInWithEmailAndPassword(email, password)
-      window.location.href = '/'
+      const result = await firebaseClient.auth().signInWithEmailAndPassword(email, password)
+      await result.user.getIdToken()
+      await fetchWishlist()
+      router.push('/')
     } catch (error) {
       toast({
         duration: 3000,
