@@ -26,6 +26,7 @@ interface FullProductProps {
 const FullProduct = ({ item }: FullProductProps): JSX.Element => {
   const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(1)
+  const [loading, setLoading] = useState(false)
   const [showLoginPopover, setShowLoginPopover] = useState(false)
   const { name, image, price, rrp, colour, sizes, popular } = item
   const { addToBag } = useBag()
@@ -46,7 +47,9 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
 
   const handleAddToWishlist = async () => {
     if (user && user.email) {
+      setLoading(true)
       const result = await addToWishlist(item)
+      setLoading(false)
       toast({
         duration: 3000,
         // eslint-disable-next-line react/display-name
@@ -236,6 +239,7 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
               <Button
                 variant="transparentBg"
                 aria-label="add to wishlist"
+                disabled={loading}
                 onClick={handleAddToWishlist}
               >
                 <Box

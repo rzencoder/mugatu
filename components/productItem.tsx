@@ -12,11 +12,14 @@ const ProductItem = ({ product }: { product: Item }): JSX.Element => {
   const { user } = useAuth()
   const toast = useToast()
   const [showLoginPopover, setShowLoginPopover] = useState(false)
+  const [loading, setLoading] = useState(false)
   const { colorMode } = useColorMode()
 
   const handleAddToWishlist = async () => {
     if (user && user.email) {
+      setLoading(true)
       const result = await addToWishlist(product)
+      setLoading(false)
       toast({
         duration: 3000,
         // eslint-disable-next-line react/display-name
@@ -88,6 +91,7 @@ const ProductItem = ({ product }: { product: Item }): JSX.Element => {
               variant="transparentBg"
               aria-label="add to wishlist"
               onClick={handleAddToWishlist}
+              disabled={loading}
               height="20px"
               width="20px"
               minWidth="0"

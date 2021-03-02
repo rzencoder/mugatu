@@ -1,4 +1,4 @@
-import { addToWishlist, getWishlist } from '@/controllers/wishlist'
+import { addToWishlist, getWishlist, removeFromWishlist } from '@/controllers/wishlist'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -10,9 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     case 'POST':
       return addToWishlist(req, res, item)
     case 'PUT':
-      return
-    case 'DELETE':
-      return
+      return removeFromWishlist(req, res, item)
     default:
       //Method not allowed
       return res.status(405).end()

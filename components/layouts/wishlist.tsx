@@ -5,15 +5,34 @@ import { DeleteIcon } from '@chakra-ui/icons'
 import { Flex, Box, Heading, Button, Select, Link, useToast, useColorMode } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import { useState } from 'react'
-import { Toast } from '..'
+import { useEffect, useState } from 'react'
+import { Loader, Toast } from '..'
 
 export default function Wishlist(): JSX.Element {
-  const { wishlist, removeFromWishlist } = useWishlist()
+  const { wishlist, removeFromWishlist, fetchWishlist } = useWishlist()
   const [selectedProducts, setSelectedProducts] = useState([])
+  const [loading, setLoading] = useState(false)
   const toast = useToast()
   const { colorMode } = useColorMode()
   const { addToBag } = useBag()
+
+  useEffect(() => {
+    const getWishlist = async () => {
+      try {
+        setLoading(true)
+        await fetchWishlist()
+        setLoading(false)
+      } catch {
+        setLoading(false)
+        toast({
+          duration: 3000,
+          // eslint-disable-next-line react/display-name
+          render: () => <Toast title="error" message="error fetching wishlist" status="error" />,
+        })
+      }
+    }
+    getWishlist()
+  }, [])
 
   // Storing the user selected product and size in state
   const handleSizeSelection = (item: Item, size: string) => {
@@ -36,17 +55,35 @@ export default function Wishlist(): JSX.Element {
   }
 
   //Move item into shopping bag and remove from wishlist
-  const moveToBag = (item: Item) => {
+  const moveToBag = async (item: Item) => {
     const chosenItem = selectedProducts.find((product) => product.id === item.id)
     const result = addToBag({ ...chosenItem, quantity: 1 })
     removeSelected(item)
-    removeFromWishlist(item)
-    toast({
-      duration: 3000,
-      // eslint-disable-next-line react/display-name
-      render: () => <Toast title={result.title} message={result.message} status={result.status} />,
-    })
+    try {
+      await removeFromWishlist(item)
+      toast({
+        duration: 3000,
+        // eslint-disable-next-line react/display-name
+        render: () => (
+          <Toast title={result.title} message={result.message} status={result.status} />
+        ),
+      })
+    } catch {
+      toast({
+        duration: 3000,
+        // eslint-disable-next-line react/display-name
+        render: () => (
+          <Toast
+            title="Error"
+            message="there was an error adding the item to your shopping bag"
+            status="error"
+          />
+        ),
+      })
+    }
   }
+
+  if (loading) return <Loader />
 
   return (
     <Flex direction="column" align="center" p="20px 0" minHeight="500px">
@@ -77,8 +114,8 @@ export default function Wishlist(): JSX.Element {
                   <Flex position="absolute" p="0" borderRadius="50%" bottom="1" left="1" bg="#ddd">
                     <Button
                       aria-label="remove from wishlist"
-                      onClick={() => {
-                        const result = removeFromWishlist(item)
+                      onClick={async () => {
+                        const result = await removeFromWishlist(item)
                         toast({
                           duration: 3000,
                           // eslint-disable-next-line react/display-name

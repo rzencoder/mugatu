@@ -11,7 +11,7 @@ interface WishlistContextInterface {
   wishlist: Item[]
   fetchWishlist: () => Promise<void | Result>
   addToWishlist: (item: Item) => Promise<Result>
-  removeFromWishlist: (item: Item) => Result
+  removeFromWishlist: (item: Item) => Promise<Result>
 }
 
 const wishlistContext = createContext<WishlistContextInterface | null>(null)
@@ -76,16 +76,24 @@ const useProvideWishlist = () => {
     }
   }
 
-  const removeFromWishlist = (item: Item) => {
-    const updatedWishlist = wishlist.filter((product) => product.id !== item.id)
-    if (wishlist.length !== updatedWishlist.length) {
+  const removeFromWishlist = async (item: Item) => {
+    try {
+      const response = await fetch('/api/wishlist/', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(item),
+      })
+      const { message } = await response.json()
+      const updatedWishlist = wishlist.filter((product) => product.id !== item.id)
       setWishlist(updatedWishlist)
       return {
         title: 'Item Removed!',
-        message: 'Your item has been removed from your wishlist',
+        message,
         status: 'success',
       }
-    } else {
+    } catch {
       return {
         title: 'Error!',
         message: 'There was an error removing your item',
