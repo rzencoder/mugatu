@@ -1,15 +1,16 @@
 import { db, firebaseAdmin } from '@/firebase/firebaseAdmin'
-import { Item } from '@/types/item'
+import { BagItem } from '@/types/bagItem'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { parseCookies } from 'nookies'
 
-const addToWishlist = async (req: NextApiRequest, res: NextApiResponse, item: Item) => {
+const addToBag = async (req: NextApiRequest, res: NextApiResponse, item: BagItem) => {
   try {
     // Verify user
     const cookies = parseCookies({ req })
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
     // Search firestore for wishlist
     const userRef = db.collection('users').doc(token.uid)
+
     const result = await userRef.update({
       wishlist: firebaseAdmin.firestore.FieldValue.arrayUnion(item),
     })
@@ -24,4 +25,4 @@ const addToWishlist = async (req: NextApiRequest, res: NextApiResponse, item: It
   }
 }
 
-export default addToWishlist
+export default addToBag

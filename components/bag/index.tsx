@@ -1,15 +1,27 @@
+import { useAuth } from '@/context/authContext'
 import { useBag } from '@/context/bagContext'
 import { BagItem as BagItemProps } from '@/types/bagItem'
 import { calculateSubTotal } from '@/utils/bag'
 import { Flex, Box, useColorMode } from '@chakra-ui/react'
+import { useEffect } from 'react'
 import BagItem from './bagItem'
 import EmptyBag from './emptyBag'
 import Summary from './summary'
 
 const Bag = (): JSX.Element => {
-  const { bag } = useBag()
+  const { bag, fetchBag } = useBag()
   const { colorMode } = useColorMode()
   const subtotal = calculateSubTotal(bag)
+  const { user } = useAuth()
+
+  useEffect(() => {
+    if (user && user.displayName) {
+      const getBag = async () => {
+        await fetchBag()
+      }
+      getBag()
+    }
+  }, [])
 
   if (!bag || bag.length === 0) {
     return <EmptyBag />

@@ -16,9 +16,8 @@ const removeFromWishlist = async (
     // Verify user
     const cookies = parseCookies({ req })
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
-    const { uid } = token
     // Search firestore for wishlist and delete item from array
-    const userRef = db.collection('users').doc(uid)
+    const userRef = db.collection('users').doc(token.uid)
     const result = await userRef.update({
       wishlist: firebaseAdmin.firestore.FieldValue.arrayRemove(item),
     })

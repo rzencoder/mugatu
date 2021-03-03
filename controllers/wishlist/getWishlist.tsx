@@ -7,9 +7,8 @@ const getWishlist = async (req: NextApiRequest, res: NextApiResponse) => {
     // Verify user
     const cookies = parseCookies({ req })
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
-    const { uid } = token
     // Search firestore for wishlist
-    const userRef = db.collection('users').doc(uid)
+    const userRef = db.collection('users').doc(token.uid)
     const doc = await userRef.get()
     if (!doc.exists) {
       throw new Error('user data not found')

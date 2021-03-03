@@ -1,22 +1,19 @@
 import { db, firebaseAdmin } from '@/firebase/firebaseAdmin'
-import { Item } from '@/types/item'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { parseCookies } from 'nookies'
 
-const addToWishlist = async (req: NextApiRequest, res: NextApiResponse, item: Item) => {
+const getBag = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     // Verify user
     const cookies = parseCookies({ req })
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
-    // Search firestore for wishlist
+    // Search firestore for bag
     const userRef = db.collection('users').doc(token.uid)
-    const result = await userRef.update({
-      wishlist: firebaseAdmin.firestore.FieldValue.arrayUnion(item),
-    })
-    if (!result) {
+    const doc = await userRef.get()
+    if (!doc.exists) {
       throw new Error('user data not found')
     } else {
-      return res.status(200).json({ data: item })
+      return res.status(200).json({ bag: doc.data().bag })
     }
   } catch (error) {
     console.log(error)
@@ -24,4 +21,4 @@ const addToWishlist = async (req: NextApiRequest, res: NextApiResponse, item: It
   }
 }
 
-export default addToWishlist
+export default getBag

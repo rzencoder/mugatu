@@ -21,6 +21,7 @@ import { useState } from 'react'
 import { useAuth } from '@/context/authContext'
 import { useRouter } from 'next/dist/client/router'
 import { useWishlist } from '@/context/wishlistContext'
+import { useBag } from '@/context/bagContext'
 
 interface FormData {
   email: string
@@ -35,6 +36,7 @@ const Login = (): JSX.Element => {
   const { user } = useAuth()
   const router = useRouter()
   const { fetchWishlist } = useWishlist()
+  const { fetchBag } = useBag()
 
   if (user && user.email) {
     router.push('/')
@@ -44,7 +46,7 @@ const Login = (): JSX.Element => {
     try {
       const result = await firebaseClient.auth().signInWithEmailAndPassword(email, password)
       await result.user.getIdToken()
-      await fetchWishlist()
+      await Promise.all([fetchWishlist(), fetchBag()])
       router.push('/')
     } catch (error) {
       toast({

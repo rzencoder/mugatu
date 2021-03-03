@@ -9,6 +9,7 @@ interface Result {
 
 interface BagContextInterface {
   bag: BagItem[]
+  fetchBag: () => Promise<void>
   addToBag: (item: BagItem) => Result
   updateBag: (item: BagItem) => void
   removeFromBag: (item: BagItem) => Result
@@ -28,6 +29,16 @@ export const useBag = () => {
 
 const useProvideBag = () => {
   const [bag, setBag] = useState([])
+
+  const fetchBag = async () => {
+    try {
+      const result = await fetch('/api/bag/')
+      const data = await result.json()
+      setBag(data.bag)
+    } catch {
+      console.log('error')
+    }
+  }
 
   const addToBag = (item: BagItem) => {
     const filteredBag = bag.filter((product: BagItem) => product.id !== item.id)
@@ -74,6 +85,7 @@ const useProvideBag = () => {
 
   return {
     bag,
+    fetchBag,
     addToBag,
     updateBag,
     removeFromBag,
