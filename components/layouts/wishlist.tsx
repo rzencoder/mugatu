@@ -1,3 +1,4 @@
+import { useAuth } from '@/context/authContext'
 import { useBag } from '@/context/bagContext'
 import { useWishlist } from '@/context/wishlistContext'
 import { Item } from '@/types/item'
@@ -15,24 +16,27 @@ export default function Wishlist(): JSX.Element {
   const toast = useToast()
   const { colorMode } = useColorMode()
   const { addToBag } = useBag()
+  const { user } = useAuth()
 
   useEffect(() => {
-    const getWishlist = async () => {
-      try {
-        setLoading(true)
-        await fetchWishlist()
-        setLoading(false)
-      } catch {
-        setLoading(false)
-        toast({
-          duration: 3000,
-          // eslint-disable-next-line react/display-name
-          render: () => <Toast title="error" message="error fetching wishlist" status="error" />,
-        })
+    if (user && user.displayName) {
+      const getWishlist = async () => {
+        try {
+          setLoading(true)
+          await fetchWishlist()
+          setLoading(false)
+        } catch {
+          setLoading(false)
+          toast({
+            duration: 3000,
+            // eslint-disable-next-line react/display-name
+            render: () => <Toast title="error" message="error fetching wishlist" status="error" />,
+          })
+        }
       }
+      getWishlist()
     }
-    getWishlist()
-  }, [])
+  }, [user])
 
   // Storing the user selected product and size in state
   const handleSizeSelection = (item: Item, size: string) => {
@@ -57,10 +61,11 @@ export default function Wishlist(): JSX.Element {
   //Move item into shopping bag and remove from wishlist
   const moveToBag = async (item: Item) => {
     const chosenItem = selectedProducts.find((product) => product.id === item.id)
-    const result = addToBag({ ...chosenItem, quantity: 1 })
     removeSelected(item)
     try {
-      await removeFromWishlist(item)
+      const signedIn = user && user.displayName ? true : false
+      const result = await addToBag({ ...chosenItem, quantity: 1 }, signedIn)
+      removeFromWishlist(item)
       toast({
         duration: 3000,
         // eslint-disable-next-line react/display-name

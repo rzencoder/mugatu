@@ -18,9 +18,8 @@ const removeFromWishlist = async (
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
     // Search firestore for wishlist and delete item from array
     const userRef = db.collection('users').doc(token.uid)
-
     const result = await userRef.update({
-      wishlist: firebaseAdmin.firestore.FieldValue.arrayRemove(item),
+      bag: firebaseAdmin.firestore.FieldValue.arrayRemove(item),
     })
     if (!result) {
       throw new Error('user data not found')

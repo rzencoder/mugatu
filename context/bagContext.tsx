@@ -10,9 +10,8 @@ interface Result {
 interface BagContextInterface {
   bag: BagItem[]
   fetchBag: () => Promise<void>
-  addToBag: (item: BagItem) => Result
-  updateBag: (item: BagItem) => void
-  removeFromBag: (item: BagItem) => Result
+  addToBag: (item: BagItem, signedIn?: boolean) => Promise<Result>
+  removeFromBag: (item: BagItem, signedIn?: boolean) => Promise<Result>
 }
 
 const bagContext = createContext<BagContextInterface | null>(null)
@@ -40,34 +39,44 @@ const useProvideBag = () => {
     }
   }
 
-  const addToBag = (item: BagItem) => {
-    const filteredBag = bag.filter((product: BagItem) => product.id !== item.id)
-    const newBag = [...filteredBag, item]
-    if (newBag) {
-      setBag(newBag)
+  const addToBag = async (item: BagItem, signedIn = false) => {
+    if (signedIn) {
+      try {
+        const response = await fetch('/api/bag/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(item),
+        })
+        const data = await response.json()
+        setBag(data.bag)
+        return {
+          title: 'Item Added!',
+          message: 'Your item has been added to your shopping bag',
+          status: 'success',
+        }
+      } catch {
+        return {
+          title: 'Error!',
+          message: 'There was an error adding your item',
+          status: 'error',
+        }
+      }
+    } else {
+      const filteredBag = bag.filter((product: BagItem) => product.id !== item.id)
+      setBag([...filteredBag, item])
       return {
         title: 'Item Added!',
         message: 'Your item has been added to your shopping bag',
         status: 'success',
       }
-    } else {
-      return {
-        title: 'Error!',
-        message: 'There was an error adding your item',
-        status: 'error',
-      }
     }
   }
 
-  const updateBag = (item: BagItem) => {
-    const filteredBag = bag.filter((product: BagItem) => product.id !== item.id)
-    const updatedBag = [...filteredBag, item]
-    setBag(updatedBag)
-  }
-
-  const removeFromBag = (item: BagItem) => {
-    const updatedBag = bag.filter((el: BagItem) => el.id !== item.id)
-    if (updatedBag.length !== bag.length) {
+  const removeFromBag = async (item: BagItem, signedIn = false) => {
+    if (!signedIn) {
+      const updatedBag = bag.filter((el: BagItem) => el.id !== item.id)
       setBag(updatedBag)
       return {
         title: 'Item Removed!',
@@ -75,10 +84,28 @@ const useProvideBag = () => {
         status: 'success',
       }
     } else {
-      return {
-        title: 'Error!',
-        message: 'There was an error removing your item',
-        status: 'error',
+      try {
+        const response = await fetch('/api/bag/', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(item),
+        })
+        const data = await response.json()
+        const updatedBag = bag.filter((el: BagItem) => el.id !== item.id)
+        setBag(updatedBag)
+        return {
+          title: 'Item Removed!',
+          message: data.message,
+          status: 'success',
+        }
+      } catch {
+        return {
+          title: 'Error!',
+          message: 'There was an error removing your item',
+          status: 'error',
+        }
       }
     }
   }
@@ -87,7 +114,6 @@ const useProvideBag = () => {
     bag,
     fetchBag,
     addToBag,
-    updateBag,
     removeFromBag,
   } as const
 }

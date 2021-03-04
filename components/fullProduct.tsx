@@ -35,9 +35,10 @@ const FullProduct = ({ item }: FullProductProps): JSX.Element => {
   const toast = useToast()
   const { user } = useAuth()
 
-  const handleAddToBag = () => {
+  const handleAddToBag = async () => {
     const product = { ...item, selectedSize, quantity }
-    const result = addToBag(product)
+    const signedIn = user && user.displayName ? true : false
+    const result = await addToBag(product, signedIn)
     toast({
       duration: 3000,
       // eslint-disable-next-line react/display-name

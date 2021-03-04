@@ -10,14 +10,16 @@ const addToBag = async (req: NextApiRequest, res: NextApiResponse, item: BagItem
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token)
     // Search firestore for wishlist
     const userRef = db.collection('users').doc(token.uid)
-
-    const result = await userRef.update({
-      wishlist: firebaseAdmin.firestore.FieldValue.arrayUnion(item),
-    })
-    if (!result) {
-      throw new Error('user data not found')
+    const doc = await userRef.get()
+    if (doc) {
+      const { bag } = doc.data()
+      const filteredBag = bag.filter((bagItem: BagItem) => bagItem.id !== item.id)
+      await userRef.update({
+        bag: [...filteredBag, item],
+      })
+      return res.status(200).json({ bag: [...filteredBag, item] })
     } else {
-      return res.status(200).json({ data: item })
+      throw new Error('user data not found')
     }
   } catch (error) {
     console.log(error)

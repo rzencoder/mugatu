@@ -32,13 +32,13 @@ export function ProvideAuth({ children }: { children: React.ReactNode }): JSX.El
     })
   }, [])
 
-  // force refresh the token every 10 minutes
+  // force refresh the token every 30 minutes
   useEffect(() => {
     const handle = setInterval(async () => {
       console.log(`refreshing token...`)
       const user = firebaseClient.auth().currentUser
       if (user) await user.getIdToken(true)
-    }, 10 * 60 * 1000)
+    }, 30 * 60 * 1000)
     return () => clearInterval(handle)
   }, [])
 

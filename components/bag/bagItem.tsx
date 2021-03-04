@@ -27,7 +27,7 @@ interface Props {
 
 const BagItemComponent = ({ item }: Props): JSX.Element => {
   const { addToWishlist } = useWishlist()
-  const { updateBag, removeFromBag } = useBag()
+  const { addToBag, removeFromBag } = useBag()
   const { colorMode } = useColorMode()
   const toast = useToast()
   const { user } = useAuth()
@@ -35,7 +35,7 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
 
   const handleMoveToWishlist = async (item: BagItem) => {
     if (user && user.email) {
-      removeFromBag(item)
+      removeFromBag(item, true)
       const { title, status } = await addToWishlist(item)
       const message =
         status === 'success'
@@ -49,6 +49,17 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
     } else {
       setShowLoginPopover(!showLoginPopover)
     }
+  }
+
+  const handleUpdateQuantity = async (updatedItem: BagItem) => {
+    const signedIn = user && user.displayName ? true : false
+    console.log(signedIn)
+    const result = await addToBag(updatedItem, signedIn)
+    toast({
+      duration: 3000,
+      // eslint-disable-next-line react/display-name
+      render: () => <Toast title={result.title} message={result.message} status={result.status} />,
+    })
   }
 
   return (
@@ -83,8 +94,9 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
             fontSize="22px"
             padding="5px"
             margin={['0 3px', '0 10px']}
-            onClick={() => {
-              const result = removeFromBag(item)
+            onClick={async () => {
+              const signedIn = user && user.displayName ? true : false
+              const result = await removeFromBag(item, signedIn)
               toast({
                 duration: 3000,
                 // eslint-disable-next-line react/display-name
@@ -127,7 +139,7 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
                   return (
                     <MenuItem
                       key={`product-quantity-${el}`}
-                      onClick={() => updateBag({ ...item, quantity: el })}
+                      onClick={() => handleUpdateQuantity({ ...item, quantity: el })}
                     >
                       {el}
                     </MenuItem>
