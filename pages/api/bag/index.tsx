@@ -3,7 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(req.body)
   switch (req.method) {
     case 'GET':
       return getBag(req, res)
@@ -13,7 +12,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       if (req.body && req.body.route === 'fetchBagOnSignIn') {
         return getBagOnSignIn(req, res, req.body.bag)
       } else {
-        console.log('wrong')
         return removeFromBag(req, res, req.body)
       }
     default:

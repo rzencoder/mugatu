@@ -1,9 +1,15 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { db, firebaseAdmin } from '@/firebase/firebaseAdmin'
 import { Item } from '@/types/item'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { parseCookies } from 'nookies'
 
-const addToWishlist = async (req: NextApiRequest, res: NextApiResponse, item: Item) => {
+interface ResData {
+  data?: Item
+  error?: string
+}
+
+const addToWishlist = async (req: NextApiRequest, res: NextApiResponse<ResData>, item: Item) => {
   try {
     // Verify user
     const cookies = parseCookies({ req })
@@ -20,7 +26,7 @@ const addToWishlist = async (req: NextApiRequest, res: NextApiResponse, item: It
     }
   } catch (error) {
     console.log(error)
-    return res.status(400).json({ error })
+    return res.status(400).json({ error: error.message })
   }
 }
 

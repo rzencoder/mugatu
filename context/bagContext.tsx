@@ -35,8 +35,8 @@ const useProvideBag = () => {
       const result = await fetch('/api/bag/')
       const data = await result.json()
       setBag(data.bag)
-    } catch {
-      console.log('error')
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -52,7 +52,6 @@ const useProvideBag = () => {
           body: JSON.stringify({ bag, route: 'fetchBagOnSignIn' }),
         })
         const data = await response.json()
-        console.log(data)
         setBag(data.bag)
       } catch {
         console.log('there was an error fetching your shopping bag')

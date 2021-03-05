@@ -36,6 +36,7 @@ export default function Wishlist(): JSX.Element {
       }
       getWishlist()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
   // Storing the user selected product and size in state

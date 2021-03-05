@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { db, firebaseAdmin } from '@/firebase/firebaseAdmin'
 import { Item } from '@/types/item'
 import { NextApiRequest, NextApiResponse } from 'next'

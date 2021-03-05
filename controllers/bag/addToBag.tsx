@@ -1,9 +1,15 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { db, firebaseAdmin } from '@/firebase/firebaseAdmin'
 import { BagItem } from '@/types/bagItem'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { parseCookies } from 'nookies'
 
-const addToBag = async (req: NextApiRequest, res: NextApiResponse, item: BagItem) => {
+interface ResData {
+  bag?: BagItem[]
+  error?: string
+}
+
+const addToBag = async (req: NextApiRequest, res: NextApiResponse<ResData>, item: BagItem) => {
   try {
     // Verify user
     const cookies = parseCookies({ req })
@@ -23,7 +29,7 @@ const addToBag = async (req: NextApiRequest, res: NextApiResponse, item: BagItem
     }
   } catch (error) {
     console.log(error)
-    return res.status(400).json({ error })
+    return res.status(400).json({ error: error.message })
   }
 }
 

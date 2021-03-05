@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { db, firebaseAdmin } from '@/firebase/firebaseAdmin'
 import { BagItem } from '@/types/bagItem'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { parseCookies } from 'nookies'
 
 interface ResData {
-  message: string
+  message?: string
+  error?: string
 }
 
 const removeFromWishlist = async (
@@ -28,7 +30,7 @@ const removeFromWishlist = async (
     }
   } catch (error) {
     console.log(error)
-    return res.status(400).json({ message: error.message })
+    return res.status(400).json({ error: error.message })
   }
 }
 

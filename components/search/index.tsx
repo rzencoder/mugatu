@@ -31,7 +31,6 @@ const Search = ({ showSearch, setShowSearch, inputRef }: SearchProps): JSX.Eleme
           const result = fuse.search(searchInput)
           setSearchResults(result)
         } catch (error) {
-          console.log(error)
           toast({
             duration: 3000,
             // eslint-disable-next-line react/display-name

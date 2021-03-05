@@ -53,7 +53,6 @@ const BagItemComponent = ({ item }: Props): JSX.Element => {
 
   const handleUpdateQuantity = async (updatedItem: BagItem) => {
     const signedIn = user && user.displayName ? true : false
-    console.log(signedIn)
     const result = await addToBag(updatedItem, signedIn)
     toast({
       duration: 3000,

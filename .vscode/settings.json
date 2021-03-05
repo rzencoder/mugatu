@@ -19,6 +19,7 @@
         "vercel"
     ],
     "cSpell.ignoreWords": [
-        "ctfassets"
+        "ctfassets",
+        "searchdata"
     ]
 }
