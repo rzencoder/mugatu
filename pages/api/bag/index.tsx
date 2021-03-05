@@ -1,17 +1,21 @@
-import { addToBag, getBag, removeFromBag } from '@/controllers/bag'
+import { addToBag, getBag, getBagOnSignIn, removeFromBag } from '@/controllers/bag'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const item = req.body
+  console.log(req.body)
   switch (req.method) {
     case 'GET':
-      console.log('here')
       return getBag(req, res)
     case 'POST':
-      return addToBag(req, res, item)
+      return addToBag(req, res, req.body)
     case 'PUT':
-      return removeFromBag(req, res, item)
+      if (req.body && req.body.route === 'fetchBagOnSignIn') {
+        return getBagOnSignIn(req, res, req.body.bag)
+      } else {
+        console.log('wrong')
+        return removeFromBag(req, res, req.body)
+      }
     default:
       //Method not allowed
       return res.status(405).end()

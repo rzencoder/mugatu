@@ -36,7 +36,7 @@ const Login = (): JSX.Element => {
   const { user } = useAuth()
   const router = useRouter()
   const { fetchWishlist } = useWishlist()
-  const { fetchBag } = useBag()
+  const { fetchBagOnSignIn } = useBag()
 
   if (user && user.email) {
     router.push('/')
@@ -46,7 +46,7 @@ const Login = (): JSX.Element => {
     try {
       const result = await firebaseClient.auth().signInWithEmailAndPassword(email, password)
       await result.user.getIdToken()
-      await Promise.all([fetchWishlist(), fetchBag()])
+      await Promise.all([fetchWishlist(), fetchBagOnSignIn()])
       router.push('/')
     } catch (error) {
       toast({

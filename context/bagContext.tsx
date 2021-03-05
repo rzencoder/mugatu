@@ -10,6 +10,7 @@ interface Result {
 interface BagContextInterface {
   bag: BagItem[]
   fetchBag: () => Promise<void>
+  fetchBagOnSignIn: () => Promise<void>
   addToBag: (item: BagItem, signedIn?: boolean) => Promise<Result>
   removeFromBag: (item: BagItem, signedIn?: boolean) => Promise<Result>
 }
@@ -36,6 +37,32 @@ const useProvideBag = () => {
       setBag(data.bag)
     } catch {
       console.log('error')
+    }
+  }
+
+  const fetchBagOnSignIn = async () => {
+    if (bag.length > 0) {
+      // Combine guest shopping bag with users saved bag
+      try {
+        const response = await fetch('/api/bag/', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ bag, route: 'fetchBagOnSignIn' }),
+        })
+        const data = await response.json()
+        console.log(data)
+        setBag(data.bag)
+      } catch {
+        console.log('there was an error fetching your shopping bag')
+      }
+    } else {
+      try {
+        await fetchBag()
+      } catch {
+        console.log('there was an error fetching your shopping bag')
+      }
     }
   }
 
@@ -113,6 +140,7 @@ const useProvideBag = () => {
   return {
     bag,
     fetchBag,
+    fetchBagOnSignIn,
     addToBag,
     removeFromBag,
   } as const
