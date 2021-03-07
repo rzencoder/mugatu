@@ -17,7 +17,7 @@ const getWishlist = async (req: NextApiRequest, res: NextApiResponse<ResData>) =
     // Search firestore for wishlist
     const userRef = db.collection('users').doc(token.uid)
     const doc = await userRef.get()
-    if (doc.exists) {
+    if (!doc.exists) {
       throw new Error('user data not found')
     } else {
       return res.status(200).json({ wishlist: doc.data().wishlist })

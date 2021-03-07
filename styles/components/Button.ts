@@ -75,6 +75,22 @@ const Button = {
         color: props.colorMode === 'light' ? '#888' : '#ddd',
       },
     }),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    basic: (props: any) => ({
+      fontWeight: '400',
+      fontSize: '20px',
+      minWidth: 'unset',
+      textAlign: 'left',
+      width: 'fit-content',
+      p: '0',
+      border: 'none',
+      textTransform: 'lowercase',
+      color: props.colorMode === 'light' ? 'mainBlack' : 'mainWhite',
+      _hover: {
+        backgroundColor: 'none',
+        color: props.colorMode === 'light' ? '#888' : '#ddd',
+      },
+    }),
   },
   defaultProps: {
     size: 'md',
