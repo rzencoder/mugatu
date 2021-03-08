@@ -27,6 +27,11 @@ interface Props {
   onClose: () => void
 }
 
+interface FormData {
+  password: string
+  newPassword: string
+}
+
 const ChangePasswordForm = ({ isOpen, onClose }: Props): JSX.Element => {
   const { colorMode } = useColorMode()
   const toast = useToast()
@@ -35,17 +40,12 @@ const ChangePasswordForm = ({ isOpen, onClose }: Props): JSX.Element => {
   const [newPasswordShown, setNewPasswordShown] = useState(false)
   const { user } = useAuth()
 
-  interface FormData {
-    password: string
-    newPassword: string
-  }
-
   const handleChangePassword = async ({ password, newPassword }: FormData) => {
     try {
-      //   await userRef.reauthenticateWithCredential(password)
       await firebaseClient.auth().signInWithEmailAndPassword(user.email, password)
       const userRef = firebaseClient.auth().currentUser
       await userRef.updatePassword(newPassword)
+      onClose()
       toast({
         duration: 3000,
         // eslint-disable-next-line react/display-name
@@ -58,7 +58,6 @@ const ChangePasswordForm = ({ isOpen, onClose }: Props): JSX.Element => {
         ),
       })
     } catch (error) {
-      console.log(error)
       toast({
         duration: 3000,
         // eslint-disable-next-line react/display-name
@@ -70,10 +69,12 @@ const ChangePasswordForm = ({ isOpen, onClose }: Props): JSX.Element => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Change Password</ModalHeader>
+      <ModalContent bg={colorMode === 'light' ? 'mainWhite' : 'mainBlack'}>
+        <ModalHeader fontSize="24px" p="25px 20px 0">
+          change password
+        </ModalHeader>
         <ModalCloseButton />
-        <ModalBody>
+        <ModalBody padding="20px">
           <Flex>
             <form onSubmit={handleSubmit(handleChangePassword)}>
               <FormControl m="10px 0" isInvalid={errors.password && errors.password.message}>
@@ -85,10 +86,6 @@ const ChangePasswordForm = ({ isOpen, onClose }: Props): JSX.Element => {
                     type={passwordShown ? 'text' : 'password'}
                     ref={register({
                       required: 'please enter your password.',
-                      minLength: {
-                        value: 8,
-                        message: 'password must have at least 8 characters',
-                      },
                     })}
                   />
                   <Button
@@ -141,7 +138,7 @@ const ChangePasswordForm = ({ isOpen, onClose }: Props): JSX.Element => {
                 </FormErrorMessage>
               </FormControl>
               <Button type="submit" mt="20px">
-                Change Password
+                Save Password
               </Button>
             </form>
           </Flex>

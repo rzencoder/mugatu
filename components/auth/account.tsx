@@ -5,9 +5,11 @@ import { ExitIcon } from '@/components/icons/'
 import { InfoIcon, LockIcon } from '@chakra-ui/icons'
 import ChangePasswordForm from './changePasswordForm'
 import { Loader } from '..'
+import Details from './details'
 
 const Account = (): JSX.Element => {
   const passwordModal = useDisclosure()
+  const detailsModal = useDisclosure()
   const { colorMode } = useColorMode()
   const { user } = useAuth()
 
@@ -58,10 +60,16 @@ const Account = (): JSX.Element => {
             Hey {user && user.displayName}
           </Box>
           <Flex direction="column" margin="20px 0">
-            <Button variant="basic" m="5px 0">
+            <Button variant="basic" m="5px 0" onClick={detailsModal.onOpen}>
               <InfoIcon mr="10px" width="30px" color={colorMode === 'light' ? '#222' : '#fff'} />
               <Box>my details</Box>
             </Button>
+            <Details
+              onClose={detailsModal.onClose}
+              isOpen={detailsModal.isOpen}
+              userName={user.displayName}
+              userEmail={user.email}
+            />
             <Button variant="basic" m="5px 0" onClick={passwordModal.onOpen}>
               <LockIcon mr="10px" width="30px" color={colorMode === 'light' ? '#222' : '#fff'} />
               <Box>change password</Box>

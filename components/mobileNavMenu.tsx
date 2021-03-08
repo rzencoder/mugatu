@@ -57,7 +57,7 @@ const MobileNavMenu = ({ isOpen, onClose, gender, setGender }: MobileNavMenuProp
                 rightIcon={<ChevronDownIcon />}
                 variant="transparentBg"
                 textTransform="lowercase"
-                _hover={{ color: 'initial' }}
+                _hover={{ color: colorMode === 'light' ? '#444' : '#ddd' }}
               >
                 {gender}
               </MenuButton>
@@ -113,7 +113,7 @@ const MobileNavMenu = ({ isOpen, onClose, gender, setGender }: MobileNavMenuProp
                   color={colorMode === 'light' ? '#333' : 'mainWhite'}
                   fontSize="24px"
                 />
-                <FormLabel htmlFor="dark-mode" fontSize="18px" margin="0">
+                <FormLabel htmlFor="dark-mode" fontSize="18px" margin="0" fontWeight="400">
                   Dark Mode
                 </FormLabel>
               </Flex>

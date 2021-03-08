@@ -18,6 +18,7 @@ import { useBag } from '@/context/bagContext'
 import Search from './search'
 import Image from 'next/image'
 import { useFocus } from 'hooks/useFocus'
+import { useAuth } from '@/context/authContext'
 
 export default function Navigation(): JSX.Element {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -28,6 +29,7 @@ export default function Navigation(): JSX.Element {
   const [showSearch, setShowSearch] = useState(false)
   const [gender, setGender] = useState('women')
   const [inputRef, setInputFocus] = useFocus()
+  const { user } = useAuth()
 
   return (
     <nav>
@@ -94,32 +96,29 @@ export default function Navigation(): JSX.Element {
             </Flex>
             <Flex alignItems="center">
               <NextLink href={'/account'} passHref>
-                <Link>
-                  <Button variant="icon" backgroundImage="url(/icons/account.png)" />
+                <Link m="0 15px">
+                  <Box
+                    backgroundImage={`url(/icons/account${
+                      user && user.displayName ? '-solid' : ''
+                    }.png)`}
+                    backgroundSize="cover"
+                    width="30px"
+                    height="30px"
+                    p="5px"
+                  />
                 </Link>
               </NextLink>
               <NextLink href="/wishlist" passHref>
                 <Link aria-label="wishlist" margin="0 15px">
-                  <Box position="relative">
-                    <Box
-                      width="30px"
-                      height="30px"
-                      p="5px"
-                      backgroundImage="url(/icons/heart.png)"
-                      backgroundSize="cover"
-                    />
-                    {wishlist && wishlist.length >= 1 && (
-                      <Box
-                        position="absolute"
-                        top={['-1px', null, '-2px']}
-                        right="-3px"
-                        width="10px"
-                        height="10px"
-                        borderRadius="50%"
-                        bg="mainRed"
-                      />
-                    )}
-                  </Box>
+                  <Box
+                    width="30px"
+                    height="30px"
+                    p="5px"
+                    backgroundImage={`url(/icons/heart${
+                      wishlist && wishlist.length ? '-solid' : ''
+                    }.png)`}
+                    backgroundSize="cover"
+                  />
                 </Link>
               </NextLink>
 
