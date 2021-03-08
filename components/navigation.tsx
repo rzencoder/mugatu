@@ -79,7 +79,7 @@ export default function Navigation(): JSX.Element {
             justifyContent={['flex-end', null, 'space-between']}
             width="100%"
           >
-            <Flex alignItems="center" margin="0 2px">
+            <Flex alignItems="center" margin="0 15px">
               <Button
                 variant="icon"
                 aria-label="open search bar"
@@ -89,14 +89,15 @@ export default function Navigation(): JSX.Element {
                 }}
                 position="relative"
                 zIndex="100"
+                margin="0"
               >
-                <SearchIcon w={[6, null, 7]} h={[6, null, 7]} />
+                <SearchIcon boxSize={['28px']} />
               </Button>
               <Search showSearch={showSearch} setShowSearch={setShowSearch} inputRef={inputRef} />
             </Flex>
             <Flex alignItems="center">
               <NextLink href={'/account'} passHref>
-                <Link m="0 15px">
+                <Link aria-label="account" m="0 15px">
                   <Box
                     backgroundImage={`url(/icons/account${
                       user && user.displayName ? '-solid' : ''
@@ -130,6 +131,7 @@ export default function Navigation(): JSX.Element {
                     position="relative"
                     width="30px"
                     height="30px"
+                    ml="15px"
                   >
                     <NextLink href="/bag" passHref>
                       <Link>

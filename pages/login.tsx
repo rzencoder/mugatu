@@ -126,7 +126,7 @@ const Login = (): JSX.Element => {
                       </FormErrorMessage>
                     </FormControl>
                     <Box margin="5px 0">
-                      <NextLink href="/" passHref>
+                      <NextLink href="/password-reset" passHref>
                         <Link fontSize="14px">forgot your password?</Link>
                       </NextLink>
                     </Box>

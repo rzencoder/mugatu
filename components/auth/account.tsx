@@ -13,13 +13,6 @@ const Account = (): JSX.Element => {
   const { colorMode } = useColorMode()
   const { user } = useAuth()
 
-  //   const a = async () => {
-  //     const userRef = firebaseClient.auth().currentUser
-  //     await userRef.updateProfile({
-  //       displayName: 'katrina',
-  //     })
-  //   }
-
   if (!user || !user.displayName) {
     return <Loader />
   }
