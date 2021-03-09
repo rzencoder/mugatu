@@ -2,16 +2,21 @@ import { firebaseClient } from '@/firebase/firebaseClient'
 import { Box, Button, Flex, Heading, useColorMode, useDisclosure, Avatar } from '@chakra-ui/react'
 import { useAuth } from '@/context/authContext'
 import { ExitIcon } from '@/components/icons/'
-import { InfoIcon, LockIcon } from '@chakra-ui/icons'
+import { DeleteIcon, InfoIcon, LockIcon } from '@chakra-ui/icons'
 import ChangePasswordForm from './changePasswordForm'
 import { Loader } from '..'
 import Details from './details'
+import DeleteAccountAlert from './deleteAccountAlert'
+import { useState } from 'react'
 
 const Account = (): JSX.Element => {
   const passwordModal = useDisclosure()
   const detailsModal = useDisclosure()
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false)
   const { colorMode } = useColorMode()
   const { user } = useAuth()
+
+  const onDeleteAlertClose = () => setShowDeleteAlert(false)
 
   if (!user || !user.displayName) {
     return <Loader />
@@ -68,6 +73,11 @@ const Account = (): JSX.Element => {
               <Box>change password</Box>
             </Button>
             <ChangePasswordForm onClose={passwordModal.onClose} isOpen={passwordModal.isOpen} />
+            <Button variant="basic" m="5px 0" onClick={() => setShowDeleteAlert(true)}>
+              <DeleteIcon mr="10px" width="30px" color={colorMode === 'light' ? '#222' : '#fff'} />
+              <Box>delete account</Box>
+            </Button>
+            <DeleteAccountAlert isOpen={showDeleteAlert} onClose={onDeleteAlertClose} />
             <Button
               m="5px 0"
               variant="basic"

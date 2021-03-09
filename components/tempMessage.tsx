@@ -2,7 +2,11 @@ import { Box, Flex, Link, useColorMode } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
-const TempMessage = (): JSX.Element => {
+interface Props {
+  message?: string
+}
+
+const TempMessage = ({ message }: Props): JSX.Element => {
   const { colorMode } = useColorMode()
 
   return (
@@ -15,6 +19,11 @@ const TempMessage = (): JSX.Element => {
       textAlign="center"
       fontSize="18px"
     >
+      {message && (
+        <Box fontSize="40px" fontWeight="700" p="0 0 30px">
+          {message}
+        </Box>
+      )}
       <Box fontSize="32px" fontWeight="700" p="0 0 30px">
         thanks for checking out the site
       </Box>

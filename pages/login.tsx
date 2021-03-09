@@ -125,7 +125,7 @@ const Login = (): JSX.Element => {
                         {errors.password && errors.password.message}
                       </FormErrorMessage>
                     </FormControl>
-                    <Box margin="5px 0">
+                    <Box margin="10px 0" p="2px 0">
                       <NextLink href="/password-reset" passHref>
                         <Link fontSize="14px">forgot your password?</Link>
                       </NextLink>
@@ -169,8 +169,3 @@ const Login = (): JSX.Element => {
 }
 
 export default Login
-
-// onClick = { async() => {
-//   await firebaseClient.auth().createUserWithEmailAndPassword(email, password)
-//   window.location.href = '/'
-// }}

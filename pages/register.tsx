@@ -103,8 +103,6 @@ const Register = (): JSX.Element => {
               <FormControl m="10px 0" isInvalid={errors.email && errors.email.message}>
                 <FormLabel margin="3px 0">email address</FormLabel>
                 <Input
-                  // eslint-disable-next-line jsx-a11y/no-autofocus
-                  autoFocus
                   aria-label="Email Address"
                   name="email"
                   ref={register({
