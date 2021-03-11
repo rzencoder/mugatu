@@ -1,30 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mugatu
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE) 
+[![Generic badge](https://img.shields.io/badge/</>-TypeScript-blue.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/</>-NextJS-blue.svg)](https://shields.io/)
 
-## Getting Started
+A shop front for a fictional women and mens clothing store. Built with NextJS, TypeScript and Chakra UI. Uses Firebase for authentication and user storage. Contentful CDN for the product catalog
 
-First, run the development server:
+[![screenshot-home.png](https://i.postimg.cc/TY3yQk7K/screenshot-home.png)](https://postimg.cc/MXgKpY8w)
 
-```bash
-npm run dev
-# or
-yarn dev
+## Demo
+```
+https://mugatu.vercel.app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
+* Next.js
+* React
+* TypeScript
+* Chakra UI
+* Firebase/Firestore
+* Contentful
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## How to use
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You will need to create a Firebase/Firestore project to run this as well as a Contentful account.<br>
+Use the .env.template find which environment variables are needed. Create a model based on the contentfulModel file to add products
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+// Clone this repository
+$ git clone https://github.com/rzencoder/mugatu
 
-## Deploy on Vercel
+// Go into the repository
+$ cd mugatu
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+// Install dependencies
+$ yarn install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+// Run the app
+$ yarn dev
+
+// Open the app
+$ http://localhost:3000
+```
+
+## Testing
+
+#### Jest/React Testing Library
+```
+// Run tests with coverage
+$ yarn test
+```
+#### Cypress
+```
+// Run tests
+$ yarn cypress:open
+```
+
+## Credits
+
+All stock images from Unsplash, Pexels and Pixabay
