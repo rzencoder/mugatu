@@ -5,7 +5,7 @@
 
 A shop front for a fictional women and mens clothing store. Built with NextJS, TypeScript and Chakra UI. Uses Firebase for authentication and user storage. Contentful CDN for the product catalog
 
-[![screenshot-home.png](https://i.postimg.cc/TY3yQk7K/screenshot-home.png)](https://postimg.cc/MXgKpY8w)
+![image](https://user-images.githubusercontent.com/20361733/110843817-a0422600-82a0-11eb-9813-536fe1dee941.png)
 
 ## Demo
 ```
