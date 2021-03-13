@@ -22,9 +22,7 @@ const PasswordReset = (): JSX.Element => {
   const { colorMode } = useColorMode()
 
   const onSubmit = async ({ email }: FormProps) => {
-    console.log(email)
-    const result = await firebaseClient.auth().sendPasswordResetEmail(email)
-    console.log(result)
+    await firebaseClient.auth().sendPasswordResetEmail(email)
   }
 
   return (

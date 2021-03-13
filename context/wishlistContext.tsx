@@ -14,7 +14,7 @@ interface WishlistContextInterface {
   removeFromWishlist: (item: Item) => Promise<Result>
 }
 
-const wishlistContext = createContext<WishlistContextInterface | null>(null)
+export const wishlistContext = createContext<WishlistContextInterface | null>(null)
 
 export function ProvideWishlist({ children }: { children: React.ReactNode }): JSX.Element {
   const wishlist = useProvideWishlist()

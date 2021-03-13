@@ -11,7 +11,7 @@ import {
   useColorMode,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { deliveryOptions } from '@/data/deliveryOptions'
+import { deliveryOptions } from '../../data/deliveryOptions'
 import { useEffect, useState } from 'react'
 import { useBag } from '@/context/bagContext'
 
@@ -25,6 +25,7 @@ const Summary = ({ subtotal }: Props): JSX.Element => {
   const [delivery, setDelivery] = useState(deliveryOptions[0])
 
   // Update delivery prices based on items subtotal
+
   useEffect(() => {
     if (subtotal > 50) {
       if (delivery.name === 'standard delivery' || delivery.name === 'click and collect standard') {
@@ -97,6 +98,7 @@ const Summary = ({ subtotal }: Props): JSX.Element => {
                 return (
                   <MenuItem
                     key={`delivery-option-${option.name}`}
+                    data-testid={`set-delivery-${option.name}`}
                     onClick={() => setDelivery(deliveryOptions[index])}
                   >
                     {`${option.name} (${price === 0 ? 'free' : `£${price}`})`}

@@ -1,4 +1,4 @@
-import { graphQLClient } from '@/graphql/client'
+import { graphQLClient } from '../graphql/client'
 
 interface ProductIdsInterface {
   params: {

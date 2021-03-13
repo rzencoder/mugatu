@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Summary /> renders <Summary /> component 1`] = `
+<div
+  class="css-1ag7b0c"
+>
+  <div
+    class="css-14r8l3o"
+  >
+    summary
+  </div>
+  <div
+    class="css-1h1ghi2"
+  >
+    <div
+      class="css-1ydx9ur"
+    >
+      <div
+        class="css-0"
+      >
+        sub-total
+      </div>
+      <div
+        class="css-0"
+      >
+        £
+        49.99
+      </div>
+    </div>
+    <div
+      class="css-19qn5v4"
+    >
+      <svg
+        class="chakra-icon css-1w891y"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm.25,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,12.25,5ZM14.5,18.5h-4a1,1,0,0,1,0-2h.75a.25.25,0,0,0,.25-.25v-4.5a.25.25,0,0,0-.25-.25H10.5a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2v4.75a.25.25,0,0,0,.25.25h.75a1,1,0,1,1,0,2Z"
+          fill="currentColor"
+        />
+      </svg>
+      <div
+        class="css-0"
+      >
+        spend £0.01 more to qualify for free delivery
+      </div>
+    </div>
+    <div
+      class="css-j7qwjs"
+    >
+      <div
+        class="css-1ydx9ur"
+      >
+        <div
+          class="css-0"
+        >
+          delivery
+        </div>
+        <div
+          class="css-0"
+        >
+          £4.95
+        </div>
+      </div>
+      <button
+        aria-controls="menu-list-6"
+        aria-expanded="false"
+        aria-haspopup="menu"
+        class="chakra-button chakra-menu__menu-button css-1k62m3q"
+        id="menu-button-6"
+        type="button"
+      >
+        <span
+          class="css-a9hmjk"
+        >
+          <span
+            class="css-0"
+          >
+            standard delivery (£4.95)
+          </span>
+          <svg
+            class="chakra-icon css-onkibi"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        class="css-0"
+        style="position: absolute; left: 0px; top: 0px; visibility: hidden;"
+      >
+        <div
+          aria-orientation="vertical"
+          class="chakra-menu__menu-list css-18un4sm"
+          id="menu-list-6"
+          role="menu"
+          style="transform-origin: top left; opacity: 0; visibility: hidden; transform: scale(0.8) translateZ(0);"
+          tabindex="-1"
+        >
+          <button
+            class="chakra-menu__menuitem css-4dys5b"
+            data-testid="set-delivery-standard delivery"
+            id="menuitem-1"
+            role="menuitem"
+            tabindex="-1"
+            type="button"
+          >
+            standard delivery (£4.95)
+          </button>
+          <button
+            class="chakra-menu__menuitem css-4dys5b"
+            data-testid="set-delivery-next day delivery"
+            id="menuitem-2"
+            role="menuitem"
+            tabindex="-1"
+            type="button"
+          >
+            next day delivery (£6.95)
+          </button>
+          <button
+            class="chakra-menu__menuitem css-4dys5b"
+            data-testid="set-delivery-click and collect standard"
+            id="menuitem-3"
+            role="menuitem"
+            tabindex="-1"
+            type="button"
+          >
+            click and collect standard (£4.95)
+          </button>
+          <button
+            class="chakra-menu__menuitem css-4dys5b"
+            data-testid="set-delivery-click and collect next day"
+            id="menuitem-4"
+            role="menuitem"
+            tabindex="-1"
+            type="button"
+          >
+            click and collect next day (£6.95)
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-1ps467w"
+    >
+      <div
+        class="css-0"
+      >
+        total
+      </div>
+      <div
+        class="css-0"
+      >
+        £
+        54.94
+      </div>
+    </div>
+  </div>
+  <a
+    class="chakra-link css-0"
+    href="/checkout"
+  >
+    <button
+      class="chakra-button css-1djzb9a"
+      type="button"
+    >
+      Checkout
+    </button>
+  </a>
+</div>
+`;

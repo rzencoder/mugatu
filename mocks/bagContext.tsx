@@ -1,5 +1,6 @@
+import { bagContext } from '@/context/bagContext'
 import { BagItem } from '@/types/bagItem'
-import { useState, useContext, createContext } from 'react'
+import { useState } from 'react'
 
 interface Result {
   title: string
@@ -15,26 +16,22 @@ interface BagContextInterface {
   removeFromBag: (item: BagItem, signedIn?: boolean) => Promise<Result>
 }
 
-export const bagContext = createContext<BagContextInterface | null>(null)
-
-export function ProvideBag({ children }: { children: React.ReactNode }): JSX.Element {
-  const bag = useProvideBag()
-  return <bagContext.Provider value={bag}>{children}</bagContext.Provider>
+interface ProvideBagProps {
+  bag: BagItem[]
+  children: React.ReactNode
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useBag = () => {
-  return useContext(bagContext)
+export const ProvideBag = ({ bag, children }: ProvideBagProps): JSX.Element => {
+  const bagValue = useProvideBag(bag)
+  return <bagContext.Provider value={bagValue}>{children}</bagContext.Provider>
 }
 
-const useProvideBag = () => {
+export const useProvideBag = (mockBag: BagItem[]): BagContextInterface => {
   const [bag, setBag] = useState([])
 
   const fetchBag = async () => {
     try {
-      const result = await fetch('/api/bag/')
-      const data = await result.json()
-      setBag(data.bag)
+      setBag([...mockBag])
     } catch (error) {
       console.log(error)
     }
@@ -44,15 +41,7 @@ const useProvideBag = () => {
     if (bag.length > 0) {
       // Combine guest shopping bag with users saved bag
       try {
-        const response = await fetch('/api/bag/', {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ bag, route: 'fetchBagOnSignIn' }),
-        })
-        const data = await response.json()
-        setBag(data.bag)
+        setBag([...mockBag])
       } catch {
         console.log('there was an error fetching your shopping bag')
       }
@@ -68,15 +57,7 @@ const useProvideBag = () => {
   const addToBag = async (item: BagItem, signedIn = false) => {
     if (signedIn) {
       try {
-        const response = await fetch('/api/bag/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(item),
-        })
-        const data = await response.json()
-        setBag(data.bag)
+        setBag([...bag, item])
         return {
           title: 'Item Added!',
           message: 'Your item has been added to your shopping bag',
@@ -111,19 +92,11 @@ const useProvideBag = () => {
       }
     } else {
       try {
-        const response = await fetch('/api/bag/', {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(item),
-        })
-        const data = await response.json()
         const updatedBag = bag.filter((el: BagItem) => el.id !== item.id)
         setBag(updatedBag)
         return {
           title: 'Item Removed!',
-          message: data.message,
+          message: 'Your item has been removed',
           status: 'success',
         }
       } catch {

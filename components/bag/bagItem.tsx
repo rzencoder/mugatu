@@ -17,9 +17,10 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { useBag } from '@/context/bagContext'
 import { BagItem } from '@/types/bagItem'
-import { LoginPopover, Toast } from '..'
 import { useAuth } from '@/context/authContext'
 import { useState } from 'react'
+import LoginPopover from '../loginPopover'
+import Toast from '../toast'
 
 interface Props {
   item: BagItem

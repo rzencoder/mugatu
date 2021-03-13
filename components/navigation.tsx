@@ -17,7 +17,7 @@ import BagPopOver from './bag/bagPopOver'
 import { useBag } from '@/context/bagContext'
 import Search from './search'
 import Image from 'next/image'
-import { useFocus } from 'hooks/useFocus'
+import { useFocus } from '../hooks/useFocus'
 import { useAuth } from '@/context/authContext'
 
 export default function Navigation(): JSX.Element {
@@ -127,7 +127,7 @@ export default function Navigation(): JSX.Element {
                 <PopoverTrigger>
                   <Button
                     variant="icon"
-                    backgroundImage="url(/icons/bag.png)"
+                    backgroundImage={`url(/icons/${bag.length ? 'bag-full' : 'bag'}.png)`}
                     position="relative"
                     width="30px"
                     height="30px"
@@ -138,14 +138,15 @@ export default function Navigation(): JSX.Element {
                         <Box>
                           <Box
                             position="absolute"
-                            color="mainWhite"
-                            top="12px"
-                            fontSize="12px"
+                            color="#333"
+                            top="11px"
+                            fontWeight="700"
+                            fontSize="16px"
                             left="10px"
                             width={bag.length < 10 ? '10px' : '15px'}
                             textAlign="center"
                           >
-                            {bag.length}
+                            {bag.length > 0 && bag.length}
                           </Box>
                         </Box>
                       </Link>

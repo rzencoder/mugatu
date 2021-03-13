@@ -18,7 +18,15 @@ module.exports = {
         "@/components/(.*)": "<rootDir>/components/$1",
         "@/types/(.*)": "<rootDir>/types/$1",
         "@/pages/(.*)": "<rootDir>/pages/$1",
-        "@/public/(.*)": "<rootDir>/public/$1"
+        "@/public/(.*)": "<rootDir>/public/$1",
+        "@/config/(.*)": "<rootDir>/config/$1",
+        "@/controllers/(.*)": "<rootDir>/controllers/$1",
+        "@/data/(.*)": "<rootDir>/data/$1",
+        "@/mocks/(.*)": "<rootDir>/mocks/$1",
+        "@/firebase/(.*)": "<rootDir>/firebase/$1",
+        "@/graphql/(.*)": "<rootDir>/graphql/$1",
+        "@/hooks/(.*)": "<rootDir>/hooks/$1",
+        "@/styles/(.*)": "<rootDir>/styles/$1",
     },
     collectCoverageFrom: [
         "<rootDir>/components/**/*.tsx",
