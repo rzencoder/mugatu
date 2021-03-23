@@ -1,0 +1,262 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BagPopOver /> renders <BagPopOver /> component 1`] = `
+<div
+  class="css-0"
+  style="visibility: hidden; position: absolute; left: 0px; top: 0px;"
+>
+  <section
+    aria-describedby="popover-body-2"
+    aria-labelledby="popover-header-2"
+    class="chakra-popover__content css-1hxk7rx"
+    id="popover-content-2"
+    role="dialog"
+    style="transform-origin: top center; opacity: 0; visibility: hidden; transform: scale(0.95) translateZ(0);"
+    tabindex="-1"
+  >
+    <button
+      aria-label="Close"
+      class="css-jss8o7"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="chakra-icon css-onkibi"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+          fill="currentColor"
+        />
+      </svg>
+    </button>
+    <header
+      class="chakra-popover__header css-11virbg"
+      id="popover-header-2"
+    >
+      my bag
+    </header>
+    <div
+      class="chakra-popover__body css-0"
+      id="popover-body-2"
+    >
+      <div
+        class="css-j7qwjs"
+      >
+        <div
+          class="css-35ezg3"
+        >
+          2 items
+        </div>
+        <div
+          class="css-a0md4"
+        >
+          <div
+            class="css-mvjt7b"
+          >
+            <div
+              class="css-14ubltb"
+            >
+              <div
+                style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+              >
+                <div
+                  style="box-sizing: border-box; display: block; max-width: 100%;"
+                >
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    role="presentation"
+                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                    style="max-width: 100%; display: block;"
+                  />
+                </div>
+                <img
+                  alt="Blue jeans"
+                  decoding="async"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                />
+              </div>
+            </div>
+            <div
+              class="css-2rk6au"
+            >
+              <div
+                class="css-18ugfwx"
+              >
+                Blue jeans
+              </div>
+              <div
+                class="css-16yexji"
+              >
+                <div
+                  class="css-0"
+                >
+                  blue
+                </div>
+                <div
+                  class="css-0"
+                >
+                  size: 
+                  6
+                </div>
+                <div
+                  class="css-0"
+                >
+                  qty: 
+                  1
+                </div>
+              </div>
+              <div
+                class="css-1lekzkb"
+              >
+                <div
+                  class="css-13ih39a"
+                >
+                  £
+                  29.99
+                </div>
+                <button
+                  class="chakra-button css-oqfhsh"
+                  data-testid="delete-icon-blue-jeans"
+                  type="button"
+                >
+                  <svg
+                    class="chakra-icon css-qve0ed"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M19.452 7.5H4.547a.5.5 0 00-.5.545l1.287 14.136A2 2 0 007.326 24h9.347a2 2 0 001.992-1.819L19.95 8.045a.5.5 0 00-.129-.382.5.5 0 00-.369-.163zm-9.2 13a.75.75 0 01-1.5 0v-9a.75.75 0 011.5 0zm5 0a.75.75 0 01-1.5 0v-9a.75.75 0 011.5 0zM22 4h-4.75a.25.25 0 01-.25-.25V2.5A2.5 2.5 0 0014.5 0h-5A2.5 2.5 0 007 2.5v1.25a.25.25 0 01-.25.25H2a1 1 0 000 2h20a1 1 0 000-2zM9 3.75V2.5a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v1.25a.25.25 0 01-.25.25h-5.5A.25.25 0 019 3.75z"
+                      />
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-mvjt7b"
+          >
+            <div
+              class="css-14ubltb"
+            >
+              <div
+                style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+              >
+                <div
+                  style="box-sizing: border-box; display: block; max-width: 100%;"
+                >
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    role="presentation"
+                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                    style="max-width: 100%; display: block;"
+                  />
+                </div>
+                <img
+                  alt="Black Shirt"
+                  decoding="async"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                />
+              </div>
+            </div>
+            <div
+              class="css-2rk6au"
+            >
+              <div
+                class="css-18ugfwx"
+              >
+                Black Shirt
+              </div>
+              <div
+                class="css-16yexji"
+              >
+                <div
+                  class="css-0"
+                >
+                  black
+                </div>
+                <div
+                  class="css-0"
+                >
+                  size: 
+                  s
+                </div>
+                <div
+                  class="css-0"
+                >
+                  qty: 
+                  1
+                </div>
+              </div>
+              <div
+                class="css-1lekzkb"
+              >
+                <div
+                  class="css-13ih39a"
+                >
+                  £
+                  19.99
+                </div>
+                <button
+                  class="chakra-button css-oqfhsh"
+                  data-testid="delete-icon-black-shirt"
+                  type="button"
+                >
+                  <svg
+                    class="chakra-icon css-qve0ed"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M19.452 7.5H4.547a.5.5 0 00-.5.545l1.287 14.136A2 2 0 007.326 24h9.347a2 2 0 001.992-1.819L19.95 8.045a.5.5 0 00-.129-.382.5.5 0 00-.369-.163zm-9.2 13a.75.75 0 01-1.5 0v-9a.75.75 0 011.5 0zm5 0a.75.75 0 01-1.5 0v-9a.75.75 0 011.5 0zM22 4h-4.75a.25.25 0 01-.25-.25V2.5A2.5 2.5 0 0014.5 0h-5A2.5 2.5 0 007 2.5v1.25a.25.25 0 01-.25.25H2a1 1 0 000 2h20a1 1 0 000-2zM9 3.75V2.5a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v1.25a.25.25 0 01-.25.25h-5.5A.25.25 0 019 3.75z"
+                      />
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-1ythi73"
+        >
+          <div
+            class="css-0"
+          >
+            subtotal
+          </div>
+          <div
+            class="css-35ezg3"
+          >
+            £
+            49.98
+          </div>
+        </div>
+        <a
+          class="chakra-link css-0"
+          href="/bag"
+        >
+          <button
+            class="chakra-button css-gjycyk"
+            type="button"
+          >
+            View Bag
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+`;

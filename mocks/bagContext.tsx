@@ -27,7 +27,7 @@ export const ProvideBag = ({ bag, children }: ProvideBagProps): JSX.Element => {
 }
 
 export const useProvideBag = (mockBag: BagItem[]): BagContextInterface => {
-  const [bag, setBag] = useState([])
+  const [bag, setBag] = useState(mockBag)
 
   const fetchBag = async () => {
     try {

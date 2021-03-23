@@ -66,6 +66,7 @@ const BagPopOver = (): JSX.Element => {
                       </Box>
                       <Button
                         variant="transparentBg"
+                        data-testid={`delete-icon-${item.slug}`}
                         onClick={() => {
                           removeFromBag(item)
                         }}

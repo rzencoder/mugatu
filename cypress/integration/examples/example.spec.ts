@@ -3,5 +3,6 @@
 context('Navigation', () => {
   it("cy.go() - go back or forward in the browser's history", () => {
     cy.visit('http://localhost:3000')
+    cy.contains('WOMEN').click()
   })
 })

@@ -40,11 +40,14 @@ export default function Navigation(): JSX.Element {
         p={3}
       >
         <NextLink href="/women" passHref>
-          <Link fontSize={['18px', null, '22px']}>WOMEN</Link>
+          <Link id="women-link" fontSize={['18px', null, '22px']}>
+            WOMEN
+          </Link>
         </NextLink>
         <Box boxSize={['70px', null, '90px']} margin="10px" marginLeft={['-10px', '-20px']}>
           <NextLink href="/" passHref>
             <Link
+              id="home-link"
               width="90px"
               height="100px"
               aria-label="home page link"
@@ -55,7 +58,9 @@ export default function Navigation(): JSX.Element {
           </NextLink>
         </Box>
         <NextLink href="/men" passHref>
-          <Link fontSize={['18px', null, '22px']}>MEN</Link>
+          <Link id="men-link" fontSize={['18px', null, '22px']}>
+            MEN
+          </Link>
         </NextLink>
       </Flex>
       <Flex bg="#333" padding={['10px']}>
